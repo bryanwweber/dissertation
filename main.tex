@@ -5,9 +5,11 @@
 % arara: sumatrapdf
 \documentclass[12pt]{report}
 
+%Set the document font
 \usepackage{fontspec}
 \setromanfont{Times New Roman}
 
+%Set the size of the margins and the paper
 \usepackage[margin=1in, letterpaper]{geometry}
 
 %Set the color of the links and PDF metadata
@@ -27,8 +29,10 @@
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0pt}
 
+%Set a command to easily skip a line
 \newcommand{\blankline}{\vspace*{\baselineskip}}
 
+%Set up biblatex
 \usepackage[
     backend=biber,
     url=false,
@@ -45,6 +49,7 @@
 \title{High Pressure Ignition Chemistry of Alternative Fuels}
 \author{Bryan William Weber}
 
+%Set the text to double spacing
 \usepackage[doublespacing]{setspace}
 
 \begin{document}
