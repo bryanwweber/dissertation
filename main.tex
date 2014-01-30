@@ -1,4 +1,7 @@
 % arara: xelatex: { synctex: on, shell: off }
+% arara: xelatex: { synctex: on, shell: off }
+% arara: biber
+% arara: xelatex: { synctex: on, shell: off }
 % arara: sumatrapdf
 \documentclass[12pt]{report}
 
@@ -23,6 +26,13 @@
 \author{Bryan William Weber}
 
 \usepackage[doublespacing]{setspace}
+
+\usepackage[
+    backend=biber,
+    url=false,
+    doi=true
+]{biblatex}
+\addbibresource{library.bib}
 
 \begin{document}
 \thispagestyle{empty}
@@ -123,5 +133,6 @@ So long, and thanks for all the fish.
 \setcounter{page}{1}
 \pagenumbering{arabic}
 \chapter{Introduction}
-This is the start of the introduction.
+This is the start of the introduction. \cite{Weber2011}
+\printbibliography
 \end{document}

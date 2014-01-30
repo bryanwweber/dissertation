@@ -3,3 +3,7 @@
 *.log
 *.gz
 *.toc
+*.xml
+*.bbl
+*.bcf
+*.blg
