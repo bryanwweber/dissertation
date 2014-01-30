@@ -5,7 +5,6 @@
 % arara: sumatrapdf
 \documentclass[12pt]{report}
 
-\usepackage{titling}
 \usepackage{fontspec}
 \setromanfont{Times New Roman}
 
@@ -22,23 +21,29 @@
 
 \newcommand{\blankline}{\vspace*{\baselineskip}}
 
+\usepackage[
+    backend=biber,
+    url=false,
+    doi=true,
+    sorting=none,
+    sortcites=true,
+    maxnames=6,
+    citestyle=numeric-comp
+]{biblatex}
+\addbibresource{library.bib}
+
+\usepackage{titling}
+
 \title{High Pressure Ignition Chemistry of Alternative Fuels}
 \author{Bryan William Weber}
 
 \usepackage[doublespacing]{setspace}
 
-\usepackage[
-    backend=biber,
-    url=false,
-    doi=true
-]{biblatex}
-\addbibresource{library.bib}
-
 \begin{document}
 \thispagestyle{empty}
 \begin{center}
 \thetitle \\
-\theauthor Ph.D. \\
+\theauthor, Ph.D. \\
 University of Connecticut, 2014 \\
 \blankline
 \end{center}
@@ -133,6 +138,6 @@ So long, and thanks for all the fish.
 \setcounter{page}{1}
 \pagenumbering{arabic}
 \chapter{Introduction}
-This is the start of the introduction. \cite{Weber2011}
+This is the start of the introduction. \cite{Weber2011,Weber2013,Tsujimura2012}. \textcite{Sarathy2013} found that blah.
 \printbibliography
 \end{document}
