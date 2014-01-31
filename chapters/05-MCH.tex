@@ -1,9 +1,9 @@
-% arara: xelatex { synctex:on shell:off }
+﻿
+% arara: xelatex: { synctex: on, shell: off }
 % arara: biber
-% arara: xelatex { synctec:on shell:off }
+% arara: xelatex: { synctex: on, shell: off }
 % arara: sumatrapdf
-
-\documentclass[class=report, 12pt]{standalone}
+\documentclass[12pt, letterpaper]{article}
 
 %Set the document font
 \usepackage{fontspec}
@@ -16,11 +16,15 @@
 \usepackage[
     colorlinks=true,
     citecolor=blue,
-    linkcolor=black,
-    pdftitle={High Pressure Ignition Chemistry of Alternative Fuels},
-    pdfauthor={Bryan W. Weber}
+    linkcolor=black
 ]{hyperref}
 
+\hypersetup{%
+    pdfinfo={
+        Title={High Pressure Ignition Chemistry of Alternative Fuels}
+        Author={Bryan W. Weber}
+    }
+}
 %Set up the page numbers
 %This has to go after geometry so the page number is centered
 \usepackage{fancyhdr}
@@ -39,8 +43,10 @@
     doi=true,
     sorting=none,
     sortcites=true,
-    maxnames=6,
-    minnames=6,
+    maxbibnames=6,
+    minbibnames=6,
+    maxcitenames=2,
+    mincitenames=1,
     citestyle=numeric-comp,
     firstinits=true,
     isbn=false
@@ -88,7 +94,601 @@
 %Set the text to double spacing
 \usepackage[doublespacing]{setspace}
 
-\begin{document}
+%Packages not present in main.tex preamble
+\usepackage{booktabs}
 
+\def\chapterautorefname~#1\null{Chap.~#1\null}
+\def\sectionautorefname~#1\null{Sec.~#1\null}
+\def\subsectionautorefname~#1\null{Sec.~#1\null}
+\def\figureautorefname~#1\null{Fig.~#1\null}
+\def\tableautorefname~#1\null{Table~#1\null}
+\def\equationautorefname~#1\null{Eq.~(#1)\null}
+
+\newcommand{\Autoref}[1]{%
+  \begingroup%
+  \def\chapterautorefname~##1\null{Chapter~##1\null}%
+  \def\sectionautorefname~##1\null{Section~##1\null}%
+  \def\subsectionautorefname~##1\null{Sub--Section~##1\null}%
+  \def\figureautorefname~##1\null{Figure~##1\null}%
+  \def\tableautorefname~##1\null{Table~##1\null}%
+  \def\equationautorefname~##1\null{Equation~##1\null}%
+  \autoref{#1}%
+  \endgroup%
+}
+
+\usepackage[font={footnotesize}]{caption}
+
+\usepackage{mathtools}
+
+\begin{document}
+\section{Procedures}
+The liquid fuel (methyl-cyclohexane, 99.0\% purity) is massed to a precision 
+of 0.01 g in a syringe before being injected into the mixing tank through a 
+septum. The proportions of oxygen (99.9999\% purity), nitrogen (99.9995\% 
+purity), and argon (99.9999\% purity) are determined by specifying the oxidizer 
+composition, the equivalence ratio, and the total mass of fuel. The gases are 
+added to the mixing tank manometrically at room temperature. 
+
+Three different mixtures of MCH/O$_2$/N$_2$/Ar are prepared in this study, as 
+outlined in \autoref{tab:mch-props}. These mixtures (denoted as Mix \#1–3) match the mixtures 
+prepared in our previous work with MCH in the RCM [16]. The equivalence ratios 
+corresponding to Mix \#1–3 are $\phi=1.0, 0.5, \mathrm{and} 1.5$, respectively. 
+As in the previous RCM experiments, the mole fraction of MCH is held constant 
+and the mole fraction of O2 is varied to adjust the equivalence ratio. This 
+experimental design allows these data to be used to validate chemical kinetic 
+models for changes in O2 concentration, which is an important variable in 
+internal combustion engines where exhaust gas recirculation is used to reduce 
+the oxygen concentrations to avoid NOx formation. Few validation data for 
+ignition are available for changing oxygen concentrations. In addition, the 
+relative proportions of O2, N2, and Ar are adjusted so that the same specific 
+heat ratio is maintained in the three mixtures. The utility of this 
+experimental design will be discussed in due course.
+
+\begin{table}
+    \centering
+    \caption{Molar Proportions of Reactants in MCH Experiments}
+    \label{tab:mch-props}
+    \begin{tabular}{*{4}{c} r@{.} l c}
+    \toprule
+    Mix \# & $\phi$ & MCH & O$_2$ & \multicolumn{2}{c}{N$_2$} & Ar \\
+    \midrule
+    1 & 1.0 & 1 & 10.5 & 12 & 25 & 71.75 \\
+    2 & 0.5 & 1 & 21.0 &  0 & 00 & 73.50 \\
+    3 & 1.5 & 1 &  7.0 & 16 & 35 & 71.15 \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Model Improvements}
+\label{sec:model-improvements}
+
+Through collaboration with researchers at Lawrence Livermore National 
+Laboratories, many improvements to the chemical kinetic model for MCH were 
+made. Some of the major improvements are highlighted below; see the article 
+for more detail. It should be noted that the improvement relative to the model 
+from 2007 by \textcite{Pitz2007} is substantial.
+
+\begin{enumerate}
+    \item The base C$_1$-C$_4$ chemistry has been updated with the AramcoMech 
+        version 1.3 \cite{Metcalfe2013}
+    \item The aromatics base chemistry was updated with the latest LLNL-NUIG
+        model \cite{Nakamura2014}
+    \item The cyclohexane sub-model was updated with a new version from 
+        \textcite{Silke2007}
+    \item Rates of abstraction reactions from MCH have been updated 
+        with recently measured experimental values \cite{Sivaramakrishnan2009} 
+        and standardized according to the LLNL reaction rate rules \cite{Sarathy2011b}
+    \item Products of MCH breakdown with unsaturated rings such as 
+        methylcyclohexene were previously lumped into one species for 
+        simplicity. In the new model, they have been unlumped and 
+        provide improved fidelity in modeling these species. \cite{Pitz2013}
+    \item The reaction rates of some low-temperature specific reactions were 
+        updated using new quantum chemical calculations to compute the rate. 
+        Other reaction rates were updated from similar calculations performed 
+        by \textcite{Fernandes2009}
+    \item The activation energy of the ketohydroperoxide decomposition 
+        reactions was increased to bring it into closer agreement with 
+        the activation energy used by \textcite{Metcalfe2013}. This change 
+        has a dramatic effect on the low-temperature ignition delays, as shown 
+        in \autoref{sec:model-comparison}.
+\end{enumerate}
+
+\section{Experimental Results}
+\label{sec:experimental-results}
+
+The experimental ignition delays measured at the three equivalence ratios and 
+compressed pressure of 50 bar are shown in \autoref{fig:mch-expts}. The open symbols are the 
+overall ignition delays and the filled symbols are the first stage ignition 
+delays. The vertical error bars on the experimental data represent twice the 
+standard deviation of all of the experiments at that condition. Detailed 
+uncertainty analysis of the deduced compressed temperature was conducted 
+in \autoref{sec:uncertainty} where the maximum uncertainty of the compressed 
+temperature was found to be approximately $±1\%$.
+
+The negative temperature coefficient (NTC) region is an important feature of 
+low temperature ignition where the ignition delay time increases with 
+increasing temperature. The NTC region of the overall ignition delay is 
+evident in \autoref{fig:mch-expts} for the $\phi=1.5$ case (Mix \#3) and 
+approximately includes the temperature range of $T_C=775–840$ K. For 
+$\phi=1.5$, first stage ignition is evident for conditions in the range of 
+$T_C=740–800$ K.
+
+For $\phi=1.0$ (Mix \#1), the NTC region of the overall ignition delay could 
+not be completely resolved. Only three conditions in the low temperature region 
+and three conditions in the high temperature region are shown in 
+\autoref{fig:mch-expts}. The experimental pressure traces during the compression 
+stroke for intermediate temperature conditions were seen to deviate from their 
+non-reactive counterparts, demonstrating appreciable reactivity therein. Hence, 
+those data are not included in \ref{fig:mch-expts}.
+
+For the experiments at $\phi=0.5$ (Mix \#2), only three data points in the low 
+temperature region are reported and none of them exhibits two-stage ignition 
+response. As the temperature is increased further, noticeable reactivity during 
+the compression stroke is evident.
+
+As stated earlier, the mole fraction of MCH is held constant in this study, 
+while the mole fraction of the oxidizer is changed to modify the equivalence 
+ratio. \Autoref{fig:mch-expts} demonstrates that the $\phi=0.5$ case is the most 
+reactive (as judged by the inverse of the ignition delay) and the $\phi=1.5$ 
+case is the least reactive. As has been shown for other fuels, including 
+\emph{n}-butanol \cite{Weber2011} and Jet-A \cite{Kumar2010}, decreasing the 
+equivalence ratio by increasing the oxygen mole fraction but holding the fuel 
+mole fraction constant increases the reactivity.
+
+\section{Comparison to Model}
+\label{sec:model-comparison}
+
+A comparison of the experimentally measured first stage ignition delays (open 
+symbols) and the first stage ignition delays computed using the updated model 
+(lines) is shown in Figs. \ref{fig:mch-model-1}(a), \ref{fig:mch-model-2}(a), 
+and \ref{fig:mch-model-3}(a) for Mix \#1, \#2, and \#3, respectively. In 
+addition, a comparison of the experimentally measured overall ignition delays 
+(open symbols) and the overall ignition delay computed by the updated model 
+(lines) is shown in Figs. \ref{fig:mch-model-1}(b), \ref{fig:mch-model-2}(b), 
+and \ref{fig:mch-model-3}(b). The experiments include the new work being 
+presented here at $P_C=50$ bar in addition to the previous RCM experiments at 
+$P_C=15.1$ and $25.5$ bar \cite{Mittal2009}. The simulations are the VPRO type 
+of simulations. For some computational cases, substantial heat release during 
+the compression stroke caused the computed pressure to depart from the 
+non-reactive profile prior to EOC. Therefore, these cases are not shown in 
+Figs. \ref{fig:mch-model-1}--\ref{fig:mch-model-2}. For these conditions, the 
+experimental pressure trace did not exhibit significant heat release during 
+the compression stroke and the experimental pressure at EOC for the reactive 
+case matched that of the non-reactive counterpart. 
+
+\begin{figure}
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \includegraphics[width=8cm]{../figures/05-MCH/mch-expts}    
+        \caption{Experimentally measured ignition delays at $P_C=50$ bar for the 
+            mixture conditions in \autoref{tab:mch-props}}
+        \label{fig:mch-expts}
+    \end{minipage}
+    \quad
+    \begin{minipage}{0.45\textwidth}
+        \includegraphics[width=8cm]{../figures/05-MCH/mch-model-1}
+        \caption{Comparison of experimental and simulated ignition delays for three 
+            pressures for Mix \#1. The data at $15.1$ and $25.5$ bar are from the 
+            study of \textcite{Mittal2009}. (a) First stage ignition delays, 
+            (b) overall ignition delays.}
+        \label{fig:mch-model-1}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \includegraphics[width=8cm]{../figures/05-MCH/mch-model-2}
+        \caption{Comparison of experimental and simulated ignition delays for three 
+            pressures for Mix \#2. The data at $15.1$ and $25.5$ bar are from the 
+            study of \textcite{Mittal2009}. (a) First stage ignition delays, 
+            (b) overall ignition delays.}
+        \label{fig:mch-model-2}
+    \end{minipage}
+    \quad
+    \begin{minipage}{0.45\textwidth}
+        \includegraphics[width=8cm]{../figures/05-MCH/mch-model-3}
+        \caption{Comparison of experimental and simulated ignition delays for three 
+            pressures for Mix \#3. The data at $15.1$ and $25.5$ bar are from the 
+            study of \textcite{Mittal2009}. (a) First stage ignition delays, 
+            (b) overall ignition delays.}
+        \label{fig:mch-model-3}
+    \end{minipage}
+\end{figure}
+
+At $15.1$ and $25.5$ bar for Mix \#1 and \#2, the overall ignition delay is very 
+well predicted for temperatures above approximately 715 K. For lower 
+temperatures at these two equivalence ratios, the experimental ignition delays 
+are under-predicted by the model, but the predictions are nevertheless within 
+a factor of two of the data. For the rich case (Mix \#3), the simulations 
+under-predict the ignition delay over a wider temperature range but the results 
+improve as temperature increases. Again, the experimental ignition delays are 
+predicted to within approximately a factor of two. At $50$ bar, the ignition 
+delays are under-predicted for all of the equivalence ratios studied here, but 
+the agreement is within a factor of two.
+
+The first stage ignition delays for all of the pressure and equivalence ratios 
+are under-predicted, but are within a factor of three of the experimental 
+values. Furthermore, for all of the equivalence ratios tested at $P_C=50$ bar, 
+it is of interest to note that there are several cases where simulated ignition 
+delays show two-stage response where the experiment shows only a single stage 
+ignition. Nevertheless, the present mechanism is a marked improvement from the 
+comparison performed by \textcite{Mittal2009} who found that the ignition 
+delays were strongly and uniformly over-predicted by the previous LLNL 
+mechanism by \textcite{Pitz2007}.
+
+\Autoref{fig:mch-pressure}(a)-(c) shows a comparison of selected simulated and 
+experimentally measured pressure traces for Mix \#1, \#2, and \#3, 
+respectively, at $P_C=50$ bar. Also shown in \autoref{fig:mch-pressure} is the 
+simulated non-reactive pressure trace corresponding to each experimental 
+condition. Small differences in the heat loss profile for different 
+temperatures are apparent in the non-reactive pressure traces. These 
+differences arise from the changing surface area to volume ratio of the 
+reaction chamber at the end of compression as the compression ratio is changed 
+to vary the compressed temperature. This highlights the importance of using 
+VPRO simulations to compare predictions of ignition delay with the experimental data.
+
+For Mix \#1, it is clear that the simulated reactive pressure trace in 
+\autoref{fig:mch-pressure}(a) at $T_C=866$ K (red dashed line) deviates from 
+the non-reactive pressure trace (red dot-dot-dashed line) prior to the end of 
+compression. The same is also true of the 797 K case shown for Mix \#3 in 
+\autoref{fig:mch-pressure}(c). Remarkably, the simulated case for Mix \#1 at 
+$T_C=866$ K predicts the overall ignition delay quite well. However, due to the 
+heat release prior to EOC, this simulated result is not plotted in 
+\autoref{fig:mch-model-1}. The simulated case for Mix \#3 at $T_C=797$ K is also 
+not plotted on \autoref{fig:mch-model-3} due to the heat release prior to EOC; 
+interestingly, this case under-predicts the first stage ignition delay but 
+over-predicts the overall ignition delay. For the other simulated cases (black 
+lines), the reactive pressure traces closely follow their non-reactive 
+counterparts until the ignition event begins. The experimental ignition delays 
+of these cases are under-predicted by the model. It is also seen in 
+\autoref{fig:mch-pressure}(c) for $T_C=729$ K that the model predicts two-stage 
+ignition, although two-stage ignition is not observed experimentally.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/05-MCH/mch-pressure}
+    \caption{Comparison of selected simulated and experimental pressure traces 
+        at $P_C=50$ bar for (a) Mix \#1 (b) Mix \#2 (c) Mix \#3. Red lines 
+        indicate that the pressure profile of the reactive simulation deviates 
+        from the non-reactive case prior to EOC. Solid lines: experiment; 
+        dashed lines: reactive simulation; dot-dot-dashed lines: non-reactive 
+        simulation.}
+    \label{fig:mch-pressure}
+\end{figure}
+
+The current mechanism is also compared to shock tube ignition delays from the 
+studies of \textcite{Vasu2009} and \textcite{Vanderover2009}. Those studies 
+considered the autoignition of stoichiometric mixtures of MCH with O$_2$/N$_2$ 
+air. The comparison is shown in \autoref{fig:mch-shocks} for the near $50$ atm 
+data from those studies. Note that the experimental data shown are the raw 
+data and are not scaled to a constant pressure, whereas the simulated 
+ignition delays are at a constant initial pressure of $50$ atm. It can be seen 
+that the ignition delays are over-predicted over the nearly entire temperature 
+range of 795–1160 K studied. Nevertheless, the predicted ignition delays are 
+within approximately a factor of 1.5 of the experiments, indicating good 
+agreement overall and a substantial improvement from the previous version of 
+the model. Furthermore, the simulations shown here are of the CONV type and 
+do not account for any facility dependent effects present in the experiments. 
+Although the experimentalists noted in \cite{Vasu2009,Vanderover2009} that the 
+effect of such considerations is minimal in their studies, including facility 
+dependent effects will tend to make the simulations ignite sooner and improve 
+the agreement, especially for cases with ignition delays longer than 
+approximately 1000 µs.
+
+As discussed in \autoref{sec:model-comparison}, one of the updates to the model 
+was to increase the activation energy of ketohydroperoxide decomposition, from 
+$E_a=39$ kcal/mol ($163.2$ kJ/mol) to $41.6$ kcal/mol ($174.1$ kJ/mol). This 
+update substantially improved the prediction of the low-temperature ignition 
+delays, including the first stage and overall ignition delays. As mentioned by 
+\textcite{Curran2002}, "the high activation energy [of ketohydroperoxide 
+decomposition] ensures an induction period during which the ketohydroperoxide 
+concentration builds up." Furthermore, updating this activation energy does not 
+affect the high-temperature ignition delays. A comparison of calculated 
+ignition delays demonstrating the effect of this update is shown in 
+\autoref{fig:mch-energy}.
+
+\begin{figure}
+    \centering
+    \begin{minipage}[t]{0.45\textwidth}
+        \includegraphics[width=8cm]{../figures/05-MCH/mch-shocks}
+        \caption{Comparison of the present model with the experiments from 
+            \textcite{Vasu2009} and \textcite{Vanderover2009} near 50 atm 
+            and for stoichiometric mixtures in O$_2$/N$_2$ air.}
+        \label{fig:mch-shocks}
+    \end{minipage}
+    \quad
+    \begin{minipage}[t]{0.45\textwidth}
+        \includegraphics[width=8cm]{../figures/05-MCH/mch-energy}
+        \caption{Comparison of mechanism performance with the activation energy 
+            of ketohydroperoxide decomposition set at 41.6 kcal/mol (blue) and 
+            39.0 kcal/mol (red). Experimental ignition delays are shown in 
+            green symbols.}
+        \label{fig:mch-energy}
+    \end{minipage}
+\end{figure}
+
+\section{Discussion}
+\label{sec:discussion}
+\subsection{Path Analysis}
+\label{sec:path-analysis}
+
+The relatively good agreement of the updated model with the experimental data 
+suggests that a more detailed analysis of the mechanism is a worthwhile 
+exercise and such analysis may point the way to further improvements to the 
+mechanism. We begin with a reaction path analysis. The present reaction path 
+analysis is conducted using a CONV (adiabatic, constant-volume) type simulation 
+for three initial temperatures (700 K, 800 K, and 900 K), at 25.5 bar and for 
+Mix \#1 (the stoichiometric case). For the other mixture conditions and 
+pressures considered in this work, the absolute percentages for each channel 
+change slightly. However, the analysis of the reaction pathways is the same for 
+all of the equivalence ratios and pressures considered in the experiments 
+presented previously. The three temperatures considered in this analysis 
+correspond to the low-temperature, peak of the NTC, and high-temperature 
+portions of the ignition delay curve illustrated in \autoref{fig:mch-energy}; 
+their results are shown in \autoref{fig:mch-path} with plain text, bold text, 
+and italic text, respectively. 
+
+The path analysis presented in \autoref{fig:mch-path} is an integrated analysis 
+where the rate of production (ROP) of each species by each reaction has been 
+integrated with respect to time up to 20\% fuel consumption. The integrated 
+ROPs from each reaction are normalized by the total production or destruction 
+of that species up to 20\% fuel decomposition, such that reactions that produce 
+a species are normalized by the total production of the species and reactions 
+that consume a species are normalized by the total consumption of that species. 
+The percentages in Fig. 10 therefore represent the percent of the given 
+reactant that is consumed to form the given product by all reactions that can 
+form a particular product. Species such as hydroperoxyalkyl radicals (QOOH), 
+alkyl hydroperoxides (ROOH), and methylcyclohexenes (MCH-ene) are shown as 
+lumped on the path diagram; however, these species are un-lumped in the 
+mechanism and presented as a lumped sum for simplicity in this diagram. Note 
+that not all of the pathways present in the mechanism for each species are 
+presented in Fig. 10, again for simplicity; the pathways that are shown in 
+\autoref{fig:mch-path} typically account for more than 95\% of the consumption 
+of each species.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/05-MCH/mch-path}
+    \caption{Path analysis of MCH combustion. Initial conditions are 25.5 bar 
+    and Mix \#1 ($\phi=1.0$) and 700 K (plain text), 800 K (bold text), 900 K 
+    (italic text). Note that not all possible reaction pathways are shown for 
+    each species.}
+    \label{fig:mch-path}
+\end{figure}
+
+The first step of fuel breakdown occurs by H-atom abstraction at these pressure 
+and temperature conditions. None of the fuel is directly decomposed by 
+unimolecular reactions. Each of the seven possible radicals are formed in 
+comparable quantities; however, due to the symmetry of MCH, sites 2 and 3 are 
+equivalent to sites 6 and 5, respectively, so mchr2 and mchr3 have close to 
+double the production rate compared to the other radicals. It is interesting to 
+note that the production of mchr2, mchr3, and mchr4 increase as the initial 
+temperature increases and the production of mchr1 and cychexch2 decrease to 
+compensate. However, the change is small, no more than 2 percentage points for 
+each radical.
+
+The most important second step is oxygen addition (i.e. formation of ROO) at 
+all of the initial temperatures in this analysis. The importance of this 
+reaction diminishes for each radical as the initial temperature increases due 
+to the increasing importance of $\beta$-scission reactions. At 700 K, less than 
+0.05\% of each of the fuel radicals is consumed via β-scission. Between 800 and 
+900 K, the percentages of mchr1, mchr2, mchr3, and mchr4 that are decomposed 
+via $\beta$-scission increase by several thousand percent each; nevertheless, 
+the absolute change is small and the consumption of these radicals still occurs 
+mostly by oxygen addition. The mchr1, mchr3, and mchr4 radicals undergo 
+scission of the cyclohexyl ring, whereas mchr2 primarily scissions at the 
+methyl-cyclohexyl bond. This beta scission of mchr2 competes significantly with 
+its consumption by O$_2$ at 900 K. Furthermore, the increasing importance of the 
+ring opening reactions from 800 K to 900 K means that chain propagation pathways 
+(instead of effective chain termination pathways forming methylcyclohexene and 
+hydroperoxyl) are available, increasing the reactivity. Finally, even at the 
+elevated initial temperature of 900 K, cychexch2 does not undergo significant 
+ring opening. Instead, it will scission an H atom from site 1 or steal an oxygen 
+atom from hydroperoxyl to form an alkoxy radical (RO) when it does not undergo 
+oxygen addition (these pathways each only consume about 0.3\% of cychexch2 and 
+hence are not shown in \autoref{fig:mch-path}).
+
+Returning to the low temperature pathways, there are four important classes of 
+reactions that consume the ROO radicals in the current mechanism. These classes 
+are: C1) internal H-atom transfer (isomerization) to form QOOH; C2) direct 
+elimination of hydroperoxyl and methylcyclohexene; C3) H-abstraction by ROO 
+from either the fuel or hydroperoxyl to form ROOH; and, C4) reactions among the 
+ROO radicals. Class C4 consumes less than ~5\% of each of the ROO radicals at 
+700 K and less than ~0.1\% for the other temperatures and this class is 
+therefore not shown on the path diagram in \autoref{fig:mch-path}. Of the other 
+three classes, C1 (formation of QOOH) is the predominant pathway in the low 
+temperature ignition process. Nevertheless, the direct elimination of 
+methylcyclohexene and hydroperoxyl and the formation of ROOH are important at 
+low temperatures as well.
+
+For all of the temperatures considered here, a majority of the ROOH is formed 
+by reactions of ROO with hydroperoxyl to give ROOH and an oxygen molecule. At 
+the initial temperature of 700 K, approximately 15\% of the fuel reacts to form 
+ROOH, indicating its importance in low-temperature MCH combustion. The primary 
+route of ROOH formation in this mechanism (H-abstraction from hydroperoxyl by 
+ROO) has not been well studied at combustion relevant temperatures 
+\cite{Zador2011} and is therefore a good candidate for further investigation 
+given its importance in the model for MCH combustion.
+
+As the temperature increases, the formation of ROOH becomes substantially less 
+important while the direct HO$_2$ elimination reaction becomes more important. 
+The increase in production of methylcyclohexene and hydroperoxyl plays a role 
+in the NTC region of ignition delay because this is effectively a chain 
+terminating channel until the temperature increases enough that the sequence 
+MCH+HO$_2$=R+H$_2$O$_2$; H$_2$O$_2$(+M)=2OH(+M) becomes important and drives 
+the overall ignition.
+
+Interestingly, for most of the ROO radicals, the change in the fraction of ROO 
+consumed to form QOOH is non-monotonic as temperature increases. That is, for 
+mch1oo, mch3oo, and mch4oo the production of QOOH increases in going from 700 K 
+to 800 K, then decreases going from 800 K to 900 K due to the increasing 
+importance of the HO2 elimination channel (due to nuances in the various 
+reaction paths, mch2oo and chxch2oo do not follow this trend). Furthermore, 
+the branching ratios in the decomposition of the QOOH species change as the 
+temperature is increased (not shown in \autoref{fig:mch-path}). At the lowest 
+temperature (700 K), the formation of hydroperoxyalkylperoxy radicals (OOQOOH) 
+is favored, leading to low-temperature chain branching and the two-stage 
+ignition phenomenon. However, at 800 K and 900 K, the QOOH tends to decompose 
+into a heptenone and a hydroxyl radical, or one of three epoxide species. In 
+the current model, both heptenone and the three epoxide species are represented 
+by lumped heptenone and epoxide species; however, due to the apparent 
+importance of these species in the intermediate temperature decomposition of 
+MCH, further investigation of their pathways is warranted.
+
+\subsection{Sensitivity Analysis}
+\label{sec:sensitivity-analysis}
+
+Our second type of analysis is a brute force, one-at-a-time sensitivity 
+analysis. In this work, the sensitivity of the ignition delay to the reaction 
+rates is considered. Due to the size of the mechanism, only the reactions of 
+the fuel and the fuel radicals up to the OOQOOH species are considered. This 
+approach is justified because many of the reactions of the C0-C4 base 
+mechanism are known to be important to the ignition process (e.g., 
+H$_2$O$_2$(+M)=2OH(+M)), but we are more interested in the effect of updates to 
+the fuel specific sub-mechanism. The sensitivity index is defined in 
+\autoref{eq:mch-sens},
+
+\begin{equation}
+    \label{eq:mch-sens}
+    S_i = \frac{\ln\left(\tau_{i,2}/\tau_{i,1}\right)}{\ln\left(k_{i,2}/k_{i,1}\right)}
+\end{equation}
+
+where $\tau$ is the ignition delay time, either first stage or overall, $k$ is 
+the reaction rate, and subscript $i$ indicates the reaction number. The 
+numbered subscripts in \autoref{eq:mch-sens} indicate the type of modification 
+that has been made to the rate of reaction $i$ when computing the ignition 
+delay, as discussed in the following.
+
+The reaction rates are modified by multiplying and dividing the pre-exponential 
+constant by a factor $f$. Thus, the forward and reverse rates are 
+simultaneously modified. Special care is taken to properly modify reaction 
+rates with pressure dependence and explicit reverse parameters. Each rate is 
+modified sequentially and the ignition delay is computed; the pre-exponential 
+constant is reset to its nominal value before modifying the next reaction. 
+Finally, the nominal ignition delay with no rate modification is computed. 
+Thus, each set of reactor input conditions requires $2N+1$ model evaluations, 
+where $N$ is the number of reactions considered in the sensitivity analysis 
+and $N$ may be less than or equal to the total number of reactions.
+
+The $2N+1$ model evaluations result in $4N+2$ ignition delays if two-stage 
+ignition is present and $2N+1$ ignition delays otherwise. These ignition delays 
+are used to compute the sensitivity indices according to \autoref{eq:mch-sens}. 
+In the case of bidirectional sensitivity indices, the subscript $2$ in 
+\autoref{eq:mch-sens} is associated with multiplication by $f$ and the subscript 
+$1$ is associated with division by $f$, resulting in $2N$ sensitivity indices if 
+two-stage ignition is present and $N$ indices otherwise. In the case of 
+unidirectional sensitivity indices, the subscript $2$ is associated with either 
+multiplication or division by $f$ and the subscript $1$ is associated with the 
+nominal ignition delay, $\tau_{i,1}=\tau_1$. For unidirectional sensitivity 
+indices, $4N$ indices are obtained if two-stage ignition is present and $2N$ are 
+obtained otherwise.
+
+In this work, the bidirectional sensitivity is used with $f=10$. For all of the 
+reactions considered here, multiplying and dividing a given rate had opposite 
+effects on the ignition delay. Thus, if the ignition delay increased (relative 
+to the nominal case) when the rate of a certain reaction was multiplied, the 
+ignition delay decreased (relative to the nominal case) when the rate of the 
+same reaction was divided and vice versa. Since $k_{i,2}$ is greater than 
+$k_{i,1}$ by definition, the sensitivity index $S_i$ will be positive if 
+$\tau_{i,2}>\tau_{i,1}$ (i.e. increasing the rate increases the ignition delay) 
+and negative if $\tau_{i,2}<\tau_{i,1}$ (i.e. increasing the rate decreases the 
+ignition delay). The sensitivity analysis is run at the same conditions of the 
+path analysis: CONV simulation, initial temperatures of 700 K, 800 K, and 900 K, 
+initial pressure of 25.5 bar, and Mix \#1. As with the path analysis, similar 
+results are obtained for other pressures and mixtures. 
+
+\Autoref{fig:mch-sens} shows the sensitivity indices for the five reactions 
+(among all the reactions considered in the present sensitivity analysis) to 
+which the overall ignition delay is most sensitive for each temperature studied 
+(700 K, 800 K, and 900 K). For the results at 700 K and 800 K, the 
+bidirectional sensitivity of the first stage ignition delay to the same 
+reactions is also shown, except for two reactions at 800 K for which the 
+unidirectional sensitivity is plotted. The reasons for this will be discussed 
+in due course. It should be noted that the sensitivity indices of the first 
+stage ignition delay have a slightly different ranking than the indices of the 
+overall ignition delay. Therefore, the rank of the first stage sensitivity 
+index of the reactions shown is given in parentheses next to the bar. At 700 K, 
+the sensitivity of the overall ignition delay is in red and the sensitivity of 
+the first stage ignition delay is in blue; at 800 K, the sensitivity of the 
+overall ignition delay is in grey and the sensitivity of the first stage 
+ignition delay is in green. The most sensitive reaction affecting the first 
+stage ignition delay at 800 K is found to be MCH+OH=mchr3+H2O, although it is 
+not listed in \autoref{fig:mch-sens}. At 900 K, there is no first stage 
+ignition, and thus no sensitivity of the first stage ignition delay. 
+
+Under the pressure/stoichiometry conditions of the present simulations, 800 K 
+is approximately the highest initial temperature at which distinct two-stage 
+ignition (i.e. two inflection points in the temperature or pressure trace) is 
+found for MCH with the current mechanism. As such, several reactions affect 
+the ignition strongly enough to eliminate the first inflection point. These 
+reactions are given in \autoref{tab:mch-sens} for either multiplication or 
+division of the rate by the factor f=10. The naming convention of the species 
+listed in \autoref{tab:mch-sens} can be found in \autoref{fig:mch-path}, 
+\autoref{fig:mch-species}, and \Autoref{app:mch-dict}. Two reactions shown in 
+\autoref{tab:mch-sens} also appear in \autoref{fig:mch-sens}, namely (R1) 
+mch2oo=mch2ene+ho2 and (R2) mch2qx+o2=mch2qxqj. For these reactions at 800 K, 
+the unidirectional sensitivity index is shown in Fig. 11, where $\tau_{i,2}$ 
+in \autoref{eq:mch-sens} is found by division of the rate for $i=R1$ and by 
+multiplication of the rate for $i=R2$.
+
+The role of the ROO=methylcyclohexene+HO2 reactions in the left column of 
+\autoref{tab:mch-sens} in eliminating the first stage of ignition is clear -- 
+this set of reactions diverts ROO radicals from entering the low-temperature 
+chain branching pathway via QOOH that leads to the two-stage ignition. 
+Similarly, in the right column, decreasing the rate of the reaction of oxygen 
+with QOOH to form OOQOOH reduces the rate of chain branching that leads to 
+two-stage ignition. Concerning the reactions of the fuel with OH in the left 
+column of \autoref{tab:mch-sens}, increasing these rates increases the 
+formation of fuel radicals that are less reactive at low temperature than the 
+cychexch2 and mchr2 radical. For example, the mchr2 radical adds to O$_2$ and 
+forms a peroxy radical (mch2oo) that has a fast RO2 isomerization path to QOOH 
+involving the abstraction of an H atom from the methyl group. This ROO 
+isomerization is the path calculated and discussed in Section 4.1 of 
+\cite{Weber2014}. QOOH subsequently adds to O$_2$ and leads to chain branching. 
+The high reactivity of cychexch2 and mchr2 at low temperature is reflected by 
+the high percentages at 800 K (>70\%) leading to QOOH from cychexch2oo and 
+mch2oo in \autoref{fig:mch-path}.
+
+\begin{table}
+    \centering
+    \caption{Reactions that eliminate the first inflection point for a nominal 
+    case with two-stage ignition.}
+    \label{tab:mch-sens}
+    \begin{tabular}{c c}
+    \toprule
+    Multiplication & Division \\
+    \midrule
+    mch2oo = mch2ene + ho2 & mch2qx + o2 = mch2qxqj \\
+    mch3oo = mch2ene + ho2 & \\
+    mch3oo = mch3ene + ho2 & \\
+    mch + oh = mchr1 + h2o & \\
+    mch + oh = mchr4 + h2o & \\
+    mch + oh = mchr3 + h2o & \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+    
+\begin{figure}
+    \centering
+    \includegraphics[angle=-90, width=8cm]{../figures/05-MCH/mch-sens}
+    \caption{Sensitivity of the ignition delay to various reaction rates 
+        for Mix \#1 ($\phi=1.0$), 25.5 bar and three temperatures (700 K, 
+        800 K, and 900 K). At 700 K, the sensitivity of the overall 
+        ignition delay is in red and the sensitivity of the first stage 
+        ignition delay is in blue. At 800 K, the sensitivity of the overall 
+        ignition delay is in grey and the sensitivity of the first stage 
+        ignition delay is in green. At 900 K, the sensitivity of the overall 
+        ignition delay is in black. Numbers in parentheses represent the 
+        ranking of the first stage sensitivity indices.}
+    \label{fig:mch-sens}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=8cm]{../figures/05-MCH/mch-species}
+    \caption{Species mentioned in \autoref{fig:mch-sens} or 
+        \autoref{tab:mch-sens} and not included in \autoref{fig:mch-path}.}
+    \label{fig:mch-species}
+\end{figure}
 
 \end{document}
