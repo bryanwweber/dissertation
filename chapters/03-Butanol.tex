@@ -271,7 +271,7 @@ much greater. Despite the appearance of early pressure rise, which is typically
 indicative of two-stage ignition and low temperature chain branching, we do not
 find a negative temperature coefficient region in terms of the ignition delay
 response for any \textit{t}-butanol experiments. Therefore, we adopt the phrase
-"pre-ignition heat release" rather than “two-stage ignition” in this work.
+"pre-ignition heat release" rather than "two-stage ignition" in this work.
 
 In an effort to understand the reactions causing the pre-ignition heat release,
 further experiments are conducted for \textit{t}-butanol at $P_C=30$ bar, for
@@ -293,5 +293,68 @@ mole fraction of oxygen changes by only -3\% (+2\%) compared to the $\phi=1.0$
 case, as shown in \Autoref{tab:buoh-expts}. Therefore, it appears that the
 qualitative change in pre-ignition behavior is due to the change of fuel mole
 fraction, where higher fuel loading promotes pre-ignition heat release.
+
+\section{Simulation Results}
+\label{sec:buoh-sims}
+
+Simulations are performed with the kinetic mechanism from
+\textcite{Sarathy2012} and a recent mechanism discussed in
+\textcite{Hansen2013} and \textcite{Merchant2013} that is denoted as the MIT
+mechanism hereafter. Other recent mechanisms, such as the mechanism from
+\textcite{Frassoldati2012} do not include low temperature chemistry and are
+therefore unable to reproduce the low-temperature ignition delays measured in
+this study. The study by \textcite{Sarathy2012} validated their model for a
+wide set of the existing experimental data. In terms of ignition delays, this
+included the data from the study of \textcite{Stranic2012} up to 48 atm, our
+previous study on \textit{n}-butanol \cite{Weber2011}, and the data being
+published in this study at 15 bar. Importantly, the mechanism of
+\textcite{Sarathy2012} was validated only for the 15 bar RCM data for all four
+isomers, but not the 30 bar data also being published here. The MIT mechanism
+\cite{Hansen2013,Merchant2013} was validated for \textit{i}-butanol
+experiments, including pyrolysis and low pressure premixed flames; although the
+model includes all four isomers of butanol as reactants, it has not been
+optimized for any of the isomers except \textit{i}-butanol.
+
+Figures \ref{fig:buoh-15sim} and \ref{fig:buoh-30sim} show comparison of the
+VPRO simulations with the experimental data using the mechanism of
+\textcite{Sarathy2012}. As \textcite{Sarathy2012} showed in their work (and as
+we show here in \autoref{fig:buoh-15sim}), they found good agreement of the
+model predictions with the present RCM data at 15 bar. At $P_C=30$ bar
+(\autoref{fig:buoh-30sim}), similar degree of agreement is found for
+\textit{t}-butanol and \textit{s}-butanol compared to $P_C=15$ bar, although
+the \textit{s}-butanol results are under-predicted at high temperature and
+over-predicted at low temperature. While the model of \textcite{Sarathy2012} is
+able to well capture the overall activation energy of \textit{i}-butanol, it
+under-predicts the experimental data by about a factor of 2–3. The
+\textit{n}-butanol data are over-predicted by about a factor of 1.5.
+Nevertheless, this agreement is quite good, especially considering that the
+model is not validated for these conditions.
+
+VPRO simulations for \textit{n}- and \textit{s}-butanol (and also some
+conditions for \textit{t}-butanol) using the MIT mechanism
+\cite{Hansen2013,Merchant2013} do not ignite during the duration of the
+simulations (the same as the experimental duration), and therefore no
+simulations are shown for these fuels. In \autoref{fig:buoh-mit}, VPRO
+simulations at 15 and 30 bar using both mechanisms are shown for
+\textit{i}-butanol. It is seen that the mechanism from \textcite{Sarathy2012}
+is in better agreement at 15 bar. However, at 30 bar the MIT mechanism
+\cite{Hansen2013,Merchant2013} over-predicts the ignition delay (as at 15 bar),
+while the \textcite{Sarathy2012} mechanism under-predicts the ignition delay.
+The reason for these diverging predictions will be explored and discussed below.
+
+The agreement of the mechanism by \textcite{Sarathy2012} with the
+off-stoichiometric mixtures of \textit{t}-butanol is also quite good, as shown
+in \autoref{fig:tbuoh-sims}. Figures
+\ref{fig:tbuoh-05press}--\ref{fig:tbuoh-20press} show more detailed comparisons
+of the simulated pressure traces and the experimental results, for similar
+temperatures at the three equivalence ratios, respectively. Clearly, the
+simulations also exhibit some pre-ignition heat release. In general, the
+simulations qualitatively predict the pre-ignition heat release behavior at all
+three equivalence ratios. The $\phi=0.5$ case has the least heat release and
+the $\phi=2.0$ case has the most. Although the simulations are unable to match
+the heat release behavior quantitatively, they match the experimental ignition
+delays quite well. Considering the model is not validated for this temperature,
+pressure, and equivalence ratio regime, the mismatch of the pre-ignition
+behavior may not be of critical importance, depending on the application.
 
 \end{document}
