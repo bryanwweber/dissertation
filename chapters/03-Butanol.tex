@@ -1,4 +1,297 @@
-\documentclass{standalone}
+% arara: xelatex: { synctex: on, shell: off }
+% arara: biber
+% arara: xelatex: { synctex: on, shell: off }
+% arara: sumatrapdf
+\documentclass[12pt, letterpaper]{article}
+
+%Set the document font
+\usepackage{fontspec}
+\setromanfont{Times New Roman}
+
+%Set the size of the margins and the paper
+\usepackage[margin=1in, letterpaper]{geometry}
+
+%Set the color of the links and PDF metadata
+\usepackage[
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=black
+]{hyperref}
+
+\hypersetup{%
+    pdfinfo={
+        Title={High Pressure Ignition Chemistry of Alternative Fuels}
+        Author={Bryan W. Weber}
+    }
+}
+%Set up the page numbers
+%This has to go after geometry so the page number is centered
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+%Set a command to easily skip a line
+\newcommand{\blankline}{\vspace*{\baselineskip}}
+
+%Set up biblatex
+\usepackage[
+    backend=biber,
+    url=false,
+    doi=true,
+    sorting=none,
+    sortcites=true,
+    maxbibnames=6,
+    minbibnames=6,
+    maxcitenames=2,
+    mincitenames=1,
+    citestyle=numeric-comp,
+    firstinits=true,
+    isbn=false
+]{biblatex}
+\addbibresource{../library.bib}
+
+%Remove the "In:" from before the journal title for articles
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
+
+%Set the sort order of the names in each bibliography entry
+\DeclareNameAlias{default}{last-first}
+
+%Don't print the article title. To print the title, add #1 to the last {}
+\DeclareFieldFormat[article,incollection,unpublished]{title}{}
+
+%Add Vol. and No. before volume and issue.
+\DeclareFieldFormat[article]{volume}{\bibstring{volume}\addspace #1}
+\DeclareFieldFormat[article]{number}{\bibstring{number}\addspace #1}
+
+%Put a comma between the volume and issue instead of period
+\renewbibmacro*{volume+number+eid}{%
+  \printfield{volume}%
+  \setunit{\addcomma\space}%<---- was \setunit*{\adddot}%
+  \printfield{number}%
+  \setunit{\addcomma\space}%
+  \printfield{eid}}
+
+%Add a comma after the journal title
+\renewbibmacro*{journal+issuetitle}{%
+  \usebibmacro{journal}%
+  \setunit*{\addcomma\addspace}%
+  \iffieldundef{series}
+    {}
+    {\newunit
+     \printfield{series}%
+     \setunit{\addspace}}%
+  \usebibmacro{volume+number+eid}%
+  \setunit{\addspace}%
+  \usebibmacro{issue+date}%
+  \setunit{\addcolon\space}%
+  \usebibmacro{issue}%
+  \newunit}
+
+%Set the text to double spacing
+\usepackage[doublespacing]{setspace}
+
+%Packages not present in main.tex preamble
+\usepackage{booktabs}
+
+\def\chapterautorefname~#1\null{Chap.~#1\null}
+\def\sectionautorefname~#1\null{Sec.~#1\null}
+\def\subsectionautorefname~#1\null{Sec.~#1\null}
+\def\figureautorefname~#1\null{Fig.~#1\null}
+\def\tableautorefname~#1\null{Table~#1\null}
+\def\equationautorefname~#1\null{Eq.~(#1)\null}
+
+\newcommand{\Autoref}[1]{%
+  \begingroup%
+  \def\chapterautorefname~##1\null{Chapter~##1\null}%
+  \def\sectionautorefname~##1\null{Section~##1\null}%
+  \def\subsectionautorefname~##1\null{Sub--Section~##1\null}%
+  \def\figureautorefname~##1\null{Figure~##1\null}%
+  \def\tableautorefname~##1\null{Table~##1\null}%
+  \def\equationautorefname~##1\null{Equation~##1\null}%
+  \autoref{#1}%
+  \endgroup%
+}
+
+\usepackage[font={footnotesize}]{caption}
+
+\usepackage{mathtools}
+
+\usepackage{multirow}
+
+\graphicspath{ {../figures/} }
+
+\newcommand{\linebreakcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+%End of extra imports
+
 \begin{document}
+\section{Experimental Procedure}
+\label{sec:buoh-proc}
+
+The reactants used in this study, along with their purities, are shown in
+\autoref{tab:buoh-expts}. To determine the relative proportions of each
+reactant in the mixture, the absolute mass of fuel, the equivalence ratio
+($\phi$), and the oxidizer ratio ($X_{O_2}:X_{\mathrm{inert}}$, where $X$
+indicates mole fraction) are specified. \textit{s}- and \textit{i}-Butanol are
+liquid at room temperature and have relatively low vapor pressure; therefore,
+each is measured gravimetrically in a syringe to within 0.01 g of the specified
+value. \textit{t}-Butanol is solid at room temperature (melting point: $25^{\circ}$ C),
+and is melted before being handled in the same procedure as the other fuels.
+The 17 L mixing tank is vacuumed to an ultimate pressure less than 5 Torr prior
+to the injection of the liquid fuel through a septum. Proportions of O$_2$ and
+N$_2$ are added manometrically at room temperature. The preheat temperature of
+the RCM is set above the saturation point for each fuel to ensure complete
+vaporization. A magnetic stirrer mixes the reactants. The temperature inside
+the mixing tank is allowed to equilibrate for approximately 1.5 hours.
+
+This approach to mixture preparation has been validated in several previous
+studies by withdrawing gas samples from the mixing tank and analyzing the
+contents by GC/MS, GC-FID, and GC-TCD.16,29,30 These studies have verified the
+concentration of \textit{n}-butanol, water, and \textit{n}-decane, respectively. In addition,
+both the work by \textcite{Kumar2009} on \textit{n}-decane and the study of
+\textcite{Weber2011} on \textit{n}-butanol confirmed that there was no fuel
+decomposition over the course of a typical set of experiments. Furthermore,
+within this study, each new mixture preparation is checked against previously
+tested conditions to ensure reproducibility.
+
+\Autoref{tab:buoh-expts} shows the experimental conditions considered in this
+study. The compressed pressure conditions have been chosen to match the
+previous \textit{n}-butanol study \cite{Weber2011}, but also to provide data in
+regions not covered extensively in previous work. In addition, the fuel loading
+conditions have been chosen to complement previous work; the studies by
+\textcite{Stranic2012} and \textcite{Moss2008} used relatively dilute mixtures,
+so we have included higher fuel loading conditions. Furthermore, the compressed
+temperature conditions we have studied ($T_C=715-910$ K) have not been examined
+in any other study, to our knowledge.
+
+Each compressed pressure and temperature condition is repeated at least six
+times to ensure repeatability. The mean and standard deviation of the ignition
+delay for all runs at each condition are calculated. As an indication of
+repeatability, the standard deviation is less than 10\% of the mean in every
+case. Representative experimental pressure traces for simulations and
+presentation are then chosen as the closest to the mean.
+
+\begin{table}
+    \centering
+    \caption{Experimental Conditions and Reactant Purities}
+    \label{tab:buoh-expts}
+    \begin{tabular}{*{7}{c}}
+    \toprule
+    \multicolumn{5}{c}{Reactant (Purity)} & \multirow{3}[0]{*}{\linebreakcell{Equivalence \\ Ratio \\ $\phi$}} & \multirow{3}[0]{*}{\linebreakcell{Compressed \\ Pressure \\ $P_C$ (bar)}} \\
+    \cmidrule{1-5}
+    \linebreakcell{\textit{s}-butanol \\ (99.99\%)} & \linebreakcell{\textit{i}-butanol \\ (99.99\%)} & \linebreakcell{\textit{t}-butanol \\ (99.99\%)} & \linebreakcell{O$_2$ \\ (99.999\%)} & \linebreakcell{N$_2$ \\ (99.995\%)} & & \\
+    \cmidrule{1-5}
+    \multicolumn{5}{c}{Mole Percentage}   & & \\
+    \midrule
+    3.38  &       &       & 20.30 & 76.32 & 1.0   & 15 \\
+    3.38  &       &       & 20.30 & 76.32 & 1.0   & 30 \\
+          & 3.38  &       & 20.30 & 76.32 & 1.0   & 15 \\
+          & 3.38  &       & 20.30 & 76.32 & 1.0   & 30 \\
+          &       & 3.38  & 20.30 & 76.32 & 1.0   & 15 \\
+          &       & 3.38  & 20.30 & 76.32 & 1.0   & 30 \\
+          &       & 1.72  & 20.65 & 77.63 & 0.5   & 30 \\
+          &       & 6.54  & 19.63 & 73.83 & 2.0   & 30 \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Experimental Results}
+\label{sec:buoh-expts}
+
+\Autoref{fig:buoh-15bar} shows the ignition delays of the four isomers of
+butanol measured in the RCM, at compressed pressure of $P_C=15$ bar for
+stoichiometric mixture in air. The dashed line for each isomer is a least
+squares fit to the data. The vertical error bars are two standard deviations
+of the measurements of the ignition delay. The standard deviation is computed
+based on all the runs at a particular compressed temperature and pressure
+condition. A conservative estimate of the uncertainty in $T_C$ was calculated
+in our previous work to be approximately 0.7–1.7\%. Due to the similar nature
+of these experiments, and the similar properties of the fuels, this estimate
+is considered to be valid for this study as well.
+
+\Autoref{fig:buoh-15bar} demonstrates the differences in reactivity between
+the isomers for stoichiometric fuel/air mixtures at compressed pressure
+$P_C=15$ bar. \textit{n}-Butanol is clearly the most reactive, followed by
+\textit{s}- and \textit{i}-butanol, which have very similar reactivities in
+this temperature and pressure range. \textit{t}-Butanol is the least reactive.
+
+The order of reactivity found in the RCM at 15 bar agrees with the shock tube
+study at higher temperatures (approximately 1275−1667 K) and lower pressure
+(1.5 atm) by \textcite{Stranic2012} but differs slightly from the studies of
+\textcite{Moss2008} who measured ignition delays in a shock tube near 1.5 atm
+and between 1275−1400 K, and \textcite{Veloo2011a} who measured
+atmospheric-pressure laminar flame speeds. In particular, \textcite{Moss2008}
+and \textcite{Veloo2011a} found distinct differences in reactivity between
+\textit{s}- and \textit{i}-butanol, but the present study and the study by
+\textcite{Stranic2012} found that they were nearly indistinguishable in terms
+of reactivity under the conditions investigated. In addition,
+\textcite{Stranic2012} noted some disagreement between their shock tube
+ignition data and the data of \textcite{Moss2008} but their attempts to isolate
+the cause could not discern what the difference might be caused by.
+
+Further, the order of the reactivity of the butanol isomers also shows complex
+temperature and pressure dependence. This is corroborated by the results shown
+in \autoref{fig:buoh-30bar}. In \autoref{fig:buoh-30bar}, the order of
+reactivity is different than in \autoref{fig:buoh-15bar}, where the only
+variation between the plots is the compressed pressure; in
+\autoref{fig:buoh-30bar} the compressed pressure $is P_C=30$ bar.
+\autoref{fig:buoh-30bar} shows \textit{i}-butanol to be the least reactive,
+\textit{s}-butanol to be less reactive than \textit{t}-butanol (but similar),
+and \textit{n}-butanol to be the most reactive. Interestingly, the results of
+the shock tube study by \textcite{Stranic2012} differ from those in the current
+study at higher pressure (despite the agreement at lower pressure). In their
+study, \textcite{Stranic2012} found \textit{i}- and \textit{n}-butanol to have
+similar reactivity near 43 atm. in the temperature range of 1020–1280 K,
+whereas in the present study we find \textit{i}-butanol to be the least
+reactive of all four isomers at a pressure of 30 bar and over the temperature
+range (715–910 K) investigated.
+
+The fact that \textit{t}-butanol becomes relatively more reactive than
+\textit{i}- and \textit{s}-butanol as pressure increases is surprising at first
+glance, and the reasons are not immediately apparent. Closer examination of the
+pressure traces for each experiment gives one clue as to the cause of the
+increased reactivity. \Autoref{fig:tbuoh-15bar} shows the pressure traces for
+the \textit{t}-butanol experiments at 15 bar for stoichiometric mixtures in
+air. It is evident that there is some pre-ignition heat release, because the
+reactive pressure trace diverges from the non-reactive case prior to the
+ignition event. Of the other isomers of butanol, only \textit{n}-butanol shows
+any visible heat release prior to the main ignition event at 15 bar.
+
+\Autoref{fig:tbuoh-phi10} shows the pressure traces for \textit{t}-butanol
+experiments at 30 bar for stoichiometric mixtures in air. The effect of
+pre-ignition heat release is even more striking in this figure, with
+substantial changes in the slope of the pressure trace during the reactive
+runs. Comparing to the pressure traces of the other isomers once again shows
+that the magnitude of the pre-ignition heat release for \textit{t}-butanol is
+much greater. Despite the appearance of early pressure rise, which is typically
+indicative of two-stage ignition and low temperature chain branching, we do not
+find a negative temperature coefficient region in terms of the ignition delay
+response for any \textit{t}-butanol experiments. Therefore, we adopt the phrase
+"pre-ignition heat release" rather than “two-stage ignition” in this work.
+
+In an effort to understand the reactions causing the pre-ignition heat release,
+further experiments are conducted for \textit{t}-butanol at $P_C=30$ bar, for
+equivalence ratios of 0.5 and 2.0 in air. \Autoref{fig:tbuoh-delays} shows
+Arrhenius plots of the ignition delays for the three equivalence ratios. As
+with the previous \textit{n}-butanol experiments at 15 bar \cite{Weber2011}
+$\phi=0.5$ is the least reactive and $\phi=2.0$ is the most reactive. The
+slopes are similar, indicating that the overall activation energies are similar
+for the conditions investigated.
+
+A more interesting comparison is of the pressure traces of the three
+equivalence ratios. It is clear from Figures \ref{fig:tbuoh-phi10},
+\ref{fig:tbuoh-phi05}, and \ref{fig:tbuoh-phi20} that there are qualitative
+differences in the pre-ignition heat release between the three equivalence
+ratios. This is most likely due to the effect of the increased (reduced) fuel
+mole fraction in the $\phi=2.0$ ($\phi=0.5$) case, since the mole fraction of
+fuel is changed by +93\% (-49\%) compared to the $\phi=1.0$ case, while the
+mole fraction of oxygen changes by only -3\% (+2\%) compared to the $\phi=1.0$
+case, as shown in \Autoref{tab:buoh-expts}. Therefore, it appears that the
+qualitative change in pre-ignition behavior is due to the change of fuel mole
+fraction, where higher fuel loading promotes pre-ignition heat release.
 
 \end{document}
