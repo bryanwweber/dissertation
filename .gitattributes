@@ -1,2 +1,4 @@
 *.tex diff=tex
 *.lib diff=bibtex
+*.qpc -diff -crlf
+*.QPC -diff -crlf
