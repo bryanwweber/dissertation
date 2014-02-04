@@ -7,7 +7,7 @@ set xlabel "Time, ms"
 set ylabel "Pressure, bar" offset 2
 set title "{/=24 {/Times-Italic t}-Butanol/O_{2}/N_{2}, {/Times-Italic P_{/*0.75 C}}=30 bar, {/Symbol f}=0.5}"
 unset key
-set mxtics 5
+set mxtics 4
 set mytics 5
 set xtics scale 1.25,0.75 
 set ytics scale 1.25,0.75
