@@ -150,8 +150,9 @@ the mixing tank is allowed to equilibrate for approximately 1.5 hours.
 
 This approach to mixture preparation has been validated in several previous
 studies by withdrawing gas samples from the mixing tank and analyzing the
-contents by GC/MS, GC-FID, and GC-TCD. These studies have verified the
-concentration of \textit{n}-butanol, water, and \textit{n}-decane, respectively. In addition,
+contents by GC/MS \cite{Weber2011}, GC-FID \cite{Kumar2009}, and GC-TCD
+\cite{Das2012}. These studies have verified the concentration of
+\textit{n}-butanol, water, and \textit{n}-decane, respectively. In addition,
 both the work by \textcite{Kumar2009} on \textit{n}-decane and the study of
 \textcite{Weber2011} on \textit{n}-butanol confirmed that there was no fuel
 decomposition over the course of a typical set of experiments. Furthermore,
@@ -487,5 +488,208 @@ behavior may not be of critical importance, depending on the application.
         \textcite{Sarathy2012}.}
     \label{fig:tbuoh-20press}
 \end{figure}
+
+\section{Discussion}
+\label{sec:buoh-discussion}
+
+The relatively good agreement of the mechanism of \textcite{Sarathy2012} with
+the experimental data, even for conditions at which the mechanism has not been
+validated, suggests that using the mechanism to further interpret our
+experimental data is not a facile exercise. In particular, Figures
+\ref{fig:buoh-npath}--\ref{fig:buoh-ipath} show the initial steps of the fuel
+breakdown process for each isomer. The percentages listed are the percent of
+the reactant that is consumed to produce the product shown, by all the
+reactions that can produce that product from the reactant (except where one
+particular reaction is noted). These numbers are determined by integrating the
+rate of production or consumption of each species by each reaction up to the
+point of 20\% fuel consumption, and normalizing each reaction by the total
+produced or consumed of each species up to that point. The 20\% fuel
+consumption point is chosen because it is before small molecule chemistry takes
+over to drive the ignition, and it has been used previously
+\cite{Weber2011,Sarathy2012}. The rates of production are taken from a CONV
+simulation, with initial conditions 750 K and 15 bar as well as 750 K and 30
+bar. These conditions are representative of typical conditions after compression
+in the present RCM experiments. The plain text percentages on top of the arrows
+are the 15 bar case and the bold numbers underneath are for the 30 bar case.
+
+In the following discussion, carbon-centered radicals are labeled according to
+their distance from the hydroxyl moiety in the fuel molecule. Therefore, the
+$\alpha$ carbon is the closest to the hydroxyl, followed by $\beta$, $\gamma$,
+and $\delta$ carbons. Not all of the butanols have all of the types of carbons
+listed here, due to varying chain lengths. For instance, \textit{t}-butanol has
+one $\alpha$ carbon, three $\beta$ carbons, and no $\gamma$ or $\delta$ carbons.
+
+As expected at the relatively low temperature of this analysis, H-abstraction
+reactions dominate over unimolecular decomposition for all four isomers. It is
+also expected that \textit{n}-, \textit{s}-, and \textit{i}-butanol react
+primarily to their respective $\alpha$-hydroxybutyl radicals, since the
+$\alpha$ C-H bond has the lowest energy \cite{Sarathy2012}. Due to its unique
+structure, \textit{t}-butanol does not have an $\alpha$-hydroxybutyl radical
+that can be formed by H-abstraction, so \textit{t}-butanol is primarily
+consumed to form the $\beta$-hydroxybutyl radical, because the O-H bond energy
+is much higher than $\beta$ C-H bond energies.
+
+The unique structure of \textit{t}-butanol continues to affect the second level
+of reactions as well. In the temperature and pressure regime investigated,
+\textit{t}-butanol tends to add to molecular oxygen at the carbon radical site,
+forming a hydroxybutylperoxy (RO$_2$) species. That this pathway is dominant is
+due to the fact that \textit{t}-butanol has no $\alpha$-hydroxybutyl radical.
+For the other three butanol isomers that do have an $\alpha$-hydroxybutyl
+radical, the second level of reactions primarily produces an aldehyde + HO$_2$
+by direct reaction –-- no hydroxybutylperoxy adduct is formed in this reaction,
+and there is no possibility for typical hydrocarbon low-temperature chain
+branching. Therefore, it is hypothesized that the pre-ignition heat release
+seen in \textit{t}-butanol is caused by the oxygen addition to the fuel radical
+to form $\beta$-hydroxybutylperoxy, which is an exothermic reaction.
+
+\Autoref{fig:buoh-heat} shows the total cumulative heat release of each isomer
+and the cumulative heat release of an important reaction for each of the
+isomers (inset), from a CONV simulation with initial conditions of 750 K and 30
+bar; analysis of 15 bar results is substantially similar. The cumulative heat
+release in the inset is found by integrating the heat release by each reaction
+with respect to time, while the reactions shown are the respective reactions
+that have released the most heat up to the 20\% fuel consumption point for each
+isomer. The abscissa of the plot is the fuel conversion, in percent. This
+choice of x-axis allows a fair comparison of the heat release, because the
+ignition delays of each isomer are markedly different, so comparing the heat
+release with a time axis is more difficult. In \autoref{fig:buoh-heat},
+exothermicity is represented by positive quantities.
+
+In \autoref{fig:buoh-heat}, it is clear that \textit{t}-butanol has higher
+heat release at low fuel consumption (during the induction period) than the
+other three isomers. In addition, the primary heat release reaction for
+\textit{t}-butanol has created much more heat than the primary reactions of the
+other three isomers. As the reactions proceed, and the temperature increases,
+the reverse reaction in the \textit{t}-butanol case becomes more important, and
+the heat release contribution of this oxygen-addition reaction levels off. The
+dominance of this reaction at early times is unique to \textit{t}-butanol
+ignition, and appears to be driving the pre-ignition heat release.
+
+Other researchers have also undertaken studies of the low to intermediate
+temperature combustion of \textit{t}-butanol. \textcite{Lefkowitz2012}
+performed a study in the Variable Pressure Flow Reactor (VPFR) at Princeton
+University on the oxidation of \textit{t}-butanol over the temperature range
+from 680−950 K, at 12.5 atm and stoichiometric mixture conditions. It is
+interesting to note that they found no evidence of traditional hydrocarbon
+low temperature chemistry. They did, however, find significant quantities of
+acetone, peaking at approximately 800 K. \textcite{Lefkowitz2012} concluded
+that the primary pathways of acetone formation are tautomerization of
+propen-2-ol and $\beta$-scission of the alkoxy radical, based on an analysis
+of the mechanism from \textcite{Grana2010}. Both of these pathways are
+dependent on unimolecular decomposition of the hydroxybutyl radicals. However,
+this mechanism has only been validated for flame studies; indeed, an updated
+version of this model (by \textcite{Frassoldati2012}) is unable to predict the
+low-temperature ignition delays measured in this study and hence is not
+considered for analysis.
+
+In contrast to the study of \textcite{Lefkowitz2012} path analysis of the
+mechanism by \textcite{Sarathy2012} shows that unimolecular decomposition
+of the hydroxybutyl radicals is not the most important pathway; as mentioned
+earlier, the most important pathway is the formation of
+$\beta$-hydroxybutylperoxy. Further analysis shows that the primary pathway of
+reaction of the \textit{t}-butanol $\beta$-hydroxybutylperoxy species is
+through the Waddington mechanism. The Waddington mechanism has been shown
+experimentally to be an important pathway for $\beta$-hydroxypentylperoxy
+radicals in the low temperature combustion of \textit{i}-pentanol
+\cite{Welz2012}, as well as the $\beta$-hydroxybutylperoxy radicals of
+\textit{i}- and \textit{t}-butanol \cite{Welz2013b}. \textit{t}-Butanol only
+produces $\beta$-hydroxybutyl radicals, and one of the products of the
+Waddington pathway in \textit{t}-butanol is acetone (the others are
+formaldehyde and hydroxyl radical); over 88\% of the acetone produced up to the
+20\% fuel consumption point is produced by the Waddington reaction. The study
+in the VPFR thus provides further evidence of the importance of low-temperature
+hydroxybutylperoxy chemistry in \textit{t}-butanol, although it is not
+traditional hydrocarbon low-temperature chemistry.
+
+Up to this point, the discussion has focused mainly on the importance of
+hydroxybutylperoxy chemistry in \textit{t}-butanol. Nevertheless, the chemistry
+of the hydroxybutylperoxy species is important in the combustion of the other
+isomers of butanol as well. Using the high pressure shock tube at RWTH Aachen
+University, \textcite{Vranckx2011} showed the importance of peroxy chemistry
+pathways in the autoignition of \textit{n}-butanol. By adding a lumped peroxy
+model to an existing kinetic model for \textit{n}-butanol combustion, they were
+able to substantially improve agreement of the model with their experiments at
+high pressure and low temperature. In their mechanism, \textcite{Sarathy2012}
+included a semi-detailed peroxy chemistry model for all the isomers of butanol.
+In fact, one of the main differences between the mechanism from
+\textcite{Sarathy2012} and the MIT mechanism \cite{Hansen2013,Merchant2013} is
+their respective treatment of the peroxy mechanism. Specifically,
+oxygen-addition chemistry is not included in the MIT mechanism for
+\textit{i}-butanol \cite{Hansen2013,Merchant2013}. In addition, the radical
+that primarily controls \textit{i}-butanol decomposition is hydroxyl (OH) in
+the mechanism of \textcite{Sarathy2012} (generated by the peroxy chemistry
+sub-mechanism), but is hydroperoxyl (HO$_2$) in the MIT mechanism
+\cite{Hansen2013,Merchant2013} (generated from the direct $\alpha$-hydroxybutyl
++ O$_2$=HO$_2$ + aldehyde formation pathway).
+
+In their work, \textcite{Sarathy2012} used the reaction rates computed by
+\textcite{DaSilva2009} for the hydroxyethyl system (i.e. ethanol as the parent
+fuel) to determine the rate of direct reaction of $\alpha$-hydroxybutyl and
+oxygen to form aldehyde and HO$_2$, and then set the rate of oxygen addition to
+the $\alpha$-hydroxybutyl radical (to form $\alpha$-hydroxybutylperoxy) so that
+the total rate was less than the collisional limit. The rates of oxygen
+addition for the other radicals were prescribed depending on the type of carbon
+(primary, secondary, or tertiary) based on studies of butane and
+\textit{i}-octane \cite{Sarathy2012}. Based on the well-known importance of
+hydroxyl in driving the reactivity of combustion systems, and the sources of
+the estimates for the reaction rates of oxygen addition to hydroxybutyl (i.e.
+the entry to the pathway that controls the rate of hydroxyl formation), it can
+be hypothesized that the rates of hydroxybutylperoxy formation are
+overestimated in the mechanism of \textcite{Sarathy2012}, as the simulated
+results under-predict the experimental data of \textit{i}-butanol.
+
+This hypothesis is supported by the results shown in \autoref{fig:buoh-sens},
+which shows the linear brute force sensitivity of the ignition delay ($\tau$)
+of \textit{i}-butanol to changes in the A-factor of the rate coefficient, using
+the mechanism from \textcite{Sarathy2012}. The percent sensitivity is defined
+as the difference between the ignition delay when the A-factor of each reaction
+is halved and the nominal ignition delay, normalized by the nominal ignition
+delay, as shown below:
+
+\begin{equation}
+    \label{eq:buoh-sens}
+    S_i=\frac{\tau(0.5\mathrm{A}_i )-\tau(\mathrm{A}_i )}{\tau(\mathrm{A}_i)} \times 100\%
+\end{equation}
+
+Therefore, negative sensitivity means that halving the A-factor of a reaction
+decreases the ignition delay, and positive sensitivity indicates the ignition
+delay increases. These results are for CONV simulations with initial conditions
+of 750 K and 30 bar as well as 1200 K and 30 bar.
+
+The most sensitive reaction at the lower temperature is the initiation reaction
+of the fuel with hydroperoxyl radical to form the primary fuel radical and the
+second most sensitive reaction is the addition of oxygen to the primary
+radical. Both of these reactions have positive sensitivities, indicating that
+reducing the rate of these reactions would increase the ignition delay
+(increasing the computed ignition delay will improve the agreement of the
+simulations relative to the experiments in this case). It is apparent, then,
+that reducing the amount of fuel propagating into the low temperature chain
+branching pathway of oxygen addition to the primary $\alpha$-radical improves
+the simulated results. Interestingly, the \textit{i}-butanol system is not
+sensitive to the rates of oxygen addition to the hydroxybutyl radicals other
+than the $\alpha$-radical. At the higher temperature of 1200 K, there is little
+sensitivity on the ignition delay by changing the rate of the oxygen-addition
+reaction, demonstrating its lack of influence at higher temperatures.
+
+As a final comparison, we have modified this pathway in the mechanism from
+\textcite{Sarathy2012} so that the rate of oxygen addition to the primary
+fuel radical is arbitrarily set to zero; that is, the rate of the reaction
+ic4h8oh-1+O2=ic4h8oh-1O2 is set to zero by zeroing the A-factor, while the
+rates of the other oxygen addition reactions were unchanged. This unphysical
+situation substantially changes the results of simulations for
+\textit{i}-butanol --- removing this pathway in the mechanism from
+\textcite{Sarathy2012} brings the simulations into close agreement with the
+ignition delay results from the MIT mechanism \cite{Hansen2013,Merchant2013},
+which does not consider this reaction for \textit{i}-butanol. Since the other
+oxygen addition reactions were unchanged, it is apparent that the addition of
+oxygen to $\alpha$-hydroxybutyl is one of the controlling reactions for the
+high-pressure, low-temperature ignition of \textit{i}-butanol using the
+mechanism of \textcite{Sarathy2012}. It is therefore concluded that a detailed
+examination of the rates of direct formation of aldehyde+HO$_2$ and oxygen
+addition to the $\alpha$-hydroxybutyl radical are required to better predict
+the low-temperature ignition behavior of \textit{i}-butanol. Furthermore, based
+on the other results of this study, a detailed analysis of the oxygen addition
+reactions to all the isomers of butanol is probably warranted.
+
 
 \end{document}
