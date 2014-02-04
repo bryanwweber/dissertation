@@ -1,6 +1,6 @@
 * text=auto
 *.tex diff=tex
 *.lib diff=bibtex
-*.qpc -diff -crlf
-*.QPC -diff -crlf
+*.qpc binary
+*.QPC binary
 *.plt diff=text
