@@ -6,7 +6,7 @@
 
 %Set the document font
 \usepackage{fontspec}
-\setromanfont{Times New Roman}
+\setromanfont[Ligatures=TeX]{Times New Roman}
 
 %Set the size of the margins and the paper
 \usepackage[margin=1in, letterpaper]{geometry}
@@ -150,7 +150,7 @@ the mixing tank is allowed to equilibrate for approximately 1.5 hours.
 
 This approach to mixture preparation has been validated in several previous
 studies by withdrawing gas samples from the mixing tank and analyzing the
-contents by GC/MS, GC-FID, and GC-TCD.16,29,30 These studies have verified the
+contents by GC/MS, GC-FID, and GC-TCD. These studies have verified the
 concentration of \textit{n}-butanol, water, and \textit{n}-decane, respectively. In addition,
 both the work by \textcite{Kumar2009} on \textit{n}-decane and the study of
 \textcite{Weber2011} on \textit{n}-butanol confirmed that there was no fuel
@@ -395,16 +395,16 @@ model is not validated for these conditions.
     \centering
     \begin{minipage}{0.45\textwidth}
         \includegraphics[width=8cm]{03-Butanol/buoh-15sim}
-        \caption{$P_C=15$ bar, stoichiometric mixtures in air. Comparison of 
-            VPRO simulations using the kinetic mechanism of 
+        \caption{$P_C=15$ bar, stoichiometric mixtures in air. Comparison of
+            VPRO simulations using the kinetic mechanism of
             \textcite{Sarathy2012} with experimental ignition delays.}
         \label{fig:buoh-15sim}
     \end{minipage}
     \quad
     \begin{minipage}{0.45\textwidth}
         \includegraphics[width=8cm]{03-Butanol/buoh-30sim}
-        \caption{$P_C=30$ bar, stoichiometric mixtures in air. Comparison of 
-            VPRO simulations using the kinetic mechanism of 
+        \caption{$P_C=30$ bar, stoichiometric mixtures in air. Comparison of
+            VPRO simulations using the kinetic mechanism of
             \textcite{Sarathy2012} with experimental ignition delays.}
         \label{fig:buoh-30sim}
     \end{minipage}
@@ -425,9 +425,9 @@ The reason for these diverging predictions will be explored and discussed below.
 \begin{figure}
     \centering
     \includegraphics[width=12cm]{03-Butanol/buoh-mit}
-    \caption{Comparison of VPRO simulations using the kinetic mechanism of 
-        \textcite{Sarathy2012} (solid lines) and the MIT mechanism 
-        \cite{Hansen2013,Merchant2013} (dotted lines) with the experimental 
+    \caption{Comparison of VPRO simulations using the kinetic mechanism of
+        \textcite{Sarathy2012} (solid lines) and the MIT mechanism
+        \cite{Hansen2013,Merchant2013} (dotted lines) with the experimental
         ignition delay results (dashed lines) for stoichiometric mixtures of
         \textit{i}-butanol in air at $P_C=15$ bar (squares) and $P_C=30$ bar
         (circles).}
@@ -436,8 +436,8 @@ The reason for these diverging predictions will be explored and discussed below.
 
 The agreement of the mechanism by \textcite{Sarathy2012} with the
 off-stoichiometric mixtures of \textit{t}-butanol is also quite good, as shown
-in \autoref{fig:tbuoh-sims}. Figures
-\ref{fig:tbuoh-05press}--\ref{fig:tbuoh-20press} show more detailed comparisons
+in \autoref{fig:tbuoh-sims}. Figures \ref{fig:tbuoh-05press}
+-- \ref{fig:tbuoh-20press} show more detailed comparisons
 of the simulated pressure traces and the experimental results, for similar
 temperatures at the three equivalence ratios, respectively. Clearly, the
 simulations also exhibit some pre-ignition heat release. In general, the
@@ -452,11 +452,40 @@ behavior may not be of critical importance, depending on the application.
 \begin{figure}
     \centering
     \includegraphics[width=12cm]{03-Butanol/tbuoh-sims}
-    \caption{Comparison of the simulations using the kinetic mechanism of 
-        \textcite{Sarathy2012} for three equivalence ratio mixtures of 
+    \caption{Comparison of the simulations using the kinetic mechanism of
+        \textcite{Sarathy2012} for three equivalence ratio mixtures of
         \textit{t}-butanol in air at $P_C=30$ bar.}
     \label{fig:tbuoh-sims}
 \end{figure}
 
+\begin{figure}
+    \centering
+    \begin{minipage}{0.3\textwidth}
+        \includegraphics[width=6cm]{03-Butanol/tbuoh-05press}
+        \caption{$\phi=0.5$ in air. Pressure traces of selected
+            \textit{t}-butanol experiments compared with the corresponding
+            non-reactive and simulated traces, using the mechanism of
+            \textcite{Sarathy2012}.}
+        \label{fig:tbuoh-05press}
+    \end{minipage}
+    \quad
+    \begin{minipage}{0.3\textwidth}
+        \includegraphics[width=6cm]{03-Butanol/tbuoh-10press}
+        \caption{$\phi=1.0$ in air. Pressure traces of selected
+            \textit{t}-butanol experiments compared with the corresponding
+            non-reactive and simulated traces, using the mechanism of
+            \textcite{Sarathy2012}.}
+        \label{fig:tbuoh-10press}
+    \end{minipage}
+    \quad
+    \begin{minipage}{0.3\textwidth}
+        \includegraphics[width=6cm]{03-Butanol/tbuoh-20press}
+        \caption{$\phi=2.0$ in air. Pressure traces of selected
+            \textit{t}-butanol experiments compared with the corresponding
+            non-reactive and simulated traces, using the mechanism of
+            \textcite{Sarathy2012}.}
+        \label{fig:tbuoh-20press}
+    \end{minipage}
+\end{figure}
 
 \end{document}
