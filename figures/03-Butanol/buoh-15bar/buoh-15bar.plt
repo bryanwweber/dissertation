@@ -28,13 +28,13 @@ fit fn(x) 'buoh-15bar.txt' i 2 u 1:(log($2)) via An,Ean
 ft(x) = At + Eat*x
 fit ft(x) 'buoh-15bar.txt' i 3 u 1:(log($2)) via At,Eat
 
-plot "buoh-15bar.txt" i 3 u 1:2:3 w errorbars lc rgb "#FF0000" pt 06 ps 1.5 notitle,\
+plot "buoh-15bar.txt" i 3 u 1:2:3 w errorbars lt 1 lc rgb "#FF0000" pt 06 ps 1.5 notitle,\
      "buoh-15bar.txt" i 3 u 1:2 w points lc rgb "#FF0000" pt 06 ps 1.5 title "{/Times-Italic t}-Butanol",\
-     "buoh-15bar.txt" i 1 u 1:2:3 w errorbars lc rgb "#0000FF" pt 04 ps 1.5 notitle,\
+     "buoh-15bar.txt" i 1 u 1:2:3 w errorbars lt 1 lc rgb "#0000FF" pt 04 ps 1.5 notitle,\
      "buoh-15bar.txt" i 1 u 1:2 w points lc rgb "#0000FF" pt 04 ps 1.5 title "{/Times-Italic i}-Butanol",\
-     "buoh-15bar.txt" i 0 u 1:2:3 w errorbars lc rgb "#006400" pt 12 ps 1.5 notitle,\
+     "buoh-15bar.txt" i 0 u 1:2:3 w errorbars lt 1 lc rgb "#006400" pt 12 ps 1.5 notitle,\
      "buoh-15bar.txt" i 0 u 1:2 w points lc rgb "#006400" pt 12 ps 1.5 title "{/Times-Italic s}-Butanol",\
-     "buoh-15bar.txt" i 2 u 1:2:3 w errorbars lc rgb "#FF00FF" pt 8 ps 1.5 notitle,\
+     "buoh-15bar.txt" i 2 u 1:2:3 w errorbars lt 1 lc rgb "#FF00FF" pt 8 ps 1.5 notitle,\
      "buoh-15bar.txt" i 2 u 1:2 w points lc rgb "#FF00FF" pt 8 ps 1.5 title "{/Times-Italic n}-Butanol",\
      (1.1500 < x && x< 1.2390) ? exp(fs(x)):1/0 w lines lt 2 lw 1.5 lc rgb "#006400" notitle,\
      (1.1683 < x && x< 1.2259) ? exp(fi(x)):1/0 w lines lt 2 lw 1.5 lc rgb "#0000FF" notitle,\
