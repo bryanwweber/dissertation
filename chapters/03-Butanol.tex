@@ -705,6 +705,16 @@ decreases the ignition delay, and positive sensitivity indicates the ignition
 delay increases. These results are for CONV simulations with initial conditions
 of 750 K and 30 bar as well as 1200 K and 30 bar.
 
+\begin{figure}
+    \centering
+    \includegraphics[width=10cm,angle=-90]{03-Butanol/buoh-sens}
+    \caption{Linear brute force sensitivity analysis of the ignition delay with 
+        respect to the A-factors of the listed reactions in the mechanism from 
+        \textcite{Sarathy2012}. Positive quantities indicate the ignition delay 
+        is increased when the A-factor is halved.}
+    \label{fig:buoh-sens}
+\end{figure}
+
 The most sensitive reaction at the lower temperature is the initiation reaction
 of the fuel with hydroperoxyl radical to form the primary fuel radical and the
 second most sensitive reaction is the addition of oxygen to the primary
@@ -723,7 +733,7 @@ reaction, demonstrating its lack of influence at higher temperatures.
 As a final comparison, we have modified this pathway in the mechanism from
 \textcite{Sarathy2012} so that the rate of oxygen addition to the primary
 fuel radical is arbitrarily set to zero; that is, the rate of the reaction
-ic4h8oh-1+O2=ic4h8oh-1O2 is set to zero by zeroing the A-factor, while the
+ic4h8oh-1+o2=ic4h8oh-1o2 is set to zero by zeroing the A-factor, while the
 rates of the other oxygen addition reactions were unchanged. This unphysical
 situation substantially changes the results of simulations for
 \textit{i}-butanol --- removing this pathway in the mechanism from
