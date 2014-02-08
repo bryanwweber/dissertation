@@ -11,9 +11,18 @@ set key at 1.32,25 Left reverse width -11 height 0.25 spacing 1.1 tc variable fo
 set mxtics
 set mx2tics 5
 set xtics scale 1.25,0.75 nomirror
-set x2tics scale 1.25,0.75 border 650, 50 format "%g K"
+
 inv2k(x) = 1000./x
-set x2range [inv2k(1.05):inv2k(1.45)]
+set x2tics ("" inv2k(600)) scale 1.25,0.75
+do for [temp=650:1000:50] {
+t = sprintf("%g K",temp)
+set x2tics add (t inv2k(temp))
+set x2tics add ("" inv2k(temp+10) 1)
+set x2tics add ("" inv2k(temp+20) 1)
+set x2tics add ("" inv2k(temp+30) 1)
+set x2tics add ("" inv2k(temp+40) 1)
+}
+
 set ytics scale 1.25,0.75
 set bmargin 3.5
 
