@@ -120,5 +120,104 @@
 \usepackage{mathtools}
 
 \begin{document}
+The studies in this dissertation were conducted using the Rapid
+Compression Machine (RCM) constructed by Mittal and described in the
+work of \textcite{Mittal2007}.
+
+The present RCM is a pneumatically-driven/hydraulically-stopped
+single-piston arrangement. A schematic of the RCM is shown in
+\autoref{fig:rcm-schematic}. The RCM consists of four chambers and
+three pistons that are used to control machine. The chambers are
+called the reaction chamber, the hydraulic chamber, the pneumatic
+chamber, and the driving tank; similarly, the pistons are called
+the reactor, hydraulic, and pneumatic pistons and are each installed
+in the chamber of the same name. The driving tank and pneumatic
+chamber are connected by a union and the pneumatic piston is sealed
+to the walls of the pneumatic chamber, so that the pneumatic piston
+is driven by pressure from the driving tank on its rear and pressure
+from the pneumatic chamber on its front. The pistons are connected by
+a rod running from the front of the pneumatic piston to the rear of
+the reactor piston so that they move as one; this will be referred
+to as the piston assembly.
+
+At the start of an experimental run, with the piston in the
+end-of-compression (EOC) position, the reaction chamber is vacuumed to less
+than one Torr. Next, the piston assembly is retracted by pneumatic
+pressure on the front face of the piston in the pneumatic chamber.
+For safety, and to prevent damage to the RCM, the driving tank should
+be filled to limit the acceleration of the piston assembly during this
+retraction.
+The pneumatic pressure on the front of the pneumatic piston pulls the
+piston assembly rearward and seats the
+hydraulic piston onto an o-ring in the rear of the
+hydraulic chamber. Then the hydraulic chamber is filled with oil to
+a pressure of approximately 800 psi, providing a rearward force on the
+hydraulic piston. The pneumatic pressure is then released from the pneumatic
+chamber and the driving tank is filled to the driving pressure. The
+force on the hydraulic piston opposes the force on the pneumatic piston
+from the driving tank and the piston assembly remains at rest. Then, the
+reaction chamber is filled with the required initial pressure of test
+gas mixture from the mixing tank. The compression is triggered by
+releasing the hydraulic pressure. The piston assembly is driven forward
+to compress the test mixture by high-pressure nitrogen gas in the driving
+tank. The gases
+in the test section are brought to the compressed pressure ($P_C$) and
+compressed temperature ($T_C$) conditions in approximately 30
+milliseconds.
+
+The required driving pressure for a given EOC pressure can be estimated
+from a force balance between the force on the pneumatic piston from the
+driving tank and the force on the reactor piston from the reaction gases,
+as shown in \autoref{eq:driving-pressure}.
+
+\begin{subequations}
+\label{eq:piston-force}
+\begin{align}
+    P_{d,\text{min}} \cdot A_p &= P_{r,\text{EOC}} \cdot A_r \\
+    P_{d,\text{min}} \cdot \frac{\pi d_p^2}{4} &= P_{r,\text{EOC}} \cdot \frac{\pi d_r^2}{4} \\
+    P_{d,\text{min}} &= P_{r,\text{EOC}} \cdot \frac{d_r^2}{d_p^2} \label{eq:driving-pressure}
+\end{align}
+\end{subequations}
+
+In \autoref{eq:piston-force}, $P_{d,\text{min}}$ is the minimum
+driving pressure, $A_p$ is the cross-sectional area of the pneumatic piston,
+$P_{r,\text{EOC}}$ is the pressure in the reactor at the EOC (i.e. $P_C$),
+$A_r$ is the cross-sectional area of the reactor piston, $d_p$ is the diameter
+of the pneumatic piston, and $d_r$ is the diameter of the reactor piston.
+
+The minimum driving pressure is such that the piston does not rebound at
+the EOC due to pressure on the reactor piston. So that the driving
+pressure can be much lower than the EOC pressure, the diameter ratio of
+the reactor piston to the driver piston is $2/5$. The actual driving
+pressure should exceed the minimum by some safety margin so that the
+reactor remains at constant volume even if there is some pressure rise
+due to first stage ignition.
+
+There is not a theoretical upper limit on the driving pressure. It is desired that the piston should
+reach the EOC conditions in as short a time as possible to minimize heat
+loss from the reactants to the reactor walls and minimize the time for
+reactions to occur during the compression stroke. This implies that the
+driving pressure should be made as high as possible so that the highest
+piston velocity is achieved. However, higher piston velocities require
+a higher deceleration at the EOC. In the present RCM, the deceleration
+is provided by venting the hydraulic oil between steps on the hydraulic
+piston and matched steps on the front of the hydraulic chamber. If the
+piston is "overdriven" - that is, the driving pressure is too high - the
+piston will not be sufficiently decelerated by the oil venting and will
+impact the front of the hydraulic chamber at high velocity. This can damage
+the RCM and cause the piston to rebound elastically. It also generates
+substantial noise in the pressure trace and should be avoided.
+
+Typical driving gas pressures are between 50 psi for 15 bar experiments
+to 125 psi for 50 bar experiments. These driving pressures represent a
+good compromise between the minimum required for no rebound at EOC due
+to pressure and no rebound at EOC due to elastic reaction. Nonetheless,
+a small amount of piston rebound can be expected during/after the
+main ignition event as the driving pressures required to overcome the
+full pressure rise due to ignition would cause elastic rebound. Thus,
+this small rebound may have an effect on the computation of
+ignition delay if it reduces the pressure rise rate during the ignition;
+it is expected that this effect will be very small relative to the
+typical random uncertainty in ignition delay experiments.
 
 \end{document}
