@@ -120,9 +120,30 @@
 \usepackage{mathtools}
 
 \begin{document}
+\label{sec:rcm}
+\section{Rapid Compression Machine}
+\subsection{Experimental Procedure}
 The studies in this dissertation were conducted using the Rapid
-Compression Machine (RCM) constructed by Mittal and described in the
-work of \textcite{Mittal2007}.
+Compression Machine (RCM) constructed by Mittal around 2005 and described in the
+work of \textcite{Mittal2007,Mittal2006a}. This RCM has been used to
+study the autoignition behavior of a number of fuels, including
+\textit{n}-decane, methylcyclohexane, hydrogen, syngas,
+dimethyl ether, methanol, toluene, benzene, di-isobutylene, iso-octane,
+jet fuel, and gasoline \cite{Kumar2009, Mittal2009, Das2012a, Mittal2006,
+Das2012, Mittal2008a, Kumar2011a, Mittal2007a, Mittal2008, Kumar2010,
+Dooley2010, Dooley2012, Hui2012a, Keromnes2013, Kukkadapu2013, Kukkadapu2012a}.
+
+A modern RCM operates by rapidly compressing (hence the name) a test gas
+mixture to targeted pressure and temperature conditions. The compression
+is effected by either a single piston or dual, opposed pistons. Upon reaching
+the targeted state, the piston is stopped and fixed in place so that the reactions
+proceed in a constant volume reactor. When studying autoignition with an RCM,
+the primary data are the measured pressure traces during and after the
+compression stroke. These pressure traces are processed to derive
+information such as the pressure and temperature at the end of
+compression (EOC) and the ignition delay that are typically reported.
+It is also possible to employ laser diagnostics or extract gas samples
+from the reactor to examine reaction pathways in more detail.
 
 The present RCM is a pneumatically-driven/hydraulically-stopped
 single-piston arrangement. A schematic of the RCM is shown in
@@ -131,38 +152,44 @@ three pistons that are used to control machine. The chambers are
 called the reaction chamber, the hydraulic chamber, the pneumatic
 chamber, and the driving tank; similarly, the pistons are called
 the reactor, hydraulic, and pneumatic pistons and are each installed
-in the chamber of the same name. The driving tank and pneumatic
-chamber are connected by a union and the pneumatic piston is sealed
-to the walls of the pneumatic chamber, so that the pneumatic piston
-is driven by pressure from the driving tank on its rear and pressure
-from the pneumatic chamber on its front. The pistons are connected by
+in the chamber of the same name. The rear of the reaction chamber
+is bolted to the front of the hydraulic chamber; seals in the face
+of the hydraulic chamber prevent oil from leaking and contaminating
+the reaction chamber. The driving tank and the rear of the pneumatic
+chamber are connected by a union; a seal around the circumference of
+the pneumatic piston seals gas in the driving tank from the front of
+the pneumatic chamber. Thus, the pneumatic piston can be driven by
+pressure from the driving tank on its rear and pressure from the
+pneumatic chamber on its front. The three pistons are connected by
 a rod running from the front of the pneumatic piston to the rear of
 the reactor piston so that they move as one; this will be referred
 to as the piston assembly.
 
 At the start of an experimental run, with the piston in the
-end-of-compression (EOC) position, the reaction chamber is vacuumed to less
-than one Torr. Next, the piston assembly is retracted by pneumatic
-pressure on the front face of the piston in the pneumatic chamber.
+EOC position, the reaction chamber is vacuumed to less
+than one Torr. Next, the piston assembly is retracted pressurizing
+the front face of the piston in the pneumatic chamber.
 For safety, and to prevent damage to the RCM, the driving tank should
 be filled to limit the acceleration of the piston assembly during this
 retraction.
-The pneumatic pressure on the front of the pneumatic piston pulls the
-piston assembly rearward and seats the
+The pressure on the front of the pneumatic piston pulls the
+piston assembly rearward and seats the rear of the
 hydraulic piston onto an o-ring in the rear of the
 hydraulic chamber. Then the hydraulic chamber is filled with oil to
 a pressure of approximately 800 psi, providing a rearward force on the
-hydraulic piston. The pneumatic pressure is then released from the pneumatic
-chamber and the driving tank is filled to the driving pressure. The
+front face of the hydraulic piston. The pressure is then released from
+the front of the pneumatic chamber and the driving tank is filled to
+the desired driving pressure. The
 force on the hydraulic piston opposes the force on the pneumatic piston
 from the driving tank and the piston assembly remains at rest. Then, the
 reaction chamber is filled with the required initial pressure of test
-gas mixture from the mixing tank. The compression is triggered by
-releasing the hydraulic pressure. The piston assembly is driven forward
-to compress the test mixture by high-pressure nitrogen gas in the driving
-tank. The gases
-in the test section are brought to the compressed pressure ($P_C$) and
-compressed temperature ($T_C$) conditions in approximately 30
+gas mixture from the mixing tank. Finally, compression is triggered by
+releasing the hydraulic pressure through an electrically operated solenoid
+valve. The piston assembly is driven forward by the unbalanced force from
+the pressure in the driving tank on the pneumatic piston
+to compress the test mixture. The gases
+in the reaction chamber are brought to the compressed pressure ($P_C$) and
+compressed temperature ($T_C$) conditions in approximately 30-50
 milliseconds.
 
 The required driving pressure for a given EOC pressure can be estimated
@@ -188,7 +215,8 @@ of the pneumatic piston, and $d_r$ is the diameter of the reactor piston.
 The minimum driving pressure is such that the piston does not rebound at
 the EOC due to pressure on the reactor piston. So that the driving
 pressure can be much lower than the EOC pressure, the diameter ratio of
-the reactor piston to the driver piston is $2/5$. The actual driving
+the reactor piston to the driver piston is $2/5$, allowing a factor of
+6.25 lower driving pressure than EOC pressure. The actual driving
 pressure should exceed the minimum by some safety margin so that the
 reactor remains at constant volume even if there is some pressure rise
 due to first stage ignition.
@@ -208,16 +236,66 @@ impact the front of the hydraulic chamber at high velocity. This can damage
 the RCM and cause the piston to rebound elastically. It also generates
 substantial noise in the pressure trace and should be avoided.
 
-Typical driving gas pressures are between 50 psi for 15 bar experiments
-to 125 psi for 50 bar experiments. These driving pressures represent a
+Typical driving gas pressures are between 50 psi for $P_C = 15$ bar experiments
+to $P_C = 125$ psi for 50 bar experiments. These driving pressures represent a
 good compromise between the minimum required for no rebound at EOC due
 to pressure and no rebound at EOC due to elastic reaction. Nonetheless,
 a small amount of piston rebound can be expected during/after the
-main ignition event as the driving pressures required to overcome the
-full pressure rise due to ignition would cause elastic rebound. Thus,
-this small rebound may have an effect on the computation of
+main ignition event. This small rebound may have an effect on the computation of
 ignition delay if it reduces the pressure rise rate during the ignition;
 it is expected that this effect will be very small relative to the
-typical random uncertainty in ignition delay experiments.
+typical random uncertainty in ignition delay experiments. Moreover,
+the driving pressures required to balance the full pressure rise during
+to ignition are more likely cause elastic rebound,
+especially for high $P_C$ when the post-ignition pressure rise is greater.
+
+The EOC conditions ($P_C$ and $T_C$) can be independently varied. This
+is made possible by independent variation of the compression ratio,
+initial pressure, and initial temperature. The compression ratio can be
+increased by adding spacers onto the rear of the hydraulic chamber,
+increasing the stroke, and can be reduced by adding split shims onto
+the rear of the reaction chamber, increasing the EOC clearance length.
+
+Fuel/oxidizer pre-mixtures are prepared in two mixing tanks, one approximately
+17 L and the other approximately 15 L in volume. These large volumes allow many
+runs to be conducted from one mixture preparation. The mixing tanks are connected
+to the reaction chamber by flexible stainless steel manifold tubing. The tanks, reaction chamber,
+and connecting manifold are wrapped in heating tape and insulation to control the initial
+temperature of the mixture. Temperature controllers from Omega Engineering use thermocouples
+placed on the lid of each mixing tank, approximately in the center of each mixing tank, embedded in
+the wall of the reaction chamber, and near the inlet valve of the reaction chamber to control the
+preheat temperature of the mixture. A static pressure transducer(Omega Engineering, 0-5200 Torr)
+measures the pressure in the manifold and mixing tanks. This transducer is used
+during mixture preparation and to measure the initial pressure of a given experiment.
+
+Most of the fuels studied in this work are liquids at room temperature and
+pressure and have relatively low vapor pressure. A similar procedure, outlined
+below, was used for all of the butanol isomers, \textit{iso}-pentanol, and
+methylcyclohexane. First mixing tanks are vacuumed to an ultimate pressure
+less than 5 Torr. The liquid fuel is massed in a syringe to a precision of
+0.01 g prior to injection through a septum. Proportions of O$_2$, N$_2$, and
+Ar are added manometrically at room temperature. The preheat temperature of
+the RCM is set above the saturation point for each fuel to ensure complete
+vaporization. The vapor pressure as a function of temperature is calculated
+according to fits taken from \textcite{Yaws1999}. A magnetic stirrer mixes 
+the reactants. The temperature inside the mixing tank is allowed to
+equilibrate for approximately 1.5 hours.
+
+This approach to mixture preparation has been validated in several previous
+studies by withdrawing gas samples from the mixing tank and analyzing the
+contents by GC/MS \cite{Weber2011}, GC-FID \cite{Kumar2009}, and GC-TCD
+\cite{Das2012}. These studies have verified the concentration of
+\textit{n}-butanol, \textit{n}-decane, and water, respectively. In addition,
+both the work by \textcite{Kumar2009} on \textit{n}-decane and the study of
+\textcite{Weber2011} on \textit{n}-butanol confirmed that there was no fuel
+decomposition over the course of a typical set of experiments. Furthermore,
+within this study, each new mixture preparation is checked against previously
+tested conditions to ensure reproducibility.
+
+The pressure in the reaction chamber during an experiment is monitored by a
+Kistler 6125B piezoelectric dynamic pressure transducer. The charge signal from the
+transducer is amplified and converted to a voltage by a Kistler 5010B charge amplifier.
+The voltage is sent to a National Instruments c-DAQ equipped with the NI-XXXX module.
+The signal is recorded by LabView at 50 kHz.
 
 \end{document}
