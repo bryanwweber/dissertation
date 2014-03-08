@@ -6,10 +6,12 @@
 
 %Set the document font
 \usepackage{fontspec}
-\setromanfont{Times New Roman}
+\setmainfont[Renderer=Basic,Ligatures=TeX]{Times New Roman}
 
 %Set the size of the margins and the paper
 \usepackage[margin=1in, letterpaper]{geometry}
+
+\usepackage{mathtools}
 
 %Set the color of the links and PDF metadata
 \usepackage[
@@ -20,7 +22,7 @@
 
 \hypersetup{%
     pdfinfo={
-        Title={High Pressure Ignition Chemistry of Alternative Fuels}
+        Title={High Pressure Ignition Chemistry of Alternative Fuels},
         Author={Bryan W. Weber}
     }
 }
@@ -107,7 +109,7 @@
   \begingroup%
   \def\chapterautorefname~##1\null{Chapter~##1\null}%
   \def\sectionautorefname~##1\null{Section~##1\null}%
-  \def\subsectionautorefname~##1\null{Sub--Section~##1\null}%
+  \def\subsectionautorefname~##1\null{Section~##1\null}%
   \def\figureautorefname~##1\null{Figure~##1\null}%
   \def\tableautorefname~##1\null{Table~##1\null}%
   \def\equationautorefname~##1\null{Equation~##1\null}%
@@ -117,11 +119,11 @@
 
 \usepackage[font={footnotesize}]{caption}
 
-\usepackage{mathtools}
+\defaultfontfeatures{Ligatures=TeX}
 
 \begin{document}
-\label{sec:rcm}
 \section{Rapid Compression Machine}
+\label{sec:rcm}
 \subsection{Experimental Procedure}
 The studies in this dissertation were conducted using the Rapid
 Compression Machine (RCM) constructed by Mittal around 2005 and described in the
@@ -230,7 +232,7 @@ piston velocity is achieved. However, higher piston velocities require
 a higher deceleration at the EOC. In the present RCM, the deceleration
 is provided by venting the hydraulic oil between steps on the hydraulic
 piston and matched steps on the front of the hydraulic chamber. If the
-piston is "overdriven" - that is, the driving pressure is too high - the
+piston is overdriven---that is, the driving pressure is too high---the
 piston will not be sufficiently decelerated by the oil venting and will
 impact the front of the hydraulic chamber at high velocity. This can damage
 the RCM and cause the piston to rebound elastically. It also generates
@@ -251,7 +253,8 @@ especially for high $P_C$ when the post-ignition pressure rise is greater.
 
 The EOC conditions ($P_C$ and $T_C$) can be independently varied. This
 is made possible by independent variation of the compression ratio,
-initial pressure, and initial temperature. The compression ratio can be
+initial pressure and initial temperature, and the specific heat ratio
+of the test gases. The compression ratio can be
 increased by adding spacers onto the rear of the hydraulic chamber,
 increasing the stroke, and can be reduced by adding split shims onto
 the rear of the reaction chamber, increasing the EOC clearance length.
@@ -264,7 +267,7 @@ and connecting manifold are wrapped in heating tape and insulation to control th
 temperature of the mixture. Temperature controllers from Omega Engineering use thermocouples
 placed on the lid of each mixing tank, approximately in the center of each mixing tank, embedded in
 the wall of the reaction chamber, and near the inlet valve of the reaction chamber to control the
-preheat temperature of the mixture. A static pressure transducer(Omega Engineering, 0-5200 Torr)
+preheat temperature of the mixture. A static pressure transducer (Omega Engineering, 0-5200 Torr)
 measures the pressure in the manifold and mixing tanks. This transducer is used
 during mixture preparation and to measure the initial pressure of a given experiment.
 
@@ -277,7 +280,7 @@ less than 5 Torr. The liquid fuel is massed in a syringe to a precision of
 Ar are added manometrically at room temperature. The preheat temperature of
 the RCM is set above the saturation point for each fuel to ensure complete
 vaporization. The vapor pressure as a function of temperature is calculated
-according to fits taken from \textcite{Yaws1999}. A magnetic stirrer mixes 
+according to fits taken from \textcite{Yaws1999}. A magnetic stirrer mixes
 the reactants. The temperature inside the mixing tank is allowed to
 equilibrate for approximately 1.5 hours.
 
@@ -297,5 +300,163 @@ Kistler 6125B piezoelectric dynamic pressure transducer. The charge signal from 
 transducer is amplified and converted to a voltage by a Kistler 5010B charge amplifier.
 The voltage is sent to a National Instruments c-DAQ equipped with the NI-XXXX module.
 The signal is recorded by LabView at 50 kHz.
+
+\label{sec:ig-delay-def}
+\subsection{Definition of Ignition Delay}
+\Autoref{fig:ig-delay-def} shows a representative pressure trace from
+these experiments with methylcyclohexane at $P_C=50$ bar, $T_C=761$ K,
+and $\phi=1.5$ (See \autoref{sec:mch}). Note that \autoref{fig:ig-delay-def}
+shows a case with two stages of ignition; not all of the fuels studied
+had conditions that showed two-stage ignition. Nonetheless, the ignition
+delay is consistently defined in all the work in this study. The
+definitions of the EOC and the ignition delays are indicated on the figure.
+The end of compression time is defined as the time when the pressure
+reaches its maximum before first stage ignition occurs, or for cases
+where there is no first stage ignition, the maximum pressure before
+the overall ignition occurs. The first stage ignition delay is the time
+from the end of compression until the first peak in the time derivative
+of the pressure. The overall ignition delay is the time from the end of
+compression until the largest peak in the time derivative of the pressure.
+
+Each unique $P_C$ and $T_C$ condition is repeated at least 5 times to
+ensure repeatability of the experiments. The experiment closest to the
+mean of the runs at a particular condition is chosen for analysis and
+presentation. The standard deviation of all of the runs at a condition
+is less than 10\% of the mean in all cases.
+
+\subsection{Non-Reactive Experiments}
+
+\Autoref{fig:ig-delay-def} also shows a non-reactive pressure trace.
+Due to heat loss from the test mixture to the cold reactor walls,
+the pressure and temperature of the gas in the reaction chamber will
+decrease after the end of compression. A non-reactive pressure trace
+is measured that corresponds to each unique $P_C$ and $T_C$ condition
+studied to quantify the effect of the heat loss on the ignition process
+and to verify that no heat release has occurred during the compression
+stroke. The non-reactive pressure trace is acquired by replacing the
+oxygen in the oxidizer with nitrogen, so that the specific heat ratio
+of the initial mixture is maintained, but the heat release due to
+exothermic oxidation reactions is eliminated. Maintaining a similar
+specific heat ratio ensures that the non-reactive experiment faithfully
+reproduces the conditions of the reactive experiment. A representative
+non-reactive pressure trace is shown in \ref{fig:ig-delay-def}
+corresponding to the experimental conditions in the figure.
+
+\subsection{Determination of Compressed Temperature}
+
+Direct determination of the temperature of the gases inside the reaction
+chamber during and after compression is difficult. Intrusive techniques
+such as thermocouples may introduce hot- or cold-spots in the reaction
+chamber, and non-intrusive optical techniques are difficult to set up
+and require extensive calibration at the pressures of interest in RCM
+studies. Thus, $T_C$ is determined indirectly by applying the assumption
+of an adiabatic core region of gases in the reaction chamber
+\cite{Mittal2007, Lee1998}. It is assumed that the heat loss from the
+reactants only occurs in a thin boundary layer near the wall, and the
+central core region is unaffected by heat loss.
+
+If all of the gases in the reaction chamber are compressed isentropically,
+the temperature at the end of compression can be found by the
+following relations:
+
+\begin{subequations}
+\label{eq:tfc}
+\begin{align}
+\ln\left(\text{CR}\right) = \int_{T_0}^{T_{fc}} \! \frac{1}{T\left(\gamma-1\right)} \, \mathrm{d} T \\
+\ln\left(\frac{P_{fc}}{P_0}\right) = \int_{T_0}^{T_{fc}} \! \frac{\gamma}{T\left(\gamma-1\right)} \, \mathrm{d} T
+\end{align}
+\end{subequations}
+
+\noindent
+where CR is the volumetric compression ratio, $T_0$ is the initial temperature,
+$T_{fc}$ is the temperature at the end of isentropic compression, $\gamma$ is the
+temperature-dependent ratio of specific heats, $P_{fc}$ is the pressure at the
+end of isentropic compression, and $P_0$ is the initial pressure.
+
+However, this formulation does not account for the finite heat loss from the
+core region to the walls and the crevice volume during the compression.
+These enthalpy losses will cause the actual pressure and
+temperature at the EOC ($P_C$ and $T_C$) to be lower than the wholly
+isentropic case. To account for this,
+it is assumed that the core region of the gases in the reaction chamber
+undergoes isentropic compression \cite{Desgroux1995}. Then \autoref{eq:tfc}
+can be applied to the adiabatic core:
+
+\begin{align}
+\ln\left(\frac{P_{C}}{P_0}\right) = \int_{T_0}^{T_{C}} \! \frac{\gamma}{T\left(\gamma-1\right)} \, \mathrm{d} T
+\label{eq:tc}
+\end{align}
+
+\noindent
+where $P_C$ is the measured pressure at the end of compression.
+
+In general, the specific heat ratio is a function of temperature, so
+\autoref{eq:tc} cannot be integrated directly. If the specific heats
+are parameterized with a polynomial fit, it is possible to integrate
+\autoref{eq:tc} directly, but this process is quite tedious; nonetheless,
+it will be applied in \autoref{sec:uncertainty} to determine the uncertainty
+of $T_C$. In general, the simplest method of calculating $T_C$ is to use
+software numerically integrate \autoref{eq:tc}.
+
+A separate model is required to account for the heat losses to the
+reactor walls after the end of compression.
+
+In this work, the CHEMKIN-Pro \cite{Chemkin2012} software is used to
+perform the numerical integration and calculation of $T_C$. A volume
+trace is computed from the measured pressure trace using the isentropic
+relation:
+
+\begin{align}
+\frac{V_2}{V_1} = \left[\frac{P_1}{P_2}\right]^{\frac{1}{\gamma}}
+\label{eq:volume-trace}
+\end{align}
+
+\noindent
+where $V_1$ and $V_2$ are the volume at consecutive time points,
+$P_1$ and $P_2$ are the pressure at consecutive time points, and
+$\gamma$ is the temperature dependent specific heat. For use in
+\autoref{eq:volume-trace}, $\gamma$ is tabulated for each time
+point. Thus, the temperature at each time point must also be
+computed by using the isentropic relation for temperature:
+
+\begin{align}
+\frac{T_2}{T_1} = \left[\frac{P_2}{P_1}\right]^{\frac{\gamma-1}{\gamma}}
+\label{eq:isen-temp}
+\end{align}
+
+\noindent
+where $T_2$ and $T_1$ are the temperature at consecutive time points.
+Since $T_2$ depends on the value of $\gamma$, which in turn depends
+on $T_2$, \autoref{eq:isen-temp} is iterated until the temperature
+changes by less than one tenth of one percent on consecutive iterations.
+
+\subsection{Uncertainty of Ignition Delay and Compressed Temperature}
+\label{sec:uncertainty}
+
+
+\subsection{New section}
+
+An RCM to be used for studies of homogeneous chemistry---as in this study---%
+must ensure that homogeneous conditions exist inside the reaction
+chamber for the duration of the experiment. Due to the high piston
+velocities required to minimize heat loss and reaction during the
+compression stroke, complex fluid mechanical effects can strongly
+affect the state of the reactants at the EOC. The most important of these
+effects is caused by the motion of the piston itself, where the piston
+pushes the wall boundary layer into a roll-up vortex \cite{Lee1998}.
+This cold vortex mixes with the hotter gases near the center of
+the reaction chamber and causes large spatial inhomogeneities of
+temperature and species.
+
+To facilitate spatially homogeneous conditions in the reactor
+and reduce the effect of the roll-up vortex, it is necessary to trap
+the boundary layer. This is accomplished on the present RCM by a
+crevice machined into the crown of the piston, shown in cross-section
+in \autoref{fig:piston}.
+
+In general, it is rather difficult to directly measure the temperature
+of the reacting gases in the reaction chamber during and after compression.
+Intrusive methods such as thermocouples may introduce inhomogeneities into
+the reactants
 
 \end{document}
