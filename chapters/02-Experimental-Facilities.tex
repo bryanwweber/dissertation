@@ -118,8 +118,7 @@
 }
 
 \usepackage[font={footnotesize}]{caption}
-
-\defaultfontfeatures{Ligatures=TeX}
+\graphicspath{ {../figures/} }
 
 \begin{document}
 \section{Rapid Compression Machine}
@@ -317,6 +316,15 @@ the overall ignition occurs. The first stage ignition delay is the time
 from the end of compression until the first peak in the time derivative
 of the pressure. The overall ignition delay is the time from the end of
 compression until the largest peak in the time derivative of the pressure.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=12cm]{02-Experimental-Facilities/ign-delay-def}
+    \caption{Representative pressure trace indicating the definition of
+    the first stage and overall ignition delays and the corresponding
+    non-reactive pressure trace. EOC stands for End of Compression.}
+    \label{fig:ig-delay-def}
+\end{figure}
 
 Each unique $P_C$ and $T_C$ condition is repeated at least 5 times to
 ensure repeatability of the experiments. The experiment closest to the
