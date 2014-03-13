@@ -132,19 +132,21 @@ study the autoignition behavior of a number of fuels, including
 dimethyl ether, methanol, toluene, benzene, di-isobutylene, iso-octane,
 jet fuel, and gasoline \cite{Kumar2009, Mittal2009, Das2012a, Mittal2006,
 Das2012, Mittal2008a, Kumar2011a, Mittal2007a, Mittal2008, Kumar2010,
-Dooley2010, Dooley2012, Hui2012a, Keromnes2013, Kukkadapu2013, Kukkadapu2012a}.
+Dooley2010, Dooley2012, Hui2012a, Keromnes2013, Kukkadapu2013, Kukkadapu2012a},
+in addition to the studies presented in this work.
 
 A modern RCM operates by rapidly compressing (hence the name) a test gas
 mixture to targeted pressure and temperature conditions. The compression
-is effected by either a single piston or dual, opposed pistons. Upon reaching
-the targeted state, the piston is stopped and fixed in place so that the reactions
-proceed in a constant volume reactor. When studying autoignition with an RCM,
-the primary data are the measured pressure traces during and after the
-compression stroke. These pressure traces are processed to derive
-information such as the pressure and temperature at the end of
-compression (EOC) and the ignition delay that are typically reported.
-It is also possible to employ laser diagnostics or extract gas samples
-from the reactor to examine reaction pathways in more detail.
+is effected by either a single piston or dual, opposed pistons. Upon
+reaching the targeted state, the piston (or pistons) is stopped and
+fixed in place so that the reactions proceed in a constant volume
+reactor. When studying autoignition with an RCM, the primary data are
+the measured pressure traces during and after the compression stroke.
+These pressure traces are processed to derive information such as the
+pressure and temperature at the end of compression (EOC) and the
+ignition delay. It is also possible to employ laser diagnostics or
+extract gas samples from the reactor to examine reaction pathways in
+more detail.
 
 The present RCM is a pneumatically-driven/hydraulically-stopped
 single-piston arrangement. A schematic of the RCM is shown in
@@ -168,34 +170,33 @@ to as the piston assembly.
 
 At the start of an experimental run, with the piston in the
 EOC position, the reaction chamber is vacuumed to less
-than one Torr. Next, the piston assembly is retracted pressurizing
+than one Torr. Next, the piston assembly is retracted by pressurizing
 the front face of the piston in the pneumatic chamber.
 For safety, and to prevent damage to the RCM, the driving tank should
 be filled to limit the acceleration of the piston assembly during this
 retraction.
 The pressure on the front of the pneumatic piston pulls the
 piston assembly rearward and seats the rear of the
-hydraulic piston onto an o-ring in the rear of the
-hydraulic chamber. Then the hydraulic chamber is filled with oil to
+hydraulic piston onto an O-ring in the rear of the
+hydraulic chamber. The hydraulic chamber is filled with oil to
 a pressure of approximately 800 psi, providing a rearward force on the
-front face of the hydraulic piston. The pressure is then released from
+front face of the hydraulic piston. Then, the air pressure is released from
 the front of the pneumatic chamber and the driving tank is filled to
 the desired driving pressure. The
 force on the hydraulic piston opposes the force on the pneumatic piston
 from the driving tank and the piston assembly remains at rest. Then, the
 reaction chamber is filled with the required initial pressure of test
 gas mixture from the mixing tank. Finally, compression is triggered by
-releasing the hydraulic pressure through an electrically operated solenoid
+releasing the hydraulic pressure through an electrically-operated solenoid
 valve. The piston assembly is driven forward by the unbalanced force from
-the pressure in the driving tank on the pneumatic piston
-to compress the test mixture. The gases
+the pressure in the driving tank on the pneumatic piston. The gases
 in the reaction chamber are brought to the compressed pressure ($P_C$) and
 compressed temperature ($T_C$) conditions in approximately 30-50
 milliseconds.
 
 The required driving pressure for a given EOC pressure can be estimated
 from a force balance between the force on the pneumatic piston from the
-driving tank and the force on the reactor piston from the reaction gases,
+driving tank and the force on the reactor piston from the test gases,
 as shown in \autoref{eq:driving-pressure}.
 
 \begin{subequations}
@@ -216,11 +217,11 @@ of the pneumatic piston, and $d_r$ is the diameter of the reactor piston.
 The minimum driving pressure is such that the piston does not rebound at
 the EOC due to pressure on the reactor piston. So that the driving
 pressure can be much lower than the EOC pressure, the diameter ratio of
-the reactor piston to the driver piston is $2/5$, allowing a factor of
+the reactor piston to the driver piston is 2/5, allowing a factor of
 6.25 lower driving pressure than EOC pressure. The actual driving
 pressure should exceed the minimum by some safety margin so that the
 reactor remains at constant volume even if there is some pressure rise
-due to first stage ignition.
+due to heat release in the reaction chamber prior to the main ignition.
 
 There is not a theoretical upper limit on the driving pressure. It is desired that the piston should
 reach the EOC conditions in as short a time as possible to minimize heat
@@ -258,6 +259,8 @@ increased by adding spacers onto the rear of the hydraulic chamber,
 increasing the stroke, and can be reduced by adding split shims onto
 the rear of the reaction chamber, increasing the EOC clearance length.
 
+\subsection{Test Gas Mixture Preparation}
+
 Fuel/oxidizer pre-mixtures are prepared in two mixing tanks, one approximately
 17 L and the other approximately 15 L in volume. These large volumes allow many
 runs to be conducted from one mixture preparation. The mixing tanks are connected
@@ -273,7 +276,7 @@ during mixture preparation and to measure the initial pressure of a given experi
 Most of the fuels studied in this work are liquids at room temperature and
 pressure and have relatively low vapor pressure. A similar procedure, outlined
 below, was used for all of the butanol isomers, \textit{iso}-pentanol, and
-methylcyclohexane. First mixing tanks are vacuumed to an ultimate pressure
+methylcyclohexane. First, the mixing tanks are vacuumed to an ultimate pressure
 less than 5 Torr. The liquid fuel is massed in a syringe to a precision of
 0.01 g prior to injection through a septum. Proportions of O$_2$, N$_2$, and
 Ar are added manometrically at room temperature. The preheat temperature of
@@ -294,16 +297,17 @@ decomposition over the course of a typical set of experiments. Furthermore,
 within this study, each new mixture preparation is checked against previously
 tested conditions to ensure reproducibility.
 
+\subsection{Definition of Ignition Delay}
+\label{sec:ig-delay-def}
+
 The pressure in the reaction chamber during an experiment is monitored by a
 Kistler 6125B piezoelectric dynamic pressure transducer. The charge signal from the
 transducer is amplified and converted to a voltage by a Kistler 5010B charge amplifier.
-The voltage is sent to a National Instruments cDAQ equipped with the NI-XXXX module.
-The signal is recorded by LabView at 50 kHz.
+The voltage is sent to a National Instruments cDAQ equipped with the NI-9215 module.
+The signal is recorded by a LabView VirtualInstrument at 50 kHz.
 
-\label{sec:ig-delay-def}
-\subsection{Definition of Ignition Delay}
 \Autoref{fig:ig-delay-def} shows a representative pressure trace from
-these experiments with methylcyclohexane at $P_C=50$ bar, $T_C=761$ K,
+these experiments with methylcyclohexane (MCH) at $P_C=50$ bar, $T_C=761$ K,
 and $\phi=1.5$ (See \autoref{sec:mch}). Note that \autoref{fig:ig-delay-def}
 shows a case with two stages of ignition; not all of the fuels studied
 had conditions that showed two-stage ignition. Nonetheless, the ignition
@@ -350,7 +354,7 @@ reproduces the conditions of the reactive experiment. A representative
 non-reactive pressure trace is shown in \ref{fig:ig-delay-def}
 corresponding to the experimental conditions in the figure.
 
-\subsection{New section}
+\subsection{Reaction Chamber Homogeneity}
 
 An RCM to be used for studies of homogeneous chemistry---as in this study---%
 must ensure that homogeneous conditions exist inside the reaction
@@ -371,7 +375,7 @@ crevice machined into the crown of the piston, shown in cross-section
 in \autoref{fig:piston}. The boundary layer enters the crevice through
 the converging section as the piston moves forward and is trapped
 within the crevice. The dimensions of the crevice were optimized
-by \textcite{Mitall2006a} through CFD simulations for high-pressure
+by \textcite{Mittal2006a} through CFD simulations for high-pressure
 conditions. Subsequently, \textcite{Mittal2006b} experimentally showed that
 the optimized crevice design provides homogeneous conditions in the
 reaction chamber up to approximately 150 milliseconds after the EOC.
@@ -422,7 +426,7 @@ reactants to the reactor walls and the crevice volume during the
 compression. Under the adiabatic core hypothesis, it is assumed that
 the heat loss from the reactants only occurs in a thin boundary layer
 near the wall, and the central core region is unaffected by heat loss
-(i.e. it is the core is adiabatic) \cite{Desgroux1995}. Thus, the heat
+(i.e. the core is adiabatic) \cite{Desgroux1995}. Thus, the heat
 loss is modeled as an effective reduction in the compression ratio, and
 the temperature during the compression stroke can be calculated by:
 
@@ -438,24 +442,25 @@ are the same as in \autoref{eq:tic}.
 
 After the end of compression, the pressure in the reaction chamber
 decreases, as can be seen in \autoref{fig:ig-delay-def}. This pressure
-decrease is caused by heat loss from the constant volume reaction
+decrease is caused by heat loss from the reactants in the constant volume reaction
 chamber and is accompanied by a decrease in the temperature of the
 reactants. To model the thermodynamic state after the end of compression,
-the adiabatic core hypothesis is again applied, and the heat loss is
+the adiabatic core hypothesis is applied, and the heat loss is
 assumed to occur only in a thin boundary layer near the reactor walls.
-Thus, the core region is again modeled as adiabatic, and the heat loss
+Thus, the core region is modeled as adiabatic, and the heat loss
 from the boundary layer can be modeled as an isentropic volume
 expansion.
 
 \subsection{Determination of Compressed Temperature}
 
-In general, the specific heat ratio is a function of temperature, so
-\autoref{eq:tc} cannot be integrated directly. If the specific heats
-are parameterized with a polynomial fit, it is possible to integrate
-\autoref{eq:tc} directly, but this process is quite tedious; nonetheless,
-it will be applied in \autoref{sec:uncertainty} to determine the uncertainty
-of $T_C$. In general, the simplest method of calculating $T_C$ is to use
-software numerically integrate \autoref{eq:tc}.
+In general, the specific heat ratio used in Eqs. (\ref{eq:tic}) and
+(\ref{eq:tc}) is a function of temperature, so \autoref{eq:tc} cannot
+be integrated directly to find $T_C$. If the specific heats are parameterized with a
+polynomial fit, it is possible to integrate \autoref{eq:tc} directly,
+but this process is quite tedious; nonetheless, it will be applied in
+\autoref{sec:uncertainty} to determine the uncertainty of $T_C$. In
+general, the simplest method of calculating $T_C$ is to use software
+numerically integrate \autoref{eq:tc}.
 
 In this work, the CHEMKIN-Pro \cite{Chemkin2012} software is used to
 perform the numerical integration and calculation of $T_C$. The
@@ -478,7 +483,7 @@ where $V_1$ and $V_2$ are the volumes at consecutive time points,
 $P_1$ and $P_2$ are the pressures at consecutive time points, and
 $\gamma$ is the temperature dependent specific heat. This equation
 is applied during and after the compression stroke to calculate
-the volume trace. 
+the volume trace.
 
 For use in \autoref{eq:volume-trace}, $\gamma$ is tabulated for each
 time point. Thus, the temperature at each time point must also be
@@ -490,14 +495,12 @@ computed by using the isentropic relation for temperature:
 \end{align}
 
 \noindent
-where $T_2$ and $T_1$ are the temperature at consecutive time points.
+where $T_2$ and $T_1$ are the temperatures at consecutive time points.
 Since $T_2$ depends on the value of $\gamma$, which in turn depends
 on $T_2$, \autoref{eq:isen-temp} is iterated until the temperature
 changes by less than one tenth of one percent on consecutive iterations.
 The temperature calculated by \autoref{eq:isen-temp} is typically within
-1K of the temperature calculated by CHEMKIN-Pro; the difference is due
-to differences in the time step used by CHEMKIN-Pro.
-
+1K of the temperature calculated by CHEMKIN-Pro.
 
 \subsection{Uncertainty of Ignition Delay and Compressed Temperature}
 \label{sec:uncertainty}
