@@ -507,6 +507,192 @@ The temperature calculated by \autoref{eq:isen-temp} is typically within
 
 \subsection{Uncertainty of Ignition Delay and Compressed Temperature}
 \label{sec:uncertainty}
+The uncertainty of the compressed temperature is an important paramter
+to report. Since $T_C$ is not measured, we must perform an uncertainty
+propagation analysis on the equation used to calculate $T_C$,
+\autoref{eq:tc}. First, we simplify the term involving $\gamma$ in
+\autoref{eq:tc}. By definition, $\gamma$ is the ratio of the specific heat
+at constant pressure to that at constant volume
+%
+\begin{align}
+\gamma = \frac{C_p}{C_v} = \frac{C_p/R}{C_v/R}
+\end{align}
+
+where $C_p$ and $C_v$ are the specific heats in molar units at constant
+pressure and volume, respectively, and $R$ is the universal gas constant,
+used to produce non-dimensional specific heats. Letting a hat denote the
+non-dimensional specific heats, the difference between the non-dimensional
+specific heats is one, $\hat{C}_v = \hat{C}_p - 1$. Then, it follows that
+%
+\begin{align}
+\label{eq:simplify-gamma}
+\frac{\gamma}{\gamma - 1} = \frac{\frac{\hat{C}_p}{\hat{C}_v}}{\frac{\hat{C}_p}{\hat{C}_v} - 1}
+= \frac{\frac{\hat{C}_p}{\hat{C}_p - 1}}{\frac{\hat{C}_p}{\hat{C}_p - 1} - 1}
+= \frac{\frac{\hat{C}_p}{\hat{C}_p - 1}}{\frac{1}{\hat{C}_p - 1}}
+= \hat{C}_p
+\end{align}
+
+In \autoref{eq:tc}, the mean specific heat ratio for the mixture
+should be used; thus, the simplification as shown in \autoref{eq:simplify-gamma}
+requires that the specific heat $\hat{C}_p$ also be the mean specific
+heat. In the following, we assume that there is negligible
+change of the mean specific heat due to changes in reactant
+mole fractions. The mean specific heat is simply the sum of the product of
+the species mole fractions and their specific heats
+%
+\begin{subequations}
+\begin{align}
+C_{p\text{,total}} &= \sum_i X_i C_{p,i} \\
+\hat{C}_{p\text{,total}} &= \frac{\sum_i X_i C_{p,i}}{R}
+\end{align}
+\end{subequations}
+%
+where $i$ indicates the species and $X_i$ is the species mole fraction.
+In the NASA polynomial formulation used by CHEMKIN, the non-dimensional specific
+heat at constant pressure as a function of temperature is represented by a
+fourth-order polynomial fit
+%
+\begin{align}
+\hat{C}_{p,i} = c_{1,i} + c_{2,i} T + c_{3,i} T^2 + c_{4,i} T^3 + c_{5,i} T^4
+\end{align}
+%
+In general, this means that the specific heat can be non-linear. However,
+the mixtures prepared in this study are composed primarily of
+O$_2$, N$_2$ and Ar (i.e. no more than 5\% of any mixture is the
+fuel), and the specific heats of O$_2$, N$_2$ and Ar are only weakly
+temperature dependent over the range of temperatures experienced during
+compression, we will approximate the total specific heat as a linear function
+of temperature.
+%
+\begin{align}
+\hat{C}_{p\text{,total}} = \frac{\sum_i X_i C_{p,i}}{R} \approx a_1 + a_2 T
+\end{align}
+%
+$a_1$ and $a_2$ are found by fitting the total non-dimensional specific heat
+over the temperature range from 300--1100 K. For the mixtures considered in
+this study, the correlation coefficient for the linear fits are greater than
+0.99 (i.e. $r^2 > 0.99$), indicating a good fit.
+
+With this approximation of the specific heat, we can integrate \autoref{eq:tc}
+to find the compressed temperature
+%
+\begin{subequations}
+\begin{align}
+\ln{\frac{P_C}{P_0}} &= \int_{T_0}^{T_{C}} \! \frac{\gamma}{T\left(\gamma-1\right)} \, \mathrm{d} T
+                      = \int_{T_0}^{T_{C}} \! \frac{\hat{C}_p}{T} \, \mathrm{d} T \\
+&= \int_{T_0}^{T_{C}} \! \frac{a_1 + a_2 T}{T} \, \mathrm{d} T\\
+&= a_1 \ln{T} + a_2 T \Big|_{T_0}^{T_C}
+\end{align}
+\begin{equation}
+\ln{\frac{P_C}{P_0}} = a_1 \ln{T_C} + a_2 \ln{T_C} - \left(a_1 \ln{T_0} + a_2 T_0\right) \label{eq:integrate-tc}
+\end{equation}
+\end{subequations}
+
+Using a computer algebra system, \autoref{eq:integrate-tc} can be solved for $T_C$
+%
+\begin{align}
+\label{eq:explicit-tc}
+T_C = \frac{a_1 W\!\!\left(\frac{a_2}{a_1} \exp\!{\left[\frac{a_2 T_0}{a_1}\right]} T_0 \left[\frac{P_C}{P_0}\right]^{\frac{1}{a_1}}\right)}{a_2}
+\end{align}
+%
+where $W(...)$ is Lambert's W function. With an explicit function for $T_C$, we can
+estimate the uncertainty in $T_C$ by the root square sum of the uncertainty in the parameters in
+\autoref{eq:explicit-tc}. The parameters are $P_C$, $P_0$, $T_0$, $a_1$, and $a_2$.
+%
+\begin{align}
+\label{eq:tc-unc}
+U_{T_C} = \sqrt{\left(\frac{\partial T_C}{\partial P_C} U_{P_C}\right)^2 + \left(\frac{\partial T_C}{\partial P_0} U_{P_0}\right)^2 +
+                \left(\frac{\partial T_C}{\partial T_0} U_{T_0}\right)^2 + \left(\frac{\partial T_C}{\partial a_1} U_{a_1}\right)^2 +
+                \left(\frac{\partial T_C}{\partial a_2} U_{a_2}\right)^2}
+\end{align}
+
+Once again using a computer algebra system, we find the partial derivatives of
+\autoref{eq:explicit-tc} with respect to the parameters. Letting
+%
+\begin{equation*}
+D = W\!\!\left(\frac{a_2}{a_1} \exp\!{\left[\frac{a_2 T_0}{a_1}\right]} T_0 \left[\frac{P_C}{P_0}\right]^{\frac{1}{a_1}}\right)
+\end{equation*}
+%
+the terms are
+%
+\begin{subequations}
+\begin{align}
+\frac{\partial T_C}{\partial P_C} &= \frac{D}{a_2 P_C \left(D + 1\right)} \\
+\frac{\partial T_C}{\partial P_0} &= \frac{-D}{a_2 P_0 \left(D + 1\right)} \\
+\frac{\partial T_C}{\partial T_0} &= \frac{\left(a_1 + a_2 T_0\right) D}{a_2 T_0 \left(D + 1\right)} \\
+\frac{\partial T_C}{\partial a_1} &= \frac{-D \left[a_2 T_0 + \ln{\left(P_C/P_0\right)} - a_1 D\right]}{a_1 a_2 \left(D + 1\right)} \\
+\frac{\partial T_C}{\partial a_2} &= \frac{D\left(a_2 T_0 - a_1 D\right)}{{a_2}^2\left(D + 1\right)}
+\end{align}
+\end{subequations}
+
+The uncertainties of the parameters, $U_j$ in \autoref{eq:tc-unc}, are in
+general found by their own root square sum procedure.
+%
+\begin{align}
+{U_j}^2 = {B_j}^2 + {R_j}^2
+\end{align}
+%
+where the subscript $j$ represents one of the parameters in \autoref{eq:explicit-tc}.
+The total uncertainty of a particular parameters is composed of
+two parts, the systematic or bias uncertainty ($B_j$) and the
+precision or random uncertainty ($R_j$). In general, the bias
+uncertainty is contained in the measurement equipment and can
+be reduced, e.g. by using different equipment; the random uncertainty
+is inherent in any measured process and cannot be reduced by
+experimental techniques. The bias and precision uncertainties
+for each parameter will be discussed in the following.
+
+\subsubsection{Uncertainty in Initial Temperature}
+
+The bias uncertainty in the initial temperature is due to the standard
+limits of error of the K-type thermocouple used to measure the
+initial temperature. According to the Omega Engineering
+specifications, this is "the greater
+of $\SI{2.2}{\degreeCelsius}$ or 0.75\%". The largest initial temperatures
+used in this work, 413 K, lead to an uncertainty of
+$\pm \SI{3}{\kelvin}$; thus, $B_{T_O}=\SI{3}{K}$.
+The precision uncertainty is due to the limit of precision of
+the display on the Omega Engineering CNi3254 process meter used
+to control the process temperature. This is $\pm\SI{0.5}{K}$.
+The total uncertainty of the initial temperature is
+%
+\begin{align}
+U_{T_0} = \sqrt{\left(B_{T_0}\right)^2 + \left(R_{T_0}\right)^2} = \sqrt{\left(\SI{3}{K}\right)^2 + \left(\SI{0.5}{K}\right)^2} = \SI{3.04}{K}
+\end{align}
+
+\subsubsection{Uncertainty in Initial Pressure}
+
+The bias uncertainty in the initial pressure is due to the
+standard error in the pressure transducer used to measure
+the initial pressure. Two different pressure transducers have
+been used in this study; the first, an Omega Engineering PX-303
+(range: 0--50 psia), has a full scale uncertainty of 1.25\%, or
+$\pm \SI{0.625}{psi} \ (\SI{4309.2}{Pa})$. The second transducer is an
+Omega Engineering MMA100V10T2D0T4A6 type (range: 0--5200 torr) and was
+purchased because preliminary results of this uncertainty analysis
+indicated that the largest contributor to the uncertainty of $T_C$ was
+the initial pressure measurement. The full scale uncertainty of the MMA
+type transducers is 0.05\%, resulting in an uncertainty of
+$\pm \SI{2.6}{torr} \ (\SI{346.6}{Pa})$, an order of magnitude lower than
+the PX-303 while also providing more than double the operating range. Total
+uncertainties using the appropriate pressure transducer are reported in
+each experimental section of this work; both transducers will be analyzed
+in this section.
+
+The precision uncertainty is due to the limit of precision of the display
+on the Omega Engineering DP41-B process meter used to monitor the initial
+pressure. This is $\pm\SI{0.005}{torr} \ (\SI{0.666}{Pa})$. The total
+uncertainty of the initial pressure is
+%
+\begin{subequations}
+\begin{equation}
+U_{P_0} = \sqrt{\left(B_{P_0}\right)^2 + \left(R_{P_0}\right)^2} = \sqrt{\left(\SI{4309.2}{Pa}\right)^2 + \left(\SI{0.666}{Pa}\right)^2} = \SI{4309.2}{Pa} \\
+U_{P_0} = \sqrt{\left(B_{P_0}\right)^2 + \left(R_{P_0}\right)^2} = \sqrt{\left(\SI{346.6}{Pa}\right)^2 + \left(\SI{0.666}{Pa}\right)^2} = \SI{346.6}{Pa}
+\end{equation}
+\end{subequations}
+
+\subsubsection{Uncertainty in Compressed Pressure}
+
 
 
 \end{document}
