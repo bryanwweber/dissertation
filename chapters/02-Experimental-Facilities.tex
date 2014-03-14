@@ -455,9 +455,9 @@ expansion.
 \subsection{Determination of Compressed Temperature}
 
 In general, the specific heat ratio used in Eqs. (\ref{eq:tic}) and
-(\ref{eq:tc}) is a function of temperature, so \autoref{eq:tc} cannot
+(\ref{eq:tc}) is a function of temperature and composition, so \autoref{eq:tc} cannot
 be integrated directly to find $T_C$. If the specific heats are parameterized with a
-polynomial fit, it is possible to integrate \autoref{eq:tc} directly,
+linear fit, it is possible to integrate \autoref{eq:tc} directly,
 but this process is quite tedious; nonetheless, it will be applied in
 \autoref{sec:uncertainty} to determine the uncertainty of $T_C$. In
 general, the simplest method of calculating $T_C$ is to use software
@@ -483,7 +483,9 @@ where $V_1$ and $V_2$ are the volumes at consecutive time points,
 $P_1$ and $P_2$ are the pressures at consecutive time points, and
 $\gamma$ is the temperature dependent specific heat. This equation
 is applied during and after the compression stroke to calculate
-the volume trace.
+the volume trace. In \autoref{eq:volume-trace} it is assumed that
+changes in composition of the reactants are negligible during the
+compression stroke.
 
 For use in \autoref{eq:volume-trace}, $\gamma$ is tabulated for each
 time point. Thus, the temperature at each time point must also be
@@ -498,6 +500,8 @@ where $T_2$ and $T_1$ are the temperatures at consecutive time points.
 Since $T_2$ depends on the value of $\gamma$, which in turn depends
 on $T_2$, \autoref{eq:isen-temp} is iterated until the temperature
 changes by less than one tenth of one percent on consecutive iterations.
+Once again, it is assumed that changes in composition have a negligible
+influence on the ratio of specific heats.
 The temperature calculated by \autoref{eq:isen-temp} is typically within
 1K of the temperature calculated by CHEMKIN-Pro.
 
