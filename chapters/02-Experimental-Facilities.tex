@@ -657,7 +657,9 @@ initial temperature. According to the Omega Engineering
 specifications, this is "the greater
 of $\SI{2.2}{\degreeCelsius}$ or 0.75\%". The largest initial temperatures
 used in this work, 413 K, lead to an uncertainty of
-$\pm \SI{3}{\kelvin}$; thus, $B_{T_O}=\SI{3}{K}$.
+$\pm \SI{3}{\kelvin}$; thus, $B_{T_O}=\SI{3}{K}$. Bias uncertainty
+due to the A/D converter in the process meter is negligible compared
+to this uncertainty.
 The precision uncertainty is due to the limit of precision of
 the display on the Omega Engineering CNi3254 process meter used
 to control the process temperature. This is $\pm\SI{0.5}{K}$.
@@ -668,6 +670,7 @@ U_{T_0} = \sqrt{\left(B_{T_0}\right)^2 + \left(R_{T_0}\right)^2} = \sqrt{\left(\
 \end{align}
 
 \subsubsection{Uncertainty in Initial Pressure}
+\label{sec:unc-p0}
 
 The bias uncertainty in the initial pressure is due to the
 standard error in the pressure transducer used to measure
@@ -684,7 +687,8 @@ $\pm \SI{2.6}{torr} \ (\SI{346.6}{Pa})$, an order of magnitude lower than
 the PX-303 while also providing more than double the operating range. Total
 uncertainties using the appropriate pressure transducer are reported in
 each experimental section of this work; both transducers will be analyzed
-in this section.
+in this section. Bias uncertainty due to the signal acquisition equipment
+is negligible compared to the standard error in the pressure transducers.
 
 The precision uncertainty is due to the limit of precision of the display
 on the Omega Engineering DP41-B process meter used to monitor the initial
@@ -715,5 +719,122 @@ U_{P_C} = B_{T_C} = \SI{0.5}{bar}
 \end{equation}
 
 \subsubsection{Uncertainty in the Specific Heat}
+\label{sec:unc-cp}
 
+The uncertainty in the specific heat comes from two sources. First is the
+uncertainty in the mixture composition and second is the uncertainty in
+the linear fit to the total specific heat. The uncertainty in the mixture
+composition can be estimated by the same method as is used for $T_C$. The
+specific heat is given by \autoref{eq:cp}, so we can take partial derivatives
+of that equation with respect to the mole fractions of the species to find
+the total uncertainty
+%
+\begin{equation}
+\label{eq:cp-uncertainty}
+{U_{C_{p\text{,total}}}}^2 = \left(\frac{\partial C_p}{\partial X_1} U_{X_1}\right)^2 + \ldots + \left(\frac{\partial C_p}{\partial X_n} U_{X_n}\right)^2
+\end{equation}
+%
+where $n$ is the total number of species. In \autoref{eq:cp-uncertainty},
+it is assumed that the uncertainty in the specific heats of each species
+is negligible. This is considered an acceptable assumption for stable species
+such as the fuel molecules, oxygen, nitrogen, and argon. Experience with
+several kinetic mechanisms has shown that the typical variation in individual
+$C_p$ fits causes approximately $\mathcal{O}\SI{1}{K}$ changes in $T_C$.
+
+The uncertainty of the mole fraction of the species is estimated differently
+depending on how the species was introduced to the mixing tank. For liquid fuel
+species, experiments with GC/MS have shown that there is approximately 5\%
+variation in mole fraction from the expected value; this value is adopted for
+the total uncertainty of all liquid fuels. The uncertainty of the gaseous
+species' mole fractions can be estimated by the same procedure as in \autoref{sec:unc-p0} since
+the same pressure transducer is used to measure the pressure of the species;
+the mole fraction is related to the pressure by Dalton's Law of Partial Pressure
+\cite{Dalton1801,Gillespie1930}
+%
+\begin{equation}
+X_i = \frac{P_i}{P}
+\end{equation}
+%
+where $P_i$ is the partial pressure of a species and $P$ is the total pressure.
+
+Once the total specific heat has been calculated, a linear fit as a function
+of temperature is applied by least-squares estimation. Since there is an uncertainty
+in the specific heat, there is a corresponding uncertainty in the fit
+coefficients $a$ and $b$. Following the methodology outlined by
+\textcite{York2004}, the values and uncertainties of $a$ and $b$
+are calculated iteratively. This procedure gives identical values of the
+slope, intercept, and standard errors as maximum likelihood estimation \cite{York2004}.
+\Autoref{eq:york} is reproduced from \textcite{York2004}, and is presented
+as Eq. (13) in that work.
+%
+\begin{subequations}
+\label{eq:york}
+\begin{align}
+a &= \overline{Y} - b\overline{X}  \label{eq:intercept}\\
+b &= \frac{\sum W_i \beta_i V_i}{\sum W_i \beta_i U_i} \label{eq:slope}\\
+\sigma_a^2 &= \frac{1}{\sum W_i} + \overline{x}^2\sigma_b^2 \label{eq:unc-intercept}\\
+\sigma_b^2 &= \frac{1}{\sum W_i u_i^2} \label{eq:unc-slope}
+\end{align}
+\end{subequations}
+%
+where the symbols in \autoref{eq:york} are defined in \autoref{tab:york-syms}.
+The general formulation is given here because it will be reused in
+\autoref{sec:unc-gcms}; application to this section will
+be given below.
+
+\begin{table}
+\centering
+\caption{Symbols in \autoref{eq:york}. Reproduced from the work of \textcite{York2004}.}
+\label{tab:york-syms}
+\begin{tabular}{ll}
+\toprule
+Symbol & Meaning \\
+\midrule
+$a$, $b$ & $y$ intercept and slope of best line, $y=a+b x$ \\
+$\sigma_a$, $\sigma_b$ & Standard errors of $a$ and $b$ \\
+$X_i$, $Y_i$ & Calculated total specific heat for a given temperature \\
+$x_i$, $y_i$ & Least-squares adjusted points \\
+$\omega(X_i)$, $\omega(Y_i)$ & Weights of $X_i$ and $Y_i$ \\
+\addlinespace
+$\alpha_i$ & $\sqrt{\omega(X_i)\omega(Y_i)}$ \\
+\addlinespace
+$r_i$ & Correlation coefficient between uncertainty in $X_i$ and $Y_i$ \\
+\addlinespace
+$W_i$ & $\dfrac{\omega(X_i)\omega(Y_i)}{\omega(X_i) + b^2\omega(Y_i) - 2br_i\alpha_i}$ \\
+\addlinespace
+$\overline{X}$, $\overline{Y}$ & $\dfrac{\sum W_i X_i}{\sum W_i}$, $\dfrac{\sum W_i Y_i}{\sum W_i}$ \\
+\addlinespace
+$U_i$, $V_i$ & $X_i - \overline{X}$, $Y_i - \overline{Y}$ \\
+\addlinespace
+$\overline{x}$ & $\dfrac{\sum W_i x_i}{\sum W_i}$ \\
+\addlinespace
+$\beta_i$ & $W_i \left[\dfrac{U_i}{\omega(Y_i)} + \dfrac{bV_i}{\omega(X_i)} - \left(bU_i + V_i\right)\dfrac{r_i}{\alpha_i}\right]$ \\
+\addlinespace
+\bottomrule
+\end{tabular}
+\end{table}
+
+In this section, $X_i$ are the temperatures at which \autoref{eq:cp-total}
+is evaluated and $Y_i$ are the total specific heats evaluated from \autoref{eq:cp-total}.
+The weighting of the specific heats---$\omega(Y_i)$---is taken
+to be the reciprocal of the uncertainty as calculated by
+\autoref{eq:cp-uncertainty}. Furthermore, there is no uncertainty in the
+abscissa (i.e. the temperature) and $\omega(X_i) = 1$. Finally, since there
+is no uncertainty in the temperature, there is no correlation between
+the uncertainties, i.e. $r_i = 0$.
+
+First, the slope $b$ is estimated by simple least-squares regression of the total
+specific heat on the temperature. Then, this slope is used to estimate the
+adjusted weighting of each point, $W_i$. Next, $U_i$ and $V_i$ are calculated
+based on the adjusted weighting. Using $U_i$, $V_i$, and $\beta_i$, a new value of the
+slope is calculated from \autoref{eq:slope}, and the process is repeated until the slope converges.
+Convergence is determined when the slope changes by less than 0.001 on successive
+iterations. Then, using \autoref{eq:intercept}, the intercept $a$ is calculated.
+Finally, the standard error of each parameter is
+calculated using the final values of the slope and intercept with Eqs. (\ref{eq:unc-slope})
+and (\ref{eq:unc-intercept}).
+
+For the mixtures considered in
+this study, the correlation coefficient for the linear fits are greater than
+0.99 (i.e. $r^2 > 0.99$), indicating a good fit.
 \end{document}
