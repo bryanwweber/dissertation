@@ -543,6 +543,7 @@ mole fractions. The mean specific heat is simply the sum of the product of
 the species mole fractions and their specific heats
 %
 \begin{subequations}
+\label{eq:cp}
 \begin{align}
 C_{p\text{,total}} &= \sum_i X_i C_{p,i} \\
 \hat{C}_{p\text{,total}} &= \frac{\sum_i X_i C_{p,i}}{R}
@@ -566,14 +567,18 @@ temperature dependent over the range of temperatures experienced during
 compression, we will approximate the total specific heat as a linear function
 of temperature.
 %
-\begin{align}
-\hat{C}_{p\text{,total}} = \frac{\sum_i X_i C_{p,i}}{R} \approx a_1 + a_2 T
-\end{align}
+\begin{equation}%
+\label{eq:cp-total}
+\begin{split}
+\hat{C}_{p\text{,total}} &= \sum_i X_i \hat{C}_{p,i} \\
+&= \sum_i X_i \left( \sum_{j=1}^5 c_{j,i} T^{j-1} \right) \\
+&\approx a + b T
+\end{split}
+\end{equation}
 %
-$a_1$ and $a_2$ are found by fitting the total non-dimensional specific heat
-over the temperature range from 300--1100 K. For the mixtures considered in
-this study, the correlation coefficient for the linear fits are greater than
-0.99 (i.e. $r^2 > 0.99$), indicating a good fit.
+$a$ and $b$ are found by fitting the total non-dimensional specific heat
+over the temperature range from 300--1100 K, as discussed below in
+\autoref{sec:unc-cp}.
 
 With this approximation of the specific heat, we can integrate \autoref{eq:tc}
 to find the compressed temperature
