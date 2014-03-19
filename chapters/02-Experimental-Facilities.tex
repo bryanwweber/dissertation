@@ -125,6 +125,8 @@
 
 \usepackage{siunitx}
 
+\usepackage{multirow}
+
 \begin{document}
 \section{Rapid Compression Machine}
 \label{sec:rcm}
@@ -677,14 +679,14 @@ The bias uncertainty in the initial pressure is due to the
 standard error in the pressure transducer used to measure
 the initial pressure. Two different pressure transducers have
 been used in this study; the first, an Omega Engineering PX-303
-(range: 0--50 psia), has a full scale uncertainty of 1.25\%, or
+(range: 0--\SI{50}{psia}), has a full scale uncertainty of 1.25\%, or
 $\pm \SI{0.625}{psi} \ (\SI{4309.2}{Pa})$. The second transducer is an
-Omega Engineering MMA100V10T2D0T4A6 type (range: 0--5200 torr) and was
+Omega Engineering MMA100V10T2D0T4A6 type (range: 0--\SI{5200}{Torr}) and was
 purchased because preliminary results of this uncertainty analysis
 indicated that the largest contributor to the uncertainty of $T_C$ was
 the initial pressure measurement. The full scale uncertainty of the MMA
 type transducers is 0.05\%, resulting in an uncertainty of
-$\pm \SI{2.6}{torr} \ (\SI{346.6}{Pa})$, an order of magnitude lower than
+$\pm \SI{2.6}{Torr} \ (\SI{346.6}{Pa})$, an order of magnitude lower than
 the PX-303 while also providing more than double the operating range. Total
 uncertainties using the appropriate pressure transducer are reported in
 each experimental section of this work; both transducers will be analyzed
@@ -711,7 +713,7 @@ manufacturer calibration, the deviation of the full scale output from
 linearity is less then 0.2\%, indicating that $B_{T_C}=\SI{0.5}{bar}$.
 The uncertainties in the signal acquisition equipment are negligible
 compared to this uncertainty. The precision uncertainty is due to the limit
-of precision of the output of the pressure, and is 0.0000005 bar. This
+of precision of the output of the pressure, and is \SI{5E-7}{bar}. This
 is negligible compared to the bias uncertainty, so the total uncertainty
 of the compressed pressure is
 %
@@ -732,7 +734,10 @@ the total uncertainty
 %
 \begin{equation}
 \label{eq:cp-uncertainty}
-{U_{C_{p\text{,total}}}}^2 = \left(\frac{\partial C_p}{\partial X_1} U_{X_1}\right)^2 + \ldots + \left(\frac{\partial C_p}{\partial X_n} U_{X_n}\right)^2
+\begin{split}
+\left(U_{\hat{C}_{p\text{,total}}}\right)^2 &= \left(\frac{\partial \hat{C}_p}{\partial X_1} U_{X_1}\right)^2 + \ldots + \left(\frac{\partial \hat{C}_p}{\partial X_n} U_{X_n}\right)^2 \\
+&= \left(\hat{C}_{p,1} U_{X_1}\right)^2 + \ldots + \left(\hat{C}_{p,n} U_{X_n}\right)^2
+\end{split}
 \end{equation}
 %
 where $n$ is the total number of species. In \autoref{eq:cp-uncertainty},
@@ -740,16 +745,15 @@ it is assumed that the uncertainty in the specific heats of each species
 is negligible. This is considered an acceptable assumption for stable species
 such as the fuel molecules, oxygen, nitrogen, and argon. Experience with
 several kinetic mechanisms has shown that the typical variation in individual
-$C_p$ fits causes approximately $\mathcal{O}\SI{1}{K}$ changes in $T_C$.
+$\hat{C}_p$ fits causes approximately $\mathcal{O}(\SI{1}{K})$ changes in $T_C$.
 
 The uncertainty of the mole fraction of the species is estimated differently
 depending on how the species was introduced to the mixing tank. For liquid fuel
 species, experiments with GC/MS have shown that there is approximately 5\%
-variation in mole fraction from the expected value; this value is adopted for
-the total uncertainty of all liquid fuels. The uncertainty of the gaseous
-species' mole fractions can be estimated by the same procedure as in \autoref{sec:unc-p0} since
-the same pressure transducer is used to measure the pressure of the species;
-the mole fraction is related to the pressure by Dalton's Law of Partial Pressure
+variation in mole fraction from the expected value \cite{Weber2011}; this value is adopted for
+the total uncertainty of all liquid fuels. The mole fraction of the gaseous species
+is determined by their partial pressures when filling; the mole fraction is
+related to the pressure by Dalton's Law of Partial Pressure
 \cite{Dalton1801,Gillespie1930}
 %
 \begin{equation}
@@ -757,6 +761,39 @@ X_i = \frac{P_i}{P}
 \end{equation}
 %
 where $P_i$ is the partial pressure of a species and $P$ is the total pressure.
+It follows that
+%
+\begin{equation}
+\begin{split}
+\left(U_{X_i}\right)^2 &= \left(\frac{\partial X_i}{\partial P_i} U_{P_i}\right)^2 + \left(\frac{\partial X_i}{\partial P} U_P\right)^2 \\
+&= \left(\frac{U_{P_i}}{P}\right)^2 + \left(\frac{{-P_i}}{P^2} U_P\right)^2
+\end{split}
+\end{equation}
+%
+The uncertainty of the pressures $P_i$ and $P$ can be estimated by
+the same procedure as in \autoref{sec:unc-p0} since the same pressure transducer
+is used to measure the pressure. A typical total pressure after filling is
+approximately \SI{2000}{Torr} ($\approx$ \SI{266644}{Pa}). The mixtures in
+\autoref{tab:mixtures} are the mixtures that will be analyzed in the
+following because they represent a worst case scenario in that the mole
+fraction of the fuel or oxygen is maximized in them.
+
+\begin{table}
+\centering
+\caption{Mixtures studied in the uncertainty analysis.}
+\label{tab:mixtures}
+\begin{tabular}{l *{4}{c}}
+    \toprule
+    \multirow{2}[0]{*}{Fuel} & \multicolumn{4}{c}{Mole Fraction} \\
+         & Fuel & Oxygen & Nitrogen & Ar \\
+    \midrule
+    Methylcyclohexane   & 0.0107 & 0.2240 & 0.0000 & 0.7653 \\
+    \textit{n}-Butanol  & 0.0676 & 0.2030 & 0.7294 & 0.0000 \\
+    \textit{i}-Pentanol & 0.0531 & 0.1989 & 0.7480 & 0.0000 \\
+    Propene             & 0.0854 & 0.1921 & 0.7225 & 0.0000 \\
+    \bottomrule
+    \end{tabular}
+\end{table}
 
 Once the total specific heat has been calculated, a linear fit as a function
 of temperature is applied by least-squares estimation. Since there is an uncertainty
