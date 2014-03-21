@@ -115,7 +115,15 @@
   \endgroup%
 }
 
-\usepackage[font={footnotesize}]{caption}
+\usepackage{caption}
+\DeclareCaptionLabelFormat{bf}{\textbf{#1 #2}}
+\captionsetup{
+    font=small ,
+    labelsep=colon ,
+    labelformat=bf,
+}
+
+\usepackage{subfig}
 
 \usepackage{mathtools}
 
@@ -134,8 +142,10 @@
     list-units = single ,
 }%
 
-%\usepackage{floatrows}
+\usepackage{floatrow}
+\floatsetup[table]{style=plaintop}
 
+\usepackage{layouts}
 %End of extra imports
 
 \begin{document}
@@ -262,22 +272,20 @@ reactive of all four isomers at a pressure of \SI{30}{\bar} and over the tempera
 range (\SIrange{715}{910}{\kelvin}) investigated.
 
 \begin{figure}
-    \centering
-    \begin{minipage}{7.9cm}
-        \includegraphics[width=7.9cm]{03-Butanol/buoh-15bar}
-        \caption{Ignition delays of the four isomers of butanol at compressed
+    \begin{floatrow}
+    \ffigbox
+        {\includegraphics[width=7.9cm]{03-Butanol/buoh-15bar}}
+        {\caption{Ignition delays of the four isomers of butanol at compressed
             pressure $P_C=\SI{15}{\bar}$. Dashed lines are least squares fits to the
             data.}
-        \label{fig:buoh-15bar}
-    \end{minipage}
-    \quad
-    \begin{minipage}{7.9cm}
-        \includegraphics[width=7.9cm]{03-Butanol/buoh-30bar}
-        \caption{Ignition delays of the four isomers of butanol at compressed
+        \label{fig:buoh-15bar}}
+    \ffigbox
+        {\includegraphics[width=7.9cm]{03-Butanol/buoh-30bar}}
+        {\caption{Ignition delays of the four isomers of butanol at compressed
             pressure $P_C=\SI{30}{\bar}$. Dashed lines are least squares fits to the
             data.}
-        \label{fig:buoh-30bar}
-    \end{minipage}
+        \label{fig:buoh-30bar}}
+    \end{floatrow}
 \end{figure}
 
 The fact that \textit{t}-butanol becomes relatively more reactive than
@@ -304,20 +312,18 @@ response for any \textit{t}-butanol experiments. Therefore, we adopt the phrase
 "pre-ignition heat release" rather than "two-stage ignition" in this work.
 
 \begin{figure}
-    \centering
-    \begin{minipage}{7.9cm}
-        \includegraphics[width=7.9cm]{03-Butanol/tbuoh-15bar}
-        \caption{Pressure traces of the \SI{15}{\bar} \textit{t}-butanol experiments,
+    \begin{floatrow}
+    \ffigbox
+        {\includegraphics[width=7.9cm]{03-Butanol/tbuoh-15bar}}
+        {\caption{Pressure traces of the \SI{15}{\bar} \textit{t}-butanol experiments,
             in stoichiometric air.}
-        \label{fig:tbuoh-15bar}
-    \end{minipage}
-    \quad
-    \begin{minipage}{7.9cm}
-        \includegraphics[width=7.9cm]{03-Butanol/tbuoh-phi10}
-        \caption{Pressure traces of the \SI{30}{\bar} \textit{t}-butanol experiments,
+        \label{fig:tbuoh-15bar}}
+    \ffigbox
+        {\includegraphics[width=7.9cm]{03-Butanol/tbuoh-phi10}}
+        {\caption{Pressure traces of the \SI{30}{\bar} \textit{t}-butanol experiments,
             in stoichiometric air.}
-        \label{fig:tbuoh-phi10}
-    \end{minipage}
+        \label{fig:tbuoh-phi10}}
+    \end{floatrow}
 \end{figure}
 
 In an effort to understand the reactions causing the pre-ignition heat release,
@@ -330,7 +336,6 @@ slopes are similar, indicating that the overall activation energies are similar
 for the conditions investigated.
 
 \begin{figure}
-    \centering
     \includegraphics[width=12cm]{03-Butanol/tbuoh-delays}
     \caption{Ignition delays of three equivalence ratios of \textit{t}-butanol
     in air, for $P_C=\SI{30}{\bar}$. Lines represent least squares fits to the data.}
@@ -350,20 +355,18 @@ qualitative change in pre-ignition behavior is due to the change of fuel mole
 fraction, where higher fuel loading promotes pre-ignition heat release.
 
 \begin{figure}
-    \centering
-    \begin{minipage}{7.9cm}
-        \includegraphics[width=7.9cm]{03-Butanol/tbuoh-phi05}
-        \caption{Pressure traces of the \SI{30}{\bar} \textit{t}-butanol experiments,
+    \begin{floatrow}
+    \ffigbox
+        {\includegraphics[width=7.9cm]{03-Butanol/tbuoh-phi05}}
+        {\caption{Pressure traces of the \SI{30}{\bar} \textit{t}-butanol experiments,
             $\phi=0.5$ in air.}
-        \label{fig:tbuoh-phi05}
-    \end{minipage}
-    \quad
-    \begin{minipage}{7.9cm}
-        \includegraphics[width=7.9cm]{03-Butanol/tbuoh-phi20}
-        \caption{Pressure traces of the \SI{30}{\bar} \textit{t}-butanol experiments,
+        \label{fig:tbuoh-phi05}}
+    \ffigbox
+        {\includegraphics[width=7.9cm]{03-Butanol/tbuoh-phi20}}
+        {\caption{Pressure traces of the \SI{30}{\bar} \textit{t}-butanol experiments,
             $\phi=2.0$ in air.}
-        \label{fig:tbuoh-phi20}
-    \end{minipage}
+        \label{fig:tbuoh-phi20}}
+    \end{floatrow}
 \end{figure}
 
 \section{Simulation Results}
@@ -403,22 +406,20 @@ Nevertheless, this agreement is quite good, especially considering that the
 model is not validated for these conditions.
 
 \begin{figure}
-    \centering
-    \begin{minipage}{7.9cm}
-        \includegraphics[width=7.9cm]{03-Butanol/buoh-15sim}
-        \caption{$P_C=\SI{15}{\bar}$, stoichiometric mixtures in air. Comparison of
+    \begin{floatrow}
+    \ffigbox
+        {\includegraphics[width=7.9cm]{03-Butanol/buoh-15sim}}
+        {\caption{$P_C=\SI{15}{\bar}$, stoichiometric mixtures in air. Comparison of
             VPRO simulations using the kinetic mechanism of
             \textcite{Sarathy2012} with experimental ignition delays.}
-        \label{fig:buoh-15sim}
-    \end{minipage}
-    \quad
-    \begin{minipage}{7.9cm}
-        \includegraphics[width=7.9cm]{03-Butanol/buoh-30sim}
-        \caption{$P_C=\SI{30}{\bar}$, stoichiometric mixtures in air. Comparison of
+        \label{fig:buoh-15sim}}
+    \ffigbox
+        {\includegraphics[width=7.9cm]{03-Butanol/buoh-30sim}}
+        {\caption{$P_C=\SI{30}{\bar}$, stoichiometric mixtures in air. Comparison of
             VPRO simulations using the kinetic mechanism of
             \textcite{Sarathy2012} with experimental ignition delays.}
-        \label{fig:buoh-30sim}
-    \end{minipage}
+        \label{fig:buoh-30sim}}
+    \end{floatrow}
 \end{figure}
 
 VPRO simulations for \textit{n}- and \textit{s}-butanol (and also some
@@ -434,7 +435,6 @@ while the \textcite{Sarathy2012} mechanism under-predicts the ignition delay.
 The reason for these diverging predictions will be explored and discussed below.
 
 \begin{figure}
-    \centering
     \includegraphics[width=12cm]{03-Butanol/buoh-mit}
     \caption{Comparison of VPRO simulations using the kinetic mechanism of
         \textcite{Sarathy2012} (solid lines) and the MIT mechanism
@@ -461,7 +461,6 @@ pressure, and equivalence ratio regime, the mismatch of the pre-ignition
 behavior may not be of critical importance, depending on the application.
 
 \begin{figure}
-    \centering
     \includegraphics[width=12cm]{03-Butanol/tbuoh-sims}
     \caption{Comparison of the simulations using the kinetic mechanism of
         \textcite{Sarathy2012} for three equivalence ratio mixtures of
@@ -470,33 +469,27 @@ behavior may not be of critical importance, depending on the application.
 \end{figure}
 
 \begin{figure}
-    \centering
-    \includegraphics[width=12cm]{03-Butanol/tbuoh-05press}
-    \caption{$\phi=0.5$ in air. Pressure traces of selected
-        \textit{t}-butanol experiments compared with the corresponding
-        non-reactive and simulated traces, using the mechanism of
-        \textcite{Sarathy2012}.}
-    \label{fig:tbuoh-05press}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=12cm]{03-Butanol/tbuoh-10press}
-    \caption{$\phi=1.0$ in air. Pressure traces of selected
-        \textit{t}-butanol experiments compared with the corresponding
-        non-reactive and simulated traces, using the mechanism of
-        \textcite{Sarathy2012}.}
-    \label{fig:tbuoh-10press}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=12cm]{03-Butanol/tbuoh-20press}
-    \caption{$\phi=2.0$ in air. Pressure traces of selected
-        \textit{t}-butanol experiments compared with the corresponding
-        non-reactive and simulated traces, using the mechanism of
-        \textcite{Sarathy2012}.}
-    \label{fig:tbuoh-20press}
+    \ffigbox{%
+    \begin{subfloatrow}[3]
+        \ffigbox[\FBwidth]
+            {\includegraphics[width=5.2cm]{03-Butanol/tbuoh-05press}}
+            {\caption{$\phi=0.5$ in air.}
+            \label{fig:tbuoh-05press}}
+        \ffigbox[\FBwidth]
+            {\includegraphics[width=5.2cm]{03-Butanol/tbuoh-10press}}
+            {\caption{$\phi=1.0$ in air.}
+            \label{fig:tbuoh-10press}}
+        \ffigbox[\FBwidth]
+            {\includegraphics[width=5.2cm]{03-Butanol/tbuoh-20press}}
+            {\caption{$\phi=2.0$ in air.}
+            \label{fig:tbuoh-20press}}
+    \end{subfloatrow}
+    }%
+    {\caption{Pressure traces of selected
+     \textit{t}-butanol experiments compared with the corresponding
+     non-reactive and simulated traces, using the mechanism of
+     \textcite{Sarathy2012}.}
+    }
 \end{figure}
 
 \section{Discussion}
@@ -523,42 +516,39 @@ in the present RCM experiments. The plain text percentages on top of the arrows
 are the \SI{15}{\bar} case and the bold numbers underneath are for the \SI{30}{\bar} case.
 
 \begin{figure}
-    \centering
-    \begin{minipage}{7.9cm}
-        \includegraphics[width=7.9cm]{03-Butanol/buoh-npath}
-        \caption{Pathway analysis for simulations of \textit{n}-butanol at
+    \begin{floatrow}
+    \ffigbox
+        {\includegraphics[width=7.9cm]{03-Butanol/buoh-npath}}
+        {\caption{Pathway analysis for simulations of \textit{n}-butanol at
             temperature of \SI{750}{\kelvin}, in stoichiometric air, using the mechanism of
             \textcite{Sarathy2012}. Percentages in normal text represent an
             initial condition of \SI{15}{\bar}; bold text is for \SI{30}{\bar}.}
-        \label{fig:buoh-npath}
-    \end{minipage}
-    \quad
-    \begin{minipage}{7.9cm}
-        \includegraphics[width=7.9cm]{03-Butanol/buoh-spath}
-        \caption{Pathway analysis for simulations of \textit{s}-butanol at
+        \label{fig:buoh-npath}}
+    \ffigbox
+        {\includegraphics[width=7.9cm]{03-Butanol/buoh-spath}}
+        {\caption{Pathway analysis for simulations of \textit{s}-butanol at
             temperature of \SI{750}{\kelvin}, in stoichiometric air, using the mechanism of
             \textcite{Sarathy2012}. Percentages in normal text represent an
             initial condition of \SI{15}{\bar}; bold text is for \SI{30}{\bar}.}
-        \label{fig:buoh-spath}
-    \end{minipage}
-    \newline
-    \begin{minipage}{7.9cm}
-        \includegraphics[width=7.9cm]{03-Butanol/buoh-tpath}
-        \caption{Pathway analysis for simulations of \textit{t}-butanol at
+        \label{fig:buoh-spath}}
+    \end{floatrow}
+    \par
+    \begin{floatrow}
+    \ffigbox
+        {\includegraphics[width=7.9cm]{03-Butanol/buoh-tpath}}
+        {\caption{Pathway analysis for simulations of \textit{t}-butanol at
             temperature of \SI{750}{\kelvin}, in stoichiometric air, using the mechanism of
             \textcite{Sarathy2012}. Percentages in normal text represent an
             initial condition of \SI{15}{\bar}; bold text is for \SI{30}{\bar}.}
-        \label{fig:buoh-tpath}
-    \end{minipage}
-    \quad
-    \begin{minipage}{7.9cm}
-        \includegraphics[width=7.9cm]{03-Butanol/buoh-ipath}
-        \caption{Pathway analysis for simulations of \textit{i}-butanol at
+        \label{fig:buoh-tpath}}
+    \ffigbox
+        {\includegraphics[width=7.9cm]{03-Butanol/buoh-ipath}}
+        {\caption{Pathway analysis for simulations of \textit{i}-butanol at
             temperature of \SI{750}{\kelvin}, in stoichiometric air, using the mechanism of
             \textcite{Sarathy2012}. Percentages in normal text represent an
             initial condition of \SI{15}{\bar}; bold text is for \SI{30}{\bar}.}
-        \label{fig:buoh-ipath}
-    \end{minipage}
+        \label{fig:buoh-ipath}}
+    \end{floatrow}
 \end{figure}
 
 In the following discussion, carbon-centered radicals are labeled according to
@@ -615,7 +605,6 @@ dominance of this reaction at early times is unique to \textit{t}-butanol
 ignition, and appears to be driving the pre-ignition heat release.
 
 \begin{figure}
-    \centering
     \includegraphics[height=11cm]{03-Butanol/buoh-heat}
     \caption{Total cumulative heat release and cumulative heat release by
         important reactions (inset) as a function of fuel consumption from a
@@ -626,7 +615,6 @@ ignition, and appears to be driving the pre-ignition heat release.
 \end{figure}
 
 \begin{figure}
-    \centering
     R1: \quad \raisebox{-0.5\height}{\includegraphics[height=2cm]{03-Butanol/buoh-reactions/tc4h8oh}}
     {\Large \textbf{+}}\enspace
     \raisebox{-0.5\height}{\includegraphics[height=0.5cm]{03-Butanol/buoh-reactions/oxygen}}
@@ -756,7 +744,6 @@ delay increases. These results are for CONV simulations with initial conditions
 of \SI{750}{\kelvin} and \SI{30}{\bar} as well as \SI{1200}{\kelvin} and \SI{30}{\bar}.
 
 \begin{figure}
-    \centering
     \includegraphics[width=10cm,angle=-90]{03-Butanol/buoh-sens}
     \caption{Linear brute force sensitivity analysis of the ignition delay with
         respect to the A-factors of the listed reactions in the mechanism from
