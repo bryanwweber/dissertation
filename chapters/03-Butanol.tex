@@ -125,6 +125,16 @@
 
 \newcommand{\linebreakcell}[2][c]{%
   \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+  
+\usepackage{siunitx}
+\sisetup{%
+    group-separator = {,} ,
+    range-units = single ,
+    range-phrase = -- ,
+    list-units = single ,
+}%
+
+%\usepackage{floatrows}
 
 %End of extra imports
 
@@ -138,15 +148,15 @@ reactant in the mixture, the absolute mass of fuel, the equivalence ratio
 ($\phi$), and the oxidizer ratio ($X_{O_2}:X_{\mathrm{inert}}$, where $X$
 indicates mole fraction) are specified. \textit{s}- and \textit{i}-Butanol are
 liquid at room temperature and have relatively low vapor pressure; therefore,
-each is measured gravimetrically in a syringe to within 0.01 g of the specified
-value. \textit{t}-Butanol is solid at room temperature (melting point: $25^{\circ}$ C),
+each is measured gravimetrically in a syringe to within \SI{0.01}{g} of the specified
+value. \textit{t}-Butanol is solid at room temperature (melting point: \SI{25}{\celsius}),
 and is melted before being handled in the same procedure as the other fuels.
-The 17 L mixing tank is vacuumed to an ultimate pressure less than 5 Torr prior
+The \SI{17}{\liter} mixing tank is vacuumed to an ultimate pressure less than \SI{5}{Torr} prior
 to the injection of the liquid fuel through a septum. Proportions of O$_2$ and
 N$_2$ are added manometrically at room temperature. The preheat temperature of
 the RCM is set above the saturation point for each fuel to ensure complete
 vaporization. A magnetic stirrer mixes the reactants. The temperature inside
-the mixing tank is allowed to equilibrate for approximately 1.5 hours.
+the mixing tank is allowed to equilibrate for approximately \SI{1.5}{\hour}.
 
 This approach to mixture preparation has been validated in several previous
 studies by withdrawing gas samples from the mixing tank and analyzing the
@@ -166,7 +176,7 @@ regions not covered extensively in previous work. In addition, the fuel loading
 conditions have been chosen to complement previous work; the studies by
 \textcite{Stranic2012} and \textcite{Moss2008} used relatively dilute mixtures,
 so we have included higher fuel loading conditions. Furthermore, the compressed
-temperature conditions we have studied ($T_C=715$--$910$ K) have not been examined
+temperature conditions we have studied ($T_C=$\SIrange{715}{910}{\kelvin}) have not been examined
 in any other study, to our knowledge.
 
 Each compressed pressure and temperature condition is repeated at least six
@@ -204,27 +214,27 @@ presentation are then chosen as the closest to the mean.
 \label{sec:buoh-expts}
 
 \Autoref{fig:buoh-15bar} shows the ignition delays of the four isomers of
-butanol measured in the RCM, at compressed pressure of $P_C=15$ bar for
+butanol measured in the RCM, at compressed pressure of $P_C=\SI{15}{\bar}$ for
 stoichiometric mixture in air. The dashed line for each isomer is a least
 squares fit to the data. The vertical error bars are two standard deviations
 of the measurements of the ignition delay. The standard deviation is computed
 based on all the runs at a particular compressed temperature and pressure
 condition. A conservative estimate of the uncertainty in $T_C$ was calculated
-in our previous work to be approximately 0.7–1.7\%. Due to the similar nature
+in our previous work to be approximately \SIrange{0.7}{1.7}{\percent}. Due to the similar nature
 of these experiments, and the similar properties of the fuels, this estimate
 is considered to be valid for this study as well.
 
 \Autoref{fig:buoh-15bar} demonstrates the differences in reactivity between
 the isomers for stoichiometric fuel/air mixtures at compressed pressure
-$P_C=15$ bar. \textit{n}-Butanol is clearly the most reactive, followed by
+$P_C=\SI{15}{\bar}$. \textit{n}-Butanol is clearly the most reactive, followed by
 \textit{s}- and \textit{i}-butanol, which have very similar reactivities in
 this temperature and pressure range. \textit{t}-Butanol is the least reactive.
 
-The order of reactivity found in the RCM at 15 bar agrees with the shock tube
-study at higher temperatures (approximately 1275−1667 K) and lower pressure
-(1.5 atm) by \textcite{Stranic2012} but differs slightly from the studies of
-\textcite{Moss2008} who measured ignition delays in a shock tube near 1.5 atm
-and between 1275−1400 K, and \textcite{Veloo2011a} who measured
+The order of reactivity found in the RCM at \SI{15}{\bar} agrees with the shock tube
+study at higher temperatures (approximately \SIrange{1275}{1667}{\kelvin}) and lower pressure
+(\SI{1.5}{atm}) by \textcite{Stranic2012} but differs slightly from the studies of
+\textcite{Moss2008} who measured ignition delays in a shock tube near \SI{1.5}{atm}
+and between \SIrange{1275}{1400}{\kelvin}, and \textcite{Veloo2011a} who measured
 atmospheric-pressure laminar flame speeds. In particular, \textcite{Moss2008}
 and \textcite{Veloo2011a} found distinct differences in reactivity between
 \textit{s}- and \textit{i}-butanol, but the present study and the study by
@@ -239,24 +249,24 @@ temperature and pressure dependence. This is corroborated by the results shown
 in \autoref{fig:buoh-30bar}. In \autoref{fig:buoh-30bar}, the order of
 reactivity is different than in \autoref{fig:buoh-15bar}, where the only
 variation between the plots is the compressed pressure; in
-\autoref{fig:buoh-30bar} the compressed pressure is $P_C=30$ bar.
+\autoref{fig:buoh-30bar} the compressed pressure is $P_C=\SI{30}{\bar}$.
 \autoref{fig:buoh-30bar} shows \textit{i}-butanol to be the least reactive,
 \textit{s}-butanol to be less reactive than \textit{t}-butanol (but similar),
 and \textit{n}-butanol to be the most reactive. Interestingly, the results of
 the shock tube study by \textcite{Stranic2012} differ from those in the current
 study at higher pressure (despite the agreement at lower pressure). In their
 study, \textcite{Stranic2012} found \textit{i}- and \textit{n}-butanol to have
-similar reactivity near 43 atm. in the temperature range of 1020--1280 K,
+similar reactivity near \SI{43}{atm} in the temperature range of \SIrange{1020}{1280}{\kelvin},
 whereas in the present study we find \textit{i}-butanol to be the least
-reactive of all four isomers at a pressure of 30 bar and over the temperature
-range (715–910 K) investigated.
+reactive of all four isomers at a pressure of \SI{30}{\bar} and over the temperature
+range (\SIrange{715}{910}{\kelvin}) investigated.
 
 \begin{figure}
     \centering
     \begin{minipage}{7.9cm}
         \includegraphics[width=7.9cm]{03-Butanol/buoh-15bar}
         \caption{Ignition delays of the four isomers of butanol at compressed
-            pressure $P_C=15$ bar. Dashed lines are least squares fits to the
+            pressure $P_C=\SI{15}{\bar}$. Dashed lines are least squares fits to the
             data.}
         \label{fig:buoh-15bar}
     \end{minipage}
@@ -264,7 +274,7 @@ range (715–910 K) investigated.
     \begin{minipage}{7.9cm}
         \includegraphics[width=7.9cm]{03-Butanol/buoh-30bar}
         \caption{Ignition delays of the four isomers of butanol at compressed
-            pressure $P_C=30$ bar. Dashed lines are least squares fits to the
+            pressure $P_C=\SI{30}{\bar}$. Dashed lines are least squares fits to the
             data.}
         \label{fig:buoh-30bar}
     \end{minipage}
@@ -275,14 +285,14 @@ The fact that \textit{t}-butanol becomes relatively more reactive than
 glance, and the reasons are not immediately apparent. Closer examination of the
 pressure traces for each experiment gives one clue as to the cause of the
 increased reactivity. \Autoref{fig:tbuoh-15bar} shows the pressure traces for
-the \textit{t}-butanol experiments at 15 bar for stoichiometric mixtures in
+the \textit{t}-butanol experiments at \SI{15}{\bar} for stoichiometric mixtures in
 air. It is evident that there is some pre-ignition heat release, because the
 reactive pressure trace diverges from the non-reactive case prior to the
 ignition event. Of the other isomers of butanol, only \textit{n}-butanol shows
-any visible heat release prior to the main ignition event at 15 bar.
+any visible heat release prior to the main ignition event at \SI{15}{\bar}.
 
 \Autoref{fig:tbuoh-phi10} shows the pressure traces for \textit{t}-butanol
-experiments at 30 bar for stoichiometric mixtures in air. The effect of
+experiments at \SI{30}{\bar} for stoichiometric mixtures in air. The effect of
 pre-ignition heat release is even more striking in this figure, with
 substantial changes in the slope of the pressure trace during the reactive
 runs. Comparing to the pressure traces of the other isomers once again shows
@@ -297,24 +307,24 @@ response for any \textit{t}-butanol experiments. Therefore, we adopt the phrase
     \centering
     \begin{minipage}{7.9cm}
         \includegraphics[width=7.9cm]{03-Butanol/tbuoh-15bar}
-        \caption{Pressure traces of the 15 bar \textit{t}-butanol experiments,
+        \caption{Pressure traces of the \SI{15}{\bar} \textit{t}-butanol experiments,
             in stoichiometric air.}
         \label{fig:tbuoh-15bar}
     \end{minipage}
     \quad
     \begin{minipage}{7.9cm}
         \includegraphics[width=7.9cm]{03-Butanol/tbuoh-phi10}
-        \caption{Pressure traces of the 30 bar \textit{t}-butanol experiments,
+        \caption{Pressure traces of the \SI{30}{\bar} \textit{t}-butanol experiments,
             in stoichiometric air.}
         \label{fig:tbuoh-phi10}
     \end{minipage}
 \end{figure}
 
 In an effort to understand the reactions causing the pre-ignition heat release,
-further experiments are conducted for \textit{t}-butanol at $P_C=30$ bar, for
+further experiments are conducted for \textit{t}-butanol at $P_C=\SI{30}{\bar}$, for
 equivalence ratios of 0.5 and 2.0 in air. \Autoref{fig:tbuoh-delays} shows
 Arrhenius plots of the ignition delays for the three equivalence ratios. As
-with the previous \textit{n}-butanol experiments at 15 bar \cite{Weber2011}
+with the previous \textit{n}-butanol experiments at \SI{15}{\bar} \cite{Weber2011}
 $\phi=0.5$ is the least reactive and $\phi=2.0$ is the most reactive. The
 slopes are similar, indicating that the overall activation energies are similar
 for the conditions investigated.
@@ -323,7 +333,7 @@ for the conditions investigated.
     \centering
     \includegraphics[width=12cm]{03-Butanol/tbuoh-delays}
     \caption{Ignition delays of three equivalence ratios of \textit{t}-butanol
-    in air, for $P_C=30$ bar. Lines represent least squares fits to the data.}
+    in air, for $P_C=\SI{30}{\bar}$. Lines represent least squares fits to the data.}
     \label{fig:tbuoh-delays}
 \end{figure}
 
@@ -343,14 +353,14 @@ fraction, where higher fuel loading promotes pre-ignition heat release.
     \centering
     \begin{minipage}{7.9cm}
         \includegraphics[width=7.9cm]{03-Butanol/tbuoh-phi05}
-        \caption{Pressure traces of the 30 bar \textit{t}-butanol experiments,
+        \caption{Pressure traces of the \SI{30}{\bar} \textit{t}-butanol experiments,
             $\phi=0.5$ in air.}
         \label{fig:tbuoh-phi05}
     \end{minipage}
     \quad
     \begin{minipage}{7.9cm}
         \includegraphics[width=7.9cm]{03-Butanol/tbuoh-phi20}
-        \caption{Pressure traces of the 30 bar \textit{t}-butanol experiments,
+        \caption{Pressure traces of the \SI{30}{\bar} \textit{t}-butanol experiments,
             $\phi=2.0$ in air.}
         \label{fig:tbuoh-phi20}
     \end{minipage}
@@ -367,11 +377,11 @@ mechanism hereafter. Other recent mechanisms, such as the mechanism from
 therefore unable to reproduce the low-temperature ignition delays measured in
 this study. The study by \textcite{Sarathy2012} validated their model for a
 wide set of the existing experimental data. In terms of ignition delays, this
-included the data from the study of \textcite{Stranic2012} up to 48 atm, our
+included the data from the study of \textcite{Stranic2012} up to \SI{48}{atm}, our
 previous study on \textit{n}-butanol \cite{Weber2011}, and the data being
-published in this study at 15 bar. Importantly, the mechanism of
-\textcite{Sarathy2012} was validated only for the 15 bar RCM data for all four
-isomers, but not the 30 bar data also being published here. The MIT mechanism
+published in this study at \SI{15}{\bar}. Importantly, the mechanism of
+\textcite{Sarathy2012} was validated only for the \SI{15}{\bar} RCM data for all four
+isomers, but not the \SI{30}{\bar} data also being published here. The MIT mechanism
 \cite{Hansen2013,Merchant2013} was validated for \textit{i}-butanol
 experiments, including pyrolysis and low pressure premixed flames; although the
 model includes all four isomers of butanol as reactants, it has not been
@@ -381,13 +391,13 @@ Figures \ref{fig:buoh-15sim} and \ref{fig:buoh-30sim} show comparison of the
 VPRO simulations with the experimental data using the mechanism of
 \textcite{Sarathy2012}. As \textcite{Sarathy2012} showed in their work (and as
 we show here in \autoref{fig:buoh-15sim}), they found good agreement of the
-model predictions with the present RCM data at 15 bar. At $P_C=30$ bar
+model predictions with the present RCM data at \SI{15}{\bar}. At $P_C=\SI{30}{\bar}$
 (\autoref{fig:buoh-30sim}), similar degree of agreement is found for
-\textit{t}-butanol and \textit{s}-butanol compared to $P_C=15$ bar, although
+\textit{t}-butanol and \textit{s}-butanol compared to $P_C=\SI{15}{\bar}$, although
 the \textit{s}-butanol results are under-predicted at high temperature and
 over-predicted at low temperature. While the model of \textcite{Sarathy2012} is
 able to well capture the overall activation energy of \textit{i}-butanol, it
-under-predicts the experimental data by about a factor of 2–3. The
+under-predicts the experimental data by about a factor of \numrange{2}{3}. The
 \textit{n}-butanol data are over-predicted by about a factor of 1.5.
 Nevertheless, this agreement is quite good, especially considering that the
 model is not validated for these conditions.
@@ -396,7 +406,7 @@ model is not validated for these conditions.
     \centering
     \begin{minipage}{7.9cm}
         \includegraphics[width=7.9cm]{03-Butanol/buoh-15sim}
-        \caption{$P_C=15$ bar, stoichiometric mixtures in air. Comparison of
+        \caption{$P_C=\SI{15}{\bar}$, stoichiometric mixtures in air. Comparison of
             VPRO simulations using the kinetic mechanism of
             \textcite{Sarathy2012} with experimental ignition delays.}
         \label{fig:buoh-15sim}
@@ -404,7 +414,7 @@ model is not validated for these conditions.
     \quad
     \begin{minipage}{7.9cm}
         \includegraphics[width=7.9cm]{03-Butanol/buoh-30sim}
-        \caption{$P_C=30$ bar, stoichiometric mixtures in air. Comparison of
+        \caption{$P_C=\SI{30}{\bar}$, stoichiometric mixtures in air. Comparison of
             VPRO simulations using the kinetic mechanism of
             \textcite{Sarathy2012} with experimental ignition delays.}
         \label{fig:buoh-30sim}
@@ -416,10 +426,10 @@ conditions for \textit{t}-butanol) using the MIT mechanism
 \cite{Hansen2013,Merchant2013} do not ignite during the duration of the
 simulations (the same as the experimental duration), and therefore no
 simulations are shown for these fuels. In \autoref{fig:buoh-mit}, VPRO
-simulations at 15 and 30 bar using both mechanisms are shown for
+simulations at \SIlist{15;30}{\bar} using both mechanisms are shown for
 \textit{i}-butanol. It is seen that the mechanism from \textcite{Sarathy2012}
-is in better agreement at 15 bar. However, at 30 bar the MIT mechanism
-\cite{Hansen2013,Merchant2013} over-predicts the ignition delay (as at 15 bar),
+is in better agreement at \SI{15}{\bar}. However, at \SI{30}{\bar} the MIT mechanism
+\cite{Hansen2013,Merchant2013} over-predicts the ignition delay (as at \SI{15}{\bar}),
 while the \textcite{Sarathy2012} mechanism under-predicts the ignition delay.
 The reason for these diverging predictions will be explored and discussed below.
 
@@ -430,7 +440,7 @@ The reason for these diverging predictions will be explored and discussed below.
         \textcite{Sarathy2012} (solid lines) and the MIT mechanism
         \cite{Hansen2013,Merchant2013} (dotted lines) with the experimental
         ignition delay results (dashed lines) for stoichiometric mixtures of
-        \textit{i}-butanol in air at $P_C=15$ bar (squares) and $P_C=30$ bar
+        \textit{i}-butanol in air at $P_C=\SI{15}{\bar}$ (squares) and $P_C=\SI{30}{\bar}$
         (circles).}
     \label{fig:buoh-mit}
 \end{figure}
@@ -507,46 +517,46 @@ produced or consumed of each species up to that point. The 20\% fuel
 consumption point is chosen because it is before small molecule chemistry takes
 over to drive the ignition, and it has been used previously
 \cite{Weber2011,Sarathy2012}. The rates of production are taken from a CONV
-simulation, with initial conditions 750 K and 15 bar as well as 750 K and 30
-bar. These conditions are representative of typical conditions after compression
+simulation, with initial conditions \SI{750}{\kelvin} and \SI{15}{\bar} as well as 750 K and
+\SI{30}{\bar}. These conditions are representative of typical conditions after compression
 in the present RCM experiments. The plain text percentages on top of the arrows
-are the 15 bar case and the bold numbers underneath are for the 30 bar case.
+are the \SI{15}{\bar} case and the bold numbers underneath are for the \SI{30}{\bar} case.
 
 \begin{figure}
     \centering
     \begin{minipage}{7.9cm}
         \includegraphics[width=7.9cm]{03-Butanol/buoh-npath}
         \caption{Pathway analysis for simulations of \textit{n}-butanol at
-            temperature of 750 K, in stoichiometric air, using the mechanism of
+            temperature of \SI{750}{\kelvin}, in stoichiometric air, using the mechanism of
             \textcite{Sarathy2012}. Percentages in normal text represent an
-            initial condition of 15 bar; bold text is for 30 bar.}
+            initial condition of \SI{15}{\bar}; bold text is for \SI{30}{\bar}.}
         \label{fig:buoh-npath}
     \end{minipage}
     \quad
     \begin{minipage}{7.9cm}
         \includegraphics[width=7.9cm]{03-Butanol/buoh-spath}
         \caption{Pathway analysis for simulations of \textit{s}-butanol at
-            temperature of 750 K, in stoichiometric air, using the mechanism of
+            temperature of \SI{750}{\kelvin}, in stoichiometric air, using the mechanism of
             \textcite{Sarathy2012}. Percentages in normal text represent an
-            initial condition of 15 bar; bold text is for 30 bar.}
+            initial condition of \SI{15}{\bar}; bold text is for \SI{30}{\bar}.}
         \label{fig:buoh-spath}
     \end{minipage}
     \newline
     \begin{minipage}{7.9cm}
         \includegraphics[width=7.9cm]{03-Butanol/buoh-tpath}
         \caption{Pathway analysis for simulations of \textit{t}-butanol at
-            temperature of 750 K, in stoichiometric air, using the mechanism of
+            temperature of \SI{750}{\kelvin}, in stoichiometric air, using the mechanism of
             \textcite{Sarathy2012}. Percentages in normal text represent an
-            initial condition of 15 bar; bold text is for 30 bar.}
+            initial condition of \SI{15}{\bar}; bold text is for \SI{30}{\bar}.}
         \label{fig:buoh-tpath}
     \end{minipage}
     \quad
     \begin{minipage}{7.9cm}
         \includegraphics[width=7.9cm]{03-Butanol/buoh-ipath}
         \caption{Pathway analysis for simulations of \textit{i}-butanol at
-            temperature of 750 K, in stoichiometric air, using the mechanism of
+            temperature of \SI{750}{\kelvin}, in stoichiometric air, using the mechanism of
             \textcite{Sarathy2012}. Percentages in normal text represent an
-            initial condition of 15 bar; bold text is for 30 bar.}
+            initial condition of \SI{15}{\bar}; bold text is for \SI{30}{\bar}.}
         \label{fig:buoh-ipath}
     \end{minipage}
 \end{figure}
@@ -583,8 +593,8 @@ to form $\beta$-hydroxybutylperoxy, which is an exothermic reaction.
 
 \Autoref{fig:buoh-heat} shows the total cumulative heat release of each isomer
 and the cumulative heat release of an important reaction for each of the
-isomers (inset), from a CONV simulation with initial conditions of 750 K and 30
-bar; analysis of 15 bar results is substantially similar. The cumulative heat
+isomers (inset), from a CONV simulation with initial conditions of \SI{750}{\kelvin} and
+\SI{30}{\bar}; analysis of \SI{15}{\bar} results is substantially similar. The cumulative heat
 release in the inset is found by integrating the heat release by each reaction
 with respect to time, while the reactions shown are the respective reactions
 that have released the most heat up to the 20\% fuel consumption point for each
@@ -610,7 +620,7 @@ ignition, and appears to be driving the pre-ignition heat release.
     \caption{Total cumulative heat release and cumulative heat release by
         important reactions (inset) as a function of fuel consumption from a
         simulation using the mechanism of \textcite{Sarathy2012} with initial
-        conditions of 750 K and 30 bar, in stoichiometric air. See
+        conditions of \SI{750}{\kelvin} and \SI{30}{\bar}, in stoichiometric air. See
         \autoref{fig:buoh-reacs} for definitions of reactions in the inset.}
     \label{fig:buoh-heat}
 \end{figure}
@@ -658,10 +668,10 @@ Other researchers have also undertaken studies of the low to intermediate
 temperature combustion of \textit{t}-butanol. \textcite{Lefkowitz2012}
 performed a study in the Variable Pressure Flow Reactor (VPFR) at Princeton
 University on the oxidation of \textit{t}-butanol over the temperature range
-from 680−950 K, at 12.5 atm and stoichiometric mixture conditions. It is
+from \SIrange{680}{950}{\kelvin}, at \SI{12.5}{atm} and stoichiometric mixture conditions. It is
 interesting to note that they found no evidence of traditional hydrocarbon
 low temperature chemistry. They did, however, find significant quantities of
-acetone, peaking at approximately 800 K. \textcite{Lefkowitz2012} concluded
+acetone, peaking at approximately \SI{800}{\kelvin}. \textcite{Lefkowitz2012} concluded
 that the primary pathways of acetone formation are tautomerization of
 propen-2-ol and $\beta$-scission of the alkoxy radical, based on an analysis
 of the mechanism from \textcite{Grana2010}. Both of these pathways are
@@ -743,7 +753,7 @@ delay, as shown below:
 Therefore, negative sensitivity means that halving the A-factor of a reaction
 decreases the ignition delay, and positive sensitivity indicates the ignition
 delay increases. These results are for CONV simulations with initial conditions
-of 750 K and 30 bar as well as 1200 K and 30 bar.
+of \SI{750}{\kelvin} and \SI{30}{\bar} as well as \SI{1200}{\kelvin} and \SI{30}{\bar}.
 
 \begin{figure}
     \centering
@@ -766,7 +776,7 @@ that reducing the amount of fuel propagating into the low temperature chain
 branching pathway of oxygen addition to the primary $\alpha$-radical improves
 the simulated results. Interestingly, the \textit{i}-butanol system is not
 sensitive to the rates of oxygen addition to the hydroxybutyl radicals other
-than the $\alpha$-radical. At the higher temperature of 1200 K, there is little
+than the $\alpha$-radical. At the higher temperature of \SI{1200}{\kelvin}, there is little
 sensitivity on the ignition delay by changing the rate of the oxygen-addition
 reaction, demonstrating its lack of influence at higher temperatures.
 
@@ -795,7 +805,7 @@ reactions to all the isomers of butanol is probably warranted.
 
 In this work, ignition delays for all four isomers of butanol in stoichiometric
 mixture with air have been presented over the low to intermediate temperature
-range, and at two compressed pressures of 15 and 30 bar. The order of
+range, and at two compressed pressures of \SIlist{15;30}{\bar}. The order of
 reactivity of the isomers goes \textit{n}-butanol$>$\textit{s}-butanol$\approx$
 \textit{i}-butanol$>$\textit{t}-butanol at the lower pressure, but changes to
 \textit{n}-butanol$>$\textit{t}-butanol$>$\textit{s}-butanol$>$
@@ -812,7 +822,7 @@ to further elucidate the chemical processes controlling the autoignition of
 these butanol isomers. Pathway analysis of the fuel decomposition shows that
 \textit{n}-, \textit{s}-, and \textit{i}-butanol primarily form
 $\alpha$-hydroxybutyl radicals, because the proximity of the $\alpha$ carbon to
-the hydroxyl group reduces the C-H bond energy. The α-hydroxybutyl radicals
+the hydroxyl group reduces the C-H bond energy. The $\alpha$-hydroxybutyl radicals
 tend to form an aldehyde plus HO$_2$  directly, without forming a
 hydroxybutylperoxy complex. However, due to its unique structure,
 \textit{t}-butanol can only form $\beta$-radicals; these radicals do not have
