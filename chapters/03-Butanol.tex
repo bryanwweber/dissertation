@@ -434,17 +434,6 @@ is in better agreement at \SI{15}{\bar}. However, at \SI{30}{\bar} the MIT mecha
 while the \textcite{Sarathy2012} mechanism under-predicts the ignition delay.
 The reason for these diverging predictions will be explored and discussed below.
 
-\begin{figure}
-    \includegraphics[width=12cm]{03-Butanol/buoh-mit}
-    \caption{Comparison of VPRO simulations using the kinetic mechanism of
-        \textcite{Sarathy2012} (solid lines) and the MIT mechanism
-        \cite{Hansen2013,Merchant2013} (dotted lines) with the experimental
-        ignition delay results (dashed lines) for stoichiometric mixtures of
-        \textit{i}-butanol in air at $P_C=\SI{15}{\bar}$ (squares) and $P_C=\SI{30}{\bar}$
-        (circles).}
-    \label{fig:buoh-mit}
-\end{figure}
-
 The agreement of the mechanism by \textcite{Sarathy2012} with the
 off-stoichiometric mixtures of \textit{t}-butanol is also quite good, as shown
 in \autoref{fig:tbuoh-sims}. Figures \ref{fig:tbuoh-05press}
@@ -453,19 +442,31 @@ of the simulated pressure traces and the experimental results, for similar
 temperatures at the three equivalence ratios, respectively. Clearly, the
 simulations also exhibit some pre-ignition heat release. In general, the
 simulations qualitatively predict the pre-ignition heat release behavior at all
-three equivalence ratios. The $\phi=0.5$ case has the least heat release and
-the $\phi=2.0$ case has the most. Although the simulations are unable to match
+three equivalence ratios. The $\phi=\num{0.5}$ case has the least heat release and
+the $\phi=\num{2.0}$ case has the most. Although the simulations are unable to match
 the heat release behavior quantitatively, they match the experimental ignition
 delays quite well. Considering the model is not validated for this temperature,
 pressure, and equivalence ratio regime, the mismatch of the pre-ignition
 behavior may not be of critical importance, depending on the application.
 
 \begin{figure}
-    \includegraphics[width=12cm]{03-Butanol/tbuoh-sims}
-    \caption{Comparison of the simulations using the kinetic mechanism of
-        \textcite{Sarathy2012} for three equivalence ratio mixtures of
-        \textit{t}-butanol in air at $P_C=30$ bar.}
-    \label{fig:tbuoh-sims}
+    \begin{floatrow}
+        \ffigbox
+            {\includegraphics[width=7.9cm]{03-Butanol/buoh-mit}}
+            {\caption{Comparison of VPRO simulations using the kinetic mechanism of
+                \textcite{Sarathy2012} (solid lines) and the MIT mechanism
+                \cite{Hansen2013,Merchant2013} (dotted lines) with the experimental
+                ignition delay results (dashed lines) for stoichiometric mixtures of
+                \textit{i}-butanol in air at $P_C=\SI{15}{\bar}$ (squares) and $P_C=\SI{30}{\bar}$
+                (circles).}
+            \label{fig:buoh-mit}}
+        \ffigbox
+            {\includegraphics[width=7.9cm]{03-Butanol/tbuoh-sims}}
+            {\caption{Comparison of the simulations using the kinetic mechanism of
+                \textcite{Sarathy2012} for three equivalence ratio mixtures of
+                \textit{t}-butanol in air at $P_C=\SI{30}{\bar}$.}
+            \label{fig:tbuoh-sims}}
+    \end{floatrow}
 \end{figure}
 
 \begin{figure}
