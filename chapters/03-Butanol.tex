@@ -208,14 +208,14 @@ presentation are then chosen as the closest to the mean.
     \cmidrule{1-5}
     \multicolumn{5}{c}{Mole Percentage}   & & \\
     \midrule
-    3.38  &       &       & 20.30 & 76.32 & 1.0   & 15 \\
-    3.38  &       &       & 20.30 & 76.32 & 1.0   & 30 \\
-          & 3.38  &       & 20.30 & 76.32 & 1.0   & 15 \\
-          & 3.38  &       & 20.30 & 76.32 & 1.0   & 30 \\
-          &       & 3.38  & 20.30 & 76.32 & 1.0   & 15 \\
-          &       & 3.38  & 20.30 & 76.32 & 1.0   & 30 \\
-          &       & 1.72  & 20.65 & 77.63 & 0.5   & 30 \\
-          &       & 6.54  & 19.63 & 73.83 & 2.0   & 30 \\
+    3.38  &       &       & 20.30 & 76.32 & 1.0 & 15 \\
+    3.38  &       &       & 20.30 & 76.32 & 1.0 & 30 \\
+          & 3.38  &       & 20.30 & 76.32 & 1.0 & 15 \\
+          & 3.38  &       & 20.30 & 76.32 & 1.0 & 30 \\
+          &       & 3.38  & 20.30 & 76.32 & 1.0 & 15 \\
+          &       & 3.38  & 20.30 & 76.32 & 1.0 & 30 \\
+          &       & 1.72  & 20.65 & 77.63 & 0.5 & 30 \\
+          &       & 6.54  & 19.63 & 73.83 & 2.0 & 30 \\
     \bottomrule
     \end{tabular}
 \end{table}
@@ -331,7 +331,7 @@ further experiments are conducted for \textit{t}-butanol at $P_C=\SI{30}{\bar}$,
 equivalence ratios of 0.5 and 2.0 in air. \Autoref{fig:tbuoh-delays} shows
 Arrhenius plots of the ignition delays for the three equivalence ratios. As
 with the previous \textit{n}-butanol experiments at \SI{15}{\bar} \cite{Weber2011}
-$\phi=0.5$ is the least reactive and $\phi=2.0$ is the most reactive. The
+$\phi=\num{0.5}$ is the least reactive and $\phi=\num{2.0}$ is the most reactive. The
 slopes are similar, indicating that the overall activation energies are similar
 for the conditions investigated.
 
@@ -347,9 +347,9 @@ equivalence ratios. It is clear from Figures \ref{fig:tbuoh-phi10},
 \ref{fig:tbuoh-phi05}, and \ref{fig:tbuoh-phi20} that there are qualitative
 differences in the pre-ignition heat release between the three equivalence
 ratios. This is most likely due to the effect of the increased (reduced) fuel
-mole fraction in the $\phi=2.0$ ($\phi=0.5$) case, since the mole fraction of
-fuel is changed by +93\% (-49\%) compared to the $\phi=1.0$ case, while the
-mole fraction of oxygen changes by only -3\% (+2\%) compared to the $\phi=1.0$
+mole fraction in the $\phi=\num{2.0}$ ($\phi=\num{0.5}$) case, since the mole fraction of
+fuel is changed by +93\% (-49\%) compared to the $\phi=\num{1.0}$ case, while the
+mole fraction of oxygen changes by only -3\% (+2\%) compared to the $\phi=\num{1.0}$
 case, as shown in \Autoref{tab:buoh-expts}. Therefore, it appears that the
 qualitative change in pre-ignition behavior is due to the change of fuel mole
 fraction, where higher fuel loading promotes pre-ignition heat release.
@@ -359,12 +359,12 @@ fraction, where higher fuel loading promotes pre-ignition heat release.
     \ffigbox
         {\includegraphics[width=7.9cm]{03-Butanol/tbuoh-phi05}}
         {\caption{Pressure traces of the \SI{30}{\bar} \textit{t}-butanol experiments,
-            $\phi=0.5$ in air.}
+            $\phi=\num{0.5}$ in air.}
         \label{fig:tbuoh-phi05}}
     \ffigbox
         {\includegraphics[width=7.9cm]{03-Butanol/tbuoh-phi20}}
         {\caption{Pressure traces of the \SI{30}{\bar} \textit{t}-butanol experiments,
-            $\phi=2.0$ in air.}
+            $\phi=\num{2.0}$ in air.}
         \label{fig:tbuoh-phi20}}
     \end{floatrow}
 \end{figure}
@@ -474,15 +474,15 @@ behavior may not be of critical importance, depending on the application.
     \begin{subfloatrow}[3]
         \ffigbox[\FBwidth]
             {\includegraphics[width=5.2cm]{03-Butanol/tbuoh-05press}}
-            {\caption{$\phi=0.5$ in air.}
+            {\caption{$\phi=\num{0.5}$ in air.}
             \label{fig:tbuoh-05press}}
         \ffigbox[\FBwidth]
             {\includegraphics[width=5.2cm]{03-Butanol/tbuoh-10press}}
-            {\caption{$\phi=1.0$ in air.}
+            {\caption{$\phi=\num{1.0}$ in air.}
             \label{fig:tbuoh-10press}}
         \ffigbox[\FBwidth]
             {\includegraphics[width=5.2cm]{03-Butanol/tbuoh-20press}}
-            {\caption{$\phi=2.0$ in air.}
+            {\caption{$\phi=\num{2.0}$ in air.}
             \label{fig:tbuoh-20press}}
     \end{subfloatrow}
     }%
@@ -511,7 +511,7 @@ produced or consumed of each species up to that point. The 20\% fuel
 consumption point is chosen because it is before small molecule chemistry takes
 over to drive the ignition, and it has been used previously
 \cite{Weber2011,Sarathy2012}. The rates of production are taken from a CONV
-simulation, with initial conditions \SI{750}{\kelvin} and \SI{15}{\bar} as well as 750 K and
+simulation, with initial conditions \SI{750}{\kelvin} and \SI{15}{\bar} as well as \SI{750}{\kelvin} and
 \SI{30}{\bar}. These conditions are representative of typical conditions after compression
 in the present RCM experiments. The plain text percentages on top of the arrows
 are the \SI{15}{\bar} case and the bold numbers underneath are for the \SI{30}{\bar} case.
@@ -801,7 +801,7 @@ reactivity of the isomers goes \textit{n}-butanol$>$\textit{s}-butanol$\approx$
 explained by the fact that there is substantial pre-ignition heat release
 present for \textit{t}-butanol. To help understand the nature of the
 pre-ignition heat release of \textit{t}-butanol, studies at off-stoichiometric
-conditions, $\phi=0.5$ and $\phi=2.0$ in air, are also conducted.
+conditions, $\phi=\num{0.5}$ and $\phi=\num{2.0}$ in air, are also conducted.
 
 Comparisons of the experimentally measured ignition delays with two kinetic
 mechanisms show good agreement for certain isomers, but relatively poorer
