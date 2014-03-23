@@ -119,7 +119,20 @@
   \endgroup%
 }
 
-\usepackage[font={footnotesize}]{caption}
+\usepackage{caption}
+\DeclareCaptionLabelFormat{bf}{\textbf{#1 #2}}
+\captionsetup{
+    font=small ,
+    labelsep=colon ,
+    labelformat=bf,
+}
+
+\usepackage{subfig}
+
+\usepackage{floatrow}
+\floatsetup[table]{style=plaintop}
+
+\usepackage{layouts}
 
 \graphicspath{ {../figures/} }
 
@@ -192,7 +205,7 @@ The pressure on the front of the pneumatic piston pulls the
 piston assembly rearward and seats the rear of the
 hydraulic piston onto an O-ring in the rear of the
 hydraulic chamber. The hydraulic chamber is filled with oil to
-a pressure of approximately 800 psi, providing a rearward force on the
+a pressure of approximately \SI{800}{psi}, providing a rearward force on the
 front face of the hydraulic piston. Then, the air pressure is released from
 the front of the pneumatic chamber and the driving tank is filled to
 the desired driving pressure. The
@@ -204,8 +217,8 @@ releasing the hydraulic pressure through an electrically-operated solenoid
 valve. The piston assembly is driven forward by the unbalanced force from
 the pressure in the driving tank on the pneumatic piston. The gases
 in the reaction chamber are brought to the compressed pressure ($P_C$) and
-compressed temperature ($T_C$) conditions in approximately 30-50
-milliseconds.
+compressed temperature ($T_C$) conditions in approximately
+\SIrange{30}{50}{\milli\second}.
 
 The required driving pressure for a given EOC pressure can be estimated
 from a force balance between the force on the pneumatic piston from the
@@ -230,8 +243,8 @@ of the pneumatic piston, and $d_r$ is the diameter of the reactor piston.
 The minimum driving pressure is such that the piston does not rebound at
 the EOC due to pressure on the reactor piston. So that the driving
 pressure can be much lower than the EOC pressure, the diameter ratio of
-the reactor piston to the driver piston is 2/5, allowing a factor of
-6.25 lower driving pressure than EOC pressure. The actual driving
+the reactor piston to the driver piston is \num{2/5}, allowing a factor of
+\num{6.25} lower driving pressure than EOC pressure. The actual driving
 pressure should exceed the minimum by some safety margin so that the
 reactor remains at constant volume even if there is some pressure rise
 due to heat release in the reaction chamber prior to the main ignition.
@@ -251,8 +264,8 @@ impact the front of the hydraulic chamber at high velocity. This can damage
 the RCM and cause the piston to rebound elastically. It also generates
 substantial noise in the pressure trace and should be avoided.
 
-Typical driving gas pressures are between 50 psi for $P_C = 15$ bar experiments
-to  125 psi for $P_C = 50$ bar experiments. These driving pressures represent a
+Typical driving gas pressures are between \SI{50}{psi} for $P_C = \SI{15}{\bar}$ experiments
+to  \SI{125}{psi} for $P_C = \SI{50}{\bar}$ experiments. These driving pressures represent a
 good compromise between the minimum required for no rebound at EOC due
 to pressure and no rebound at EOC due to elastic reaction. Nonetheless,
 a small amount of piston rebound can be expected during/after the
@@ -275,29 +288,31 @@ the rear of the reaction chamber, increasing the EOC clearance length.
 \subsection{Test Gas Mixture Preparation}
 
 Fuel/oxidizer pre-mixtures are prepared in two mixing tanks, one approximately
-17 L and the other approximately 15 L in volume. These large volumes allow many
+\SI{17}{\liter} and the other approximately \SI{15}{\liter} in volume. These large volumes allow many
 runs to be conducted from one mixture preparation. The mixing tanks are connected
 to the reaction chamber by flexible stainless steel manifold tubing. The tanks, reaction chamber,
 and connecting manifold are wrapped in heating tape and insulation to control the initial
 temperature of the mixture. Temperature controllers from Omega Engineering use thermocouples
 placed on the lid of each mixing tank, approximately in the center of each mixing tank, embedded in
 the wall of the reaction chamber, and near the inlet valve of the reaction chamber to control the
-preheat temperature of the mixture. A static pressure transducer (Omega Engineering, 0-5200 Torr)
+preheat temperature of the mixture. A static pressure transducer
 measures the pressure in the manifold and mixing tanks. This transducer is used
 during mixture preparation and to measure the initial pressure of a given experiment.
+Two transducers are for various experiments in this work, as described below
+in \autoref{sec:uncertainty}.
 
 Most of the fuels studied in this work are liquids at room temperature and
 pressure and have relatively low vapor pressure. A similar procedure, outlined
 below, was used for all of the butanol isomers, \textit{iso}-pentanol, and
 methylcyclohexane. First, the mixing tanks are vacuumed to an ultimate pressure
-less than 5 Torr. The liquid fuel is massed in a syringe to a precision of
-0.01 g prior to injection through a septum. Proportions of O$_2$, N$_2$, and
+less than \SI{5}{Torr}. The liquid fuel is massed in a syringe to a precision of
+\SI{0.01}{\gram} prior to injection through a septum. Proportions of O$_2$, N$_2$, and
 Ar are added manometrically at room temperature. The preheat temperature of
 the RCM is set above the saturation point for each fuel to ensure complete
 vaporization. The vapor pressure as a function of temperature is calculated
 according to fits taken from \textcite{Yaws1999}. A magnetic stirrer mixes
 the reactants. The temperature inside the mixing tank is allowed to
-equilibrate for approximately 1.5 hours.
+equilibrate for approximately \SI{1.5}{\hour}.
 
 This approach to mixture preparation has been validated in several previous
 studies by withdrawing gas samples from the mixing tank and analyzing the
@@ -317,11 +332,11 @@ The pressure in the reaction chamber during an experiment is monitored by a
 Kistler 6125B piezoelectric dynamic pressure transducer. The charge signal from the
 transducer is amplified and converted to a voltage by a Kistler 5010B charge amplifier.
 The voltage is sent to a National Instruments cDAQ equipped with the NI-9215 module.
-The signal is recorded by a LabView VirtualInstrument at 50 kHz.
+The signal is recorded by a LabView VirtualInstrument at \SI{50}{\kilo\hertz}.
 
 \Autoref{fig:ig-delay-def} shows a representative pressure trace from
-these experiments with methylcyclohexane (MCH) at $P_C=50$ bar, $T_C=761$ K,
-and $\phi=1.5$ (See \autoref{sec:mch}). Note that \autoref{fig:ig-delay-def}
+these experiments with methylcyclohexane (MCH) at $P_C= \SI{50}{\bar}$, $T_C=\SI{761}{\kelvin}$,
+and $\phi=\num{1.5}$ (See \autoref{sec:mch}). Note that \autoref{fig:ig-delay-def}
 shows a case with two stages of ignition; not all of the fuels studied
 had conditions that showed two-stage ignition. Nonetheless, the ignition
 delay is consistently defined in all the work in this study. The
@@ -364,7 +379,7 @@ of the initial mixture is maintained, but the heat release due to
 exothermic oxidation reactions is eliminated. Maintaining a similar
 specific heat ratio ensures that the non-reactive experiment faithfully
 reproduces the conditions of the reactive experiment. A representative
-non-reactive pressure trace is shown in \ref{fig:ig-delay-def}
+non-reactive pressure trace is shown in \autoref{fig:ig-delay-def}
 corresponding to the experimental conditions in the figure.
 
 \subsection{Reaction Chamber Homogeneity}
@@ -391,7 +406,7 @@ within the crevice. The dimensions of the crevice were optimized
 by \textcite{Mittal2006a} through CFD simulations for high-pressure
 conditions. Subsequently, \textcite{Mittal2006b} experimentally showed that
 the optimized crevice design provides homogeneous conditions in the
-reaction chamber up to approximately 150 milliseconds after the EOC.
+reaction chamber up to approximately \SI{150}{\milli\second} after the EOC.
 By using PLIF measurements of acetone-seeded mixtures,
 \textcite{Mittal2006b} showed that there was a core region of gases
 near the center of the reactor whose temperature remained spatially
@@ -587,7 +602,7 @@ of temperature.
 \end{equation}
 %
 $a$ and $b$ are found by fitting the total non-dimensional specific heat
-over the temperature range from 300--1100 K, as discussed below in
+over the temperature range from \SIrange{300}{1100}{\kelvin}, as discussed below in
 \autoref{sec:unc-cp}.
 
 With this approximation of the specific heat, we can integrate \autoref{eq:tc}
@@ -612,7 +627,7 @@ Solving \autoref{eq:integrate-tc} for $T_C$
 T_C = \frac{a W\!\!\left(\frac{b}{a} \exp\!{\left[\frac{b T_0}{a}\right]} T_0 \left[\frac{P_C}{P_0}\right]^{\frac{1}{a}}\right)}{b}
 \end{align}
 %
-where $W(\ldots)$ is Lambert's W function. With an explicit function for $T_C$, we can
+where $W(\ldots)$ is Lambert's $W$ function \cite{Corless1996}. With an explicit function for $T_C$, we can
 estimate the uncertainty in $T_C$ by the root square sum of the uncertainty in the parameters in
 \autoref{eq:explicit-tc} \cite{Taylor1982}. The parameters are $P_C$, $P_0$, $T_0$, $a$, and $b$.
 %
@@ -665,17 +680,17 @@ limits of error of the K-type thermocouple used to measure the
 initial temperature. According to the Omega Engineering
 specifications, this is "the greater
 of $\SI{2.2}{\degreeCelsius}$ or 0.75\%". The largest initial temperature
-used in this work, \SI{413}{K}, leads to an uncertainty of
-$\pm \SI{3}{\kelvin}$; thus, $B_{T_O}=\SI{3}{K}$. Bias uncertainty
+used in this work, \SI{413}{\kelvin}, leads to an uncertainty of
+$\pm \SI{3}{\kelvin}$; thus, $B_{T_O}=\SI{3}{\kelvin}$. Bias uncertainty
 due to the A/D converter in the process meter is negligible compared
 to this uncertainty.
 The precision uncertainty is due to the limit of precision of
 the display on the Omega Engineering CNi3254 process meter used
-to control the process temperature. This is $\pm\SI{0.05}{K}$.
+to control the process temperature. This is $\pm\SI{0.05}{\kelvin}$.
 The total uncertainty of the initial temperature is
 %
 \begin{align}
-U_{T_0} = \sqrt{\left(B_{T_0}\right)^2 + \left(R_{T_0}\right)^2} = \sqrt{\left(\SI{3}{K}\right)^2 + \left(\SI{0.05}{K}\right)^2} = \SI{3}{K}
+U_{T_0} = \sqrt{\left(B_{T_0}\right)^2 + \left(R_{T_0}\right)^2} = \sqrt{\left(\SI{3}{K}\right)^2 + \left(\SI{0.05}{K}\right)^2} = \SI{3}{\kelvin}
 \end{align}
 
 \subsubsection{Uncertainty in Initial Pressure}
@@ -685,14 +700,14 @@ The bias uncertainty in the initial pressure is due to the
 standard error in the pressure transducer used to measure
 the initial pressure. Two different pressure transducers have
 been used in this study; the first, an Omega Engineering PX-303
-(range: 0--\SI{50}{psia}), has a full scale uncertainty of 1.25\%, or
-$\pm \SI{0.625}{psi} \ (\SI{4309.2}{Pa})$. The second transducer is an
-Omega Engineering MMA100V10T2D0T4A6 type (range: 0--\SI{5200}{Torr}) and was
+(range: \SIrange{0}{50}{psia}), has a full scale uncertainty of 1.25\%, or
+$\pm \SI{0.625}{psi} \ (\SI{4309.2}{\pascal})$. The second transducer is an
+Omega Engineering MMA100V10T2D0T4A6 type (range: \SIrange{0}{5200}{Torr}) and was
 purchased because preliminary results of this uncertainty analysis
 indicated that the largest contributor to the uncertainty of $T_C$ was
 the initial pressure measurement. The full scale uncertainty of the MMA
 type transducers is 0.05\%, resulting in an uncertainty of
-$\pm \SI{2.6}{Torr} \ (\SI{346.6}{Pa})$, an order of magnitude lower than
+$\pm \SI{2.6}{Torr} \ (\SI{346.6}{\pascal})$, an order of magnitude lower than
 the PX-303 while also providing more than double the operating range. Total
 uncertainties using the appropriate pressure transducer are reported in
 each experimental section of this work; both transducers will be analyzed
@@ -701,13 +716,13 @@ is negligible compared to the standard error in the pressure transducers.
 
 The precision uncertainty is due to the limit of precision of the display
 on the Omega Engineering DP41-B process meter used to monitor the initial
-pressure. This is $\pm\SI{0.005}{torr} \ (\SI{0.666}{Pa})$. The total
+pressure. This is $\pm\SI{0.005}{Torr} \ (\SI{0.666}{\pascal})$. The total
 uncertainty of the initial pressure is
 %
 \begin{subequations}
 \begin{align}
-U_{P_0} = \sqrt{\left(B_{P_0}\right)^2 + \left(R_{P_0}\right)^2} = \sqrt{\left(\SI{4309.2}{Pa}\right)^2 + \left(\SI{0.666}{Pa}\right)^2} = \SI{4309.2}{Pa} \\
-U_{P_0} = \sqrt{\left(B_{P_0}\right)^2 + \left(R_{P_0}\right)^2} = \sqrt{\left(\SI{346.6}{Pa}\right)^2 + \left(\SI{0.666}{Pa}\right)^2} = \SI{346.6}{Pa}
+U_{P_0} = \sqrt{\left(B_{P_0}\right)^2 + \left(R_{P_0}\right)^2} = \sqrt{\left(\SI{4309.2}{\pascal}\right)^2 + \left(\SI{0.666}{\pascal}\right)^2} = \SI{4309.2}{\pascal} \\
+U_{P_0} = \sqrt{\left(B_{P_0}\right)^2 + \left(R_{P_0}\right)^2} = \sqrt{\left(\SI{346.6}{\pascal}\right)^2 + \left(\SI{0.666}{\pascal}\right)^2} = \SI{346.6}{\pascal}
 \end{align}
 \end{subequations}
 
@@ -716,15 +731,15 @@ U_{P_0} = \sqrt{\left(B_{P_0}\right)^2 + \left(R_{P_0}\right)^2} = \sqrt{\left(\
 The bias uncertainty in the compressed pressure is due to the standard
 error in the piezoelectric pressure transducer. According to the
 manufacturer's calibration, the deviation of the full scale output from
-linearity is less then 0.2\%, indicating that $B_{T_C}=\SI{0.5}{bar}$.
+linearity is less then 0.2\%, indicating that $B_{T_C}=\SI{0.5}{\bar}$.
 The uncertainties in the signal acquisition equipment are negligible
 compared to this uncertainty. The precision uncertainty is due to the limit
-of precision of the output of the pressure, and is \SI{5E-7}{bar}. This
+of precision of the output of the pressure, and is \SI{5E-7}{\bar}. This
 is negligible compared to the bias uncertainty, so the total uncertainty
 of the compressed pressure is
 %
 \begin{equation}
-U_{P_C} = B_{T_C} = \SI{0.5}{bar}
+U_{P_C} = B_{T_C} = \SI{0.5}{\bar}
 \end{equation}
 
 \subsubsection{Uncertainty in the Specific Heat}
@@ -751,7 +766,7 @@ it is assumed that the uncertainty in the specific heats of each species
 is negligible. This is considered an acceptable assumption for stable species
 such as the fuel molecules, oxygen, nitrogen, and argon. Experience with
 several kinetic mechanisms has shown that the typical variation in individual
-$\hat{C}_p$ fits causes approximately $\mathcal{O}(\SI{1}{K})$ changes in $T_C$.
+$\hat{C}_p$ fits causes approximately $\mathcal{O}(\SI{1}{\kelvin})$ changes in $T_C$.
 
 The uncertainty of the mole fraction of the species is estimated differently
 depending on how the species was introduced to the mixing tank. For liquid fuel
@@ -779,7 +794,7 @@ It follows that
 The uncertainty of the pressures $P_i$ and $P$ can be estimated by
 the same procedure as in \autoref{sec:unc-p0} since the same pressure transducer
 is used to measure the pressure. A typical total pressure after filling is
-approximately \SI{2000}{Torr} ($\approx$ \SI{266644}{Pa}). The mixtures in
+approximately \SI{2000}{Torr} ($\approx$ \SI{266644}{\pascal}). The mixtures in
 \autoref{tab:mixtures} are the mixtures that will be analyzed in the
 following because they represent a worst case scenario in that the mole
 fraction of the fuel or oxygen is maximized in them.
@@ -863,9 +878,9 @@ is evaluated and $Y_i$ are the total specific heats evaluated from \autoref{eq:c
 The weighting of the specific heats---$\omega(Y_i)$---is taken
 to be the reciprocal of the uncertainty as calculated by
 \autoref{eq:cp-uncertainty}. Furthermore, there is no uncertainty in the
-abscissa (i.e. the temperature) and $\omega(X_i) = 1$. Finally, since there
+abscissa (i.e. the temperature) and $\omega(X_i) = \num{1}$. Finally, since there
 is no uncertainty in the temperature, there is no correlation between
-the uncertainties, i.e. $r_i = 0$.
+the uncertainties, i.e. $r_i = \num{0}$.
 
 First, the slope $b$ is estimated by simple least-squares regression of the total
 specific heat on the temperature. Then, this slope is used to estimate the
