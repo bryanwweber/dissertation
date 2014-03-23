@@ -145,8 +145,8 @@
 }%
 \DeclareSIUnit\calorie{cal}
 
-% \usepackage{floatrow}
-% \floatsetup[table]{style=plaintop}
+\usepackage{floatrow}
+\floatsetup[table]{style=plaintop}
 
 \usepackage{layouts}
 %End of extra imports
@@ -289,43 +289,39 @@ the compression stroke and the experimental pressure at EOC for the reactive
 case matched that of the non-reactive counterpart.
 
 \begin{figure}
-    \centering
-    \begin{minipage}{0.45\textwidth}
-        \includegraphics[width=8cm]{../figures/05-MCH/mch-expts}
-        \caption{Experimentally measured ignition delays at $P_C=50$ bar for the
-            mixture conditions in \autoref{tab:mch-props}}
-        \label{fig:mch-expts}
-    \end{minipage}
-    \quad
-    \begin{minipage}{0.45\textwidth}
-        \includegraphics[width=8cm]{../figures/05-MCH/mch-model-1}
-        \caption{Comparison of experimental and simulated ignition delays for three
-            pressures for Mix \#1. The data at $15.1$ and $25.5$ bar are from the
-            study of \textcite{Mittal2009}. (a) First stage ignition delays,
-            (b) overall ignition delays.}
-        \label{fig:mch-model-1}
-    \end{minipage}
+    \begin{floatrow}
+        \ffigbox
+            {\includegraphics[width=7.9cm]{05-MCH/mch-expts}}
+            {\caption{Experimentally measured ignition delays at $P_C=\SI{50}{\bar}$ for the
+                mixture conditions in \autoref{tab:mch-props}}
+            \label{fig:mch-expts}}
+        \ffigbox
+        {\includegraphics[width=7.9cm]{05-MCH/mch-model-1}}
+            {\caption{Comparison of experimental and simulated ignition delays for three
+                pressures for Mix \#1. The data at \SIlist{15.1;25.5}{\bar} are from the
+                study of \textcite{Mittal2009}. (a) First stage ignition delays,
+                (b) overall ignition delays.}
+            \label{fig:mch-model-1}}
+    \end{floatrow}
 \end{figure}
 
 \begin{figure}
-    \centering
-    \begin{minipage}{0.45\textwidth}
-        \includegraphics[width=8cm]{../figures/05-MCH/mch-model-2}
-        \caption{Comparison of experimental and simulated ignition delays for three
-            pressures for Mix \#2. The data at $15.1$ and $25.5$ bar are from the
-            study of \textcite{Mittal2009}. (a) First stage ignition delays,
-            (b) overall ignition delays.}
-        \label{fig:mch-model-2}
-    \end{minipage}
-    \quad
-    \begin{minipage}{0.45\textwidth}
-        \includegraphics[width=8cm]{../figures/05-MCH/mch-model-3}
-        \caption{Comparison of experimental and simulated ignition delays for three
-            pressures for Mix \#3. The data at $15.1$ and $25.5$ bar are from the
-            study of \textcite{Mittal2009}. (a) First stage ignition delays,
-            (b) overall ignition delays.}
-        \label{fig:mch-model-3}
-    \end{minipage}
+    \begin{floatrow}
+        \ffigbox
+            {\includegraphics[width=8cm]{05-MCH/mch-model-2}}
+            {\caption{Comparison of experimental and simulated ignition delays for three
+                pressures for Mix \#2. The data at \SIlist{15.1;25.5}{\bar} are from the
+                study of \textcite{Mittal2009}. (a) First stage ignition delays,
+                (b) overall ignition delays.}
+            \label{fig:mch-model-2}}
+        \ffigbox
+            {\includegraphics[width=8cm]{05-MCH/mch-model-3}}
+            {\caption{Comparison of experimental and simulated ignition delays for three
+                pressures for Mix \#3. The data at \SIlist{15.1;25.5}{\bar} are from the
+                study of \textcite{Mittal2009}. (a) First stage ignition delays,
+                (b) overall ignition delays.}
+            \label{fig:mch-model-3}}
+    \end{floatrow}
 \end{figure}
 
 At \SIlist{15.1;25.5}{\bar} for Mix \#1 and \#2, the overall ignition delay is very
@@ -378,10 +374,9 @@ of these cases are under-predicted by the model. It is also seen in
 ignition, although two-stage ignition is not observed experimentally.
 
 \begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{../figures/05-MCH/mch-pressure}
+    \includegraphics[width=\textwidth]{05-MCH/mch-pressure}
     \caption{Comparison of selected simulated and experimental pressure traces
-        at $P_C=50$ bar for (a) Mix \#1 (b) Mix \#2 (c) Mix \#3. Red lines
+        at $P_C=\SI{50}{\bar}$ for (a) Mix \#1 (b) Mix \#2 (c) Mix \#3. Red lines
         indicate that the pressure profile of the reactive simulation deviates
         from the non-reactive case prior to EOC. Solid lines: experiment;
         dashed lines: reactive simulation; dot-dot-dashed lines: non-reactive
@@ -422,23 +417,21 @@ ignition delays demonstrating the effect of this update is shown in
 \autoref{fig:mch-energy}.
 
 \begin{figure}
-    \centering
-    \begin{minipage}[t]{0.45\textwidth}
-        \includegraphics[width=8cm]{../figures/05-MCH/mch-shocks}
-        \caption{Comparison of the present model with the experiments from
-            \textcite{Vasu2009} and \textcite{Vanderover2009} near 50 atm
-            and for stoichiometric mixtures in O$_2$/N$_2$ air.}
-        \label{fig:mch-shocks}
-    \end{minipage}
-    \quad
-    \begin{minipage}[t]{0.45\textwidth}
-        \includegraphics[width=8cm]{../figures/05-MCH/mch-energy}
-        \caption{Comparison of mechanism performance with the activation energy
-            of ketohydroperoxide decomposition set at 41.6 kcal/mol (blue) and
-            39.0 kcal/mol (red). Experimental ignition delays are shown in
-            green symbols.}
-        \label{fig:mch-energy}
-    \end{minipage}
+    \begin{floatrow}
+        \ffigbox
+            {\includegraphics[width=7.9cm]{05-MCH/mch-shocks}}
+            {\caption{Comparison of the present model with the experiments from
+                \textcite{Vasu2009} and \textcite{Vanderover2009} near \SI{50}{atm}
+                and for stoichiometric mixtures in O$_2$/N$_2$ air.}
+            \label{fig:mch-shocks}}
+        \ffigbox
+            {\includegraphics[width=7.9cm]{05-MCH/mch-energy}}
+            {\caption{Comparison of mechanism performance with the activation energy
+                of ketohydroperoxide decomposition set at \SI{41.6}{\kilo\calorie\per\mole} (blue) and
+                \SI{39.0}{\kilo\calorie\per\mole} (red). Experimental ignition delays are shown in
+                green symbols.}
+            \label{fig:mch-energy}}
+    \end{floatrow}
 \end{figure}
 
 \section{Discussion}
@@ -481,11 +474,11 @@ presented in \autoref{fig:mch-path}, again for simplicity; the pathways that are
 of each species.
 
 \begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{../figures/05-MCH/mch-path}
+    \includegraphics[width=\textwidth]{05-MCH/mch-path}
     \caption{Path analysis of MCH combustion. Initial conditions are 25.5 bar
-    and Mix \#1 ($\phi=1.0$) and 700 K (plain text), 800 K (bold text), 900 K
-    (italic text). Note that not all possible reaction pathways are shown for
+    and Mix \#1 ($\phi=\num{1.0}$) and \SI{700}{\kelvin} (plain text),
+    \SI{800}{\kelvin} (bold text), \SI{900}{\kelvin} (italic text).
+    Note that not all possible reaction pathways are shown for
     each species.}
     \label{fig:mch-path}
 \end{figure}
@@ -504,8 +497,8 @@ each radical.
 The most important second step is oxygen addition (i.e. formation of ROO) at
 all of the initial temperatures in this analysis. The importance of this
 reaction diminishes for each radical as the initial temperature increases due
-to the increasing importance of $\beta$-scission reactions. At 700 K, less than
-0.05\% of each of the fuel radicals is consumed via β-scission. Between
+to the increasing importance of $\beta$-scission reactions. At \SI{700}{\kelvin}, less than
+0.05\% of each of the fuel radicals is consumed via $\beta$-scission. Between
 \SIlist{800;900}{\kelvin}, the percentages of mchr1, mchr2, mchr3, and mchr4 that are decomposed
 via $\beta$-scission increase by several thousand percent each; nevertheless,
 the absolute change is small and the consumption of these radicals still occurs
@@ -682,7 +675,6 @@ the high percentages at \SI{800}{\kelvin} (>70\%) leading to QOOH from cychexch2
 mch2oo in \autoref{fig:mch-path}.
 
 \begin{table}
-    \centering
     \caption{Reactions that eliminate the first inflection point for a nominal
     case with two-stage ignition.}
     \label{tab:mch-sens}
@@ -701,25 +693,25 @@ mch2oo in \autoref{fig:mch-path}.
 \end{table}
 
 \begin{figure}
-    \centering
-    \includegraphics[angle=-90, width=8cm]{../figures/05-MCH/mch-sens}
-    \caption{Sensitivity of the ignition delay to various reaction rates
-        for Mix \#1 ($\phi=1.0$), 25.5 bar and three temperatures (700 K,
-        800 K, and 900 K). At 700 K, the sensitivity of the overall
-        ignition delay is in red and the sensitivity of the first stage
-        ignition delay is in blue. At 800 K, the sensitivity of the overall
-        ignition delay is in grey and the sensitivity of the first stage
-        ignition delay is in green. At 900 K, the sensitivity of the overall
-        ignition delay is in black. Numbers in parentheses represent the
-        ranking of the first stage sensitivity indices.}
-    \label{fig:mch-sens}
-\end{figure}
-\begin{figure}
-    \centering
-    \includegraphics[width=8cm]{../figures/05-MCH/mch-species}
-    \caption{Species mentioned in \autoref{fig:mch-sens} or
-        \autoref{tab:mch-sens} and not included in \autoref{fig:mch-path}.}
-    \label{fig:mch-species}
+    \begin{floatrow}
+        \ffigbox
+            {\includegraphics[angle=-90, width=8cm]{05-MCH/mch-sens}}
+            {\caption{Sensitivity of the ignition delay to various reaction rates
+                for Mix \#1 ($\phi=\num{1.0}$), \SI{25.5}{\bar} and three temperatures
+                (\SIlist{700;800;900}{\kelvin}). At \SI{700}{\kelvin}, the sensitivity of the overall
+                ignition delay is in red and the sensitivity of the first stage
+                ignition delay is in blue. At \SI{800}{\kelvin}, the sensitivity of the overall
+                ignition delay is in grey and the sensitivity of the first stage
+                ignition delay is in green. At \SI{900}{\kelvin}, the sensitivity of the overall
+                ignition delay is in black. Numbers in parentheses represent the
+                ranking of the first stage sensitivity indices.}
+            \label{fig:mch-sens}}
+        \ffigbox
+            {\includegraphics[width=8cm]{05-MCH/mch-species}}
+            {\caption{Species mentioned in \autoref{fig:mch-sens} or
+                \autoref{tab:mch-sens} and not included in \autoref{fig:mch-path}.}
+            \label{fig:mch-species}}
+    \end{floatrow}
 \end{figure}
 
 \end{document}
