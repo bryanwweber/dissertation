@@ -1,8 +1,7 @@
 reset
-set term postscript enhanced eps font "NimbusRomNo9L-Regu,18" color size 9cm,15cm fontfile "../s050000l.pfa" fontfile "../n021023l.pfa" fontfile "../n021003l.pfa"
-set output "mch-model-2.eps"
-set nokey
-set xlabel "1000/{/NimbusRomNo9L-ReguItal T_{/*0.75 C}}, 1/K"
+set term postscript enhanced eps font "Times-Roman,18" color size 9cm,7cm
+unset key
+set xlabel "1000/{/Times-Italic T_{/*0.75 C}}, 1/K"
 set logscale y
 set mxtics
 set mx2tics 5
@@ -20,14 +19,15 @@ set x2tics add ("" inv2k(temp+40) 1)
 }
 
 set ytics scale 1.25, 0.75
-set multiplot layout 2,1 title "{/=24 MCH/O_{2}/N_{2}/Ar, {/StandardSymL f}=0.5, Mix #2}"
-set tmargin 4
-set label 1 "{/NimbusRomNo9L-ReguItal P_{/*0.75 C}} = 15.1 bar" tc rgb "blue" 
-set label 2 "{/NimbusRomNo9L-ReguItal P_{/*0.75 C}} = 25.5 bar" tc rgb "red"
-set label 3 "{/NimbusRomNo9L-ReguItal P_{/*0.75 C}} = 50.0 bar" tc rgb "#006400"
+#set multiplot layout 2,1 title "{/=24 MCH/O_{2}/N_{2}/Ar, {/Symbol f}=0.5, Mix #2}"
+#set tmargin 4
+set label 1 "{/Times-Italic P_{/*0.75 C}} = 15.1 bar" tc rgb "blue" 
+set label 2 "{/Times-Italic P_{/*0.75 C}} = 25.5 bar" tc rgb "red"
+set label 3 "{/Times-Italic P_{/*0.75 C}} = 50.0 bar" tc rgb "#006400"
 set label 4 "Symbols - Experiments\n\Lines - Simulations" font ",16"
 #
-set title "{/=24 (a)}" offset 0,-1
+set output "mch-model-2-first.eps"
+#set title "{/=24 (a)}" offset 0,-1
 set ylabel "First Stage Ignition Delay, ms" offset 2
 set xrange [1.2:1.5]
 
@@ -43,9 +43,11 @@ plot "Mix 2 15 bar Expt.txt" using 2:3 with points pt 4 ps 1.5 lc rgb "blue",\
      "phi=0.5 50 bar.txt" using 1:4 with points pt 8 ps 1.5 lc rgb "#006400",\
      "phi=0.5 50 bar.txt" using 1:7 with lines lt 1 lw 1.5 lc rgb "#006400"
 #
-set tmargin 2.5
+set output
+#set tmargin 2.5
 #
-set title "{/=24 (b)}"
+set output "mch-model-2-over.eps"
+#set title "{/=24 (b)}"
 set ylabel "Overall Ignition Delay, ms" offset 2
 set xrange [1.07:1.5]
 
@@ -60,5 +62,4 @@ plot "Mix 2 15 bar Expt.txt" using 2:4 with points lc rgb "blue" pt 4 ps 1.5,\
      "Mix 2 25 bar.txt" using 2:3 smooth csplines with lines lt 1 lw 1.5 lc rgb "red",\
      "phi=0.5 50 bar.txt" using 1:2 with points pt 8 ps 1.5 lc rgb "#006400",\
      "phi=0.5 50 bar.txt" using 1:6 with lines lt 1 lw 1.5 lc rgb "#006400"
-unset multiplot
 set output
