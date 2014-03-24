@@ -803,10 +803,15 @@ It follows that
 \end{split}
 \end{equation}
 %
-The uncertainty of the pressures $P_i$ and $P$ can be estimated by
+The uncertainty of the pressures $P_i$ and $P$ are equal and can be estimated by
 the same procedure as in \autoref{sec:unc-p0} since the same pressure transducer
-is used to measure the pressure. A typical total pressure after filling is
-approximately \SI{2000}{Torr} ($\approx$ \SI{266644}{\pascal}). The mixtures in
+is used to measure the pressure. The total pressure $P$ will be different for
+each species as it is filled. The order followed in these experiments is
+liquid fuel injection, followed by oxygen, then nitrogen, then argon; for
+propene, the order is oxygen, nitrogen, argon, propene.
+
+A typical total pressure after filling is
+approximately \SI{1300}{Torr} ($\approx$ \SI{173319}{\pascal}). The mixtures in
 \autoref{tab:mixtures} are the mixtures that will be analyzed in the
 following because they represent a worst case scenario in that the mole
 fraction of the fuel or oxygen is maximized in them.
@@ -867,9 +872,9 @@ $X_i$, $Y_i$ & ``Observed'' data points \\
 $r_i$ & Correlation coefficient between uncertainty in $X_i$ and $Y_i$ \\
 $\omega(X_i)$, $\omega(Y_i)$ & Weights of $X_i$ and $Y_i$ \\
 \addlinespace
-$\alpha_i$ & $\sqrt{\omega(X_i)\omega(Y_i)}$ \\
+$x_i$, $y_i$ & $\overline{X} + \beta_i$, $\overline{Y}+b\beta_i$ \\
 \addlinespace
-$r_i$ & Correlation coefficient between uncertainty in $X_i$ and $Y_i$ \\
+$\alpha_i$ & $\sqrt{\omega(X_i)\omega(Y_i)}$ \\
 \addlinespace
 $W_i$ & $\dfrac{\omega(X_i)\omega(Y_i)}{\omega(X_i) + b^2\omega(Y_i) - 2br_i\alpha_i}$ \\
 \addlinespace
@@ -881,6 +886,7 @@ $\overline{x}$ & $\dfrac{\sum W_i x_i}{\sum W_i}$ \\
 \addlinespace
 $\beta_i$ & $W_i \left[\dfrac{U_i}{\omega(Y_i)} + \dfrac{bV_i}{\omega(X_i)} - \left(bU_i + V_i\right)\dfrac{r_i}{\alpha_i}\right]$ \\
 \addlinespace
+$u_i$ & $x_i - \overline{x}$ \\
 \bottomrule
 \end{tabular}
 \end{table}
