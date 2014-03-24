@@ -8,31 +8,10 @@
 \usepackage{fontspec}
 \setmainfont[Renderer=Basic,Ligatures=TeX]{Times New Roman}
 
-%Set the size of the margins and the paper
-\usepackage[margin=1in, letterpaper]{geometry}
-
-\usepackage{mathtools}
-
-%Set the color of the links and PDF metadata
-\usepackage[
-    colorlinks=true,
-    citecolor=blue,
-    linkcolor=black
-]{hyperref}
-
-\hypersetup{%
-    pdfinfo={
-        Title={High Pressure Ignition Chemistry of Alternative Fuels},
-        Author={Bryan W. Weber}
-    }
-}
-%Set up the page numbers
-%This has to go after geometry so the page number is centered
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyfoot[C]{\thepage}
-\renewcommand{\headrulewidth}{0pt}
+%Set the text to double spacing
+%According to hyperref README,
+%setspace should be loaded first
+\usepackage[doublespacing]{setspace}
 
 %Set a command to easily skip a line
 \newcommand{\blankline}{\vspace*{\baselineskip}}
@@ -92,8 +71,6 @@
   \usebibmacro{issue}%
   \newunit}
 
-%Set the text to double spacing
-\usepackage[doublespacing]{setspace}
 
 %Packages not present in main.tex preamble
 \usepackage{booktabs}
@@ -101,7 +78,6 @@
 \def\chapterautorefname~#1\null{Chap.~#1\null}
 \def\sectionautorefname~#1\null{Sec.~#1\null}
 \def\subsectionautorefname~#1\null{Sec.~#1\null}
-\def\subsubsectionautorefname~#1\null{Sec.~#1\null}
 \def\figureautorefname~#1\null{Fig.~#1\null}
 \def\tableautorefname~#1\null{Table~#1\null}
 \def\equationautorefname~#1\null{Eq.~(#1)\null}
@@ -110,8 +86,7 @@
   \begingroup%
   \def\chapterautorefname~##1\null{Chapter~##1\null}%
   \def\sectionautorefname~##1\null{Section~##1\null}%
-  \def\subsectionautorefname~##1\null{Section~##1\null}%
-  \def\subsubsectionautorefname~##1\null{Section~##1\null}%
+  \def\subsectionautorefname~##1\null{Sub--Section~##1\null}%
   \def\figureautorefname~##1\null{Figure~##1\null}%
   \def\tableautorefname~##1\null{Table~##1\null}%
   \def\equationautorefname~##1\null{Equation~##1\null}%
@@ -124,27 +99,64 @@
 \captionsetup{
     font=small ,
     labelsep=colon ,
-    labelformat=bf,
+    labelformat=bf ,
 }
 
 \usepackage{subfig}
 
-\usepackage{floatrow}
-\floatsetup[table]{style=plaintop}
+\usepackage{mathtools}
 
-\usepackage{layouts}
+\usepackage{multirow}
 
 \graphicspath{ {../figures/} }
+
+\newcommand{\linebreakcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 
 \usepackage{siunitx}
 \sisetup{%
     group-separator = {,} ,
     range-units = single ,
-    range-phrase = -- ,
+    range-phrase = {\text{--}} ,
     list-units = single ,
+    list-separator = {\text{, }} ,
+    list-final-separator = {\text{, and }} ,
+    list-pair-separator = {\text{ and }} ,
 }%
+\DeclareSIUnit\calorie{cal}
 
-\usepackage{multirow}
+\usepackage{floatrow}
+\floatsetup[table]{style=plaintop}
+
+\usepackage{layouts}
+%End of extra imports
+
+%Set the color of the links and PDF metadata
+\usepackage[
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=black
+]{hyperref}
+
+\hypersetup{%
+    pdfinfo={
+        Title={High Pressure Ignition Chemistry of Alternative Fuels},
+        Author={Bryan W. Weber}
+    }
+}
+
+%Set the size of the margins and the paper
+%According to http://tex.stackexchange.com/a/26592/32374
+%this should go after hyperref
+\usepackage[margin=1in, letterpaper]{geometry}
+
+%Set up the page numbers
+%This has to go after geometry so the page number is centered
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
 
 \begin{document}
 \section{Rapid Compression Machine}
