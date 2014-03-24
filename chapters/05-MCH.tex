@@ -391,10 +391,10 @@ to vary the compressed temperature. This highlights the importance of using
 VPRO simulations to compare predictions of ignition delay with the experimental data.
 
 For Mix \#1, it is clear that the simulated reactive pressure trace in
-\autoref{fig:mch-pressure}(a) at $T_C=\SI{866}{\kelvin}$ (red dashed line) deviates from
+\autoref{fig:mch-pressure-1} at $T_C=\SI{866}{\kelvin}$ (red dashed line) deviates from
 the non-reactive pressure trace (red dot-dot-dashed line) prior to the end of
 compression. The same is also true of the \SI{797}{\kelvin} case shown for Mix \#3 in
-\autoref{fig:mch-pressure}(c). Remarkably, the simulated case for Mix \#1 at
+\autoref{fig:mch-pressure-3}. Remarkably, the simulated case for Mix \#1 at
 $T_C=\SI{866}{\kelvin}$ predicts the overall ignition delay quite well. However, due to the
 heat release prior to EOC, this simulated result is not plotted in
 \autoref{fig:mch-model-1}. The simulated case for Mix \#3 at $T_C=\SI{797}{\kelvin}$ is also
@@ -404,18 +404,31 @@ over-predicts the overall ignition delay. For the other simulated cases (black
 lines), the reactive pressure traces closely follow their non-reactive
 counterparts until the ignition event begins. The experimental ignition delays
 of these cases are under-predicted by the model. It is also seen in
-\autoref{fig:mch-pressure}(c) for $T_C=\SI{729}{\kelvin}$ that the model predicts two-stage
+\autoref{fig:mch-pressure-3} for $T_C=\SI{729}{\kelvin}$ that the model predicts two-stage
 ignition, although two-stage ignition is not observed experimentally.
 
 \begin{figure}
-    \includegraphics[width=\textwidth]{05-MCH/mch-pressure}
-    \caption{Comparison of selected simulated and experimental pressure traces
-        at $P_C=\SI{50}{\bar}$ for (a) Mix \#1 (b) Mix \#2 (c) Mix \#3. Red lines
+    \floatsetup[subfigure]{floatrowsep=none}
+    \ffigbox{%
+        \begin{subfloatrow}[3]
+            \ffigbox
+                {\includegraphics[width=5.7cm]{05-MCH/mch-pressure-1}}
+                {\caption{Mix \#1}\label{fig:mch-pressure-1}}
+            \ffigbox
+                {\includegraphics[width=5.7cm]{05-MCH/mch-pressure-2}}
+                {\caption{Mix \#2}\label{fig:mch-pressure-2}}
+            \ffigbox
+                {\includegraphics[width=5.7cm]{05-MCH/mch-pressure-3}}
+                {\caption{Mix \#3}\label{fig:mch-pressure-3}}
+        \end{subfloatrow}
+    }
+    {\caption{Comparison of selected simulated and experimental pressure traces
+        at $P_C=\SI{50}{\bar}$. Red lines
         indicate that the pressure profile of the reactive simulation deviates
         from the non-reactive case prior to EOC. Solid lines: experiment;
         dashed lines: reactive simulation; dot-dot-dashed lines: non-reactive
         simulation.}
-    \label{fig:mch-pressure}
+    \label{fig:mch-pressure}}
 \end{figure}
 
 The current mechanism is also compared to shock tube ignition delays from the
