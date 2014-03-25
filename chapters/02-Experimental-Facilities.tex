@@ -5,8 +5,8 @@
 \documentclass[12pt, letterpaper]{article}
 
 %Set the document font
-\usepackage{fontspec}
-\setmainfont[Renderer=Basic,Ligatures=TeX]{Times New Roman}
+\usepackage[no-math]{fontspec}
+\setmainfont[Ligatures=TeX]{Times New Roman}
 
 %Set the text to double spacing
 %According to hyperref README,
@@ -78,6 +78,7 @@
 \def\chapterautorefname~#1\null{Chap.~#1\null}
 \def\sectionautorefname~#1\null{Sec.~#1\null}
 \def\subsectionautorefname~#1\null{Sec.~#1\null}
+\def\subsubsectionautorefname~#1\null{Sec.~#1\null}
 \def\figureautorefname~#1\null{Fig.~#1\null}
 \def\tableautorefname~#1\null{Table~#1\null}
 \def\equationautorefname~#1\null{Eq.~(#1)\null}
@@ -105,6 +106,14 @@
 \usepackage{subfig}
 
 \usepackage{mathtools}
+
+%Set the math font
+\usepackage{unicode-math}
+\unimathsetup{math-style=TeX}
+\setmathfont[range=\mathup/{num}]{Times New Roman}
+\setmathfont[range=\mathit/{greek,Greek,latin,Latin}]{Cambria Math}
+\setmathfont[range=\mathup/{greek,Greek,latin,Latin}]{Cambria Math}
+\setmathfont[range={"2212,"002B,"003D,"0028,"0029,"005B,"005D,"221A,"2211,"2248,"222B,"007C,"2026,"2202,"00D7,"0302}]{Cambria Math}
 
 \usepackage{multirow}
 
@@ -636,7 +645,7 @@ Solving \autoref{eq:integrate-tc} for $T_C$
 %
 \begin{align}
 \label{eq:explicit-tc}
-T_C = \frac{a W\!\!\left(\frac{b}{a} \exp\!{\left[\frac{b T_0}{a}\right]} T_0 \left[\frac{P_C}{P_0}\right]^{\frac{1}{a}}\right)}{b}
+T_C = \frac{a W\!\left(\frac{b}{a} \exp\!{\left[\frac{b T_0}{a}\right]} T_0 \left[\frac{P_C}{P_0}\right]^{\frac{1}{a}}\right)}{b}
 \end{align}
 %
 where $W(\ldots)$ is Lambert's $W$ function \cite{Corless1996}. With an explicit function for $T_C$, we can
@@ -653,7 +662,7 @@ U_{T_C} = \sqrt{\left(\frac{\partial T_C}{\partial P_C} U_{P_C}\right)^2 + \left
 Then, letting
 %
 \begin{equation*}
-D = W\!\!\left(\frac{b}{a} \exp\!{\left[\frac{b T_0}{a}\right]} T_0 \left[\frac{P_C}{P_0}\right]^{\frac{1}{a}}\right)
+D = W\!\left(\frac{b}{a} \exp\!{\left[\frac{b T_0}{a}\right]} T_0 \left[\frac{P_C}{P_0}\right]^{\frac{1}{a}}\right)
 \end{equation*}
 %
 the partial derivatives of \autoref{eq:explicit-tc} with respect to the parameters are
@@ -876,7 +885,7 @@ $x_i$, $y_i$ & $\overline{X} + \beta_i$, $\overline{Y}+b\beta_i$ \\
 \addlinespace
 $\alpha_i$ & $\sqrt{\omega(X_i)\omega(Y_i)}$ \\
 \addlinespace
-$W_i$ & $\dfrac{\omega(X_i)\omega(Y_i)}{\omega(X_i) + b^2\omega(Y_i) - 2br_i\alpha_i}$ \\
+$W_i$ & $\dfrac{\omega(X_i)\omega(Y_i)}{\omega(X_i) + b^2\omega(Y_i) - 2r_i \alpha_i b}$ \\
 \addlinespace
 $\overline{X}$, $\overline{Y}$ & $\dfrac{\sum W_i X_i}{\sum W_i}$, $\dfrac{\sum W_i Y_i}{\sum W_i}$ \\
 \addlinespace
