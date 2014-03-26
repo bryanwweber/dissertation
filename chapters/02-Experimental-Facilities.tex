@@ -113,7 +113,7 @@
 \setmathfont[range=\mathup/{num}]{Times New Roman}
 \setmathfont[range=\mathit/{greek,Greek,latin,Latin}]{Cambria Math}
 \setmathfont[range=\mathup/{greek,Greek,latin,Latin}]{Cambria Math}
-\setmathfont[range={"2212,"002B,"003D,"0028,"0029,"005B,"005D,"221A,"2211,"2248,"222B,"007C,"2026,"2202,"00D7,"0302}]{Cambria Math}
+\setmathfont[range={"2212,"002B,"003D,"0028,"0029,"005B,"005D,"221A,"2211,"2248,"222B,"007C,"2026,"2202,"00D7,"0302,"2261}]{Cambria Math}
 
 \usepackage{multirow}
 
@@ -563,7 +563,7 @@ propagation analysis on the equation used to calculate $T_C$,
 at constant pressure to that at constant volume
 %
 \begin{align}
-\gamma = \frac{C_p}{C_v} = \frac{C_p/R}{C_v/R}
+\gamma \equiv \frac{C_p}{C_v} = \frac{C_p/R}{C_v/R}
 \end{align}
 
 where $C_p$ and $C_v$ are the specific heats in molar units at constant
@@ -634,10 +634,10 @@ to find the compressed temperature
 \ln{\frac{P_C}{P_0}} &= \int_{T_0}^{T_{C}} \! \frac{\gamma}{T\left(\gamma-1\right)} \, \mathrm{d} T
                       = \int_{T_0}^{T_{C}} \! \frac{\hat{C}_p}{T} \, \mathrm{d} T \\
 &= \int_{T_0}^{T_{C}} \! \frac{a + b T}{T} \, \mathrm{d} T\\
-&= a \ln{T} + b T \Big|_{T_0}^{T_C}
+&= \Big[a \ln{T} + b T \Big]_{T_0}^{T_C}
 \end{align}
 \begin{equation}
-\ln{\frac{P_C}{P_0}} = a \ln{T_C} + b \ln{T_C} - \left(a \ln{T_0} + b T_0\right) \label{eq:integrate-tc}
+\ln{\frac{P_C}{P_0}} = a \ln{T_C} + b T_C - \left(a \ln{T_0} + b T_0\right) \label{eq:integrate-tc}
 \end{equation}
 \end{subequations}
 
@@ -650,7 +650,8 @@ T_C = \frac{a W\!\left(\frac{b}{a} \exp\!{\left[\frac{b T_0}{a}\right]} T_0 \lef
 %
 where $W(\ldots)$ is Lambert's $W$ function \cite{Corless1996}. With an explicit function for $T_C$, we can
 estimate the uncertainty in $T_C$ by the root square sum of the uncertainty in the parameters in
-\autoref{eq:explicit-tc} \cite{Taylor1982}. The parameters are $P_C$, $P_0$, $T_0$, $a$, and $b$.
+\autoref{eq:explicit-tc} multiplied by the partial derivative of \autoref{eq:explicit-tc} with
+respect to each of the parameters \cite{Taylor1982}. The parameters are $P_C$, $P_0$, $T_0$, $a$, and $b$.
 %
 \begin{align}
 \label{eq:tc-unc}
@@ -881,7 +882,7 @@ $X_i$, $Y_i$ & ``Observed'' data points \\
 $r_i$ & Correlation coefficient between uncertainty in $X_i$ and $Y_i$ \\
 $\omega(X_i)$, $\omega(Y_i)$ & Weights of $X_i$ and $Y_i$ \\
 \addlinespace
-$x_i$, $y_i$ & $\overline{X} + \beta_i$, $\overline{Y}+b\beta_i$ \\
+$x_i$, $y_i$ & Least squares adjusted points: $\overline{X} + \beta_i$, $\overline{Y}+b\beta_i$ \\
 \addlinespace
 $\alpha_i$ & $\sqrt{\omega(X_i)\omega(Y_i)}$ \\
 \addlinespace
