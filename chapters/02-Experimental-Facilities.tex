@@ -73,7 +73,7 @@ EOC position, the reaction chamber is vacuumed to less
 than \SI{1}{\torr}. Next, the piston assembly is retracted by pressurizing
 the front face of the piston in the pneumatic chamber.
 For safety, and to prevent damage to the RCM, the driving tank should
-be filled to limit the acceleration of the piston assembly during this
+be filled to limit the acceleration of the piston assembly during the
 retraction.
 The pressure on the front of the pneumatic piston pulls the
 piston assembly rearward and seats the rear of the
@@ -836,14 +836,54 @@ to the Gas Chromatograph/Mass Spectrometer, where the sample undergoes analysis.
 \section{Gas Chromatograph/Mass Spectrometer}
 \label{sec:gcms}
 
-The Gas Chromatograph/Mass Spectrometer (GC/MS) used in this study is a
-Shimadzu model QP-2010S, equipped with a 10-port Valco sample injection valve and split
-injector. The column used is a Phenomenex model ZB-5MS capillary column
-with length \SI{30}{\meter}, inner diameter \SI{0.25}{\micro\meter}, and film
-thickness of \SI{0.25}{\micro\meter}. The operating parameters of the GC/MS
-(known as the ``method'') are shown in \autoref{tab:gcms}.
+\subsection{Theory of Gas Chromatography/Mass Spectrometry}
+\label{sec:gcms-theory}
 
-A schematic of the sample injection valve is shown in \autoref{fig:gcms-valve}.
+\subsubsection{Gas Chromatography}
+
+A gas chromatograph (GC) is a device that physically separates components
+of a gas sample by means of a tube---known as a \textit{column}---lined or filled
+with a substance that interacts with the components in the sample. The sample
+is transported the length of the column by a flow of carrier gas, usually
+helium or hydrogen, also known as the \textit{mobile phase}. A detector is
+placed at the outlet of the column to measure the amount and type
+of components eluted from the column.
+
+The separation of the gaseous components in the sample is effected by
+the interaction of the sample with the lining of the column, known as the
+\textit{stationary phase}. Gaseous species that have little interaction with
+the stationary phase and spend most of their time in the mobile phase
+are eluted from the column before species that interact strongly with
+the stationary phase and spend little time in the mobile phase \cite{Sparkman2011a}.
+
+The column is placed in an insulated oven so that its temperature may be
+controlled. The column temperature in a given analysis may be constant
+or may be controlled as a function of time. Since the time that a given
+component takes to move through the column is a function of temperature,
+this facility allows optimization of the elution time of the various
+components in the sample.
+
+The injector of the GC is also temperature controlled; the temperature of
+the injector is set high enough so that all components (including the solvent,
+if any) are vaporized but not so high that the sample starts to degrade. On the present GC,
+a split/splitless injector is installed. This allows for operation in the
+split mode, where a percentage of the injected sample is removed from the
+injector prior to injection injection the column, or in the splitless mode,
+where nearly all of the sample is injected into the column. The split mode
+is used in this work. The amount of sample removed is controlled by a valve
+in the injector. The split ratio is calculated according to \autoref{eq:split-ratio}
+%
+\begin{gather}
+\label{eq:split-ratio}
+\text{Split Ratio} = \frac{\text{Column Flow} +\text{Vent Flow}}{\text{Column Flow}}
+\end{gather}
+%
+where the column flow is the carrier gas flow rate at the head of the column
+and the vent flow is the flow out of the splitter vent \cite{Sparkman2011a}.
+
+A GC may also be equipped with a gas sample injection valve, in addition to the
+split/splitless injector. The present GC is equipped with a 10-port Valco sample
+injection valve, shown schematically in \autoref{fig:gcms-valve}.
 Each port is numbered, and curved lines indicate connections between ports.
 The sample injection valve is used to inject a consistent mass of sample into the column
 with each injection. This permits reliable quantification of the
@@ -855,6 +895,16 @@ GC temperature program to rotate the connections into the
 the sample from the sample loop into the column (\autoref{fig:gcms-valve-inject}).
  The valve is actuated again after \SI{0.1}{\minute} to remove the sample loop
 from the carrier gas path (\autoref{fig:gcms-valve-load}) and restore the ``load'' position.
+
+The sample injection valve is equipped with a heater to maintain
+the valve body at a constant temperature and the entire assembly is installed
+in an insulated box. However, this heater is insufficient
+to heat the tubes attached to the valve, so an additional heater rope is installed
+in the insulated box. To measure the temperature of the sample loop directly, a thermocouple
+is fixed to the sample loop by ceramic cement. The temperature of the
+sample loop is used to control the power provided to the rope heater,
+while a built-in thermocouple is used to control the power provided
+to the valve body heater.
 
 \begin{figure}
     \ffigbox{%
@@ -872,18 +922,125 @@ from the carrier gas path (\autoref{fig:gcms-valve-load}) and restore the ``load
         \label{fig:gcms-valve}}
 \end{figure}
 
-The sample injection valve is equipped with a heater to maintain
-the valve body at a constant temperature and the entire assembly is installed
-in an insulated box. However, this heater is insufficient
-to heat the tubes attached to the valve, so an additional heater rope is installed
-in the insulated box. To measure the temperature of the sample loop directly, a thermocouple
-is fixed to the sample loop by ceramic cement. The temperature of the
-sample loop is used to control the power provided to the rope heater,
-while a built-in thermocouple is used to control the power provided
-to the valve body heater.
+\subsubsection{Mass Spectrometry}
 
-The pressure in the sample loop is monitored by an MMA type pressure
-transducer, the same model as used in \autoref{sec:unc-p0}. The
+Many types of detectors are available for GC analyses. These commonly include
+flame ionization detectors, thermal conductivity detectors, and mass
+spectrometers. In this work, a mass spectrometer is used to identify and
+quantify the species eluted from the column.
+
+The fundamental operation of a mass spectrometer (MS) is to separate ions with
+different mass-to-charge ($m/z$) ratios from each other. Ions are generated
+from the effluent of the column---including sample components, mobile phase,
+and column bleed, collectively called \textit{analytes}---by an ionization source,
+typically either electronic or chemical in nature. Nearly all of the ions
+generated will have a single charge, $z=1$ \cite{Sparkman2011}; thus,
+the $m/z$ value of the ions is also considered to be the mass.
+
+In this work, electron ionization (EI) is used to generate the ions for
+analysis. The effluent from the column is passed in front of an electron
+source so that the electrons impact the analytes molecules and remove an
+electron, generating a positive ion. EI is a \textit{hard ionization}
+technique, in that the electron impact transfers a significant amount of energy
+to the analyte molecule \cite{Sparkman2011}. The additional energy causes
+the ion to fragment into two or more pieces; the spectrum of these fragments
+is characteristic for a given molecule and can be used as a ``fingerprint''
+to identify the source molecule for a given spectrum.
+
+After ionization, the fragments are accelerated out of the ionization
+chamber towards the detector. Several detectors are available, including
+time-of-flight and transmission quadrupole. All of these detectors require
+high vacuum to avoid impact of ions of interest with extraneous species
+prior to their reaching the detector. The vacuum is achieved in the present
+MS by a two-stage design, using a rotary vane pump in series with a
+turbomolecular pump to achieve ultimate pressures of approximately \SI{2}{\pascal}.
+
+\begin{figure}
+\includegraphics[width=7.9cm]{02-Experimental-Facilities/gcms-quad}
+\caption{Schematic of the transmission quadrupole in an MS.}
+\label{fig:gcms-quad}
+\end{figure}
+
+The MS used in this study is a transmission quadrupole type, shown
+schematically in \autoref{fig:gcms-quad}. The transmission quadrupole separates
+specific ions from the flow of all of the ions from the ion source by
+means of a time-varying electric field. Conceptually, the quadrupole
+can be imagined as four round rods, arranged in a cross pattern, with
+their long axes aligned parallel to the ion flow. The ions are admitted
+to the rods at one end (e.g. at the origin in \autoref{fig:gcms-quad}) and
+the detector is placed perpendicular to the long axes of the rods at
+the other end (not shown in \autoref{fig:gcms-quad}). A positive DC voltage is applied
+to one pair of the rods, while a negative DC voltage is applied to the other
+pair of rods; in addition, an AC voltage is applied simultaneously to all four
+rods. Assuming a specific ratio of AC amplitude to DC amplitude, ions of a certain
+$m/z$ will remain in the ion beam in the center of the rods and reach the detector.
+Then, holding the AD:DC amplitude ratio fixed, the amplitudes are increased or decreased
+together. This varies the particular $m/z$ that will remain in the ion beam
+and reach the detector as a function of time \cite{Sparkman2011}. The voltage amplitude is ramped
+to measure the desired $m/z$ range over a time $s$, the sample time. The inverse of
+$s$ is known as the \textit{scan rate}.
+
+This process of scanning the voltage amplitudes generates a mass spectrum.
+For a given scan from the lowest to the highest voltage, the number of ions
+of a particular $m/z$ is measured at the detector. This information is
+typically presented in the form of a relative intensity plot. The abscissa
+is the (integer) $m/z$ while the ordinate is the intensity of a particular
+$m/z$ scaled by the maximum intensity of all the $m/z$ in a given scan. It
+is not required that the $m/z$ be integers, although they are usually presented
+as such for simplicity. An example of a mass spectrum for a given time in a
+GC/MS analysis is shown in \autoref{fig:gcms-mass-spec}.
+
+In addition to the mass spectrum, the MS reports the total ion current (TIC),
+also known as the total ion chromatogram. This is the sum of all of the mass
+intensities for a given scan. A sample TIC is plotted in \autoref{fig:gcms-tic}
+where the abscissa is time in \si{\minute} and the ordinate is an arbitrary unit.
+Finally, the MS can also report the mass chromatogram (MC), which is the
+chromatogram for a specific $m/z$ as a function of time.
+
+\begin{figure}
+    \begin{floatrow}
+        \ffigbox
+            {\rule{7.9cm}{7.9cm}}%\includegraphics[draft,width=7.9cm]{02-Experimental-Facilities/gcms-mass-spec}}
+            {\caption{Example mass spectrum for a given scan during a GC/MS analysis}
+            \label{fig:gcms-mass-spec}}
+        \ffigbox
+            {\includegraphics[width=7.9cm]{02-Experimental-Facilities/gcms-tic}}
+            {\caption{Example TIC for a GC/MS analysis}
+            \label{fig:gcms-tic}}
+    \end{floatrow}
+\end{figure}
+
+\subsubsection{Identification and Quantification of Species using GC/MS}
+
+Species are identified using a GC/MS system by their unique mass spectra.
+For each peak in the TIC, the set of mass intensities over the peak are
+averaged; these intensities are compared to a database supplied by the
+National Institute of Standards and Technologies (NIST).
+
+In this work, the external standard method of quantification is used.
+This requires that calibration curves for each of the species of
+interest be created, relating the area of the peak in the TIC to
+the number of moles of analyte reaching the detector. The number of
+moles of analyte can in turn be related to the number of moles of
+sample in the gas sample injection valve sample loop. Once the
+calibration curve is generated, it is used to relate the measured
+area of the peak of particular component to its mole fraction. Detailed
+methods for the construction of calibration curves will be given in
+\autoref{sec:gcms-procedure}.
+
+\subsection{Experimental Procedure}
+\label{sec:gcms-procedure}
+
+The GC/MS used in this study is a
+Shimadzu model QP-2010S, equipped with a 10-port Valco sample injection
+valve and split/splitless injector, as mentioned previously. The column
+used is a Phenomenex model ZB-5MS capillary column
+with length \SI{30}{\meter}, inner diameter \SI{0.25}{\micro\meter}, and film
+thickness of \SI{0.25}{\micro\meter}. The operating parameters of the GC/MS
+(known as the ``method'') are shown in \autoref{tab:gcms}.
+
+The pressure in the gas injection valve sample loop is monitored by an
+MMA type pressure transducer, the same model as used in \autoref{sec:unc-p0}. The
 sample outlet in \autoref{fig:gcms-valve} is open to the atmosphere
 so that a consistent pressure is maintained in the sample loop.
 The volume of the sample loop is \SI{10}{\micro\liter}. With
@@ -915,6 +1072,4 @@ sample sent to the detector by linear least-squares regression.
 This calibration curve is used to compute the mole fraction
 of any given peak area for that species.
 
-Species are identified from the TIC by an automated library
-search.
 \end{document}

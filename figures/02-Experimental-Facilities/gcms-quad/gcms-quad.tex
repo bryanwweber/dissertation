@@ -1,0 +1,41 @@
+% arara: xelatex
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows.meta}
+\usepackage{tikz-3dplot}
+\usepackage{unicode-math}
+\setmathfont{Cambria Math}
+\begin{document}
+\tdplotsetmaincoords{60}{135}
+\begin{tikzpicture}[tdplot_main_coords, thick]
+%\tdplotdrawarc{(0,0,0)}{0.5}{0}{90}{}{}
+%\draw[tdplot_main_coords] (0,0,0.5) circle[radius=0.25];
+\tdplotsetthetaplanecoords{90}
+%\draw[tdplot_rotated_coords] (-0.177,0.5+0.177,0) --  (-0.177,+0.5+0.177,1);
+\draw[tdplot_rotated_coords] (0.177,-0.5-0.177,0) --  (+0.177,-0.5-0.177,1)
+                             ..controls (0.08,-0.5,1.25) and (0.08,-0.5,0.75).. (-0.177,-0.5+0.177,1)
+                             -- (-0.177,-0.5+0.177,0);
+%\draw[tdplot_rotated_coords] (-0.177,-0.5+0.177,0) -- (-0.177,-0.5+0.177,1);
+\draw[fill=white,tdplot_rotated_coords] (0.5+0.177,-0.177,0) --  (+0.5+0.177,-0.177,1)
+                             ..controls (0.5,-0.08,1.25) and (0.5,0.08,0.75).. (+0.5-0.177,+0.177,1)
+                             -- (0.5-0.177,0.177,0);
+                             %..controls (0.45,0.08,1.1).. (0.5,0,1);
+%\draw[tdplot_rotated_coords] (0.5-0.177,0.177,0) --   (+0.5-0.177,+0.177,1);
+\draw[tdplot_rotated_coords] (-0.5+0.177,-0.177,0) -- (-0.5+0.177,-0.177,1)
+                             ..controls (-0.5,-0.08,1.25) and (-0.5,0.08,0.75).. (-0.5-0.177,+0.177,1)
+                             -- (-0.5-0.177,0.177,0);
+%\draw[tdplot_rotated_coords] (-0.5-0.177,0.177,0) --  (-0.5-0.177,+0.177,1);
+\draw[fill=white,tdplot_rotated_coords] (0.177,0.5-0.177,0) --   (+0.177,+0.5-0.177,1)
+                             ..controls (0.08,0.5,1.25) and (0.08,0.5,0.75) .. (-0.177,+0.5+0.177,1)
+                             -- (-0.177,0.5+0.177,0);
+\draw[fill=white,tdplot_rotated_coords] (0,0.5,0) circle[radius=0.25];
+\draw[fill=white,tdplot_rotated_coords] (0,-0.5,0) circle[radius=0.25];
+\draw[fill=white,tdplot_rotated_coords] (0.5,0,0) circle[radius=0.25];
+\draw[fill=white,tdplot_rotated_coords] (-0.5,0,0) circle[radius=0.25];
+
+\draw[very thin,shorten <=3pt, dash pattern=on 10pt off 3pt] (0,0,0) -- (-1.75,0,0) node at (-2,0,0) {$z$};
+\draw[very thin,shorten <=3pt, dash pattern=on 10pt off 3pt] (0,0,0) -- (0,1.5,0) node at (0,1.75,0) {$x$};
+\draw[very thin,shorten <=3pt, dash pattern=on 10pt off 3pt] (0,0,0) -- (0,0,1.5) node at (0,0,1.75) {$y$};
+\draw[very thin,shorten <=3pt, dash pattern=on 10pt off 3pt] (0,0,0) -- (0,-1.25,0) node at (0,1.75,0) {$x$};
+\draw[very thin,shorten <=3pt, dash pattern=on 10pt off 3pt] (0,0,0) -- (0,0,-1.25) node at (0,0,1.75) {$y$};
+\end{tikzpicture}
+\end{document}
