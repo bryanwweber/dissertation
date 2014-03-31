@@ -99,6 +99,7 @@
 
 \usepackage{subfig}
 
+% Must be loaded before hyperref
 \usepackage{mathtools}
 
 %Set the math font
@@ -110,6 +111,9 @@
 \setmathfont[range={"2212,"002B,"003D,"0028,"0029,"005B,"005D,"221A,"2211,"2248,"222B,"007C,"2026,"2202,"00D7,"0302,"2261,"0025}]{Cambria Math}
 
 \usepackage{multirow}
+
+\usepackage{rotating}
+\usepackage{pdflscape}
 
 \graphicspath{ {../figures/} }
 
@@ -133,8 +137,7 @@
 \usepackage{floatrow}
 \floatsetup[table]{style=plaintop}
 
-\usepackage{layouts}
-%End of extra imports
+%\usepackage{layouts}
 
 %Set the color of the links and PDF metadata
 \usepackage[
