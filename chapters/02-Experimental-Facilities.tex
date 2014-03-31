@@ -772,7 +772,7 @@ SME-Tec Gmbh. from Germany. The FSS is composed of two parts, the gas sampling v
 (GSV) and the Controller. A schematic of the GSV is shown in \autoref{fig:valve-schematic}.
 Gases are admitted from the reaction chamber into the heated carrying tubes
 through the poppet-style valve on the left of the GSV. The sampled gases are then
-conducted through the GSV outlet into the sampling bottle.
+conducted through the GSV outlet into the \SI{1}{\liter} sampling bottle.
 
 The GSV is mounted to the RCM by a custom-made end plug. The reaction chamber
 is sealed by an O-ring on the small- and large-diameter portions of the GSV.
@@ -824,10 +824,84 @@ to the Gas Chromatograph/Mass Spectrometer, where the sample undergoes analysis.
 \label{sec:gcms}
 
 The Gas Chromatograph/Mass Spectrometer (GC/MS) used in this study is a
-Shimadzu model QP-2010S, equipped with a sample injection valve and split
+Shimadzu model QP-2010S, equipped with a 10-port Valco sample injection valve and split
 injector. The column used is a Phenomenex model ZB-5MS capillary column
 with length \SI{30}{\meter}, inner diameter \SI{0.25}{\micro\meter}, and film
 thickness of \SI{0.25}{\micro\meter}. The operating parameters of the GC/MS
 (known as the ``method'') are shown in \autoref{tab:gcms}.
 
+A schematic of the sample injection valve is shown in \autoref{fig:gcms-valve}.
+Each port is numbered, and curved lines indicate connections between ports.
+The sample injection valve is used to inject a consistent mass of sample into the column
+with each injection. This permits reliable quantification of the
+components in the sample. First, the sample is loaded into the sample loop
+when the valve is in the ``load'' position, as in \autoref{fig:gcms-valve-load}.
+Then, the valve is electrically actuated at the start of the
+GC temperature program to rotate the connections into the
+``inject'' position. This allows carrier gas to flow through the sample loop and push
+the sample from the sample loop into the column (\autoref{fig:gcms-valve-inject}).
+ The valve is actuated again after \SI{0.1}{\minute} to remove the sample loop
+from the carrier gas path (\autoref{fig:gcms-valve-load}) and restore the ``load'' position.
+
+\begin{figure}
+    \ffigbox{%
+        \begin{subfloatrow}
+            \ffigbox[\FBwidth]
+                {\includegraphics[width=7.9cm]{02-Experimental-Facilities/gcms-valve-load}}
+                {\caption{Load position}
+                \label{fig:gcms-valve-load}}
+            \ffigbox[\FBwidth]
+                {\includegraphics[width=7.9cm]{02-Experimental-Facilities/gcms-valve-inject}}
+                {\caption{Inject position}
+                \label{fig:gcms-valve-inject}}
+        \end{subfloatrow}}
+        {\caption{GC/MS sample injection valve.}
+        \label{fig:gcms-valve}}
+\end{figure}
+
+The sample injection valve is equipped with a heater to maintain
+the valve body at a constant temperature and the entire assembly is installed
+in an insulated box. However, this heater is insufficient
+to heat the tubes attached to the valve, so an additional heater rope is installed
+in the insulated box. To measure the temperature of the sample loop directly, a thermocouple
+is fixed to the sample loop by ceramic cement. The temperature of the
+sample loop is used to control the power provided to the rope heater,
+while a built-in thermocouple is used to control the power provided
+to the valve body heater.
+
+The pressure in the sample loop is monitored by an MMA type pressure
+transducer, the same model as used in \autoref{sec:unc-p0}. The
+sample outlet in \autoref{fig:gcms-valve} is open to the atmosphere
+so that a consistent pressure is maintained in the sample loop.
+The volume of the sample loop is \SI{10}{\micro\liter}. With
+the temperature, pressure, and volume of the sample loop known,
+the number of moles of sample can be calculated by the ideal
+gas law.
+
+A calibration curve is built for the major species by the
+following procedure. First, the sample bottle is vacuumed
+to less than \SI{1}{\torr}. Mixtures of the species of
+interest in the liquid state are prepared by massing each
+component on a high-accuracy AND-201 scale. A small mass
+of this mixture is drawn into a syringe and massed on the
+same scale. The mixture is injected through a septum into
+the sample bottle. Then the sample bottle is filled with
+high-purity nitrogen so that the largest mole fraction of
+a species of interest is approximately 0.001. The sample
+bottle is connected to the sample injection valve on the
+GC/MS and the valve on the sample bottle is opened and
+quickly closed. The pressure is allowed to equalize and
+the GC/MS is started.
+
+After the completion of the GC/MS method, the total ion
+chromatogram (TIC) is analyzed by the Shimadzu GCMS Post-run
+Analysis software (version XXXX). Each peak is automatically
+integrated by the software so that its area can be found.
+The peak area is then related to the number of moles of
+sample sent to the detector by linear least-squares regression.
+This calibration curve is used to compute the mole fraction
+of any given peak area for that species.
+
+Species are identified from the TIC by an automated library
+search.
 \end{document}

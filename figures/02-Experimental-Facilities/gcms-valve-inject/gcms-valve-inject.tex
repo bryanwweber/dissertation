@@ -1,0 +1,29 @@
+% arara: xelatex
+\documentclass[tikz]{standalone}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\begin{document}
+\begin{tikzpicture}
+\draw (0,0) circle [radius=1in];
+\fill (0,0) foreach \i / \j in {0/1,36/2,72/3,108/4,144/5,180/6,216/7,252/8,288/9,324/10}
+     {+(\i:0.8in) circle [radius=0.05in] node at +(\i:0.65in) {\j}};
+\draw[line width=3pt] +(0:0.8in) arc [start angle=0, end angle=36, radius=0.8in];
+\draw[line width=3pt] +(72:0.8in) arc [start angle=72, end angle=108, radius=0.8in];
+\draw[line width=3pt] +(144:0.8in) arc [start angle=144, end angle=180, radius=0.8in];
+\draw[line width=3pt] +(216:0.8in) arc [start angle=216, end angle=252, radius=0.8in];
+\draw[line width=3pt] +(288:0.8in) arc [start angle=288, end angle=324, radius=0.8in];
+\draw[Stealth-] +(180:0.85in) -- ++(180:3) node[text width = 1cm] at +(180:0.25) {Carrier Gas In};
+\draw[-Stealth] +(216:0.85in) -- ++(216:3) node[rotate = 36, text width = 1.25cm, align=center] at +(216:0.25) {To \\ Column};
+\draw +(252:0.85in) ..controls +(252:1) and +(90:-1.5).. (-4.5,-1.5);
+\draw[decorate, decoration={coil,amplitude=4pt,segment length=3pt}]
+    (-4.5,-1.5) -- (-4.5,0.5) node[midway,above,rotate=90] {Sample Loop};
+\draw (-4.5,0.5) ..controls +(90:1) and (144:3).. (144:0.85in);
+\draw[Stealth-] +(288:0.85in) -- ++(288:3) node[rotate = 288,text width=1.25cm] at +(288:0.25) {Sample In};
+\draw[-Stealth] +(108:0.85in) -- ++(108:3) node[rotate=108, text width = 1cm] at +(108:0.25) {Sample Out};
+\draw[line width=1.25pt] +(72:0.85in) ..controls +(72:1) and +(36:1).. +(36:0.85in);
+\draw[line width=1.25pt] +(0:0.85in) ..controls +(0:1) and +(324:1).. +(324:0.85in);
+\end{tikzpicture}
+\end{document}
