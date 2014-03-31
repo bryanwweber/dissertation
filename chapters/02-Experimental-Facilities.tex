@@ -36,7 +36,8 @@ more detail.
 
 The present RCM is a pneumatically-driven/hydraulically-stopped
 single-piston arrangement. A schematic of the RCM is shown in
-\autoref{fig:rcm-schematic}. The RCM consists of four chambers and
+\autoref{fig:rcm-schematic} and an image is shown in \autoref{fig:rcm-photo}.
+The RCM consists of four chambers and
 three pistons that are used to control machine. The chambers are
 called the reaction chamber, the hydraulic chamber, the pneumatic
 chamber, and the driving tank; similarly, the pistons are called
@@ -53,6 +54,19 @@ pneumatic chamber on its front. The three pistons are connected by
 a rod running from the front of the pneumatic piston to the rear of
 the reactor piston so that they move as one; this will be referred
 to as the piston assembly.
+
+%\begin{landscape}
+\begin{sidewaysfigure}
+\includegraphics[width=\linewidth]{02-Experimental-Facilities/rcm-schematic}
+\caption{Schematic of the RCM. Not to scale}
+\label{fig:rcm-schematic}
+\end{sidewaysfigure}
+%\end{landscape}
+
+\begin{figure}
+\includegraphics[width=5.7in]{02-Experimental-Facilities/rcm-photo}
+\caption{Photograph of the RCM.}\label{fig:rcm-photo}
+\end{figure}
 
 At the start of an experimental run, with the piston in the
 EOC position, the reaction chamber is vacuumed to less
@@ -84,7 +98,7 @@ The required driving pressure for a given EOC pressure can be estimated
 from a force balance between the force on the pneumatic piston from the
 driving tank and the force on the reactor piston from the test gases,
 as shown in \autoref{eq:driving-pressure}.
-
+%
 \begin{subequations}
 \label{eq:piston-force}
 \begin{align}
@@ -210,7 +224,6 @@ of the pressure. The overall ignition delay is the time from the end of
 compression until the largest peak in the time derivative of the pressure.
 
 \begin{figure}
-    \centering
     \includegraphics[width=12cm]{02-Experimental-Facilities/ign-delay-def}
     \caption{Representative pressure trace indicating the definition of
     the first stage and overall ignition delays and the corresponding
