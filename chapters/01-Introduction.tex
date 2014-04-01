@@ -10,6 +10,8 @@
 \section{Introduction}
 \label{sec:intro-introduction}
 
+\subsection{Background}
+
 The world relies heavily on combustion to provide energy in useful forms for
 human consumption; combustion currently represents over 80\% of the world
 energy production \cite{Sims2007} and is predicted to decrease in importance
@@ -42,7 +44,9 @@ fuels lies in their feedstocks. Whereas traditional fuel feedstocks generally
 require millions of years to be produced, biofuel feedstocks are replenished
 on an annual basis. Furthermore, biofuels offer the potential to offset carbon
 emissions created from their combustion by reusing the emitted carbon to grow
-the plants from which the fuels are produced. However, the combustion
+the plants from which the fuels are produced.
+
+However, the combustion
 properties of biofuels may be substantially different from the traditional
 fuels they are intended to replace. This makes it difficult to quickly switch
 the energy economy to biofuels and necessitates medium-term investigation of
@@ -57,7 +61,7 @@ developed. These include engines capable of operating in favorable combustion
 regimes, such as so-called Low Temperature Combustion (LTC) engines and
 Homogeneous Charge Compression Ignition (HCCI) engines. These devices avoid
 regions in the temperature-equivalence ratio space where combustion generates a
-large amount of emissions and attempt to operate in regions where efficiency is
+large amount of emissions and operate in regions where efficiency is
 maximized and emissions are reduced. Other devices, such as the well-known
 catalytic converter, operate on the exhaust after it leaves the cylinder to
 improve emissions characteristics.
@@ -89,6 +93,15 @@ methodologies. Nevertheless, much of the work is still ongoing, and there is
 substantial room for extending the state-of-the-art knowledge, especially at
 high-pressure conditions relevant to combustion in engines.
 
+A combustion model for the combustion of a given fuel in a given device
+must necessarily accurately model the complete interaction of the operating
+elements of the device. This includes sub-models for the chemical reactions that the
+fuel and oxidizer undergo as well as the interaction of the fuel/oxidizer
+mixture with the operation of the device. The first of these is known as
+a chemical kinetic model or reaction mechanism; the second typically includes
+such effects as turbulence interaction, heat transfer, liquid spray
+dynamics, fluid mechanics, etc., each of which are typically modeled independently.
+
 Chemical kinetic models for the combustion of large molecules are typically
 built in a hierarchical fashion, as described by \textcite{Westbrook1984}. That
 is, the model for the combustion of heptane contains the model for the
@@ -101,5 +114,94 @@ kinetic mechanisms to emerge from this work include the GRI-Mech series of
 mechanisms (most recently, version 3.0 \cite{Smith}), USC-Mech v2
 \cite{Wang2007}, and the AramcoMech series of mechanisms, most recently version
 1.3 \cite{Metcalfe2013}.
+
+In addition, validation of kinetic models for the combustion of larger fuels
+has proceeded in parallel with the small molecule chemistry. Given their projected
+importance to combustion, one focus of the larger molecule work has naturally
+been on biofuels. These biofuels typically include chemical species such as
+alcohols and esters – neat alcohols can be used as fuels, while esters are
+typically found as components of biodiesel fuels. A review by \textcite{Kohse-Hoinghaus2010}
+covers much of the experimental data available until 2010. Since then an
+enormous amount of data has been produced for both alcohols and esters.
+Since the focus of this study is on alcohols, I will highlight alcohols
+in the following sections.
+
+Model construction and validation has also been focused on alternative ``traditional''
+fuels, that is, fuels that are chemically similar to traditional fuels but
+produced from alternative sources such as shale oil or coal liquefaction.
+Traditional fuels and alternative ``traditional'' fuels typically contain
+hundreds or thousands of chemical components. This makes building and using
+models containing every species present in the fuel intractable on current
+computer hardware. Therefore, a more useful approach to building models for
+these fuels is to define a surrogate fuel. Surrogate fuels are made of a
+limited number of chemical components to ensure that model building and use
+are tractable, but the components are chosen so that the surrogate fuel
+faithfully reproduces the physical and chemical properties of the real fuel.
+
+Much progress has been made recently to construct surrogates for typical
+transportation fuels. For instance, work on diesel surrogate formulation has
+recently been reviewed by \textcite{Pitz2011}, work on gas turbine fuel
+surrogates has been briefly summarized by \textcite{Dooley2012}, and work on
+gasoline surrogates has been summarized in the work of \textcite{Anand2011,Pitz2007}.
+One typical component class in the surrogate formulations is a cycloalkane,
+due to this class' presence in nearly all transportation fuels \cite{Pitz2007,Briker2001,Farrell2007,Colket2007}.
+One particular cycloalkane, methylcyclohexane (MCH), has been suggested in
+several surrogate formulations, including those by \textcite{Bieleveld2009,Naik2005}.
+Recent work on MCH combustion will also be highlighted in the following sections.
+
+Due to its relevance in predicting the performance of a fuel in existing
+and advanced engines, ignition delay is a very common measure of the
+global performance of a kinetic mechanism. Ignition delays for homogeneous
+systems are typically measured in shock tubes or RCMs, where the effects
+of fluid motion and turbulence are generally minimized.
+
+\subsection{Combustion Chemistry of Alcohols}
+
+Among the alcohols being considered as biofuels, two criteria are typically
+used to judge the suitability of a species: 1) its ease of production and
+2) its potential as a ``drop-in'' replacement for current fuels. Because
+of these criteria (among others), much research recently has focused on
+the isomers of butanol, the C$_4$ alcohols, and \textit{i}-pentanol, a C$_5$
+alcohol. This is because these fuels are easy to produce by a number of biological
+pathways \cite{Peralta-Yahya2012} and offer similar properties as
+gasoline for use in typical automotive transportation applications.
+
+One of the most common biofuels currently in use is ethanol (C$_2$H$_6$O).
+Although ethanol is ubiquitous at gasoline pumps, it suffers from several
+disadvantages that suggest it needs to be replaced \cite{Niven2005}. In particular, ethanol
+has a much lower energy density than gasoline, reducing volumetric fuel
+economy, and ethanol is typically produced from crops that would otherwise
+be used as food sources \cite{Somma2009}.
+
+\textit{n}-Butanol has recently been identified as one of a suite of so
+called ``second generation'' biofuels intended to supplement or replace
+the ``first generation'' biofuels currently in use, such as ethanol \cite{Harvey2011,Nigam2011}.
+The second generation biofuels will help alleviate some of the problems
+identified with the first generation biofuels, including concerns about
+feedstocks. In addition to the normal (\textit{n}) isomer, there are three
+other isomers of butanol--- \textit{s}-, \textit{i}-, and \textit{t}-butanol.
+Biological production pathways have been identified for \textit{n}-, \textit{s}-,
+and \textit{i}-butanol \cite{Nigam2011,Smith2010}, but \textit{t}-butanol is a petroleum derived product.
+Nevertheless, \textit{t}-butanol is currently used as an octane enhancer in gasoline.
+
+In the last five years, research into the combustion characteristics of
+the isomers of butanol has exploded, so exemplary references are
+provided here except for the articles of particular interest to this work.
+In addition to applied engine research \cite{Dernotte2009,Szwaja2010,Kim2011}
+fundamental combustion measurements have been made using many different
+systems. These include laminar flame speeds \cite{Veloo2011}, jet-stirred reactor
+chemistry \cite{Dagaut2009}, low-pressure flame structure \cite{Hansen2011,Hansen2013},
+atmospheric pressure flame structure \cite{Grana2010}, pyrolysis \cite{VanGeem2010},
+flow reactors \cite{Lefkowitz2012}, and ignition delays, which will be discussed
+in more detail shortly. Other researchers have measured or calculated the reaction
+rate constants of reactions of butanol with various radicals, including OH [25–27]
+and HO2 [28,29].
+
+Several studies of ignition delay of the butanol isomers have been conducted
+in both shock tubes and RCMs, including work in shock tubes by \textcite{Black2010,
+Heufer2011, Moss2008, Noorani2010, Vasu2010, Vranckx2011, Vasu2013, Zhu2013, Zhang2012,
+Yasunaga2012, Stranic2012} and work in RCMs by \textcite{Karwat2011, Weber2011,
+Weber2013}. These studies have covered a wide range of temperature-pressure regimes,
+from \SIrange{1}{90}{\bar} and \SIrange{675}{1800}{\kelvin}.
 
 \end{document}
