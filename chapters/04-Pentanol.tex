@@ -7,5 +7,26 @@
 \input{preamble.tex}
 
 \begin{document}
+\section{Structure of \iPeOH{}}
+\label{sec:ipeoh-struct}
+
+\begin{figure}\CenterFloatBoxes
+    \begin{floatrow}
+        \killfloatstyle\ttabbox
+        {\captionsetup{type=table}\caption{HHV of Ethanol, \iPeOH{}, and Gasoline}
+        \label{tab:buoh-heats}}
+        {\begin{tabular}{*{4}{c}}
+            \toprule
+            Compound & Ethanol \cite{Afeefy2014} & \iPeOH \cite{Afeefy2014} & Gasoline \cite{Davis2013} \\
+            \midrule
+            HHV [\si{\mega\joule\per\kilo\gram}] & 29.67 & 37.73 & 48.46 \\
+            \bottomrule
+        \end{tabular}}
+        \ffigbox[\FBwidth]
+            {\includegraphics[width=4cm]{04-Pentanol/ipeoh-skeletal}}
+            {\caption{Skeletal structure of \iPeOH{}}
+            \label{fig:ipeoh-skeletal}}
+    \end{floatrow}
+\end{figure}
 
 \end{document}
