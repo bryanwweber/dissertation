@@ -99,6 +99,7 @@
 
 \usepackage{subfig}
 
+% Must be loaded before hyperref
 \usepackage{mathtools}
 
 %Set the math font
@@ -107,9 +108,12 @@
 \setmathfont[range=\mathup/{num}]{Times New Roman}
 \setmathfont[range=\mathit/{greek,Greek,latin,Latin}]{Cambria Math}
 \setmathfont[range=\mathup/{greek,Greek,latin,Latin}]{Cambria Math}
-\setmathfont[range={"2212,"002B,"003D,"0028,"0029,"005B,"005D,"221A,"2211,"2248,"222B,"007C,"2026,"2202,"00D7,"0302,"2261}]{Cambria Math}
+\setmathfont[range={"2212,"002B,"003D,"0028,"0029,"005B,"005D,"221A,"2211,"2248,"222B,"007C,"2026,"2202,"00D7,"0302,"2261,"0025,"22C5}]{Cambria Math}
 
 \usepackage{multirow}
+
+\usepackage{rotating}
+\usepackage{pdflscape}
 
 \graphicspath{ {../figures/} }
 
@@ -125,14 +129,22 @@
     list-separator = {\text{, }} ,
     list-final-separator = {\text{, and }} ,
     list-pair-separator = {\text{ and }} ,
+    alsoload = synchem ,
+    mode = text ,
 }%
 \DeclareSIUnit\calorie{cal}
+\DeclareSIUnit\atmosphere{atm}
+
+\newcommand{\iPeOH}{\textit{i}-pentanol}
+\newcommand{\nBuOH}{\textit{n}-butanol}
+\newcommand{\sBuOH}{\textit{s}-butanol}
+\newcommand{\tBuOH}{\textit{t}-butanol}
+\newcommand{\iBuOH}{\textit{i}-butanol}
 
 \usepackage{floatrow}
 \floatsetup[table]{style=plaintop}
 
-\usepackage{layouts}
-%End of extra imports
+%\usepackage{layouts}
 
 %Set the color of the links and PDF metadata
 \usepackage[
