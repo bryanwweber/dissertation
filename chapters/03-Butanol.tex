@@ -7,6 +7,64 @@
 \input{preamble.tex}
 
 \begin{document}
+\section{The Butanol Isomers}
+\label{sec:butanol-isomers}
+
+Butanol is the four carbon alcohol, and has four isomers:
+\nBuOH{} (1-butanol);
+\sBuOH{} (2-butanol);
+\tBuOH{} (2-methyl-2-propanol); and
+\iBuOH{} (2-methyl-1-propanol).
+The skeletal structures of the four isomers are shown in
+\autoref{fig:buoh-isomers}. Three of the butanol isomers can be produced
+by biological pathways (\textit{n}-, \textit{s}-, and \iBuOH{})
+\cite{Nigam2011,Smith2010}, making them candidates for the ``second-generation''
+of biofuels \cite{Harvey2011,Nigam2011}. Although \tBuOH{} does not have
+an identified biological production pathway, it has commercial significance
+as an octane enhancer. In addition, the four isomers of butanol represent
+the smallest alcohol system with all four types of branching in the skeleton.
+This makes them an excellent candidate to build kinetic models that can be
+extended to larger alcohols with similar structures.
+
+\Autoref{tab:buoh-heats} shows a comparison of the higher heating value of
+the butanol isomers with ethanol and gasoline. The higher energy density
+of the butanol isomers allows them to be blended in gasoline in higher
+proportions and reduces the volumetric fuel economy (e.g. mpg) impact
+of replacing gasoline with biofuels.
+
+\begin{table}
+    \caption{HHV of Ethanol, Butanol Isomers, and Gasoline}
+    \label{tab:buoh-heats}
+    \begin{tabular}{*{4}{c}}
+        \toprule
+        Compound & Ethanol \cite{Afeefy2014} & Butanol Isomers \cite{Afeefy2014} & Gasoline \cite{Davis2013} \\
+        \midrule
+        HHV [\si{\mega\joule\per\kilo\gram}] & 29.67 & $\approx 36$ & 48.46 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{figure}
+    \ffigbox{%
+        \begin{subfloatrow}[4]
+            \ffigbox
+                {\includegraphics[width=3cm]{03-Butanol/nbuoh-skeletal}}%
+                {\caption{\nBuOH{}}\label{fig:nbuoh-skeletal}}%
+            \ffigbox
+                {\includegraphics[width=3cm]{03-Butanol/sbuoh-skeletal}}%
+                {\caption{\sBuOH{}}\label{fig:sbuoh-skeletal}}%
+            \ffigbox
+                {\includegraphics[height=2cm]{03-Butanol/tbuoh-skeletal}}%
+                {\caption{\tBuOH{}}\label{fig:tbuoh-skeletal}}%
+            \ffigbox
+                {\includegraphics[width=3cm]{03-Butanol/ibuoh-skeletal}}%
+                {\caption{\iBuOH{}}\label{fig:ibuoh-skeletal}}%
+        \end{subfloatrow}
+    }%
+    {\caption{Skeletal structures of the butanol isomers}
+    \label{fig:buoh-isomers}}
+\end{figure}
+
 \section{Experimental Procedure}
 \label{sec:buoh-proc}
 
@@ -55,7 +113,6 @@ case. Representative experimental pressure traces for simulations and
 presentation are then chosen as the closest to the mean.
 
 \begin{table}
-    \centering
     \caption{Experimental Conditions and Reactant Purities}
     \label{tab:buoh-expts}
     \begin{tabular}{*{7}{c}}
