@@ -7,6 +7,36 @@
 \input{preamble.tex}
 
 \begin{document}
+\section{Structure of Methylcyclohexane}
+\label{sec:mch-structure}
+
+Methylcyclohexane (MCH) is the simplest branched cycloalkane, and as such,
+represents an excellent target to use as the base for models of larger
+branched cycloalkanes. MCH has the elemental composition C$_7$H$_{14}$, and
+its skeletal structure is shown in \autoref{fig:mch-skeletal}.
+
+\begin{figure}\CenterFloatBoxes
+    \begin{floatrow}
+        \killfloatstyle\ttabbox[10cm]
+            {\captionsetup{type=table}\caption{Molar Proportions of Reactants in MCH Experiments}
+            \label{tab:mch-props}}
+            {\begin{tabular}{*{6}{S}}
+            \toprule
+            {Mix \#} & {$\phi$} & {MCH} & {O$_2$} & {N$_2$} & {Ar} \\
+            \midrule
+            1 & 1.0 & 1 & 10.5 & 12.25 & 71.75 \\
+            2 & 0.5 & 1 & 21.0 &  0.00 & 73.50 \\
+            3 & 1.5 & 1 &  7.0 & 16.35 & 71.15 \\
+            \bottomrule
+            \end{tabular}
+            }
+        \ffigbox[5cm]
+            {\includegraphics[width=3cm]{05-MCH/mch-skeletal}}
+            {\caption{Skeletal structure of methylcyclohexane}
+            \label{fig:mch-skeletal}}
+    \end{floatrow}
+\end{figure}
+
 \section{Procedures}
 \label{sec:mch}
 
@@ -78,27 +108,11 @@ uncertainty analysis of the deduced compressed temperature was conducted
 in \autoref{sec:uncertainty} where the maximum uncertainty of the compressed
 temperature was found to be approximately $\pm 1\%$.
 
-\begin{figure}\CenterFloatBoxes
-    \begin{floatrow}
-        \killfloatstyle\ttabbox[9cm]
-            {\captionsetup{type=table}\caption{Molar Proportions of Reactants in MCH Experiments}
-            \label{tab:mch-props}}
-            {\begin{tabular}{*{6}{S}}
-            \toprule
-            {Mix \#} & {$\phi$} & {MCH} & {O$_2$} & {N$_2$} & {Ar} \\
-            \midrule
-            1 & 1.0 & 1 & 10.5 & 12.25 & 71.75 \\
-            2 & 0.5 & 1 & 21.0 &  0.00 & 73.50 \\
-            3 & 1.5 & 1 &  7.0 & 16.35 & 71.15 \\
-            \bottomrule
-            \end{tabular}
-            }
-        \ffigbox[\FBwidth]
-            {\includegraphics[width=7cm]{05-MCH/mch-expts}}
-            {\caption{Experimentally measured ignition delays at $P_C=\SI{50}{\bar}$ for the
-                mixture conditions in \autoref{tab:mch-props}}
-            \label{fig:mch-expts}}
-    \end{floatrow}
+\begin{figure}
+    \includegraphics[width=9cm]{05-MCH/mch-expts}
+    \caption{Experimentally measured ignition delays at $P_C=\SI{50}{\bar}$ for the
+    mixture conditions in \autoref{tab:mch-props}}
+    \label{fig:mch-expts}
 \end{figure}
 
 The negative temperature coefficient (NTC) region is an important feature of
