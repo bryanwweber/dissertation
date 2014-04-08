@@ -16,7 +16,7 @@
 %Set up biblatex
 \usepackage[
     backend=biber,
-    url=false,
+    % url=false,
     doi=true,
     sorting=none,
     sortcites=true,
@@ -68,6 +68,19 @@
   \usebibmacro{issue}%
   \newunit}
 
+\DeclareFieldFormat{url}{%
+  \iffieldundef{doi}{%
+    \mkbibacro{URL}\addcolon\space\url{#1}%
+  }{%
+  }%
+}
+
+\DeclareFieldFormat{urldate}{%
+  \iffieldundef{doi}{%
+    \mkbibparens{\bibstring{urlseen}\space#1}%
+  }{%
+  }%
+}
 
 %Packages not present in main.tex preamble
 \usepackage{booktabs}
