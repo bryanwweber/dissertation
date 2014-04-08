@@ -1,4 +1,38 @@
-\documentclass{standalone}
+% arara: xelatex: { synctex: on, shell: off }
+% arara: biber
+% arara: xelatex: { synctex: on, shell: off }
+% arara: sumatrapdf
+\documentclass[../main.tex]{subfiles}
+
+% \input{preamble.tex}
+
 \begin{document}
+\section{Structure of \iPeOH{}}
+\label{sec:ipeoh-struct}
+
+\textit{i}-Pentanol (3-methyl-1-butanol) is a five-carbon alcohol whose skeletal
+structure is shown in \autoref{fig:ipeoh-skeletal}. \textit{i}-Pentanol can
+be produced biologically, and offers several similar advantages as the butanol
+isomers as compared to ethanol. \Autoref{tab:ipeoh-heats} compares the HHV
+of ethanol, \iPeOH{}, and gasoline.
+
+\begin{figure}\CenterFloatBoxes
+    \begin{floatrow}
+        \killfloatstyle\ttabbox
+        {\captionsetup{type=table}\caption{HHV of Ethanol, \iPeOH{}, and Gasoline}
+        \label{tab:ipeoh-heats}}
+        {\begin{tabular}{*{4}{c}}
+            \toprule
+            Compound & Ethanol \cite{Afeefy2014} & \iPeOH \cite{Afeefy2014} & Gasoline \cite{Davis2013} \\
+            \midrule
+            HHV [\si[per-mode=symbol]{\mega\joule\per\kilo\gram}] & 29.67 & 37.73 & 48.46 \\
+            \bottomrule
+        \end{tabular}}
+        \ffigbox[\FBwidth]
+            {\includegraphics[width=4cm]{04-Pentanol/ipeoh-skeletal}}
+            {\caption{Skeletal structure of \iPeOH{}}
+            \label{fig:ipeoh-skeletal}}
+    \end{floatrow}
+\end{figure}
 
 \end{document}
