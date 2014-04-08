@@ -82,6 +82,12 @@
   }%
 }
 
+\renewbibmacro*{publisher+location+date}{%
+  \printlist{location}%
+  \setunit*{\addcomma\space}%
+  \usebibmacro{date}%
+  \newunit}
+
 %Packages not present in main.tex preamble
 \usepackage{booktabs}
 
