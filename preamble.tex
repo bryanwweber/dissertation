@@ -40,16 +40,14 @@
 %Don't print the article title. To print the title, add #1 to the last {}
 \DeclareFieldFormat[article,incollection,unpublished]{title}{}
 
-% \DefineBibliographyStrings{english}{%
-    % volume = {\lowercase{v}ol\adddot}, % avoid capitalization after dots.
-% }
-
-%Add Vol. and No. before volume and issue.
+%Add "vol." and "no." before volume and issue.
 \DeclareFieldFormat[article]{volume}{\bibstring{volume}\addspace #1}
 \DeclareFieldFormat[article]{number}{\bibstring{number}\addspace #1}
+
+%Ensure that a comma follows abbreviated journal titles.
 \DeclareFieldFormat{journaltitle}{\mkbibemph{#1}\isdot}
 
-%Put a comma between the volume and issue instead of period
+%Put a comma between the volume and issue instead of period.
 \renewbibmacro*{volume+number+eid}{%
   \printfield{volume}%
   \setunit{\addcomma\space}%<---- was \setunit*{\adddot}%
@@ -57,10 +55,10 @@
   \setunit{\addcomma\space}%
   \printfield{eid}}
 
-%Add a comma after the journal title
+%Add a comma after the journal title.
 \renewbibmacro*{journal+issuetitle}{%
   \usebibmacro{journal}%
-  \setunit*{\addcomma\addspace}%
+  \setunit*{\addcomma\addspace}%<---- was \setunit*{\addspace}%
   \iffieldundef{series}
     {}
     {\newunit
@@ -73,13 +71,13 @@
   \usebibmacro{issue}%
   \newunit}
 
+%Only print URL if doi is not present.
 \DeclareFieldFormat{url}{%
   \iffieldundef{doi}{%
     \mkbibacro{URL}\addcolon\space\url{#1}%
   }{%
   }%
 }
-
 \DeclareFieldFormat{urldate}{%
   \iffieldundef{doi}{%
     \mkbibparens{\bibstring{urlseen}\space#1}%
@@ -87,15 +85,18 @@
   }%
 }
 
+%Remove publisher from being printed.
 \renewbibmacro*{publisher+location+date}{%
   \printlist{location}%
   \setunit*{\addcomma\space}%
   \usebibmacro{date}%
   \newunit}
 
-%Packages not present in main.tex preamble
+%Use fancy tables.
 \usepackage{booktabs}
 
+%Set how autoref will refer to various things in text.
+%Capital A \Autoref is for the beginning of the sentence.
 \def\chapterautorefname~#1\null{Chap.~#1\null}
 \def\sectionautorefname~#1\null{Sec.~#1\null}
 \def\subsectionautorefname~#1\null{Sec.~#1\null}
@@ -116,6 +117,7 @@
   \endgroup%
 }
 
+%Use and set up the caption package for nicer captions.
 \usepackage{caption}
 \DeclareCaptionLabelFormat{bf}{\textbf{#1 #2}}
 \captionsetup{
@@ -124,9 +126,11 @@
     labelformat=bf ,
 }
 
+%Use the subfigure package
 \usepackage{subfig}
 
-% Must be loaded before hyperref
+%Various math improvements.
+%Must be loaded before hyperref
 \usepackage{mathtools}
 
 %Set the math font
@@ -135,18 +139,25 @@
 \setmathfont[range=\mathup/{num}]{Times New Roman}
 \setmathfont[range=\mathit/{greek,Greek,latin,Latin}]{Cambria Math}
 \setmathfont[range=\mathup/{greek,Greek,latin,Latin}]{Cambria Math}
-\setmathfont[range={"2212,"002B,"003D,"0028,"0029,"005B,"005D,"221A,"2211,"2248,"222B,"007C,"2026,"2202,"00D7,"0302,"2261,"0025,"22C5}]{Cambria Math}
+\setmathfont[range={"2212,"002B,"003D,"0028,"0029,"005B,"005D,"221A,
+"2211,"2248,"222B,"007C,"2026,"2202,"00D7,"0302,"2261,"0025,"22C5}]
+{Cambria Math}
 
+%Allow table cells to span multiple rows.
 \usepackage{multirow}
 
+%Allow landscape rotated figures and captions.
 \usepackage{rotating}
 \usepackage{pdflscape}
 
+%Set the root path where figures are stored.
 \graphicspath{ {C:/Users/bww09001/Documents/Github/dissertation/figures/} }
 
+%Set a convenience command for table cells that allow line breaks.
 \newcommand{\linebreakcell}[2][c]{%
   \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 
+%Use and set up the siunitx package for nice units printing.
 \usepackage{siunitx}
 \sisetup{%
     group-separator = {,} ,
@@ -162,16 +173,19 @@
 \DeclareSIUnit\calorie{cal}
 \DeclareSIUnit\atmosphere{atm}
 
+%Declare convenience macros for printing the
+%names of the alcohols.
 \newcommand{\iPeOH}{\textit{i}-pentanol}
 \newcommand{\nBuOH}{\textit{n}-butanol}
 \newcommand{\sBuOH}{\textit{s}-butanol}
 \newcommand{\tBuOH}{\textit{t}-butanol}
 \newcommand{\iBuOH}{\textit{i}-butanol}
 
+%The floatrow package allows multiple floats in a row
+%and is set so that table captions are on top of the
+%table.
 \usepackage{floatrow}
 \floatsetup[table]{style=plaintop}
-
-%\usepackage{layouts}
 
 %Set the color of the links and PDF metadata
 \usepackage[
