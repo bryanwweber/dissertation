@@ -124,8 +124,20 @@
     font=small ,
     labelsep=colon ,
     labelformat=bf ,
+    figurewithin=section ,
+    tablewithin=section ,
 }
 
+\usepackage{titlesec}
+\usepackage{titletoc}
+
+\titleformat{\section}[display]{\normalfont\filcenter\Huge\bfseries}{Chapter \thesection}{0.5em}{}
+\titleformat{\subsection}{\normalfont\Large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\large\bfseries}{\thesubsubsection}{1em}{}
+
+\titlecontents{section}[0pc]{}{\bfseries Chapter \thecontentslabel\quad}{}{\titlerule*[0.5pc]{.}\contentspage}
+\titlecontents{subsection}[1em]{}{\thecontentslabel\quad}{}{\titlerule*[0.5pc]{.}\contentspage}
+\titlecontents{subsubsection}[1.5em]{}{\thecontentslabel\quad}{}{\titlerule*[0.5pc]{.}\contentspage}
 %Use the subfigure package
 \usepackage{subfig}
 
