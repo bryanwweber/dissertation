@@ -40,9 +40,14 @@
 %Don't print the article title. To print the title, add #1 to the last {}
 \DeclareFieldFormat[article,incollection,unpublished]{title}{}
 
+% \DefineBibliographyStrings{english}{%
+    % volume = {\lowercase{v}ol\adddot}, % avoid capitalization after dots.
+% }
+
 %Add Vol. and No. before volume and issue.
 \DeclareFieldFormat[article]{volume}{\bibstring{volume}\addspace #1}
 \DeclareFieldFormat[article]{number}{\bibstring{number}\addspace #1}
+\DeclareFieldFormat{journaltitle}{\mkbibemph{#1}\isdot}
 
 %Put a comma between the volume and issue instead of period
 \renewbibmacro*{volume+number+eid}{%
