@@ -6,11 +6,6 @@
 
 \input{C:/Users/bww09001/Documents/Github/dissertation/preamble.tex}
 
-%Use the titling package to allow easy access to custom title pages
-\usepackage{titling}
-\title{High Pressure Ignition Chemistry of Alternative Fuels}
-\author{Bryan William Weber}
-
 %Begin the document
 \begin{document}
 \thispagestyle{empty}
@@ -99,16 +94,20 @@ University of Connecticut \\
 \addcontentsline{toc}{section}{Acknowledgements}
 \section*{Acknowledgements}
 So long, and thanks for all the fish.
-\newpage
 
-\pdfbookmark{\contentsname}{toc}
+\cleardoublepage
+\phantomsection
 \tableofcontents
-\newpage
-\listoffigures
-\newpage
-\listoftables
-\newpage
 
+\cleardoublepage
+\phantomsection
+\listoffigures
+
+\cleardoublepage
+\phantomsection
+\listoftables
+
+\cleardoublepage
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
@@ -142,5 +141,6 @@ So long, and thanks for all the fish.
 % \include{chapters/06-Conclusions}
 \subfile{chapters/06-Conclusions}
 
-\printbibliography
+\phantomsection
+\printbibliography[heading=bibintoc]
 \end{document}
