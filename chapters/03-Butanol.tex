@@ -7,6 +7,40 @@
 % \input{preamble.tex}
 
 \begin{document}
+
+\begin{table}[!ht]
+    \caption{HHV of Ethanol, Butanol Isomers, and Gasoline}
+    \label{tab:buoh-heats}
+    \begin{tabular}{*{4}{c}}
+        \toprule
+        Compound & Ethanol \cite{Afeefy2014} & Butanol Isomers \cite{Afeefy2014} & Gasoline \cite{Davis2013} \\
+        \midrule
+        HHV [\si[per-mode = symbol]{\mega\joule\per\kilo\gram}] & 29.67 & $\approx 36$ & 48.46 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{figure}[!ht]
+    \ffigbox{%
+        \begin{subfloatrow}[4]
+            \ffigbox
+                {\includegraphics[width=3cm]{03-Butanol/nbuoh-skeletal}}%
+                {\caption{\nBuOH{}}\label{fig:nbuoh-skeletal}}%
+            \ffigbox
+                {\includegraphics[width=3cm]{03-Butanol/sbuoh-skeletal}}%
+                {\caption{\sBuOH{}}\label{fig:sbuoh-skeletal}}%
+            \ffigbox
+                {\includegraphics[height=2cm]{03-Butanol/tbuoh-skeletal}}%
+                {\caption{\tBuOH{}}\label{fig:tbuoh-skeletal}}%
+            \ffigbox
+                {\includegraphics[width=3cm]{03-Butanol/ibuoh-skeletal}}%
+                {\caption{\iBuOH{}}\label{fig:ibuoh-skeletal}}%
+        \end{subfloatrow}
+    }%
+    {\caption{Skeletal structures of the butanol isomers}
+    \label{fig:buoh-isomers}}
+\end{figure}
+
 \subsection{Structure of the Butanol Isomers}
 \label{sec:butanol-isomers}
 
@@ -31,39 +65,6 @@ the butanol isomers with ethanol and gasoline. The higher energy density
 of the butanol isomers allows them to be blended in gasoline in higher
 proportions and reduces the volumetric fuel economy (e.g. mpg) impact
 of replacing gasoline with biofuels.
-
-\begin{table}
-    \caption{HHV of Ethanol, Butanol Isomers, and Gasoline}
-    \label{tab:buoh-heats}
-    \begin{tabular}{*{4}{c}}
-        \toprule
-        Compound & Ethanol \cite{Afeefy2014} & Butanol Isomers \cite{Afeefy2014} & Gasoline \cite{Davis2013} \\
-        \midrule
-        HHV [\si[per-mode = symbol]{\mega\joule\per\kilo\gram}] & 29.67 & $\approx 36$ & 48.46 \\
-        \bottomrule
-    \end{tabular}
-\end{table}
-
-\begin{figure}
-    \ffigbox{%
-        \begin{subfloatrow}[4]
-            \ffigbox
-                {\includegraphics[width=3cm]{03-Butanol/nbuoh-skeletal}}%
-                {\caption{\nBuOH{}}\label{fig:nbuoh-skeletal}}%
-            \ffigbox
-                {\includegraphics[width=3cm]{03-Butanol/sbuoh-skeletal}}%
-                {\caption{\sBuOH{}}\label{fig:sbuoh-skeletal}}%
-            \ffigbox
-                {\includegraphics[height=2cm]{03-Butanol/tbuoh-skeletal}}%
-                {\caption{\tBuOH{}}\label{fig:tbuoh-skeletal}}%
-            \ffigbox
-                {\includegraphics[width=3cm]{03-Butanol/ibuoh-skeletal}}%
-                {\caption{\iBuOH{}}\label{fig:ibuoh-skeletal}}%
-        \end{subfloatrow}
-    }%
-    {\caption{Skeletal structures of the butanol isomers}
-    \label{fig:buoh-isomers}}
-\end{figure}
 
 \subsection{Experimental Procedure}
 \label{sec:buoh-proc}
