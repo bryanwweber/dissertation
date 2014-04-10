@@ -7,9 +7,9 @@
 % \input{preamble.tex}
 
 \begin{document}
-\section{Rapid Compression Machine}
+\subsection{Rapid Compression Machine}
 \label{sec:rcm}
-\subsection{Experimental Procedure}
+\subsubsection{Experimental Procedure}
 The studies in this dissertation were conducted using the Rapid
 Compression Machine (RCM) constructed by Mittal around 2005 and described in the
 work of \textcite{Mittal2007,Mittal2006a}. This RCM has been used to
@@ -159,7 +159,7 @@ increased by adding spacers onto the rear of the hydraulic chamber,
 increasing the stroke, and can be reduced by adding split shims onto
 the rear of the reaction chamber, increasing the EOC clearance length.
 
-\subsection{Test Gas Mixture Preparation}
+\subsubsection{Test Gas Mixture Preparation}
 
 Fuel/oxidizer pre-mixtures are prepared in two mixing tanks, one approximately
 \SI{17}{\liter} and the other approximately \SI{15}{\liter} in volume. These large volumes allow many
@@ -199,7 +199,7 @@ decomposition over the course of a typical set of experiments. Furthermore,
 within this study, each new mixture preparation is checked against previously
 tested conditions to ensure reproducibility.
 
-\subsection{Definition of Ignition Delay}
+\subsubsection{Definition of Ignition Delay}
 \label{sec:ig-delay-def}
 
 The pressure in the reaction chamber during an experiment is monitored by a
@@ -237,7 +237,7 @@ mean of the runs at a particular condition is chosen for analysis and
 presentation. The standard deviation of all of the runs at a condition
 is less than 10\% of the mean in all cases.
 
-\subsection{Non-Reactive Experiments}
+\subsubsection{Non-Reactive Experiments}
 
 \Autoref{fig:ig-delay-def} also shows a non-reactive pressure trace.
 Due to heat loss from the test mixture to the cold reactor walls,
@@ -255,7 +255,7 @@ reproduces the conditions of the reactive experiment. A representative
 non-reactive pressure trace is shown in \autoref{fig:ig-delay-def}
 corresponding to the experimental conditions in the figure.
 
-\subsection{Reaction Chamber Homogeneity}
+\subsubsection{Reaction Chamber Homogeneity}
 
 An RCM to be used for studies of homogeneous chemistry---as in this study---%
 must ensure that homogeneous conditions exist inside the reaction
@@ -285,7 +285,7 @@ By using PLIF measurements of acetone-seeded mixtures,
 near the center of the reactor whose temperature remained spatially
 homogeneous.
 
-\subsection{Determination of Reactant Temperature}
+\subsubsection{Determination of Reactant Temperature}
 
 Two independent thermodynamic properties are required to fix the
 thermodynamic state of the reactants in the reaction chamber at a
@@ -350,7 +350,7 @@ Thus, the core region is modeled as adiabatic, and the heat loss
 from the boundary layer can be modeled as an isentropic volume
 expansion.
 
-\subsection{Determination of Compressed Temperature}
+\subsubsection{Determination of Compressed Temperature}
 
 In general, the specific heat ratio used in Eqs. (\ref{eq:tic}) and
 (\ref{eq:tc}) is an unknown function of temperature and composition,
@@ -404,7 +404,7 @@ influence on the ratio of specific heats.
 The temperature calculated by \autoref{eq:isen-temp} is typically within
 1K of the temperature calculated by CHEMKIN-Pro.
 
-\subsection{Uncertainty of Ignition Delay and Compressed Temperature}
+\subsubsection{Uncertainty of Ignition Delay and Compressed Temperature}
 \label{sec:uncertainty}
 
 The uncertainty of the compressed temperature is an important parameter
@@ -547,7 +547,7 @@ is inherent in any measured process and cannot be reduced by
 experimental techniques. The bias and precision uncertainties
 for each parameter will be discussed in the following.
 
-\subsubsection{Uncertainty in Initial Temperature}
+\subsubsubsection{Uncertainty in Initial Temperature}
 
 The bias uncertainty in the initial temperature is due to the standard
 limits of error of the K-type thermocouple used to measure the
@@ -567,7 +567,7 @@ The total uncertainty of the initial temperature is
 U_{T_0} = \sqrt{\left(B_{T_0}\right)^2 + \left(R_{T_0}\right)^2} = \sqrt{\left(\SI{3}{K}\right)^2 + \left(\SI{0.05}{K}\right)^2} = \SI{3}{\kelvin}
 \end{align}
 
-\subsubsection{Uncertainty in Initial Pressure}
+\subsubsubsection{Uncertainty in Initial Pressure}
 \label{sec:unc-p0}
 
 The bias uncertainty in the initial pressure is due to the
@@ -600,7 +600,7 @@ U_{P_0} = \sqrt{\left(B_{P_0}\right)^2 + \left(R_{P_0}\right)^2} = \sqrt{\left(\
 \end{align}
 \end{subequations}
 
-\subsubsection{Uncertainty in Compressed Pressure}
+\subsubsubsection{Uncertainty in Compressed Pressure}
 
 The bias uncertainty in the compressed pressure is due to the standard
 error in the piezoelectric pressure transducer. According to the
@@ -616,7 +616,7 @@ of the compressed pressure is
 U_{P_C} = B_{T_C} = \SI{0.5}{\bar}
 \end{equation}
 
-\subsubsection{Uncertainty in the Specific Heat}
+\subsubsubsection{Uncertainty in the Specific Heat}
 \label{sec:unc-cp}
 
 The uncertainty in the specific heat comes from two sources. First is the
@@ -777,7 +777,7 @@ For the mixtures considered in
 this study, the correlation coefficient for the linear fits are greater than
 0.99 (i.e. $r^2 > 0.99$), indicating a good fit.
 
-\section{Fast Sampling System}
+\subsection{Fast Sampling System}
 \label{sec:fast-sampling}
 
 The fast sampling system (FSS) used in this work is a commercial system supplied by
@@ -833,10 +833,10 @@ high purity nitrogen so that the fuel has a mole fraction of approximately
 \num{0.001}. Then the sample bottle is disconnected from the GSV and transported
 to the Gas Chromatograph/Mass Spectrometer, where the sample undergoes analysis.
 
-\section{Gas Chromatograph/Mass Spectrometer}
+\subsection{Gas Chromatograph/Mass Spectrometer}
 \label{sec:gcms}
 
-\subsection{Theory of Gas Chromatography/Mass Spectrometry}
+\subsubsection{Theory of Gas Chromatography/Mass Spectrometry}
 \label{sec:gcms-theory}
 
 \subsubsection{Gas Chromatography}
@@ -1028,7 +1028,7 @@ area of the peak of particular component to its mole fraction. Detailed
 methods for the construction of calibration curves will be given in
 \autoref{sec:gcms-procedure}.
 
-\subsection{Experimental Procedure}
+\subsubsection{Experimental Procedure}
 \label{sec:gcms-procedure}
 
 The GC/MS used in this study is a
