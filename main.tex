@@ -2,7 +2,7 @@
 % arara: biber
 % arara: xelatex: { synctex: on, shell: off }
 % arara: sumatrapdf
-\documentclass[12pt, letterpaper]{article}
+\documentclass[12pt, letterpaper,oneside]{book}
 
 \input{C:/Users/bww09001/Documents/Github/dissertation/preamble.tex}
 
@@ -91,8 +91,8 @@ University of Connecticut \\
 \newpage
 
 \phantomsection
-\addcontentsline{toc}{section}{Acknowledgements}
-\section*{Acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\chapter*{Acknowledgements}
 So long, and thanks for all the fish.
 
 \cleardoublepage
@@ -112,32 +112,38 @@ So long, and thanks for all the fish.
 \pagenumbering{arabic}
 
 %Introduction
-\section{Introduction}
+\chapter{Introduction}
+\label{chap:intro}
 \subfile{chapters/01-Introduction}
 \cleardoublepage
 
 %Experimental Facilities
-\section{Experimental Facilities}
+\chapter{Experimental Facilities}
+\label{chap:facilities}
 \subfile{chapters/02-Experimental-Facilities}
 \cleardoublepage
 
 %Butanol
-\section{The Butanol Isomers}
+\chapter{The Butanol Isomers}
+\label{chap:buoh}
 \subfile{chapters/03-Butanol}
 \cleardoublepage
 
 %iso-Pentanol
-\section{\textit{i}-Pentanol}
+\chapter{\textit{i}-Pentanol}
+\label{chap:peoh}
 \subfile{chapters/04-Pentanol}
 \cleardoublepage
 
 %MCH
-\section{Methylcyclohexane}
+\chapter{Methylcyclohexane}
+\label{chap:mch}
 \subfile{chapters/05-MCH}
 \cleardoublepage
 
 %Conclusions
-\section{Conclusions and Future Directions}
+\chapter{Conclusions and Future Directions}
+\label{chap:conclusions}
 \subfile{chapters/06-Conclusions}
 \cleardoublepage
 

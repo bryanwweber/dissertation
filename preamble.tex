@@ -97,7 +97,7 @@
 
 %Set how autoref will refer to various things in text.
 %Capital A \Autoref is for the beginning of the sentence.
-\def\chapterautorefname~#1\null{Chap.~#1\null}
+\def\chapterautorefname~#1\null{Chapter~#1\null}
 \def\sectionautorefname~#1\null{Sec.~#1\null}
 \def\subsectionautorefname~#1\null{Sec.~#1\null}
 \def\subsubsectionautorefname~#1\null{Sec.~#1\null}
@@ -109,7 +109,8 @@
   \begingroup%
   \def\chapterautorefname~##1\null{Chapter~##1\null}%
   \def\sectionautorefname~##1\null{Section~##1\null}%
-  \def\subsectionautorefname~##1\null{Sub--Section~##1\null}%
+  \def\subsectionautorefname~##1\null{Section~##1\null}%
+  \def\subsubsectionautorefname~#1\null{Section~#1\null}
   \def\figureautorefname~##1\null{Figure~##1\null}%
   \def\tableautorefname~##1\null{Table~##1\null}%
   \def\equationautorefname~##1\null{Equation~##1\null}%
@@ -124,50 +125,25 @@
     font=small ,
     labelsep=colon ,
     labelformat=bf ,
-    figurewithin=section ,
-    tablewithin=section ,
+    figurewithin=chapter ,
+    tablewithin=chapter ,
 }
 
 \usepackage{titlesec}
 \usepackage{titletoc}
 
-\titleclass{\subsubsubsection}{straight}[\subsection]
-
-\newcounter{subsubsubsection}[subsubsection]
-\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
-
-\titleformat{\section}[display]{\normalfont\filcenter\Huge\bfseries}{Chapter \thesection}{0.5em}{}
+\titleformat{\chapter}[display]{\normalfont\Huge\bfseries}{Chapter \thechapter}{0.7em}{}
+\titleformat{\section}{\normalfont\LARGE\bfseries}{\thesection}{0.5em}{}
 \titleformat{\subsection}{\normalfont\Large\bfseries}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{\normalfont\large\bfseries}{\thesubsubsection}{1em}{}
-\titleformat{\subsubsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
 
-\titlespacing*{\subsubsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titlecontents{chapter}[0pc]{}{\bfseries Chapter \thecontentslabel\quad}{}{\titlerule*[0.5pc]{.}\contentspage}
+\titlecontents{section}[1em]{}{\thecontentslabel\quad}{}{\titlerule*[0.5pc]{.}\contentspage}
+\titlecontents{subsection}[2em]{}{\thecontentslabel\quad}{}{\titlerule*[0.5pc]{.}\contentspage}
+\titlecontents{subsubsection}[3em]{}{\thecontentslabel\quad}{}{\titlerule*[0.5pc]{.}\contentspage}
 
-\titlecontents{section}[0pc]{}{\bfseries Chapter \thecontentslabel\quad}{}{\titlerule*[0.5pc]{.}\contentspage}
-\titlecontents{subsection}[1em]{}{\thecontentslabel\quad}{}{\titlerule*[0.5pc]{.}\contentspage}
-\titlecontents{subsubsection}[2em]{}{\thecontentslabel\quad}{}{\titlerule*[0.5pc]{.}\contentspage}
-
-\makeatletter
-\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}%
-  {3.25ex \@plus1ex \@minus.2ex}%
-  {-1em}%
-  {\normalfont\normalsize\bfseries}}
-\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}%
-  {3.25ex \@plus1ex \@minus .2ex}%
-  {-1em}%
-  {\normalfont\normalsize\bfseries}}
-\def\toclevel@subsubsubsection{4}
-\def\toclevel@paragraph{5}
-\def\toclevel@paragraph{6}
-\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
-\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
-\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
-\makeatother
-
-\setcounter{secnumdepth}{4}
-\setcounter{tocdepth}{4}
-
-\titlecontents{subsubsubsection}[3em]{}{\thecontentslabel\quad}{}{\titlerule*[0.5pc]{.}\contentspage}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
 
 %Use the subfigure package
 \usepackage{subfig}
@@ -234,7 +210,7 @@
 \usepackage[
     colorlinks=true,
     citecolor=blue,
-    linkcolor=black
+    linkcolor=black,
 ]{hyperref}
 
 \hypersetup{%
