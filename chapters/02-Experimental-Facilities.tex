@@ -1007,25 +1007,26 @@ schematically in \autoref{fig:gcms-quad}. The transmission quadrupole separates
 specific ions from the ion beam by
 means of a time-varying electric field. Conceptually, the quadrupole
 can be imagined as four round rods, arranged in a cross pattern, with
-their long axes aligned parallel to the ion beam. The ions are admitted
-to the rods at one end (e.g. at the origin in \autoref{fig:gcms-quad}) and
-the detector is placed perpendicular to the long axes of the rods at
-the other end (not shown in \autoref{fig:gcms-quad}). A positive DC voltage is applied
+their long axes aligned parallel to the ion beam (i.e. the $z$ axis).
+The ions are admitted to the rods at one end (e.g. at the origin in
+\autoref{fig:gcms-quad}) and the detector is placed parallel to the $x-y$ plane
+in \autoref{fig:gcms-quad} at the other end of the rods(not shown in
+\autoref{fig:gcms-quad}). A positive DC voltage is applied
 to one pair of the rods, while a negative DC voltage is applied to the other
 pair of rods; in addition, an AC voltage is applied simultaneously to all four
 rods. Assuming a specific ratio of AC amplitude to DC amplitude, ions of a certain
-$m/z$ will remain in the ion beam in the center of the rods and reach the detector.
+$m/z$ will remain in the ion beam and reach the detector.
 Then, holding the AD:DC amplitude ratio fixed, the amplitudes are ramped with a known
 function of time. This varies the particular $m/z$ that will remain in the ion beam
-and reach the detector to be recorded \cite{Sparkman2011}, generating a mass spectrum. The voltages
-are ramped many times per second---typical ramp times range from \SIrange{0.05}{0.5}{\second},
+and reach the detector to be recorded \cite{Sparkman2011}, generating a mass spectrum.
+
+The voltage amplitudes are ramped many times per second%
+---typical ramp times range from \SIrange{0.05}{0.5}{\second},
 depending on the range of $m/z$ values to be acquired---so that many
 spectra are acquired during the elution of a given chemical compound
 from the column, which typically occurs on the order of a few seconds.
-
-This process of scanning the voltage amplitudes generates a mass spectrum.
-For a given scan from the lowest to the highest voltage, the number of ions
-of a particular $m/z$ is measured at the detector. This information is
+For a given scan from the lowest to the highest amplitude, the number of ions
+of each $m/z$ is measured at the detector. This information is
 typically presented in the form of a relative intensity plot. The abscissa
 is the (integer) $m/z$ while the ordinate is the intensity of a particular
 $m/z$ scaled by the maximum intensity of all the $m/z$ in a given scan. It
@@ -1056,9 +1057,20 @@ chromatogram for a specific $m/z$ as a function of time.
 \subsection{Identification and Quantification of Species using GC/MS}
 
 Species are identified using a GC/MS system by their unique mass spectra.
-For each peak in the TIC, the set of mass intensities over the peak are
-averaged; these intensities are compared to a database supplied by the
-National Institute of Standards and Technologies (NIST).
+Each peak in the TIC typically represents one compound eluting from the
+column, although in theory each peak can represent more than one compound
+if the compounds are retained similarly by the column. The peak is caused
+by an increase in the number of ions reaching the detector on each scan
+relative to the baseline as the compound elutes and is ionized. As
+mentioned previously, many scans of the desired $m/z$ range are
+conducted over the time that a compound is eluting from the column.
+To determine the identity of a compound in a given peak, the set of
+mass intensities over the peak are averaged and the background
+spectrum is subtracted; this average spectrum is compared to a 
+database supplied by the National Institute of Standards and 
+Technologies (NIST). The database returns several suggested species
+with a degree of matching parameter indicating how well the supplied
+spectrum matches the spectrum in the database. 
 
 In this work, the external standard method of quantification is used.
 This requires that calibration curves for each of the species of
