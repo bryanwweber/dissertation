@@ -34,6 +34,9 @@
 \renewbibmacro{in:}{%
   \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
 
+%Change the name of the bibliography section to "References"
+\DefineBibliographyStrings{english}{bibliography = {References}}
+
 %Set the sort order of the names in each bibliography entry
 \DeclareNameAlias{default}{last-first}
 
