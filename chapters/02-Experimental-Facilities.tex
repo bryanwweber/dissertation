@@ -36,7 +36,7 @@ more detail.
 
 The present RCM is a pneumatically-driven/hydraulically-stopped
 single-piston arrangement. A schematic of the RCM is shown in
-\autoref{fig:rcm-schematic} and an image is shown in \autoref{fig:rcm-photo}.
+\cref{fig:rcm-schematic} and an image is shown in \cref{fig:rcm-photo}.
 The RCM consists of four chambers and
 three pistons that are used to control the machine. The chambers are
 called the reaction chamber, the hydraulic chamber, the pneumatic
@@ -97,7 +97,7 @@ compressed temperature ($T_C$) conditions in approximately
 The required driving pressure for a given EOC pressure can be estimated
 from a force balance between the force on the pneumatic piston from the
 driving tank and the force on the reactor piston from the test gases,
-as shown in \autoref{eq:driving-pressure}.
+as shown in \cref{eq:driving-pressure}.
 %
 \begin{subequations}
 \label{eq:piston-force}
@@ -108,7 +108,7 @@ as shown in \autoref{eq:driving-pressure}.
 \end{align}
 \end{subequations}
 
-In \autoref{eq:piston-force}, $P_{d,\text{min}}$ is the minimum
+In \cref{eq:piston-force}, $P_{d,\text{min}}$ is the minimum
 driving pressure, $A_p$ is the cross-sectional area of the pneumatic piston,
 $P_{r,\text{EOC}}$ is the pressure in the reactor at the EOC (i.e. $P_C$),
 $A_r$ is the cross-sectional area of the reactor piston, $d_p$ is the diameter
@@ -178,7 +178,7 @@ preheat temperature of the mixture. A static pressure transducer
 measures the pressure in the manifold and mixing tanks. This transducer is used
 during mixture preparation and to measure the initial pressure of a given experiment.
 Two transducers are for various experiments in this work, as described below
-in \autoref{sec:unc-p0}.
+in \cref{sec:unc-p0}.
 
 Most of the fuels studied in this work are liquids at room temperature and
 pressure and have relatively low vapor pressure. A similar procedure, outlined
@@ -214,9 +214,9 @@ transducer is amplified and converted to a voltage by a Kistler 5010B charge amp
 The voltage is sent to a National Instruments cDAQ equipped with the NI-9215 module.
 The signal is recorded by a LabView VirtualInstrument at \SI{50}{\kilo\hertz}.
 
-\Autoref{fig:ig-delay-def} shows a representative pressure trace from
+\Cref{fig:ig-delay-def} shows a representative pressure trace from
 these experiments with methylcyclohexane (MCH) at $P_C= \SI{50}{\bar}$, $T_C=\SI{761}{\kelvin}$,
-and $\phi=\num{1.5}$ (See \autoref{sec:mch}). Note that \autoref{fig:ig-delay-def}
+and $\phi=\num{1.5}$ (See \cref{chap:mch}). Note that \cref{fig:ig-delay-def}
 shows a case with two stages of ignition; not all of the fuels studied
 had conditions that showed two-stage ignition. Nonetheless, the ignition
 delay is consistently defined in all the work in this study. The
@@ -245,7 +245,7 @@ is less than 10\% of the mean in all cases.
 
 \subsection{Non-Reactive Experiments}
 
-\Autoref{fig:ig-delay-def} also shows a non-reactive pressure trace.
+\Cref{fig:ig-delay-def} also shows a non-reactive pressure trace.
 Due to heat loss from the test mixture to the cold reactor walls,
 the pressure and temperature of the gas in the reaction chamber will
 decrease after the end of compression. A non-reactive pressure trace
@@ -258,7 +258,7 @@ of the initial mixture is maintained, but the heat release due to
 exothermic oxidation reactions is eliminated. Maintaining a similar
 specific heat ratio ensures that the non-reactive experiment faithfully
 reproduces the conditions of the reactive experiment. A representative
-non-reactive pressure trace is shown in \autoref{fig:ig-delay-def}
+non-reactive pressure trace is shown in \cref{fig:ig-delay-def}
 corresponding to the experimental conditions in the figure.
 
 \subsection{Reaction Chamber Homogeneity}
@@ -279,7 +279,7 @@ To facilitate spatially homogeneous conditions in the reactor
 and reduce the effect of the roll-up vortex, it is necessary to trap
 the boundary layer. This is accomplished on the present RCM by a
 crevice machined into the crown of the piston, shown in cross-section
-in \autoref{fig:rcm-piston}. The boundary layer enters the crevice through
+in \cref{fig:rcm-piston}. The boundary layer enters the crevice through
 the converging section as the piston moves forward and is trapped
 within the crevice. The dimensions of the crevice were optimized
 by \textcite{Mittal2006a} through CFD simulations for high-pressure
@@ -349,10 +349,10 @@ the temperature during the compression stroke can be calculated by:
 %
 where $P_C$ is the measured pressure at the end of compression, $T_C$
 is the temperature at the end of compression, and the other variables
-are the same as in \autoref{eq:tic}.
+are the same as in \cref{eq:tic}.
 
 After the end of compression, the pressure in the reaction chamber
-decreases, as can be seen in \autoref{fig:ig-delay-def}. This pressure
+decreases, as can be seen in \cref{fig:ig-delay-def}. This pressure
 decrease is caused by heat loss from the reactants in the constant volume reaction
 chamber and is accompanied by a decrease in the temperature of the
 reactants. To model the thermodynamic state after the end of compression,
@@ -366,13 +366,13 @@ expansion.
 
 In general, the specific heat ratio used in Eqs. (\ref{eq:tic}) and
 (\ref{eq:tc}) is an unknown function of temperature and composition,
-so \autoref{eq:tc} cannot be integrated directly to find $T_C$. If
+so \cref{eq:tc} cannot be integrated directly to find $T_C$. If
 the specific heats are parameterized with a linear fit and the
-composition is assumed to be fixed, it is possible to integrate \autoref{eq:tc} directly,
+composition is assumed to be fixed, it is possible to integrate \cref{eq:tc} directly,
 but this process is quite tedious; nonetheless, it will be applied in
-\autoref{sec:uncertainty} to determine the uncertainty of $T_C$. In
+\cref{sec:uncertainty} to determine the uncertainty of $T_C$. In
 general, the simplest method of calculating $T_C$ is to use software
-to numerically integrate \autoref{eq:tc}.
+to numerically integrate \cref{eq:tc}.
 
 In this work, the CHEMKIN-Pro \cite{Chemkin2012} software is used to
 perform the numerical integration and calculation of $T_C$. The
@@ -396,12 +396,12 @@ $\gamma$ is the temperature dependent specific heat. This equation
 is applied during and after the compression stroke to calculate
 the volume trace. To achieve the best representation of the experiment,
 the reactive pressure trace is used until EOC; after EOC, the
-corresponding non-reactive pressure trace is used. In \autoref{eq:volume-trace} it is assumed that
+corresponding non-reactive pressure trace is used. In \cref{eq:volume-trace} it is assumed that
 changes in composition of the reactants are negligible during the
 compression stroke. The initial volume is arbitrarily taken
 to be equal to 1.
 
-For use in \autoref{eq:volume-trace}, $\gamma$ is tabulated for each
+For use in \cref{eq:volume-trace}, $\gamma$ is tabulated for each
 time point. Thus, the temperature at each time point must also be
 computed by using the isentropic relation for temperature:
 %
@@ -412,11 +412,11 @@ computed by using the isentropic relation for temperature:
 %
 where $T_2$ and $T_1$ are the temperatures at consecutive time points.
 Since $T_2$ depends on the value of $\gamma$, which in turn depends
-on $T_2$, \autoref{eq:isen-temp} is iterated until the temperature
+on $T_2$, \cref{eq:isen-temp} is iterated until the temperature
 changes by less than one tenth of one percent on consecutive iterations.
 Once again, it is assumed that changes in composition have a negligible
 influence on the ratio of specific heats.
-The temperature calculated by \autoref{eq:isen-temp} is typically within
+The temperature calculated by \cref{eq:isen-temp} is typically within
 1K of the temperature calculated by CHEMKIN-Pro.
 
 \subsection{Uncertainty of Ignition Delay and Compressed Temperature}
@@ -425,8 +425,8 @@ The temperature calculated by \autoref{eq:isen-temp} is typically within
 The uncertainty of the compressed temperature is an important parameter
 to report. Since $T_C$ is not measured, we must perform an uncertainty
 propagation analysis on the equation used to calculate $T_C$,
-\autoref{eq:tc}. First, we simplify the term involving $\gamma$ in
-\autoref{eq:tc}. By definition, $\gamma$ is the ratio of the specific heat
+\cref{eq:tc}. First, we simplify the term involving $\gamma$ in
+\cref{eq:tc}. By definition, $\gamma$ is the ratio of the specific heat
 at constant pressure to that at constant volume
 %
 \begin{align}
@@ -447,8 +447,8 @@ specific heats is one, $\hat{C}_v = \hat{C}_p - 1$. Then, it follows that
 = \hat{C}_p
 \end{align}
 
-In \autoref{eq:tc}, the total specific heat ratio for the mixture
-should be used; thus, the simplification as shown in \autoref{eq:simplify-gamma}
+In \cref{eq:tc}, the total specific heat ratio for the mixture
+should be used; thus, the simplification as shown in \cref{eq:simplify-gamma}
 requires that the specific heat $\hat{C}_p$ also be the total specific
 heat. In the following, we assume that there is negligible
 change of the total specific heat due to changes in reactant
@@ -492,9 +492,9 @@ of temperature.
 %
 $a$ and $b$ are found by fitting the total non-dimensional specific heat
 over the temperature range from \SIrange{300}{1100}{\kelvin}, as discussed below in
-\autoref{sec:unc-cp}.
+\cref{sec:unc-cp}.
 
-With this approximation of the specific heat, we can integrate \autoref{eq:tc}
+With this approximation of the specific heat, we can integrate \cref{eq:tc}
 to find the compressed temperature
 %
 \begin{subequations}
@@ -509,7 +509,7 @@ to find the compressed temperature
 \end{equation}
 \end{subequations}
 
-Solving \autoref{eq:integrate-tc} for $T_C$
+Solving \cref{eq:integrate-tc} for $T_C$
 %
 \begin{align}
 \label{eq:explicit-tc}
@@ -518,7 +518,7 @@ T_C = \frac{a W\!\left(\frac{b}{a} \exp\!{\left[\frac{b T_0}{a}\right]} T_0 \lef
 %
 where $W(\ldots)$ is Lambert's $W$ function \cite{Corless1996}. With an explicit function for $T_C$, we can
 estimate the uncertainty in $T_C$ by the root square sum of the uncertainty in the parameters in
-\autoref{eq:explicit-tc} multiplied by the partial derivative of \autoref{eq:explicit-tc} with
+\cref{eq:explicit-tc} multiplied by the partial derivative of \cref{eq:explicit-tc} with
 respect to each of the parameters \cite{Taylor1982}. The parameters are $P_C$, $P_0$, $T_0$, $a$, and $b$.
 %
 \begin{align}
@@ -534,7 +534,7 @@ Then, letting
 D = W\!\left(\frac{b}{a} \exp\!{\left[\frac{b T_0}{a}\right]} T_0 \left[\frac{P_C}{P_0}\right]^{\frac{1}{a}}\right)
 \end{equation*}
 %
-the partial derivatives of \autoref{eq:explicit-tc} with respect to the parameters are
+the partial derivatives of \cref{eq:explicit-tc} with respect to the parameters are
 %
 \begin{subequations}
 \begin{align}
@@ -546,14 +546,14 @@ the partial derivatives of \autoref{eq:explicit-tc} with respect to the paramete
 \end{align}
 \end{subequations}
 
-The uncertainties of the parameters, $U_j$ in \autoref{eq:tc-unc}, are in
+The uncertainties of the parameters, $U_j$ in \cref{eq:tc-unc}, are in
 general found by their own root square sum procedure
 %
 \begin{align}
 {U_j}^2 = {B_j}^2 + {R_j}^2
 \end{align}
 %
-where the subscript $j$ represents one of the parameters in \autoref{eq:explicit-tc}.
+where the subscript $j$ represents one of the parameters in \cref{eq:explicit-tc}.
 The total uncertainty of a particular parameter is composed of
 two parts, the systematic or bias uncertainty ($B_j$) and the
 precision or random uncertainty ($R_j$). In general, the bias
@@ -639,7 +639,7 @@ The uncertainty in the specific heat comes from two sources. First is the
 uncertainty in the mixture composition and second is the uncertainty in
 the linear fit to the total specific heat. The uncertainty in the mixture
 composition can be estimated by the same method as is used for $T_C$. The
-specific heat is given by \autoref{eq:cp}, so we can take partial derivatives
+specific heat is given by \cref{eq:cp}, so we can take partial derivatives
 of that equation with respect to the mole fractions of the species to find
 the total uncertainty
 %
@@ -651,7 +651,7 @@ the total uncertainty
 \end{split}
 \end{equation}
 %
-where $n$ is the total number of species. In \autoref{eq:cp-uncertainty},
+where $n$ is the total number of species. In \cref{eq:cp-uncertainty},
 it is assumed that the uncertainty in the specific heats of each species
 is negligible. This is considered an acceptable assumption for stable species
 such as the fuel molecules, oxygen, nitrogen, and argon. Experience with
@@ -682,14 +682,14 @@ It follows that
 \end{equation}
 %
 The uncertainties of the pressures $P_i$ and $P$ are equal and can be estimated by
-the same procedure as in \autoref{sec:unc-p0} since the same pressure transducer
+the same procedure as in \cref{sec:unc-p0} since the same pressure transducer
 is used to measure the pressure. The total pressure $P$ will be different for
 each species as it is filled. The order followed in these experiments is
 liquid fuel injection, followed by oxygen, then nitrogen, then argon.
 
 A typical total pressure after filling is
 approximately \SI{1300}{\torr} ($\approx$ \SI{173319}{\pascal}). The mixtures in
-\autoref{tab:mixtures} are the mixtures that will be analyzed in the
+\cref{tab:mixtures} are the mixtures that will be analyzed in the
 following because they represent a worst case scenario in that the mole
 fraction of the fuel or oxygen is maximized in them.
 
@@ -717,7 +717,7 @@ coefficients $a$ and $b$. Following the methodology outlined by
 \textcite{York2004}, the values and uncertainties of $a$ and $b$
 are calculated iteratively. This procedure gives identical values of the
 slope, intercept, and standard errors as maximum likelihood estimation \cite{York2004}.
-\Autoref{eq:york} is reproduced from \textcite{York2004}, and is presented
+\Cref{eq:york} is reproduced from \textcite{York2004}, and is presented
 as Eq. (13) in that work.
 %
 \begin{subequations}
@@ -730,14 +730,14 @@ b &= \frac{\sum W_i \beta_i V_i}{\sum W_i \beta_i U_i} \label{eq:slope}\\
 \end{align}
 \end{subequations}
 %
-where the symbols in \autoref{eq:york} are defined in \autoref{tab:york-syms}.
+where the symbols in \cref{eq:york} are defined in \cref{tab:york-syms}.
 The general formulation is given here because it will be reused in
-\autoref{sec:unc-gcms}; application to this section will
+\cref{sec:unc-gcms}; application to this section will
 be given below.
 
 \begin{table}
 \centering
-\caption{Symbols in \autoref{eq:york}. Reproduced from the work of \textcite{York2004}.}
+\caption{Symbols in \cref{eq:york}. Reproduced from the work of \textcite{York2004}.}
 \label{tab:york-syms}
 \begin{tabular}{ll}
 \toprule
@@ -768,11 +768,11 @@ $u_i$ & $x_i - \overline{x}$ \\
 \end{tabular}
 \end{table}
 
-In this section, $X_i$ are the temperatures at which \autoref{eq:cp-total}
-is evaluated and $Y_i$ are the total specific heats evaluated from \autoref{eq:cp-total}.
+In this section, $X_i$ are the temperatures at which \cref{eq:cp-total}
+is evaluated and $Y_i$ are the total specific heats evaluated from \cref{eq:cp-total}.
 The weighting of the specific heats---$\omega(Y_i)$---is taken
 to be the reciprocal of the uncertainty as calculated by
-\autoref{eq:cp-uncertainty}. Furthermore, there is no uncertainty in the
+\cref{eq:cp-uncertainty}. Furthermore, there is no uncertainty in the
 abscissa (i.e. the temperature) and $\omega(X_i) = \num{1}$. Finally, since there
 is no uncertainty in the temperature, there is no correlation between
 the uncertainties, i.e. $r_i = \num{0}$.
@@ -781,9 +781,9 @@ First, the slope $b$ is estimated by simple least-squares regression of the tota
 specific heat on the temperature. Then, this slope is used to estimate the
 adjusted weighting of each point, $W_i$. Next, $U_i$ and $V_i$ are calculated
 based on the adjusted weighting. Using $U_i$, $V_i$, and $\beta_i$, a new value of the
-slope is calculated from \autoref{eq:slope}, and the process is repeated until the slope converges.
+slope is calculated from \cref{eq:slope}, and the process is repeated until the slope converges.
 Convergence is determined when the slope changes by less than 0.001 on successive
-iterations. Then, using \autoref{eq:intercept}, the intercept $a$ is calculated.
+iterations. Then, using \cref{eq:intercept}, the intercept $a$ is calculated.
 Finally, the standard error of each parameter is
 calculated using the final values of the slope and intercept with Eqs. (\ref{eq:unc-slope})
 and (\ref{eq:unc-intercept}).
@@ -797,12 +797,12 @@ this study, the correlation coefficient for the linear fits are greater than
 
 The fast sampling system (FSS) used in this work is a commercial system supplied by
 SME-Tec Gmbh. from Germany. The FSS is composed of two parts, the gas sampling valve
-(GSV) and the Controller. A schematic of the GSV is shown in \autoref{fig:valve-schematic}.
+(GSV) and the Controller. A schematic of the GSV is shown in \cref{fig:valve-schematic}.
 Gases are admitted from the reaction chamber into the heated carrying tubes
 through the poppet-style valve on the left of the GSV. The sampled gases are then
 conducted through the GSV outlet into the \SI{150}{\milli\liter} sampling bottle.
 
-A schematic of the GSV assembly is shown in \autoref{fig:gsv-assem-schematic}.
+A schematic of the GSV assembly is shown in \cref{fig:gsv-assem-schematic}.
 The GSV is mounted to the RCM by a custom-made end plug. The reaction chamber
 is sealed by an O-ring on the small- and large-diameter portions of the GSV.
 The depth that the GSV is inserted into the reaction chamber is adjustable
@@ -856,7 +856,7 @@ absolute opening time is thus estimated as $\pm \SI{1}{\micro\second}$. \todo{Ve
 
 Furthermore, the correspondence of the COC signal from the valve with
 the physical valve movements has been experimentally verified by
-high speed video. Frames from these videos are shown in \autoref{fig:valve-video}.
+high speed video. Frames from these videos are shown in \cref{fig:valve-video}.
 The frames show that the opening and closing times of the valve face
 correspond closely with repeatable points in the peak of the voltage.
 
@@ -910,7 +910,7 @@ split mode, where a percentage of the injected sample is removed from the
 injector prior to injection onto the column, or in the splitless mode,
 where nearly all of the sample is injected into the column. The split mode
 is used in this work. The amount of sample removed is controlled by a valve
-in the injector. The split ratio is calculated according to \autoref{eq:split-ratio}
+in the injector. The split ratio is calculated according to \cref{eq:split-ratio}
 %
 \begin{gather}
 \label{eq:split-ratio}
@@ -923,18 +923,18 @@ and the vent flow is the flow out of the splitter vent \cite{Sparkman2011a}.
 A GC may also be equipped with a gas sample injection valve, in addition to the
 split/splitless injector. This valve is connected serially prior to the
 split/splitless injector. The present GC is equipped with a 10-port Valco sample
-injection valve, shown schematically in \autoref{fig:gcms-valve}.
+injection valve, shown schematically in \cref{fig:gcms-valve}.
 Each port is numbered, and curved lines indicate connections between ports.
 The sample injection valve is used to inject a consistent mass of sample into the column
 with each injection. This permits reliable quantification of the
 components in the sample. First, the sample is loaded into the sample loop
-when the valve is in the ``load'' position, as in \autoref{fig:gcms-valve-load}.
+when the valve is in the ``load'' position, as in \cref{fig:gcms-valve-load}.
 Then, the valve is electrically actuated at the start of the
 GC run to rotate the connections into the
 ``inject'' position. This allows carrier gas to flow through the sample loop and push
-the sample from the sample loop into the column via the split/splitless injector (\autoref{fig:gcms-valve-inject}).
+the sample from the sample loop into the column via the split/splitless injector (\cref{fig:gcms-valve-inject}).
 The valve is then actuated again to remove the sample loop
-from the carrier gas path and restore the ``load'' position (\autoref{fig:gcms-valve-load}).
+from the carrier gas path and restore the ``load'' position (\cref{fig:gcms-valve-load}).
 
 The sample injection valve is equipped with a heater to maintain
 the valve body at a constant temperature and the entire assembly is installed
@@ -1003,15 +1003,15 @@ turbomolecular pump to achieve ultimate pressures of approximately \SI{2}{\pasca
 \end{figure}
 
 The MS used in this study is a transmission quadrupole type, shown
-schematically in \autoref{fig:gcms-quad}. The transmission quadrupole separates
+schematically in \cref{fig:gcms-quad}. The transmission quadrupole separates
 specific ions from the ion beam by
 means of a time-varying electric field. Conceptually, the quadrupole
 can be imagined as four round rods, arranged in a cross pattern, with
 their long axes aligned parallel to the ion beam (i.e. the $z$ axis).
 The ions are admitted to the rods at one end (e.g. at the origin in
-\autoref{fig:gcms-quad}) and the detector is placed parallel to the $x-y$ plane
-in \autoref{fig:gcms-quad} at the other end of the rods(not shown in
-\autoref{fig:gcms-quad}). A positive DC voltage is applied
+\cref{fig:gcms-quad}) and the detector is placed parallel to the $x-y$ plane
+in \cref{fig:gcms-quad} at the other end of the rods(not shown in
+\cref{fig:gcms-quad}). A positive DC voltage is applied
 to one pair of the rods, while a negative DC voltage is applied to the other
 pair of rods; in addition, an AC voltage is applied simultaneously to all four
 rods. Assuming a specific ratio of AC amplitude to DC amplitude, ions of a certain
@@ -1032,11 +1032,11 @@ is the (integer) $m/z$ while the ordinate is the intensity of a particular
 $m/z$ scaled by the maximum intensity of all the $m/z$ in a given scan. It
 is not required that the $m/z$ be integers, although they are usually presented
 as such for simplicity. An example of a mass spectrum for a given time in a
-GC/MS analysis is shown in \autoref{fig:gcms-mass-spec}.
+GC/MS analysis is shown in \cref{fig:gcms-mass-spec}.
 
 In addition to the mass spectrum, the MS reports the total ion current (TIC),
 also known as the total ion chromatogram. This is the sum of all of the mass
-intensities for a given scan. A sample TIC is plotted in \autoref{fig:gcms-tic}
+intensities for a given scan. A sample TIC is plotted in \cref{fig:gcms-tic}
 where the abscissa is time in \si{\minute} and the ordinate is an arbitrary unit.
 Finally, the MS can also report the mass chromatogram (MC), which is the
 chromatogram for a specific $m/z$ as a function of time.
@@ -1081,7 +1081,7 @@ sample in the gas sample injection valve sample loop. Once the
 calibration curve is generated, it is used to relate the measured
 area of the peak of particular component to its mole fraction. Detailed
 methods for the construction of calibration curves will be given in
-\autoref{sec:gcms-procedure}.
+\cref{sec:gcms-procedure}.
 
 \subsection{Experimental Procedure}
 \label{sec:gcms-procedure}
@@ -1092,11 +1092,11 @@ valve and split/splitless injector, as mentioned previously. The column
 used is a Phenomenex model ZB-5MS capillary column
 with length \SI{30}{\meter}, inner diameter \SI{0.25}{\micro\meter}, and film
 thickness of \SI{0.25}{\micro\meter}. The operating parameters of the GC/MS
-(known as the ``method'') are shown in \autoref{tab:gcms}.
+(known as the ``method'') are shown in \cref{tab:gcms}.
 
 The pressure in the gas injection valve sample loop is monitored by an
-MMA type pressure transducer, the same model as used in \autoref{sec:unc-p0}. The
-sample outlet in \autoref{fig:gcms-valve} is open to the atmosphere
+MMA type pressure transducer, the same model as used in \cref{sec:unc-p0}. The
+sample outlet in \cref{fig:gcms-valve} is open to the atmosphere
 so that a consistent pressure is maintained in the sample loop.
 The volume of the sample loop is \SI{10}{\micro\liter}. With
 the temperature, pressure, and volume of the sample loop known,
