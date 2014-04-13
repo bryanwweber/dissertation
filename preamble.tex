@@ -232,18 +232,18 @@
 % \def\tableautorefname~#1\null{Table~#1\null}
 % \def\equationautorefname~#1\null{Eq.~(#1)\null}
 
-\newcommand{\Autoref}[1]{%
-  \begingroup%
-  \def\chapterautorefname~##1\null{Chapter~##1\null}%
-  \def\sectionautorefname~##1\null{Section~##1\null}%
-  \def\subsectionautorefname~##1\null{Section~##1\null}%
-  \def\subsubsectionautorefname~#1\null{Section~#1\null}
-  \def\figureautorefname~##1\null{Figure~##1\null}%
-  \def\tableautorefname~##1\null{Table~##1\null}%
-  \def\equationautorefname~##1\null{Equation~##1\null}%
-  \autoref{#1}%
-  \endgroup%
-}
+% \newcommand{\Autoref}[1]{%
+  % \begingroup%
+  % \def\chapterautorefname~##1\null{Chapter~##1\null}%
+  % \def\sectionautorefname~##1\null{Section~##1\null}%
+  % \def\subsectionautorefname~##1\null{Section~##1\null}%
+  % \def\subsubsectionautorefname~#1\null{Section~#1\null}
+  % \def\figureautorefname~##1\null{Figure~##1\null}%
+  % \def\tableautorefname~##1\null{Table~##1\null}%
+  % \def\equationautorefname~##1\null{Equation~##1\null}%
+  % \autoref{#1}%
+  % \endgroup%
+% }
 
 %Set the size of the margins and the paper
 %According to http://tex.stackexchange.com/a/26592/32374
