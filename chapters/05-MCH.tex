@@ -151,18 +151,18 @@ mole fraction constant increases the reactivity.
 
 A comparison of the experimentally measured first stage ignition delays (open
 symbols) and the first stage ignition delays computed using the updated model
-(lines) is shown in Figs.~\ref{fig:mch-model-1-first}, \ref{fig:mch-model-2-first},
-and \ref{fig:mch-model-3-first} for Mix \#1, \#2, and \#3, respectively. In
+(lines) is shown in \cref{fig:mch-model-1-first,fig:mch-model-2-first,,%Comma necessary to avoid compression
+fig:mch-model-3-first} for Mix \#1, \#2, and \#3, respectively. In
 addition, a comparison of the experimentally measured overall ignition delays
 (open symbols) and the overall ignition delay computed by the updated model
-(lines) is shown in Figs.~\ref{fig:mch-model-1-over}, \ref{fig:mch-model-2-over},
-and \ref{fig:mch-model-3-over}. The experiments include the new work being
+(lines) is shown in \cref{fig:mch-model-1-over,fig:mch-model-2-over,,%
+fig:mch-model-3-over}. The experiments include the new work being
 presented here at $P_C=\SI{50}{\bar}$ in addition to the previous RCM experiments at
 $P_C=\SIlist{15.1;25.5}{\bar}$ \cite{Mittal2009}. The simulations are the VPRO type
 of simulations. For some computational cases, substantial heat release during
 the compression stroke caused the computed pressure to depart from the
 non-reactive profile prior to EOC. Therefore, these cases are not shown in
-Figs.~\ref{fig:mch-model-1}--\ref{fig:mch-model-3}. For these conditions, the
+\cref{fig:mch-model-1,fig:mch-model-2,fig:mch-model-3}. For these conditions, the
 experimental pressure trace did not exhibit significant heat release during
 the compression stroke and the experimental pressure at EOC for the reactive
 case matched that of the non-reactive counterpart.
@@ -313,15 +313,15 @@ dependent effects will tend to make the simulations ignite sooner and improve
 the agreement, especially for cases with ignition delays longer than
 approximately \SI{1000}{\micro\second}.
 
-As discussed in \cref{sec:model-comparison}, one of the updates to the model
+As discussed in \cref{sec:model-improvements}, one of the updates to the model
 was to increase the activation energy of ketohydroperoxide decomposition, from
 $E_a=\SI{39}{\kilo\calorie\per\mole}$ (\SI{163.2}{\kilo\joule\per\mole}) to
 \SI{41.6}{\kilo\calorie\per\mole} (\SI{174.1}{\kilo\joule\per\mole}). This
 update substantially improved the prediction of the low-temperature ignition
 delays, including the first stage and overall ignition delays. As mentioned by
-\textcite{Curran2002}, "the high activation energy [of ketohydroperoxide
+\textcite{Curran2002}, ``the high activation energy [of ketohydroperoxide
 decomposition] ensures an induction period during which the ketohydroperoxide
-concentration builds up." Furthermore, updating this activation energy does not
+concentration builds up.'' Furthermore, updating this activation energy does not
 affect the high-temperature ignition delays. A comparison of calculated
 ignition delays demonstrating the effect of this update is shown in
 \cref{fig:mch-energy}.
@@ -430,8 +430,8 @@ reactions that consume the ROO radicals in the current mechanism. These classes
 are: C1) internal H-atom transfer (isomerization) to form QOOH; C2) direct
 elimination of hydroperoxyl and methylcyclohexene; C3) H-abstraction by ROO
 from either the fuel or hydroperoxyl to form ROOH; and, C4) reactions among the
-ROO radicals. Class C4 consumes less than ~5\% of each of the ROO radicals at
-\SI{700}{\kelvin} and less than ~0.1\% for the other temperatures and this class is
+ROO radicals. Class C4 consumes less than $\approx$5\% of each of the ROO radicals at
+\SI{700}{\kelvin} and less than $\approx$0.1\% for the other temperatures and this class is
 therefore not shown on the path diagram in \cref{fig:mch-path}. Of the other
 three classes, C1 (formation of QOOH) is the predominant pathway in the low
 temperature ignition process. Nevertheless, the direct elimination of
