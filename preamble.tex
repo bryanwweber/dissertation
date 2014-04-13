@@ -98,29 +98,6 @@
 %Set up todo notes in the PDF file
 \usepackage{todonotes}
 
-%Set how autoref will refer to various things in text.
-%Capital A \Autoref is for the beginning of the sentence.
-\def\chapterautorefname~#1\null{Chapter~#1\null}
-\def\sectionautorefname~#1\null{Sec.~#1\null}
-\def\subsectionautorefname~#1\null{Sec.~#1\null}
-\def\subsubsectionautorefname~#1\null{Sec.~#1\null}
-\def\figureautorefname~#1\null{Fig.~#1\null}
-\def\tableautorefname~#1\null{Table~#1\null}
-\def\equationautorefname~#1\null{Eq.~(#1)\null}
-
-\newcommand{\Autoref}[1]{%
-  \begingroup%
-  \def\chapterautorefname~##1\null{Chapter~##1\null}%
-  \def\sectionautorefname~##1\null{Section~##1\null}%
-  \def\subsectionautorefname~##1\null{Section~##1\null}%
-  \def\subsubsectionautorefname~#1\null{Section~#1\null}
-  \def\figureautorefname~##1\null{Figure~##1\null}%
-  \def\tableautorefname~##1\null{Table~##1\null}%
-  \def\equationautorefname~##1\null{Equation~##1\null}%
-  \autoref{#1}%
-  \endgroup%
-}
-
 %Use and set up the caption package for nicer captions.
 \usepackage{caption}
 \DeclareCaptionLabelFormat{bf}{\textbf{#1 #2}}
@@ -221,6 +198,50 @@
         Title={High Pressure Ignition Chemistry of Alternative Fuels},
         Author={Bryan W. Weber}
     }
+}
+
+%Do a better job with the automatic references.
+\usepackage[capitalise, sort&compress, nameinlink]{cleveref}
+
+\crefname{chapter}{Chapter}{Chapters}
+\Crefname{chapter}{Chapter}{Chapters}
+\crefname{section}{Sec.}{Secs.}
+\Crefname{section}{Section}{Sections}
+\crefname{subsection}{Sec.}{Secs.}
+\Crefname{subsection}{Section}{Sections}
+\crefname{subsubsection}{Sec.}{Secs.}
+\Crefname{subsubsection}{Section}{Sections}
+\crefname{figure}{Fig.}{Figs.}
+\Crefname{figure}{Figure}{Figures}
+\crefname{table}{Table}{Tables}
+\Crefname{table}{Table}{Tables}
+\crefname{equation}{Eq.}{Eqs.}
+\Crefname{equation}{Equation}{Equations}
+
+\newcommand{\creflastconjunction}{, and~}
+\newcommand{\crefrangeconjunction}{--}
+
+%Set how autoref will refer to various things in text.
+%Capital A \Autoref is for the beginning of the sentence.
+% \def\chapterautorefname~#1\null{Chapter~#1\null}
+% \def\sectionautorefname~#1\null{Sec.~#1\null}
+% \def\subsectionautorefname~#1\null{Sec.~#1\null}
+% \def\subsubsectionautorefname~#1\null{Sec.~#1\null}
+% \def\figureautorefname~#1\null{Fig.~#1\null}
+% \def\tableautorefname~#1\null{Table~#1\null}
+% \def\equationautorefname~#1\null{Eq.~(#1)\null}
+
+\newcommand{\Autoref}[1]{%
+  \begingroup%
+  \def\chapterautorefname~##1\null{Chapter~##1\null}%
+  \def\sectionautorefname~##1\null{Section~##1\null}%
+  \def\subsectionautorefname~##1\null{Section~##1\null}%
+  \def\subsubsectionautorefname~#1\null{Section~#1\null}
+  \def\figureautorefname~##1\null{Figure~##1\null}%
+  \def\tableautorefname~##1\null{Table~##1\null}%
+  \def\equationautorefname~##1\null{Equation~##1\null}%
+  \autoref{#1}%
+  \endgroup%
 }
 
 %Set the size of the margins and the paper
