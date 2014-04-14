@@ -1,10 +1,13 @@
-% arara: xelatex: { synctex: on, shell: off }
+% arara: lualatex: { synctex: on, shell: off }
 % arara: biber
-% arara: xelatex: { synctex: on, shell: off }
+% arara: lualatex: { synctex: on, shell: off }
 % arara: sumatrapdf
 \documentclass[12pt, letterpaper,oneside]{book}
 
-\input{C:/Users/bww09001/Documents/Github/dissertation/preamble.tex}
+\usepackage{luacode}
+\edef \user{\directlua{tex.sprint(os.getenv('USERNAME'))}}
+
+\input{C:/Users/\user/Documents/Github/dissertation/preamble.tex}
 
 %Begin the document
 \begin{document}
