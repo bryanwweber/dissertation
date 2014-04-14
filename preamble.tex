@@ -1,3 +1,10 @@
+\usepackage{pdftexcmds}
+\makeatletter
+\let\pdfescapename=\pdf@escapename
+\let\pdfstrcmp=\pdf@strcmp
+\makeatother
+\usepackage{pax}
+
 %Set the package to import preambles
 \usepackage{subfiles}
 
