@@ -1,6 +1,6 @@
-% arara: xelatex: { synctex: on, shell: off }
+% arara: lualatex: { synctex: on, shell: off }
 % arara: biber
-% arara: xelatex: { synctex: on, shell: off }
+% arara: lualatex: { synctex: on, shell: off }
 % arara: sumatrapdf
 \documentclass[../main.tex]{subfiles}
 
@@ -30,7 +30,7 @@
                 {\includegraphics[width=3cm]{03-Butanol/sbuoh-skeletal}}%
                 {\caption{\sBuOH{}}\label{fig:sbuoh-skeletal}}%
             \ffigbox
-                {\includegraphics[height=2cm]{03-Butanol/tbuoh-skeletal}}%
+                {\includegraphics[height=2.5cm]{03-Butanol/tbuoh-skeletal}}%
                 {\caption{\tBuOH{}}\label{fig:tbuoh-skeletal}}%
             \ffigbox
                 {\includegraphics[width=3cm]{03-Butanol/ibuoh-skeletal}}%
@@ -50,7 +50,16 @@ Butanol is the four carbon alcohol, and has four isomers:
 \tBuOH{} (2-methyl-2-propanol); and
 \iBuOH{} (2-methyl-1-propanol).
 The skeletal structures of the four isomers are shown in
-\cref{fig:buoh-isomers}. Three of the butanol isomers can be produced
+\cref{fig:buoh-isomers}. The carbon atoms in the skeleton are
+labeled according to their distance from the hydroxyl moeity; the
+$\alpha$ carbon is the closest to the hydroxyl, followed by $\beta$,
+$\gamma$, and $\delta$ carbons. Not all of the butanols have all of
+the types of carbons listed here, due to varying chain lengths. For
+instance, \tBuOH{} has one $\alpha$ carbon (not labeled), three $\beta$
+carbons, and no $\gamma$ or $\delta$ carbons.
+
+
+Three of the butanol isomers can be produced
 by biological pathways (\textit{n}-, \textit{s}-, and \iBuOH{})
 \cite{Nigam2011,Smith2010}, making them candidates for the ``second-generation''
 of biofuels \cite{Harvey2011,Nigam2011}. Although \tBuOH{} does not have
@@ -470,13 +479,8 @@ are the \SI{15}{\bar} case and the bold numbers underneath are for the \SI{30}{\
 \end{figure}
 
 In the following discussion, carbon-centered radicals are labeled according to
-their distance from the hydroxyl moiety in the fuel molecule. Therefore, the
-$\alpha$ carbon is the closest to the hydroxyl, followed by $\beta$, $\gamma$,
-and $\delta$ carbons. Not all of the butanols have all of the types of carbons
-listed here, due to varying chain lengths. For instance, \tBuOH{} has
-one $\alpha$ carbon, three $\beta$ carbons, and no $\gamma$ or $\delta$ carbons.
-
-As expected at the relatively low temperature of this analysis, H-abstraction
+their distance from the hydroxyl moiety in the fuel molecule, as shown in
+\cref{fig:buoh-isomers}. As expected at the relatively low temperature of this analysis, H-abstraction
 reactions dominate over unimolecular decomposition for all four isomers. It is
 also expected that \textit{n}-, \textit{s}-, and \iBuOH{} react
 primarily to their respective $\alpha$-hydroxybutyl radicals, since the
