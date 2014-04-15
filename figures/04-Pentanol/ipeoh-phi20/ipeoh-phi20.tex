@@ -1,0 +1,25 @@
+% arara: lualatex
+\documentclass[tikz]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{width=9cm,height=7cm,compat=1.10}
+
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+ymin=10, ymax=60,
+xmin=-10, xmax=90,
+]
+\addplot[
+red,
+x filter/.code={
+    \ifnum\coordindex>1350
+        \def\pgfmathresult{}
+    \fi
+},
+] table[x=Time-Expt,y=Pres-Expt, col sep=comma] {phi-20-pressure.txt};
+\addplot[blue] table[x=Time-Sim,y=Pres-Sim, col sep=comma] {phi-20-pressure.txt};
+\addplot[gray] table[x=Time-NR,y=Pres-NR, col sep=comma] {phi-20-pressure.txt};
+\end{axis}
+\end{tikzpicture}
+
+\end{document}
