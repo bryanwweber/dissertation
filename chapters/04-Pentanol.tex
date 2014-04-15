@@ -39,7 +39,7 @@ of ethanol, \iPeOH{}, and gasoline.
 \section{Procedures}
 \label{sec:ipeoh-procedure}
 
-Experiments for \iPeOH{} have been performed at the conditions listed
+Experiments for \iPeOH{} in the RCM have been performed at the conditions listed
 in \cref{tab:ipeoh-expts}. Homogeneous fuel and air pre-mixtures are prepared in an approximately
 \SI{17}{\liter} mixing tank. The mixing tank and all tubes and manifolds
 connecting the tank with the RCM are heated, allowing the study of
@@ -48,7 +48,28 @@ the saturation temperature of \iPeOH{} for each mixture studied. The mixing
 tank is equipped with a magnetic stirrer to ensure complete homogeneity
 of the mixture.
 
-\missingfigure{Experimental conditions table}
+\begin{table}
+    \caption{\iPeOH{} Experimental Conditions}
+    \label{tab:ipeoh-expts}
+    \begin{tabular}{*{5}{c}}
+    \toprule
+    \multicolumn{3}{c}{Reactant (Purity)} & \multirow{3}[0]{*}{\linebreakcell{Equivalence \\ Ratio \\ $\phi$}} & \multirow{3}[0]{*}{\linebreakcell{Compressed \\ Pressure \\ $P_C$ (bar)}} \\
+    \cmidrule{1-3}
+    \linebreakcell{\iPeOH{} \\ (99.6\%)} & \linebreakcell{O$_2$ \\ (99.994\%)} & \linebreakcell{N$_2$ \\ (99.999\%)} & & \\
+    \cmidrule{1-3}
+    \multicolumn{3}{c}{Mole Percentage}   & & \\
+    \midrule
+    2.41 & 20.50 & 77.09 & 1.0 & 7 \\
+    2.41 & 20.50 & 77.09 & 1.0 & 20 \\
+    2.41 & 20.50 & 77.09 & 1.0 & 40 \\
+    1.22 & 20.75 & 78.03 & 0.5 & 7 \\
+    1.22 & 20.75 & 78.03 & 0.5 & 20 \\
+    1.22 & 20.75 & 78.03 & 0.5 & 40 \\
+    4.71 & 20.01 & 75.27 & 2.0 & 20 \\
+    4.71 & 20.01 & 75.27 & 2.0 & 40 \\
+    \bottomrule
+    \end{tabular}
+\end{table}
 
 Prior to mixture preparation, the mixing tank is vacuumed to less than
 \SI{1}{\torr}, whereupon liquid fuel (\iPeOH{}, Sigma-Aldrich, 99.6\%
@@ -70,7 +91,104 @@ improvements are highlighted below; see the article for more detail
 \cite{Sarathy2013}.
 
 \begin{enumerate}
-\item Updating the base chemistry to the 
+\item The model was restructured based on work with C$_4$ and C$_5$
+      alcohols \cite{Sarathy2012, Heufer2012a}
+\item The most stable conformers of \iPeOH{} were calculated using
+      quantum chemistry software
+\item The BDEs of the of the C-C, C-H, C-O, and O-H bonds were calculated
+      using quantum chemistry software
+\item The model includes the Waddington pathway shown to be important in
+      low-temperature decomposition of \iPeOH{} by \textcite{Welz2012}
+\item New reaction pathways were added based on the work of \textcite{Welz2012,
+      Welz2013}, including the unconventional water-elimination pathway discussed
+      in \textcite{Welz2013}
 \end{enumerate}
 
+Moreover, the following data sets from the literature and presented in
+\cite{Sarathy2013} were used to validate the newly updated model, in
+addition to the data presented here.
+
+\begin{enumerate}
+\item Ignition delays measured in a shock tube \cite{Tang2013, Tsujimura2012}
+\item JSR species data \cite{Dayma2011}
+\item New ignition delays measured in shock tubes \cite{Sarathy2013}
+\item New JSR species data \cite{Sarathy2013}
+\item New flame speed and flame extinction measurements \cite{Sarathy2013}
+\end{enumerate}
+
+\section{Experimental \& Modeling Results}
+\label{sec:ipeoh-results}
+
+The experimental ignition delays measured in the RCM are shown in
+\cref{fig:ipeoh-7bar,fig:ipeoh-20bar,,fig:ipeoh-40bar}, along with
+ignition delays measured in the shock tube and comparison with
+the model simulations. There is no $\phi=2.0$ data set for \SI{7}{\atmosphere}
+because no conditions at which ignition occurred could be found.
+In \cref{fig:ipeoh-7bar,fig:ipeoh-20bar,fig:ipeoh-40bar}, solid
+lines represent adiabatic, constant volume simulations, and dashed
+lines represent volume-profile simulations.
+
+\begin{figure}
+\begin{floatrow}
+    \ffigbox[\FBwidth]
+        {
+            \ffigbox[\FBwidth]
+                {\includegraphics[width=6cm]{04-Pentanol/ipeoh-7bar}}
+                {\caption{Shock tube and RCM ignition delay times from
+                \textcite{Tsujimura2012} at \SI{7}{\atmosphere} compared
+                with model predictions by the model from \textcite{Sarathy2013}.}
+                \label{fig:ipeoh-7bar}}
+            \par
+            \ffigbox[\FBwidth]
+                {\includegraphics[width=6cm]{04-Pentanol/ipeoh-20bar}}
+                {\caption{Shock tube and RCM ignition delay times from
+                \textcite{Tsujimura2012} at \SI{20}{\atmosphere} compared
+                with model predictions by the model from \textcite{Sarathy2013}.}
+                \label{fig:ipeoh-20bar}}
+            \par
+            \ffigbox[\FBwidth]
+                {\includegraphics[width=6cm]{04-Pentanol/ipeoh-40bar}}
+                {\caption{Shock tube and RCM ignition delay times from
+                \textcite{Sarathy2013} at \SI{40}{\atmosphere} compared
+                with model predictions by the model from \textcite{Sarathy2013}.}
+                \label{fig:ipeoh-40bar}}
+        \end{subfloatrow}}
+        {\caption{Ignition delays of \iPeOH{}}\label{fig:ipeoh-expts}}
+    \ffigbox[\FBwidth]
+        {
+            \ffigbox[\FBwidth]
+                {\includegraphics[width=6cm]{04-Pentanol/ipeoh-7bar}}
+                {\caption{Shock tube and RCM ignition delay times from
+                \textcite{Tsujimura2012} at \SI{7}{\atmosphere} compared
+                with model predictions by the model from \textcite{Sarathy2013}.}
+                \label{fig:ipeoh-7bar}}
+            \par
+            \ffigbox[\FBwidth]
+                {\includegraphics[width=6cm]{04-Pentanol/ipeoh-20bar}}
+                {\caption{Shock tube and RCM ignition delay times from
+                \textcite{Tsujimura2012} at \SI{20}{\atmosphere} compared
+                with model predictions by the model from \textcite{Sarathy2013}.}
+                \label{fig:ipeoh-20bar}}
+            \par
+            \ffigbox[\FBwidth]
+                {\includegraphics[width=6cm]{04-Pentanol/ipeoh-40bar}}
+                {\caption{Shock tube and RCM ignition delay times from
+                \textcite{Sarathy2013} at \SI{40}{\atmosphere} compared
+                with model predictions by the model from \textcite{Sarathy2013}.}
+                \label{fig:ipeoh-40bar}}
+        \end{subfloatrow}}
+        {\caption{Ignition delays of \iPeOH{}}\label{fig:ipeoh-expts}}
+\end{floatrow}
+\end{figure}
+
+At \SI{7}{\atmosphere}, the high-temperature ignition delays
+are generally predicted to within a factor of 1.5. The RCM experiments
+are also well predicted at low temperature---within a factor of 2---but
+the disagreement grows to approximately a factor of 4 in the
+intermediate temperature regime. At \SI{20}{\atmosphere}, the
+high-temperature ignition delays are well predicted, including
+capturing the equivalence ratio sensitivity of the ignition delays.
+The ignition delays measured in the RCM are fairly well predicted
+at the lean and stoichiometric condition, but are over-predicted
+at the rich condition.
 \end{document}
