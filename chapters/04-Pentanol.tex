@@ -30,11 +30,16 @@
 \section{Structure of \textit{i}-Pentanol}
 \label{sec:ipeoh-struct}
 
-\textit{i}-Pentanol (3-methyl-1-butanol) is a five-carbon alcohol whose skeletal
-structure is shown in \cref{fig:ipeoh-skeletal}. \textit{i}-Pentanol can
-be produced biologically, and offers several similar advantages as the butanol
-isomers as compared to ethanol. \Cref{tab:ipeoh-heats} compares the HHV
-of ethanol, \iPeOH{}, and gasoline.
+\textit{i}-Pentanol (3-methyl-1-butanol) is a five-carbon alcohol whose
+skeletal structure is shown in \cref{fig:ipeoh-skeletal}. The carbon
+atoms in \cref{fig:ipeoh-skeletal} are labeled according to their
+distance from the hydroxyl moeity, with $\alpha$ being the closest and
+$\delta$ being the farthest. The Greek letter notation will be used to
+refer to the carbon-centered radicals in \cref{sec:ipeoh-discussion}.
+\textit{i}-Pentanol can be produced biologically \cite{Peralta-Yahya2012},
+and offers several similar advantages as the butanol isomers as compared
+to ethanol. \Cref{tab:ipeoh-heats} compares the HHV of ethanol, \iPeOH{},
+and gasoline.
 
 \section{Procedures}
 \label{sec:ipeoh-procedure}
@@ -59,13 +64,8 @@ of the mixture.
     \cmidrule{1-3}
     \multicolumn{3}{c}{Mole Percentage}   & & \\
     \midrule
-    2.41 & 20.50 & 77.09 & 1.0 & 7 \\
-    2.41 & 20.50 & 77.09 & 1.0 & 20 \\
     2.41 & 20.50 & 77.09 & 1.0 & 40 \\
-    1.22 & 20.75 & 78.03 & 0.5 & 7 \\
-    1.22 & 20.75 & 78.03 & 0.5 & 20 \\
     1.22 & 20.75 & 78.03 & 0.5 & 40 \\
-    4.71 & 20.01 & 75.27 & 2.0 & 20 \\
     4.71 & 20.01 & 75.27 & 2.0 & 40 \\
     \bottomrule
     \end{tabular}
@@ -106,10 +106,10 @@ improvements are highlighted below; see the article for more detail
 
 Moreover, the following data sets from the literature and presented in
 \cite{Sarathy2013} were used to validate the newly updated model, in
-addition to the data presented here.
+addition to the new data at $P_C=\SI{40}{\bar}$ presented here.
 
 \begin{enumerate}
-\item Ignition delays measured in a shock tube \cite{Tang2013, Tsujimura2012}
+\item Ignition delays measured in a shock tube and RCM\cite{Tang2013, Tsujimura2012}
 \item JSR species data \cite{Dayma2011}
 \item New ignition delays measured in shock tubes \cite{Sarathy2013}
 \item New JSR species data \cite{Sarathy2013}
@@ -161,37 +161,256 @@ lines represent volume-profile simulations.
             \ffigbox[\FBwidth]
                 {\includegraphics[width=7cm]{04-Pentanol/ipeoh-phi05}}
                 {\caption{Experimental reactive (red), simulated reactive
-                (blue), and experimental non-reactive (gray) pressure 
-                profiles at \SI{40}{\bar} for lean \iPeOH{}/air mixtures.}
+                (blue), and experimental non-reactive (gray) pressure
+                profiles at \SI{40}{\atmosphere} for lean \iPeOH{}/air mixtures.}
                 \label{fig:ipeoh-phi05}}
             \par
             \vspace{7pt}
             \ffigbox[\FBwidth]
                 {\includegraphics[width=7cm]{04-Pentanol/ipeoh-phi10}}
                 {\caption{Experimental reactive (red), simulated reactive
-                (blue), and experimental non-reactive (gray) pressure 
-                profiles at \SI{40}{\bar} for stoichiometric \iPeOH{}/air mixtures.}
+                (blue), and experimental non-reactive (gray) pressure
+                profiles at \SI{40}{\atmosphere} for stoichiometric \iPeOH{}/air mixtures.}
                 \label{fig:ipeoh-phi10}}
             \par
             \vspace{7pt}
             \ffigbox[\FBwidth]
                 {\includegraphics[width=7cm]{04-Pentanol/ipeoh-phi20}}
                 {\caption{Experimental reactive (red), simulated reactive
-                (blue), and experimental non-reactive (gray) pressure 
-                profiles at \SI{40}{\bar} for rich \iPeOH{}/air mixtures.}
+                (blue), and experimental non-reactive (gray) pressure
+                profiles at \SI{40}{\atmosphere} for rich \iPeOH{}/air mixtures.}
                 \label{fig:ipeoh-phi20}}
         }
 \end{floatrow}
 \end{figure}
 
-At \SI{7}{\atmosphere}, the high-temperature ignition delays
-are generally predicted to within a factor of 1.5. The RCM experiments
+At \SI{7}{\atmosphere} (\cref{fig:ipeoh-7bar}), the high-temperature ignition delays
+measured in the shock tube are generally predicted to within a factor of 1.5. The RCM experiments
 are also well predicted at low temperature---within a factor of 2---but
 the disagreement grows to approximately a factor of 4 in the
-intermediate temperature regime. At \SI{20}{\atmosphere}, the
+intermediate temperature regime. At \SI{20}{\atmosphere} (\cref{fig:ipeoh-20bar}), the
 high-temperature ignition delays are well predicted, including
 capturing the equivalence ratio sensitivity of the ignition delays.
 The ignition delays measured in the RCM are fairly well predicted
 at the lean and stoichiometric condition, but are over-predicted
 at the rich condition.
+
+At \SI{40}{\atmosphere} (\cref{fig:ipeoh-40bar}), the model is able to
+reproduce the high-temperature ignition delays fairly well, including
+capturing the equivalence ratio dependence of the ignition delays.
+Ignition delay data near \SI{40}{\atmosphere} and temperatures
+ranging from \SIrange{651}{776}{\kelvin} were also acquired using the
+RCM. The ignition data in the RCM and ST are in good qualitative
+agreement, displaying the expected decrease in ignition delay with
+increasing temperature. The model well predicts the observed trend
+of decreasing ignition delay time with increasing equivalence
+ratio, which occurs because a higher fuel concentration results
+in greater radical production at these conditions. Constant volume
+and volume history simulations at the \SI{40}{\atmosphere} RCM
+conditions (\cref{fig:ipeoh-40bar}) indicate the model can well predict
+ignition delay times at stoichiometric conditions, but cannot well predict
+RCM ignition delay data at lean and rich conditions. The difference
+(i.e., spread) in ignition delay times across various equivalence ratios
+is similar to that observed for other alcohols in the same facilities
+(e.g., \nBuOH{} at \SI{15}{\bar} \cite{Weber2011} and \tBuOH{} at
+\SI{30}{\bar} \cite{Weber2013}). The primary issue with the model is
+its equivalence ratio sensitivity; predicted ignition delay times need
+to be increased at lean conditions yet decreased at rich conditions,
+implying that the system’s reactivity is controlled by different phenomenon
+at different equivalence ratios. At these low temperatures the model’s
+reactivity is driven by the overall peroxy reaction sequence,
+R+O$_2$=ROO=QOOH(+O$_2$)=OOQOOH=2OH+products, including the inhibitive
+direct (i.e., concerted) HO$_2$ elimination and QOOH decomposition routes.
+An increase (or decrease) in any reaction rate constant along this
+reaction sequence will move the reactivity of the system in the same
+direction at all equivalence ratios. Therefore, we were unable to
+identify a single reaction rate constant modification that would decrease
+overall reactivity at lean conditions while increase it at rich conditions.
+
+Representative experimental and simulated pressure profiles for the lean,
+stoichiometric, and rich conditions are shown in
+\cref{fig:ipeoh-phi05,fig:ipeoh-phi10,,fig:ipeoh-phi20} respectively,
+with the profiles shifted so TDC occurs at \SI{0}{\second}. Interestingly,
+the experimental pressure traces after the induction period do not show
+a sharp increase in pressure (i.e., heat release is more gradual,
+similar to two-stage ignition). For the lean case, there is a moderate
+heat release \SI{25}{\milli\second} after TDC followed by a larger heat
+release event, and similar behavior is observed at other equivalence ratios.
+It is noted that similar heat release prior to the main ignition event
+was found in an HCCI engine experiment using \iPeOH{} by \textcite{Yang2010}
+and was termed Intermediate Temperature Heat Release (ITHR) in their
+work.
+
+The pressure profile of the present simulations qualitatively
+agrees with the experimental data, in that the simulated pressure
+traces deviate from the non-reactive trace prior to the main ignition
+event, although the ignition delay itself does not necessarily
+agree very well. For lean and stoichiometric cases the simulated
+ignition delay times are fast compared to the data, whereas at rich
+conditions they are too slow.
+
+\section{Discussion}
+\label{sec:ipeoh-discussion}
+
+The sensitivity of the ignition delay to changes in the reaction rate
+coefficients is shown in \cref{fig:ipeoh-20sens} for a constant volume,
+adiabatic simulation at \SI{20}{\atmosphere}, \SI{800}{\kelvin}, and for
+equivalence ratios varying from $\phi=\numrange{0.5}{2.0}$. The percent
+sensitivity is computed by the formula
+%
+\begin{align}
+S = \frac{\tau(2k_i)-\tau(k_i)}{\tau(k_i)} \times \SI{100}{\percent}
+\end{align}
+%
+where $\tau(2k_i)$ is the ignition delay when the rate coefficient of
+reaction $i$ is doubled, and $\tau(k_i)$ is the nominal ignition delay.
+Positive sensitivities therefore represent an increase in the ignition
+delay when the rate coefficient of reaction $i$ is increased. Both the
+forward and reverse rates of each reaction are increased simultaneously.
+Since the reaction 2ho2$\Leftrightarrow$h2o2+o2 is represented by two sets of $A$, $b$,
+and $E_a$ in the reaction mechanism, both Arrhenius coefficients were
+simultaneously doubled to give the sensitivity value shown in \cref{fig:ipeoh-20sens}.
+
+It is seen from \cref{fig:ipeoh-20sens} that the most sensitive reaction
+under these conditions is H-abstraction by OH to form the $\alpha$-hydroxypentyl
+radical (ic5h10oh-1). Increasing the rate of abstraction by OH from the
+$\alpha$ site increases the ignition delay because subsequent reaction
+of the fuel radical with O$_2$ leads to the formation of HO$_2$ and
+\textit{i}-pentanal, which is an OH terminating pathway. The next most
+sensitive reaction is H-abstraction by OH to form the $\gamma$-hydroxypentyl
+radical (ic5h10oh-3). The ignition delay is also sensitive to the rates of
+isomerization of the ROO radicals formed by the other hydroxypentyl
+radicals. This indicates that, except for the $\alpha$ radical, the
+other hydroxypentyl radicals undergo typical low-temperature chain branching
+reactions. This observation is further corroborated by a reaction path
+analysis, discussed below. Furthermore, \cref{fig:ipeoh-20sens} shows that
+the ignition delay is also sensitive to some low temperature chain
+terminating pathways, such as formation of an enol + HO$_2$ from ROO
+or QOOH radicals.
+
+A sensitivity analysis of the ignition delay to changes in the
+reaction rate coefficients for initial conditions of \SI{40}{\atmosphere}
+and \SI{689}{\kelvin}, for three equivalence ratios, is shown in
+\cref{fig:ipeoh-40sens}. As before, positive sensitivity indicates
+that increasing the rate coefficient of that reaction increases the
+ignition delay. Similar to the \SI{20}{\atmosphere} sensitivity analysis,
+the most sensitive reactions are the H-abstractions from the fuel and
+the subsequent reactions of these initial fuel radicals. However,
+stronger equivalence ratio dependence of the sensitivity results is
+seen in \cref{fig:ipeoh-40sens} as compared to \cref{fig:ipeoh-20sens}.
+It is interesting to note that the most sensitive reaction, formation
+of the $\alpha$-hydroxypentyl radical through H-abstraction by
+OH, is nearly twice as sensitive at $\phi=0.5$ than at $\phi=2.0$, while
+most of the other reactions have nearly the same sensitivity for
+the three equivalence ratios.
+
+In addition, the reaction of formaldehyde and hydroxyl radical to form
+formyl radical and water shows up as somewhat sensitive, especially for
+the lean case. The importance of this reaction is demonstrated by the
+path analysis shown in \cref{fig:ipeoh-20path} (similar results are
+obtained for a path analysis at \SI{40}{\atmosphere} as at
+\SI{20}{\atmosphere}). Formaldehyde is a significant product in
+the decomposition of the $\beta$- and $\gamma$-hydroxypentyl radicals,
+as well as the pentoxy radical. Furthermore, the reaction of two
+hydroperoxyl molecules to form hydrogen peroxide and oxygen molecule is the
+seventh most sensitive reaction. This reaction is important as it releases
+the most heat during the ITHR period prior to the main ignition for all
+three equivalence ratios and because the rapid reaction of the
+$\alpha$-hydroxypentyl radical to form \textit{i}-pentanal and hydroperoxyl
+is important in alcohol combustion. In view of the equivalence ratio
+dependence shown in \cref{fig:ipeoh-40sens}, these sensitivity analysis
+results suggest that it may be possible to adjust multiple reaction
+rates in the low temperature chain branching pathways to decrease
+reactivity at lean conditions but increase reactivity at rich
+conditions, which warrants further investigation.
+
+\begin{figure}
+\floatsetup{captionskip=-4pt}
+    \ffigbox
+        {\includegraphics[width=10cm,angle=-90]{04-Pentanol/ipeoh-20sens}}
+        {\caption{Sensitivity of the ignition delay to changes in
+        the reaction rate coefficients for three equivalence ratios.
+        Initial conditions for constant-volume adiabatic simulations are
+        \SI{800}{\kelvin} and \SI{20}{\atmosphere}.}
+        \label{fig:ipeoh-20sens}}
+    \par
+    \vspace{7pt}
+    \ffigbox
+        {\includegraphics[width=10cm,angle=-90]{04-Pentanol/ipeoh-40sens}}
+        {\caption{Sensitivity of the ignition delay to changes in
+        the reaction rate coefficients for three equivalence ratios.
+        Initial conditions for constant-volume adiabatic simulations are
+        \SI{689}{\kelvin} and \SI{40}{\atmosphere}.}
+        \label{fig:ipeoh-40sens}}
+\end{figure}
+
+The main \iPeOH{} reaction pathways after 20\% fuel consumption at
+\SI{800}{\kelvin}, \SI{20}{\atmosphere}, and for three equivalence
+ratios are shown in \cref{fig:ipeoh-20path}, describing the key low
+temperature reaction pathways. The percent flux of each reaction path
+is the contribution of that path to destroying the reactant, integrated
+up to 20\% fuel consumption. It is seen that fuel is mainly consumed by
+the H atom abstraction at the $\alpha$ site because \iPeOH{} has a weak
+C-H bond at the $\alpha$ site. As discussed previously, subsequent
+reactions of $\alpha$-hydroxypentyl with O$_2$ generate \textit{i}-pentanal
++ HO$_2$, an OH terminating pathway. The other hydroxypentyl radicals tend
+to add to molecular oxygen and form hydroxyalkylperoxy (ROO) radicals.
+These radicals are mainly isomerized to hydroxyalkylhydroperoxide (QOOH)
+or decomposed to enol species by the concerted elimination of HO$_2$. Around
+18\% of $\beta$-hydroxyalkylperoxy radicals are decomposed to produce
+\textit{i}-butanal (2-methylpropanal), formaldehyde, and OH radical via ROO
+isomerization and $\beta$-scission reactions by the Waddington mechanism
+\cite{Ray1973, Sway1983}. It is also interesting to note that a similar
+pathway involving hydrogen transfer from the OH group is shown to be
+important for the $\gamma$-ROO (6\%) via a 7-membered transition state
+ring, which is a reaction sequence we included based on the work
+of \textcite{Welz2012}.
+
+\begin{figure}
+    \includegraphics[width=15cm]{04-Pentanol/ipeoh-20path}
+    \caption{Reaction path analysis for \iPeOH{} at \SI{800}{\kelvin},
+    \SI{20}{\atmosphere}, and three equivalence ratios, based on
+    constant-volume adiabatic simulations. Plain text: $\phi=0.5$.
+    Bold text: $\phi=1.0$. Italic text: $\phi=2.0$. The flux is
+    integrated up to 20\% fuel consumption.}
+    \label{fig:ipeoh-20path}
+\end{figure}
+
+\section{Conclusions}
+\label{sec:ipeoh-conclusions}
+
+New experimental ignition delay data has been collected in an RCM at
+conditions of \SI{40}{\atmosphere}, $\phi=\numrange{0.5}{2.0}$, and
+temperatures below \SI{800}{\kelvin}. The measured pressure histories
+showed interesting behavior of slow initial pressure rise prior to a
+sharp pressure rise indicating overall ignition. This pressure rise
+may be attributed to the role of the Waddington mechanism in consuming
+the fuel via the production and recycling of OH radicals during the
+pre-ignition phase.
+
+An existing model \cite{Tsujimura2012} for \iPeOH{} combustion has been updated with newly
+calculated reaction rate coefficients and newly discovered reaction
+pathways. The updated model was able to predict the ignition
+delays measured in the RCM and shock tubes fairly well, although
+it was unable to reproduce the equivalence ratio sensitivity of
+the low-temperature RCM ignition delay measurements. The model was
+also able to qualitatively capture the slow initial pressure rise
+measured during the RCM experiments, although the model was unable
+to reproduce the quantitative timing of the pressure rise.
+
+Pathway and sensitivity analyses were conducted to understand
+the important reactions in the decomposition of \iPeOH{}.
+The most important path for consumption of fuel radicals at low
+and intermediate temperatures was the reaction of the
+$\alpha$-hydroxypentyl radical with O$_2$ to form
+\textit{i}-pentanal and HO$_2$ , a path that does not contribute to the
+low temperature branching. However, sufficient low temperature chain
+branching involving the $\gamma$ and $\delta$ fuel radicals occurred
+in the model that it was able to reasonably reproduce low-temperature
+ignition and reactivity observed in the experiments. Sensitivity
+analysis showed that no single reaction can be modified to improve
+agreement of the model with all of the conditions, and further
+experimental or computational study is required to identify the
+cause of the discrepancy in predictions of ignition delay
+at off-stoichiometric, low-temperature conditions.
 \end{document}

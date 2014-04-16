@@ -1,0 +1,16 @@
+#Reaction Number	Reactions	\ff\n = 1.0	\ff\n = 0.5	\ff\n = 2.0	E	F	G	H	I	J
+1735	"ic5h11oh+oh<=>{/Symbol a}-hydroxypentyl+h2o"       	101.30	96.387	92.475
+1733	"ic5h11oh+oh<=>{/Symbol g}-hydroxypentyl+h2o"       	-50.614	-53.040	-44.635
+1839	"{/Symbol a}-hydroxypentyl+o2<=>iso-pentanal+ho2"   	35.760	31.946	36.123
+1840	"{/Symbol a}-hydroxypentyl+o2<=>ic5h10oh-1o2 (ROO)"	-34.049	-32.325	-33.127
+1732	"ic5h11oh+oh<=>{/Symbol d}-hydroxypentyl+h2o"       	-31.607	-33.901	-26.688
+0016	"2ho2<=>h2o2+o2"                                    	29.726	26.629	30.686
+1750	"ic5h11oh+ho2<=>{/Symbol a}-hydroxypentyl+h2o2"     	-25.249	-22.729	-26.277
+1875	"ic5h10oh-3o2 (RO_2)<=>ic5h9oh-3ooh-1 (QOOH)"       	-16.853	-16.259	-16.015
+1881	"ic5h10oh-4o2 (RO_2)<=>ic5h9oh-4ooh-2 (QOOH)"       	-16.785	-16.955	-14.670
+1748	"ic5h11oh+ho2<=>{/Symbol g}-hydroxypentyl+h2o2"     	-16.101	-13.837	-17.187
+0018	"h2o2(+M)<=>2oh(+M)"                                	-15.692	-21.422	-10.839
+1889	"ic5h10oh-4o2 (RO_2)<=>ic5h9oh1-3 (enol) +ho2"      	13.863	13.753	12.389
+1974	"ic5h9oh-4ooh-3o2<=>ic5ohket4-3+oh"                 	-12.136	-12.406	-10.619
+1938	"ic5h9oh1-3+ho2<=>ic5h9oh-4ooh-3"                   	11.630	12.011	9.8692
+2004	"iso-pentanal+ho2<=>ic4h9co+h2o2"                   	-10.333	-11.405	-8.5003
