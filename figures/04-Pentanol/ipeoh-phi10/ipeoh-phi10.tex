@@ -32,8 +32,8 @@
 \begin{tikzpicture}
 \begin{axis}[
     ymin=10, ymax=60,
-    xmin=-10, xmax=90,
-    title={\textit{i}-Pentanol/O$_2$/N$_2$, $\phi=2.0$, $P_C=\SI{40}{\bar}$, $T_C=\SI{653}{\kelvin}$},
+    xmin=-10, xmax=40,
+    title={\textit{i}-Pentanol/O$_2$/N$_2$, $\phi=1.0$, $P_C=\SI{40}{\bar}$, $T_C=\SI{689}{\kelvin}$},
     ylabel={Pressure, \si{\bar}},
     xlabel={Time, \si{\milli\second}},
     minor x tick num = 3,
@@ -45,17 +45,9 @@
     legend style = {at={(0.55,0.27)},anchor=center},
     legend cell align = left,
 ]
-\addplot[
-red,
-x filter/.code={
-    \ifnum\coordindex>1350
-        \def\pgfmathresult{}
-    \fi
-},
-semithick,
-] table[x=Time-Expt,y=Pres-Expt, col sep=comma] {phi-20-pressure.txt};
-\addplot[blue,semithick] table[x=Time-Sim,y=Pres-Sim, col sep=comma] {phi-20-pressure.txt};
-\addplot[gray,semithick] table[x=Time-NR,y=Pres-NR, col sep=comma] {phi-20-pressure.txt};
+\addplot[red,semithick] table[x=Time-Expt,y=Pres-Expt, col sep=comma] {phi-10-pressure.txt};
+\addplot[blue,semithick] table[x=Time-Sim,y=Pres-Sim, col sep=comma] {phi-10-pressure.txt};
+\addplot[gray,semithick] table[x=Time-NR,y=Pres-NR, col sep=comma] {phi-10-pressure.txt};
 \end{axis}
 \end{tikzpicture}
 
