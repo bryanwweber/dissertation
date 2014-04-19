@@ -1,4 +1,4 @@
-% arara: lualatex: { synctex: on, shell: off }
+%  arara: lualatex: { synctex: on, shell: off }
 % arara: biber
 % arara: lualatex: { synctex: on, shell: off }
 % arara: sumatrapdf
@@ -408,17 +408,24 @@ for the case of butanol isomers, \iPeOH{}, and methylcyclohexane, the
 validation target of ignition delays is necessary but not sufficient to
 develop truly predictive kinetic models.
 
-\todo[inline]{The next sentence is terrible and super generic. It needs to
-be changed. It seems like sampling started in engines as a way to understand
-knock. Then Roblee1961 realized that engines have cycle-to-cycle variation,
-and an RCM would probably be better.}
+Optical methods can offer non-intrusive in-situ measurements of species
+and temperature during homogeneous ignition events---c.f. the work by
+\textcite{Das2012, Uddi2012} to directly measure the temperature and
+water number density in the reaction chamber of an RCM using mid-IR
+laser light absorption and the work by \textcite{Stranic2013} to perform
+simultaneous concentration measurements of multiple species in their
+shock tube. However, these methods can detect only a limited set of
+species and require extensive calibration at engine-relevant pressure
+conditions.
 
-In the early part of the 20th century, researchers realized the models available
-to explain the phenomenon of ``knock'' in engines were insufficient. Thus,
-several researchers endeavored to expand the models by removing gas samples
-from the cylinder of spark-ignition engines. According to \textcite{Withrow1930},
-\textcite{Brooks1922} was the first to develop a system to withdraw samples from
-the cylinder of an oil-injection engine. Subsequently, \textcite{Callendar1926,
+Another avenue to improve the rigor of validation targets is to remove
+samples from the reacting gas and analyze them ex-situ. Work on this
+avenue began in the early part of the 20th century, to help explain the
+phenomenon of ``knock'' in engines. Several researchers developed
+techniques to remove gas samples from the cylinder of spark-ignition
+engines. According to \textcite{Withrow1930}, \textcite{Brooks1922} was
+the first to develop a system to withdraw samples from the cylinder of
+an oil-injection engine. Subsequently, \textcite{Callendar1926,
 Egerton1926, Lovell1927, Ricardo1928, Withrow1930, Steele1933, Egerton1935,
 Downs1951, Pahnke1954} further developed these systems for sampling from the
 cylinder of spark-ignition engines.
@@ -463,27 +470,128 @@ of the fuel did not lead to chain branching and thus ignition, whereas
 when oxygen was added, chain branching pathways were available and hot
 ignition was observed.
 
-The group at the Université de Lille in France has conducted a number
-of studies using a sampling apparatus fitted to their RCM \cite{Minetti1994,
-Minetti1995, Ribaucour2002}. These studies have measured the concentration
-of intermediate species during the ignition of \textit{n}-butane,
-\textit{n}-heptane, and cyclohexane.
+The group at the Université des Sciences et Technologies de Lille in France
+has conducted a number of studies using a sampling apparatus fitted to
+their RCM \cite{Minetti1994, Minetti1995, Minetti1996, Lemaire2001,
+Ribaucour2002}. These studies have measured the concentration of
+intermediate species during the ignition of \textit{n}-butane,
+\textit{n}-heptane, \textit{i}-octane, cyclohexane, cyclohexene, and
+cyclohexa-1,3-diene. The sampling system used in these studies studies
+is similar to that developed by \textcite{Roblee1961} in that it uses an
+expansion chamber separated from the reaction chamber by a diaphragm
+that is punctured by a knife at the appointed time.
 
-Work has begun to utilize homogeneous ignition experimental
-platforms to measure characteristics other than ignition delays---%
-see, for instance, the work by \textcite{Karwat2011a} to measure species
-profiles in their RCF using gas sampling; the work by \textcite{Das2012,Uddi2012}
-to directly measure the temperature in the reaction chamber of an RCM using
-mid-IR laser light absorption; and the work by \textcite{Stranic2013}
-to perform simultaneous concentration measurements of multiple species in their
-shock tube.
+Using a gas chromatograph coupled to a mass spectrometer to analyze their
+samples, \textcite{Minetti1994} were able to identify approximately 25
+species produced during the autoignition of \textit{n}-butane. These
+species included several cyclic ethers produced during the low-temperature
+oxidation process through peroxy species. \textcite{Minetti1994} noted
+that a kinetic model for the combustion of \textit{n}-butane was able
+to reproduce the major species profiles well, but was unable to predict
+the mole fractions of several minor species.
+
+\textcite{Minetti1995} studied the species produced during autoignition
+of \textit{n}-heptane and found that, although a detailed kinetic model
+was able to correctly predict the ignition delays, it was unable to
+capture the concentration profiles of the major species, including
+\textit{n}-heptane and its oxidation products. \textcite{Minetti1996}
+compared the oxidation products of \textit{n}-heptane with
+\textit{i}-octane under conditions of similar ignition delay. The
+authors noted that the kinetic scheme for two-stage ignition for the
+two fuels was similar in the sense that the important reaction classes
+were the same; however, the species produced by the two fuels were
+largely different.
+
+\textcite{Lemaire2001, Ribaucour2002} studied the concentration of
+intermediate species during autoignition of cyclohexane, cyclohexene,
+and cyclohexa-1,3-diene. \textcite{Lemaire2001} noted that cyclohexane
+was prone to the same autoignition phenomena as acyclic alkanes, namely
+two-stage ignition at low temperatures, followed by a region of negative
+temperature dependence of the ignition delay as the temperature increases,
+and finally, single stage ignition at high temperatures. They further
+observed that cyclohexa-1,3-diene did not exhibit such behavior.
+\textcite{Lemaire2001} also compared the species present during the
+autoignition and found that cyclohexane showed many of the same species
+as acyclic alkane ignition, whereas cyclohexa-1,3-diene did not have
+such species. Cyclohexene showed behavior intermediate between
+cyclohexane and cyclohexa-1,3-diene, both in terms of the ignition behavior
+and the species concentrations.
+
+\textcite{Ribaucour2002} studied the autoignition of cyclohexene and
+constructed a detailed model for its oxidation. They found two primary
+reaction pathways, one involving the double bond and the other involving
+peroxy radicals, during the ignition period and also noted that effects
+from the ring structure and the double bond combined to produced the
+observed chemistry.
+
+More recently, \textcite{He2005a} at the University of Michigan and
+\textcite{Mittal2006a} at Case Western Reserve University developed
+sampling systems for their rapid compression devices. \textcite{Mittal2007}
+demonstrated the feasibility of their sampling apparatus by measuring
+the major species during the induction period of methane ignition. To date,
+no further results have been presented from this sampling apparatus.
+
+The system developed by \textcite{He2005a} at the University of Michigan
+for their Rapid Compression Facility (RCF) is a unique design in that it
+quenches only a small portion of the reactants from the reaction chamber
+instead of quenching the entire chamber. A small diameter tube protrudes
+into the reaction chamber through which samples are drawn into a large
+expansion chamber. The sampling time is controlled by a fast-acting
+solenoid valve located outside the reaction chamber that is triggered
+based on the position of the piston in the RCF and a delay timer.
+
+The local sampling technique developed by \textcite{He2005a} has several
+important advantages as compared to the global sampling techniques used
+in previous work. In particular, capturing the entire reaction chamber
+also captures the boundary layer near the chamber walls, potentially
+causing significant dilution of the test sample. By capturing only a
+small sample from the center of the reaction chamber, the boundary layer
+and attendant dilution can be avoided. In addition, the local sampling
+technique does not substantially disturb the ongoing reactions,
+meaning that the ignition process is allowed to proceed unhindered.
+
+Nonetheless, the local sampling technique has some disadvantages.
+Notably, the presence of dead volume in the sampling system can impact
+the quantification of species in a manner similar to the capture of the
+boundary layer in global sampling techniques. In particular, the dead
+volume will have a much lower temperature than the core gases due to the
+large surface-area-to-volume ratio, which prevents reactions from
+occurring in the dead volume.
+
+\textcite{He2007} used this sampling system to study the oxidation
+products developed during the autoignition of \textit{i}-octane and noted
+that comparison to a detailed kinetic model developed after the work of
+\textcite{Minetti1996} showed agreement within a factor of two for most
+species. For the species that showed larger disagreement, the authors
+were able to use their results to suggest several alternate oxidation
+pathways that were not included in the model.
+
+Subsequently, \textcite{Walton2008} upgraded the sampling system at the
+University of Michigan to reduce the dead volume and improve the
+response time. \textcite{Walton2011} used the upgraded system to study
+the intermediate species in the oxidation of methyl butanoate. The
+authors found that a kinetic model was able to predict the concentration
+profiles of the species they were able to quantify fairly well, although
+larger disagreement was noted for propene.
+
+\textcite{Karwat2011a, Karwat2012, Karwat2013} used the upgraded
+sampling system to study the autoignition chemistry of \nBuOH{}
+\cite{Karwat2011a}, \textit{n}-heptane/\textit{n}-butanol blends
+\cite{Karwat2012}, and \textit{n}-heptane \cite{Karwat2013} (the results
+for \nBuOH{} have been described previously). \textcite{Karwat2012}
+demonstrated that the reactivity of \textit{n}-heptane is reduced when
+it is blended with \nBuOH{}, and moreover that the fundamental reaction
+pathways of \textit{n}-heptane are changed by the addition of \nBuOH{}.
+A kinetic model over-predicted the consumption of \textit{n}-heptane
+during the first stage of ignition, and was thus unable to reproduce many
+of the species profiles for the duration of the induction period.
+\textcite{Karwat2013} further used species sampling measurements of pure
+\textit{n}-heptane, combined with newly calculated reaction rate constants
+for alkylperoxy reactions from the literature, to improve a kinetic
+model of \textit{n}-heptane combustion, although they did not compare the
+updated model to their blending results.
 
 \section{Summary}
-
-Moreover, fuels often exhibit substantially different ignition behavior
-at engine-relevant, high-pressure, low- to intermediate-temperature
-conditions. Therefore it is critically important to generate validation
-datasets at these conditions.
 
 Thus, the objectives of this work can be stated succinctly as follows:
 
@@ -507,13 +615,22 @@ reaction pathways in high-pressure alternative fuel ignition
 
 \section{Organization of this Work}
 
-The remainder of this work is structured as follows.
-\Cref{chap:facilities} describes the experimental facilities
-used in this work, including the rapid compression machine and the newly-developed
-fast sampling system. Detailed uncertainty analyses are considered for the
-appropriate apparatuses. The subsequent sections are organized by the fuel
-studied: \cref{chap:buoh} considers the butanol isomers, \cref{chap:peoh}
-considers \iPeOH{}, and \cref{chap:mch} considers methylcyclohexane.
-Finally, \cref{chap:conclusions} presents conclusions based on this work and
+The bulk of what follows has been published in the archival literature,
+and the preceding introduction has primarily been taken from those
+papers (and includes a summary of some results from the following
+chapters). In addition, much of \cref{chap:facilities} has been
+appropriated from the published work. \cref{chap:facilities} presents an
+introduction to the RCM and other facilities used in the experiments
+described in subsequent chapters, including the fast sampling system
+that was newly developed for this work. Detailed uncertainty analyses
+are also considered for the appropriate apparatuses.
+
+The subsequent chapters are organized by the fuel studied:
+\cref{chap:buoh} considers the butanol isomers and was published in
+\textit{Energy \& Fuels} \cite{Weber2013}; \cref{chap:peoh} considers
+\iPeOH{} and was published in \textit{Combustion and Flame}
+\cite{Sarathy2013}; \cref{chap:mch} considers methylcyclohexane and was
+published in \textit{Combustion and Flame} \cite{Weber2014}. Finally,
+\cref{chap:conclusions} presents conclusions based on this work and
 recommendations for future directions.
 \end{document}
