@@ -498,28 +498,35 @@ to find the compressed temperature
 %
 \begin{subequations}
 \begin{align}
-\ln{\frac{P_C}{P_0}} 
+\ln{\frac{P_C}{P_0}}
 &= \int_{T_0}^{T_{C}} \! \frac{\gamma}{T\left(\gamma-1\right)} \, \mathrm{d} T \\
 &= \int_{T_0}^{T_{C}} \! \frac{\hat{C}_p}{T} \, \mathrm{d} T \\
 &= \int_{T_0}^{T_{C}} \! \frac{a + b T}{T} \, \mathrm{d} T\\
 &= \Big[a \ln{T} + b T \Big]_{T_0}^{T_C}
 \end{align}
 \begin{equation}
-\ln{\frac{P_C}{P_0}} = a \ln{T_C} + b T_C - \left(a \ln{T_0} + b T_0\right) \label{eq:integrate-tc}
+\ln{\frac{P_C}{P_0}} + \left(a \ln{T_0} + b T_0\right) = a \ln{T_C} + b T_C \label{eq:integrate-tc}
 \end{equation}
 \end{subequations}
 
-Solving \cref{eq:integrate-tc} for $T_C$
+\Cref{eq:integrate-tc} can be solved explicitly for $T_C$ by using
+Lambert's $W$ function \cite{Corless1996}, but this function is somewhat
+complex. Instead, \cref{eq:integrate-tc} is simplified by performing a
+Taylor expansion of the right hand side and solving for $T_C$:
 %
-\begin{align}
-\label{eq:explicit-tc}
-T_C = \frac{a W\!\left(\frac{b}{a} \exp\!{\left[\frac{b T_0}{a}\right]} T_0 \left[\frac{P_C}{P_0}\right]^{\frac{1}{a}}\right)}{b}
-\end{align}
+\begin{gather}
+a \ln{T_C} + b T_C = a \ln{T_e} + bT_e + \left(\frac{a}{T_e} + b\right)\left(T_C - T_e\right) \\
+T_C = \frac{\ln{\frac{P_C}{P_0}} + a \ln{\frac{T_0}{T_e}} + b\left(T_0 - T_e\right)}{\frac{a}{T_e}+b} + T_e \label{eq:explicit-tc}
+\end{gather}
 %
-where $W(\ldots)$ is Lambert's $W$ function \cite{Corless1996}. With an explicit function for $T_C$, we can
-estimate the uncertainty in $T_C$ by the root square sum of the uncertainty in the parameters in
-\cref{eq:explicit-tc} multiplied by the partial derivative of \cref{eq:explicit-tc} with
-respect to each of the parameters \cite{Taylor1982}. The parameters are $P_C$, $P_0$, $T_0$, $a$, and $b$.
+where $T_e$ is the temperature about which the Taylor expansion is performed.
+
+With an explicit function for $T_C$, we can estimate the uncertainty in
+$T_C$ by the root square sum of the uncertainty in the parameters in
+\cref{eq:explicit-tc} multiplied by the partial derivative of
+\cref{eq:explicit-tc} with respect to each of the parameters
+\cite{Taylor1982}. The parameters are $P_C$, $P_0$, $T_0$, $a$, and $b$
+and are assumed to be independent.
 %
 \begin{align}
 \label{eq:tc-unc}
@@ -527,24 +534,6 @@ U_{T_C} = \sqrt{\left(\frac{\partial T_C}{\partial P_C} U_{P_C}\right)^2 + \left
                 \left(\frac{\partial T_C}{\partial T_0} U_{T_0}\right)^2 + \left(\frac{\partial T_C}{\partial a} U_{a}\right)^2 +
                 \left(\frac{\partial T_C}{\partial b} U_{b}\right)^2}
 \end{align}
-
-Then, letting
-%
-\begin{equation*}
-D = W\!\left(\frac{b}{a} \exp\!{\left[\frac{b T_0}{a}\right]} T_0 \left[\frac{P_C}{P_0}\right]^{\frac{1}{a}}\right)
-\end{equation*}
-%
-the partial derivatives of \cref{eq:explicit-tc} with respect to the parameters are
-%
-\begin{subequations}
-\begin{align}
-\frac{\partial T_C}{\partial P_C} &= \frac{D}{b P_C \left(D + 1\right)} \\
-\frac{\partial T_C}{\partial P_0} &= \frac{-D}{b P_0 \left(D + 1\right)} \\
-\frac{\partial T_C}{\partial T_0} &= \frac{\left(a + b T_0\right) D}{b T_0 \left(D + 1\right)} \\
-\frac{\partial T_C}{\partial a} &= \frac{-D \left[b T_0 + \ln{\left(P_C/P_0\right)} - a D\right]}{a b \left(D + 1\right)} \\
-\frac{\partial T_C}{\partial b} &= \frac{D\left(b T_0 - a D\right)}{{b}^2\left(D + 1\right)}
-\end{align}
-\end{subequations}
 
 The uncertainties of the parameters, $U_j$ in \cref{eq:tc-unc}, are in
 general found by their own root square sum procedure
