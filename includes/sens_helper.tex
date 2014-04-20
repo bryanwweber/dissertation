@@ -1,4 +1,5 @@
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},fontsize=\small,numbers=left,firstnumber=1,stepnumber=2,firstline=2]
+
 \PY{c}{\PYZsh{} System imports}
 \PY{k+kn}{import} \PY{n+nn}{re}
 \PY{k+kn}{import} \PY{n+nn}{os}
@@ -93,7 +94,8 @@
     \PY{c}{\PYZsh{} Compile the regular expression to match the Arrhenius}
     \PY{c}{\PYZsh{} coefficients. This is intentionally different from the Amatch in}
     \PY{c}{\PYZsh{} run\PYZus{}sens.py}
-    \PY{n}{Amatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{(([\PYZhy{}+]?[0\PYZhy{}9]+(}\PY{l+s}{\PYZbs{}}\PY{l+s}{.[0\PYZhy{}9]+)?[eE][\PYZhy{}+]?[0\PYZhy{}9]+)|(?\PYZlt{}![}\PY{l+s}{\PYZbs{}}\PY{l+s}{d}\PY{l+s}{\PYZbs{}}\PY{l+s}{.])([0]+}\PY{l+s}{\PYZbs{}}\PY{l+s}{.?[0]+)(?![}\PY{l+s}{\PYZbs{}}\PY{l+s}{d]))}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{Amatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{(([\PYZhy{}+]?[0\PYZhy{}9]+(}\PY{l+s}{\PYZbs{}}\PY{l+s}{.[0\PYZhy{}9]+)?[eE][\PYZhy{}+]?[0\PYZhy{}9]+)|}\PY{l+s}{\PYZsq{}}
+                        \PY{l+s}{\PYZsq{}}\PY{l+s}{(?\PYZlt{}![}\PY{l+s}{\PYZbs{}}\PY{l+s}{d}\PY{l+s}{\PYZbs{}}\PY{l+s}{.])([0]+}\PY{l+s}{\PYZbs{}}\PY{l+s}{.?[0]+)(?![}\PY{l+s}{\PYZbs{}}\PY{l+s}{d]))}\PY{l+s}{\PYZsq{}}\PY{p}{)}
 
     \PY{c}{\PYZsh{} Loop through the lines in the input list}
     \PY{k}{for} \PY{n}{lineNum} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{lines}\PY{p}{)}\PY{p}{)}\PY{p}{:}
