@@ -180,7 +180,7 @@ The documentation included below is also available on the Web at
 \chapter{pysens}
 \begin{singlespace}
 {\setlength{\parindent}{0pt}
-\DefineShortVerb{\`}
+\DefineShortVerb[commandchars=\\\{\}]{\`}
 This appendix contains the code for `pysens`. `pysens` is a Python wrapper
 for sensitivity analysis in CHEMKIN-Pro. This program runs a brute
 force, one-at-a-time sensitivity analysis of the ignition delay for a
@@ -264,18 +264,22 @@ chemkin root - The root directory of the CHEMKIN-Pro
 \end{Verbatim}
 
 The following is the code that makes up this script.
-}
 
 \cleardoublepage
 
-`run\_sens.py`, the main driver script
+{\Large `run\_sens.py`, the main driver script}
 \input{includes/run_sens}
 
-mechinterp.py, containing the mechanism interpreter
+\cleardoublepage
+
+{\Large `mechinterp.py`, containing the mechanism interpreter}
 \input{includes/mechinterp}
 
-`sens\_helper.py`, containing helper functions
+\cleardoublepage
+
+{\Large `sens\_helper.py`, containing helper functions}
 \input{includes/sens_helper}
+}
 \end{singlespace}
 \end{appendices}
 \end{document}
