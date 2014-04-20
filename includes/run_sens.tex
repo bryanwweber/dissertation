@@ -1,0 +1,362 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c}{\PYZsh{}! /usr/bin/python3 \PYZhy{}u}
+
+\PY{c}{\PYZsh{} System imports}
+\PY{k+kn}{import} \PY{n+nn}{re}
+\PY{k+kn}{import} \PY{n+nn}{os}
+\PY{k+kn}{import} \PY{n+nn}{subprocess}
+\PY{k+kn}{import} \PY{n+nn}{shutil}
+\PY{k+kn}{import} \PY{n+nn}{sys}
+\PY{k+kn}{from} \PY{n+nn}{itertools} \PY{k+kn}{import} \PY{n}{product}
+\PY{k+kn}{from} \PY{n+nn}{decimal} \PY{k+kn}{import} \PY{o}{*}
+
+\PY{c}{\PYZsh{} Local imports}
+\PY{k+kn}{from} \PY{n+nn}{mechinterp} \PY{k+kn}{import} \PY{n}{mechinterp}
+\PY{k+kn}{from} \PY{n+nn}{sens\PYZus{}helper} \PY{k+kn}{import} \PY{o}{*}
+
+\PY{k}{def} \PY{n+nf}{main}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+    \PY{c}{\PYZsh{} Read the configuration file.}
+    \PY{n}{config} \PY{o}{=} \PY{n}{NoSectionConfigParser}\PY{p}{(}\PY{p}{)}
+    \PY{n}{config}\PY{o}{.}\PY{n}{read}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{pysens.conf}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{default} \PY{o}{=} \PY{n}{config}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{DEFAULT}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+
+    \PY{c}{\PYZsh{} Set the location of the CHEMKIN executable files. Expand any shell}
+    \PY{c}{\PYZsh{} variables in the input.}
+    \PY{n}{reactiondir} \PY{o}{=} \PY{n}{default}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{chemkin root}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+    \PY{k}{if} \PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZdl{}}\PY{l+s}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{reactiondir}\PY{p}{:}
+        \PY{n}{reactiondir} \PY{o}{=} \PY{n}{os}\PY{o}{.}\PY{n}{path}\PY{o}{.}\PY{n}{expandvars}\PY{p}{(}\PY{n}{reactiondir}\PY{p}{)}
+        \PY{k}{if} \PY{n}{os}\PY{o}{.}\PY{n}{path}\PY{o}{.}\PY{n}{isdir}\PY{p}{(}\PY{n}{reactiondir}\PY{p}{)}\PY{p}{:}
+            \PY{n}{reactor} \PY{o}{=} \PY{n}{os}\PY{o}{.}\PY{n}{path}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{reactiondir}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{bin}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{CKReactorGenericClosed}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+            \PY{n}{ckinterp} \PY{o}{=} \PY{n}{os}\PY{o}{.}\PY{n}{path}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{reactiondir}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{bin}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{chem}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+            \PY{k}{if} \PY{o+ow}{not} \PY{n}{os}\PY{o}{.}\PY{n}{path}\PY{o}{.}\PY{n}{isfile}\PY{p}{(}\PY{n}{reactor}\PY{p}{)} \PY{o+ow}{or} \PY{o+ow}{not} \PY{n}{os}\PY{o}{.}\PY{n}{path}\PY{o}{.}\PY{n}{isfile}\PY{p}{(}\PY{n}{ckinterp}\PY{p}{)}\PY{p}{:}
+                \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Error: The reactor and CHEMKIN interpreter must }\PY{l+s}{\PYZdq{}}
+                      \PY{l+s}{\PYZdq{}}\PY{l+s}{exist at CHEMKIN\PYZus{}ROOT/bin/}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                \PY{n}{sys}\PY{o}{.}\PY{n}{exit}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+        \PY{k}{else}\PY{p}{:}
+            \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Error: The proper path to the CHEMKIN root }\PY{l+s}{\PYZdq{}}
+                  \PY{l+s}{\PYZdq{}}\PY{l+s}{directory must be specified}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+            \PY{n}{sys}\PY{o}{.}\PY{n}{exit}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+
+    \PY{c}{\PYZsh{} Set the mechanism to be used.}
+    \PY{k}{if} \PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{mech input file}\PY{l+s}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{default} \PY{o+ow}{and}
+            \PY{n}{os}\PY{o}{.}\PY{n}{path}\PY{o}{.}\PY{n}{isfile}\PY{p}{(}\PY{n}{default}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{mech input file}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+        \PY{n}{inputfilename} \PY{o}{=} \PY{n}{default}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{mech input file}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+    \PY{k}{else}\PY{p}{:}
+        \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Error: the mechanism file must be specified in the }\PY{l+s}{\PYZdq{}}
+              \PY{l+s}{\PYZdq{}}\PY{l+s}{configuration file, and it must exist}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{sys}\PY{o}{.}\PY{n}{exit}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+
+    \PY{c}{\PYZsh{} Set the simulation input file to be used.}
+    \PY{k}{if} \PY{l+s}{\PYZsq{}}\PY{l+s}{sim input files}\PY{l+s}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{default}\PY{p}{:}
+        \PY{n}{siminputfiles} \PY{o}{=} \PY{p}{[}\PY{n}{x}\PY{o}{.}\PY{n}{strip}\PY{p}{(}\PY{p}{)} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in}
+                         \PY{n}{default}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{sim input files}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{,}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+                         \PY{p}{]}
+        \PY{k}{for} \PY{n}{fname} \PY{o+ow}{in} \PY{n}{siminputfiles}\PY{p}{:}
+            \PY{k}{if} \PY{o+ow}{not} \PY{n}{os}\PY{o}{.}\PY{n}{path}\PY{o}{.}\PY{n}{isfile}\PY{p}{(}\PY{n}{fname}\PY{p}{)}\PY{p}{:}
+                \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Error: the specified input file \PYZob{}\PYZcb{} does not }\PY{l+s}{\PYZdq{}}
+                      \PY{l+s}{\PYZdq{}}\PY{l+s}{exist}\PY{l+s}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{fname}\PY{p}{)}\PY{p}{)}
+                \PY{n}{sys}\PY{o}{.}\PY{n}{exit}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+    \PY{k}{else}\PY{p}{:}
+        \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Error: the simulation input file must be specified in }\PY{l+s}{\PYZdq{}}
+              \PY{l+s}{\PYZdq{}}\PY{l+s}{the configuration file}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{sys}\PY{o}{.}\PY{n}{exit}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+
+    \PY{c}{\PYZsh{} Set the multiplication factors to be used.}
+    \PY{k}{if} \PY{l+s}{\PYZsq{}}\PY{l+s}{factors}\PY{l+s}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{default}\PY{p}{:}
+        \PY{n}{multfactors} \PY{o}{=} \PY{p}{[}\PY{n}{x}\PY{o}{.}\PY{n}{strip} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{default}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{factors}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{,}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{]}
+    \PY{k}{else}\PY{p}{:}
+        \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Error: at least one multiplication factor must be }\PY{l+s}{\PYZdq{}}
+              \PY{l+s}{\PYZdq{}}\PY{l+s}{specified in the configuration file}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{sys}\PY{o}{.}\PY{n}{exit}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+
+    \PY{c}{\PYZsh{}Set the base of the csv output file name.}
+    \PY{k}{if} \PY{l+s}{\PYZsq{}}\PY{l+s}{outputfile}\PY{l+s}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{default}\PY{p}{:}
+        \PY{n}{sensfilenamebase} \PY{o}{=} \PY{n}{default}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{outputfile}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+    \PY{k}{else}\PY{p}{:}
+        \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Error: the base of the csv output filename must be }\PY{l+s}{\PYZdq{}}
+              \PY{l+s}{\PYZdq{}}\PY{l+s}{specified in the configuration file}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{sys}\PY{o}{.}\PY{n}{exit}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+
+    \PY{c}{\PYZsh{} Compile the required regular expressions}
+    \PY{n}{commentmatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZca{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{!}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{newlinematch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZca{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{n}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+
+    \PY{c}{\PYZsh{} The following regular expressions match the keywords we expect to}
+    \PY{c}{\PYZsh{}see. The `(?i)` indicates case insensitive. For certain keywords,}
+    \PY{c}{\PYZsh{} we want to match the keyword even if there is space at the}
+    \PY{c}{\PYZsh{} beginning of the line; these keywords have `\PYZca{}[\PYZbs{}s]*`.}
+    \PY{n}{lowmatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{(?i)\PYZca{}[}\PY{l+s}{\PYZbs{}}\PY{l+s}{s]*LOW}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{highmatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{(?i)\PYZca{}[}\PY{l+s}{\PYZbs{}}\PY{l+s}{s]*HIGH}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{dupmatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{(?i)}\PY{l+s}{\PYZbs{}}\PY{l+s}{bDUP}\PY{l+s}{\PYZbs{}}\PY{l+s}{b|}\PY{l+s}{\PYZbs{}}\PY{l+s}{bDUPLICATE}\PY{l+s}{\PYZbs{}}\PY{l+s}{b}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{endmatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{(?i)\PYZca{}END}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{revmatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{(?i)\PYZca{}[}\PY{l+s}{\PYZbs{}}\PY{l+s}{s]*REV}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{plogmatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{(?i)\PYZca{}[}\PY{l+s}{\PYZbs{}}\PY{l+s}{s]*PLOG}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{Amatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{((?\PYZlt{}![}\PY{l+s}{\PYZbs{}}\PY{l+s}{w}\PY{l+s}{\PYZbs{}}\PY{l+s}{\PYZhy{}])([\PYZhy{}+]?[0\PYZhy{}9]+(}\PY{l+s}{\PYZbs{}}\PY{l+s}{.[0\PYZhy{}9]+)?}\PY{l+s}{\PYZsq{}}
+                        \PY{l+s}{\PYZsq{}}\PY{l+s}{([eE][\PYZhy{}+]?[0\PYZhy{}9]+)?)(?!}\PY{l+s}{\PYZbs{}}\PY{l+s}{w))}\PY{l+s}{\PYZsq{}}
+                        \PY{p}{)}
+    \PY{n}{reacmatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{((\PYZca{}|\PYZca{}[}\PY{l+s}{\PYZbs{}}\PY{l+s}{s]+)[}\PY{l+s}{\PYZbs{}}\PY{l+s}{s}\PY{l+s}{\PYZbs{}}\PY{l+s}{w}\PY{l+s}{\PYZbs{}}\PY{l+s}{d()+=\PYZlt{}\PYZgt{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{\PYZhy{} *.]+?(?=}\PY{l+s}{\PYZbs{}}\PY{l+s}{s}\PY{l+s}{\PYZbs{}}\PY{l+s}{d))}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+
+    \PY{c}{\PYZsh{} Open, read, and close the input file. The lines of the input file}
+    \PY{c}{\PYZsh{} are stored in the list `lines`.}
+    \PY{k}{try}\PY{p}{:}
+        \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{n}{inputfilename}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{rt}\PY{l+s}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{inputfile}\PY{p}{:}
+            \PY{n}{lines} \PY{o}{=} \PY{n}{inputfile}\PY{o}{.}\PY{n}{readlines}\PY{p}{(}\PY{p}{)}
+    \PY{k}{except} \PY{n+ne}{UnicodeDecodeError}\PY{p}{:}
+        \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{n}{inputfilename}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{rt}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{latin\PYZhy{}1}\PY{l+s}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{inputfile}\PY{p}{:}
+            \PY{n}{lines} \PY{o}{=} \PY{n}{inputfile}\PY{o}{.}\PY{n}{readlines}\PY{p}{(}\PY{p}{)}
+    \PY{k}{else}\PY{p}{:}
+        \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Error: I can}\PY{l+s}{\PYZsq{}}\PY{l+s}{t decode the input file. Try saving it }\PY{l+s}{\PYZdq{}}
+              \PY{l+s}{\PYZdq{}}\PY{l+s}{as UTF\PYZhy{}8}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{sys}\PY{o}{.}\PY{n}{exit}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+
+    \PY{c}{\PYZsh{} Call the mechanism interpreter module. The mechinterp function}
+    \PY{c}{\PYZsh{} returns a tuple of lists plus a boolean. The lists contain the}
+    \PY{c}{\PYZsh{} line numbers in the input file of the reactions, the lines between}
+    \PY{c}{\PYZsh{} each reaction, and whether a reaction has auxiliary information.}
+    \PY{c}{\PYZsh{} The boolean checks whether the thermo data is available in the}
+    \PY{c}{\PYZsh{} chemistry file or if it should be taken from a separate file.}
+    \PY{c}{\PYZsh{} These are stored, respectively, in `reacLines`, `searchLines`,}
+    \PY{c}{\PYZsh{} `extraInfo` and `thermInChem`.}
+    \PY{n}{reacLines}\PY{p}{,} \PY{n}{searchLines}\PY{p}{,} \PY{n}{extraInfo}\PY{p}{,} \PY{n}{thermInChem}\PY{p}{,} \PY{o}{=} \PY{n}{mechinterp}\PY{p}{(}\PY{n}{lines}\PY{p}{)}
+
+    \PY{c}{\PYZsh{} Set the thermo file, if necessary.}
+    \PY{k}{if} \PY{p}{(}\PY{o+ow}{not} \PY{n}{thermInChem} \PY{o+ow}{and} \PY{l+s}{\PYZsq{}}\PY{l+s}{thermo input file}\PY{l+s}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{default} \PY{o+ow}{and}
+            \PY{n}{os}\PY{o}{.}\PY{n}{path}\PY{o}{.}\PY{n}{isfile}\PY{p}{(}\PY{n}{default}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{thermo input file}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+        \PY{n}{thermfilename} \PY{o}{=} \PY{n}{default}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{thermo input file}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+    \PY{k}{elif} \PY{p}{(}\PY{o+ow}{not} \PY{n}{thermInChem} \PY{o+ow}{and} \PY{p}{(}\PY{o+ow}{not} \PY{l+s}{\PYZsq{}}\PY{l+s}{thermo input file}\PY{l+s}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{default} \PY{o+ow}{or} \PY{o+ow}{not}
+            \PY{n}{os}\PY{o}{.}\PY{n}{path}\PY{o}{.}\PY{n}{isfile}\PY{p}{(}\PY{n}{default}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{thermo input file}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+        \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Error: the thermo file must be specified in the }\PY{l+s}{\PYZdq{}}
+              \PY{l+s}{\PYZdq{}}\PY{l+s}{configuration file, and it must exist}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{sys}\PY{o}{.}\PY{n}{exit}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+
+    \PY{c}{\PYZsh{} Set the reactions we want to work with.}
+    \PY{n}{numRxns} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{reacLines}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}
+    \PY{k}{if} \PY{o+ow}{not} \PY{l+s}{\PYZsq{}}\PY{l+s}{reactions}\PY{l+s}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{default}\PY{p}{:}
+        \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Error: the reactions to study must be specified in the }\PY{l+s}{\PYZdq{}}
+              \PY{l+s}{\PYZdq{}}\PY{l+s}{configuration file}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{sys}\PY{o}{.}\PY{n}{exit}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+    \PY{k}{else}\PY{p}{:}
+        \PY{n}{wantrxns} \PY{o}{=} \PY{n}{default}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{reactions}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+
+    \PY{k}{if} \PY{n}{wantrxns} \PY{o}{==} \PY{n+nb}{all}\PY{p}{:}
+        \PY{n}{wantreactions} \PY{o}{=} \PY{p}{[}\PY{n}{x} \PY{o}{+} \PY{l+m+mi}{1} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{numRxns}\PY{p}{)}\PY{p}{]}
+        \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{All \PYZob{}\PYZcb{} reactions are considered in these }\PY{l+s}{\PYZdq{}}
+              \PY{l+s}{\PYZdq{}}\PY{l+s}{analyses}\PY{l+s}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{numRxns}\PY{p}{)}\PY{p}{)}
+    \PY{k}{elif} \PY{l+s}{\PYZsq{}}\PY{l+s}{,}\PY{l+s}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{wantrxns} \PY{o+ow}{and} \PY{l+s}{\PYZsq{}}\PY{l+s}{:}\PY{l+s}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{wantrxns}\PY{p}{:}
+        \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Error: use one of commas or colons to separate the wanted }\PY{l+s}{\PYZdq{}}
+              \PY{l+s}{\PYZdq{}}\PY{l+s}{reactions}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{sys}\PY{o}{.}\PY{n}{exit}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+    \PY{k}{elif} \PY{l+s}{\PYZsq{}}\PY{l+s}{,}\PY{l+s}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{wantrxns}\PY{p}{:}
+        \PY{n}{wantreactions} \PY{o}{=} \PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{number}\PY{p}{)} \PY{k}{for} \PY{n}{number} \PY{o+ow}{in} \PY{n}{wantrxns}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{,}\PY{l+s}{\PYZsq{}}\PY{p}{)} \PY{k}{if}
+            \PY{n}{number}\PY{p}{]}
+        \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{The reactions considered in these analyses are }\PY{l+s}{\PYZdq{}}
+              \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZob{}\PYZcb{}}\PY{l+s}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{wantreactions}\PY{p}{)}\PY{p}{)}
+    \PY{k}{elif} \PY{l+s}{\PYZsq{}}\PY{l+s}{:}\PY{l+s}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{wantrxns}\PY{p}{:}
+        \PY{k}{if} \PY{n}{wantrxns}\PY{o}{.}\PY{n}{endswith}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{:}\PY{l+s}{\PYZsq{}}\PY{p}{)} \PY{o+ow}{or} \PY{n}{wantrxns}\PY{o}{.}\PY{n}{endswith}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{end}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{:}
+            \PY{n}{spl} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{map}\PY{p}{(}\PY{n+nb}{int}\PY{p}{,} \PY{n}{wantrxns}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{:}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+            \PY{n}{spl}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{numRxns}\PY{p}{)}
+        \PY{k}{else}\PY{p}{:}
+            \PY{n}{spl} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{map}\PY{p}{(}\PY{n+nb}{int}\PY{p}{,} \PY{n}{wantrxns}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{:}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+
+        \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{spl}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{2}\PY{p}{:}
+            \PY{n}{wantreactions} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{n}{spl}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{spl}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+        \PY{k}{elif} \PY{n+nb}{len}\PY{p}{(}\PY{n}{spl}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{3}\PY{p}{:}
+            \PY{k}{if} \PY{n}{spl}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{1}\PY{p}{:}
+                \PY{n}{wantreactions} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{n}{spl}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{spl}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{,} \PY{n}{spl}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+            \PY{k}{else}\PY{p}{:}
+                \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Error: the interval in the reactions specification }\PY{l+s}{\PYZdq{}}
+                      \PY{l+s}{\PYZdq{}}\PY{l+s}{must be \PYZgt{}= 1}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+                \PY{n}{sys}\PY{o}{.}\PY{n}{exit}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+        \PY{k}{else}\PY{p}{:}
+            \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Error: Specify either start:stop or start:interval:stop }\PY{l+s}{\PYZdq{}}
+                  \PY{l+s}{\PYZdq{}}\PY{l+s}{for reactions}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+            \PY{n}{sys}\PY{o}{.}\PY{n}{exit}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+        \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{The reactions considered in these analyses are }\PY{l+s}{\PYZdq{}}
+              \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZob{}\PYZcb{}}\PY{l+s}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{wantreactions}\PY{p}{)}\PY{p}{)}
+    \PY{k}{else}\PY{p}{:}
+        \PY{n}{wantreactions} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n}{wantrxns}\PY{p}{)}\PY{p}{)}
+        \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{The reaction considered in these analyses is }\PY{l+s}{\PYZdq{}}
+              \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZob{}\PYZcb{}}\PY{l+s}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{wantreactions}\PY{p}{)}\PY{p}{)}
+
+    \PY{c}{\PYZsh{} Set filenames of simulation and output files.}
+    \PY{n}{simoutputfile} \PY{o}{=} \PY{l+s}{\PYZsq{}}\PY{l+s}{test.out}\PY{l+s}{\PYZsq{}}
+    \PY{n}{chemoutput} \PY{o}{=} \PY{l+s}{\PYZsq{}}\PY{l+s}{chem.out}\PY{l+s}{\PYZsq{}}
+    \PY{n}{chemasc} \PY{o}{=} \PY{l+s}{\PYZsq{}}\PY{l+s}{chem.asc}\PY{l+s}{\PYZsq{}}
+    \PY{n}{totalCases} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{wantreactions}\PY{p}{)}\PY{o}{*}\PY{n+nb}{len}\PY{p}{(}\PY{n}{siminputfiles}\PY{p}{)}\PY{o}{*}\PY{n+nb}{len}\PY{p}{(}\PY{n}{multfactors}\PY{p}{)}
+    \PY{k}{for} \PY{p}{(}\PY{n}{j}\PY{p}{,} \PY{p}{(}\PY{n}{inpfile}\PY{p}{,} \PY{n}{multfactor}\PY{p}{)} \PY{o+ow}{in}
+            \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{product}\PY{p}{(}\PY{n}{siminputfiles}\PY{p}{,} \PY{n}{multfactors}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+        \PY{n}{csvoutput} \PY{o}{=} \PY{p}{(}\PY{n}{sensfilenamebase} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZus{}}\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n}{inpfile}\PY{o}{.}\PY{n}{strip}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{.inp}\PY{l+s}{\PYZsq{}}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZus{}}\PY{l+s}{\PYZsq{}} \PY{o}{+}
+            \PY{n}{multfactor} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{x.csv}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{n}{csvoutput}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{at}\PY{l+s}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{tignsens}\PY{p}{:}
+
+            \PY{c}{\PYZsh{} Loop through the reaction numbers in `wantreaction`. `i`}
+            \PY{c}{\PYZsh{} is the loop variable.}
+            \PY{k}{for} \PY{n}{i}\PY{p}{,} \PY{n}{wantreaction} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{wantreactions}\PY{p}{)}\PY{p}{:}
+
+                \PY{c}{\PYZsh{} Python is zero\PYZhy{}based, so we have to subtract 1 from}
+                \PY{c}{\PYZsh{} the numbers in `wantreaction` to properly find the}
+                \PY{c}{\PYZsh{} index of the other lists}
+                \PY{n}{rxnNum} \PY{o}{=} \PY{n}{wantreaction} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+
+                \PY{c}{\PYZsh{} outLines is the list of lines to write to the chem.inp}
+                \PY{c}{\PYZsh{} file to be run in the simulation. It needs to be reset}
+                \PY{c}{\PYZsh{} on every loop or more than one reaction will be}
+                \PY{c}{\PYZsh{} modified at a time. Python is \PYZdq{}pointer\PYZhy{}based\PYZdq{}, so we}
+                \PY{c}{\PYZsh{} have to set `outLines` equal to a slice of `lines`,}
+                \PY{c}{\PYZsh{} the input list of lines (the slice happens to be the}
+                \PY{c}{\PYZsh{} whole list).}
+                \PY{n}{outLines} \PY{o}{=} \PY{n}{lines}\PY{p}{[}\PY{p}{:}\PY{p}{]}
+
+                \PY{c}{\PYZsh{} Grab the line from the input file that matches the}
+                \PY{c}{\PYZsh{} reaction we\PYZsq{}re working on.}
+                \PY{n}{line} \PY{o}{=} \PY{n}{lines}\PY{p}{[}\PY{n}{reacLines}\PY{p}{[}\PY{n}{rxnNum}\PY{p}{]}\PY{p}{]}
+
+                \PY{c}{\PYZsh{} Find the Arrhenius coefficient on this line.}
+                \PY{n}{Afactor} \PY{o}{=} \PY{n}{Amatch}\PY{o}{.}\PY{n}{search}\PY{p}{(}\PY{n}{line}\PY{p}{)}
+
+                \PY{c}{\PYZsh{} Set `x` to the arbitrary precision conversion of the}
+                \PY{c}{\PYZsh{} first matching string from the Afactor match. Multiply}
+                \PY{c}{\PYZsh{} `x` by `multfactor`. Reassemble the modified reaction}
+                \PY{c}{\PYZsh{} line with the new Arrhenius coefficient, and set the}
+                \PY{c}{\PYZsh{} correct line in `outLines` to the modified line.}
+                \PY{n}{x} \PY{o}{=} \PY{n}{Decimal}\PY{p}{(}\PY{n}{Afactor}\PY{o}{.}\PY{n}{group}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+                \PY{n}{x} \PY{o}{=} \PY{n}{Decimal}\PY{p}{(}\PY{n}{multfactor}\PY{p}{)}\PY{o}{*}\PY{n}{x}
+                \PY{n}{modline} \PY{o}{=} \PY{n}{line}\PY{p}{[}\PY{p}{:}\PY{n}{Afactor}\PY{o}{.}\PY{n}{start}\PY{p}{(}\PY{p}{)}\PY{p}{]} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{x}\PY{p}{)} \PY{o}{+}
+                    \PY{n}{line}\PY{p}{[}\PY{n}{Afactor}\PY{o}{.}\PY{n}{end}\PY{p}{(}\PY{p}{)}\PY{p}{:}\PY{p}{]}
+                \PY{n}{outLines}\PY{p}{[}\PY{n}{reacLines}\PY{p}{[}\PY{n}{rxnNum}\PY{p}{]}\PY{p}{]} \PY{o}{=} \PY{n}{modline}
+
+                \PY{c}{\PYZsh{} Check if there is auxiliary information for the}
+                \PY{c}{\PYZsh{} current reaction.}
+                \PY{k}{if} \PY{n}{extraInfo}\PY{p}{[}\PY{n}{rxnNum}\PY{p}{]} \PY{o}{\PYZgt{}} \PY{l+m+mi}{0}\PY{p}{:}
+
+                    \PY{c}{\PYZsh{} If there is auxiliary information, initialize a}
+                    \PY{c}{\PYZsh{} list for input lines that will be sent for}
+                    \PY{c}{\PYZsh{} modification. Then loop through the lines in the}
+                    \PY{c}{\PYZsh{} searchLines list for the correct reaction number}
+                    \PY{c}{\PYZsh{} and construct the list to send for modification.}
+                    \PY{n}{sendLines} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{*}\PY{n+nb}{len}\PY{p}{(}\PY{n}{searchLines}\PY{p}{[}\PY{n}{rxnNum}\PY{p}{]}\PY{p}{)}
+                    \PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{searchLines}\PY{p}{[}\PY{n}{rxnNum}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                        \PY{n}{sendLines}\PY{p}{[}\PY{n}{n}\PY{p}{]} \PY{o}{=} \PY{n}{lines}\PY{p}{[}\PY{n}{searchLines}\PY{p}{[}\PY{n}{rxnNum}\PY{p}{]}\PY{p}{[}\PY{n}{n}\PY{p}{]}\PY{p}{]}
+
+                    \PY{c}{\PYZsh{} If structure to check which type of auxiliary}
+                    \PY{c}{\PYZsh{} information is present and send the proper}
+                    \PY{c}{\PYZsh{} compiled regular expression to auxcheck. `ret` is}
+                    \PY{c}{\PYZsh{} the returned list of modified lines.}
+                    \PY{k}{if} \PY{n}{extraInfo}\PY{p}{[}\PY{n}{rxnNum}\PY{p}{]} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
+                        \PY{n}{ret} \PY{o}{=} \PY{n}{auxcheck}\PY{p}{(}\PY{n}{sendLines}\PY{p}{,} \PY{n}{lowmatch}\PY{p}{,} \PY{n}{multfactor}\PY{p}{)}
+                    \PY{k}{elif} \PY{n}{extraInfo}\PY{p}{[}\PY{n}{rxnNum}\PY{p}{]} \PY{o}{==} \PY{l+m+mi}{2}\PY{p}{:}
+                        \PY{n}{ret} \PY{o}{=} \PY{n}{auxcheck}\PY{p}{(}\PY{n}{sendLines}\PY{p}{,} \PY{n}{highmatch}\PY{p}{,} \PY{n}{multfactor}\PY{p}{)}
+                    \PY{k}{elif} \PY{n}{extraInfo}\PY{p}{[}\PY{n}{rxnNum}\PY{p}{]} \PY{o}{==} \PY{l+m+mi}{3}\PY{p}{:}
+                        \PY{n}{ret} \PY{o}{=} \PY{n}{auxcheck}\PY{p}{(}\PY{n}{sendLines}\PY{p}{,} \PY{n}{revmatch}\PY{p}{,} \PY{n}{multfactor}\PY{p}{)}
+                    \PY{k}{elif} \PY{n}{extraInfo}\PY{p}{[}\PY{n}{rxnNum}\PY{p}{]} \PY{o}{==} \PY{l+m+mi}{4}\PY{p}{:}
+                        \PY{n}{ret} \PY{o}{=} \PY{n}{auxcheck}\PY{p}{(}\PY{n}{sendLines}\PY{p}{,} \PY{n}{plogmatch}\PY{p}{,} \PY{n}{multfactor}\PY{p}{)}
+                    \PY{k}{elif} \PY{n}{extraInfo}\PY{p}{[}\PY{n}{rxnNum}\PY{p}{]} \PY{o}{==} \PY{l+m+mi}{5}\PY{p}{:}
+                        \PY{n}{ret} \PY{o}{=} \PY{n}{chebcheck}\PY{p}{(}\PY{n}{sendLines}\PY{p}{,} \PY{n}{multfactor}\PY{p}{)}
+
+                    \PY{c}{\PYZsh{} Loop through the returned lines and set the}
+                    \PY{c}{\PYZsh{} correct line in the `outLines` list to the}
+                    \PY{c}{\PYZsh{} modified lines.}
+                    \PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{searchLines}\PY{p}{[}\PY{n}{rxnNum}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                        \PY{n}{outLines}\PY{p}{[}\PY{n}{searchLines}\PY{p}{[}\PY{n}{rxnNum}\PY{p}{]}\PY{p}{[}\PY{n}{n}\PY{p}{]}\PY{p}{]} \PY{o}{=} \PY{n}{ret}\PY{p}{[}\PY{n}{n}\PY{p}{]}
+
+                \PY{c}{\PYZsh{} Create a folder in which simulations will be run,}
+                \PY{c}{\PYZsh{} after checking for its existence.}
+                \PY{n}{chemfolder} \PY{o}{=} \PY{l+s}{\PYZsq{}}\PY{l+s}{Reaction}\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{rxnNum} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)}
+                \PY{k}{if} \PY{o+ow}{not} \PY{n}{os}\PY{o}{.}\PY{n}{path}\PY{o}{.}\PY{n}{exists}\PY{p}{(}\PY{n}{chemfolder}\PY{p}{)}\PY{p}{:}
+                    \PY{n}{os}\PY{o}{.}\PY{n}{makedirs}\PY{p}{(}\PY{n}{chemfolder}\PY{p}{)}
+
+                \PY{c}{\PYZsh{} Copy the various files we will need to run the}
+                \PY{c}{\PYZsh{} simulation into the simulation directory.}
+                \PY{n}{shutil}\PY{o}{.}\PY{n}{copyfile}\PY{p}{(}\PY{n}{inpfile}\PY{p}{,} \PY{n}{os}\PY{o}{.}\PY{n}{path}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{chemfolder}\PY{p}{,} \PY{n}{inpfile}\PY{p}{)}\PY{p}{)}
+                \PY{n}{shutil}\PY{o}{.}\PY{n}{copyfile}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{CKSolnList.txt}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{os}\PY{o}{.}\PY{n}{path}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{chemfolder}\PY{p}{,}
+                    \PY{l+s}{\PYZsq{}}\PY{l+s}{CKSolnList.txt}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+                \PY{n}{shutil}\PY{o}{.}\PY{n}{copyfile}\PY{p}{(}\PY{n}{os}\PY{o}{.}\PY{n}{path}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{reactiondir}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{data}\PY{l+s}{\PYZsq{}}\PY{p}{,}
+                                \PY{l+s}{\PYZsq{}}\PY{l+s}{chemkindata.dtd}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{,} \PY{n}{os}\PY{o}{.}\PY{n}{path}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{chemfolder}\PY{p}{,}
+                                \PY{l+s}{\PYZsq{}}\PY{l+s}{chemkindata.dtd}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+                                \PY{p}{)}
+
+                \PY{c}{\PYZsh{} If the thermo data is in the chemistry file, we don\PYZsq{}t}
+                \PY{c}{\PYZsh{} have to copy therm.dat}
+                \PY{k}{if} \PY{o+ow}{not} \PY{n}{thermInChem}\PY{p}{:}
+                    \PY{n}{shutil}\PY{o}{.}\PY{n}{copyfile}\PY{p}{(}\PY{n}{thermfilename}\PY{p}{,} \PY{n}{os}\PY{o}{.}\PY{n}{path}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{chemfolder}\PY{p}{,}
+                        \PY{n}{thermfilename}\PY{p}{)}\PY{p}{)}
+
+                \PY{c}{\PYZsh{}Change directory into the simulation directory.}
+                \PY{k}{with} \PY{n}{cd}\PY{p}{(}\PY{n}{chemfolder}\PY{p}{)}\PY{p}{:}
+
+                    \PY{c}{\PYZsh{} Set the filename for the modified chemistry input}
+                    \PY{c}{\PYZsh{} file. Open the modified chemistry input file with}
+                    \PY{c}{\PYZsh{} write access, and write the file. This write is}
+                    \PY{c}{\PYZsh{} buffered. Close the modified chemistry input file.}
+                    \PY{n}{chemfilename} \PY{o}{=} \PY{l+s}{\PYZsq{}}\PY{l+s}{chem}\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{rxnNum} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{.inp}\PY{l+s}{\PYZsq{}}
+                    \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{n}{chemfilename}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{wt}\PY{l+s}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{chemfile}\PY{p}{:}
+                        \PY{k}{for} \PY{n}{outLine} \PY{o+ow}{in} \PY{n}{outLines}\PY{p}{:}
+                            \PY{n}{chemfile}\PY{o}{.}\PY{n}{write}\PY{p}{(}\PY{n}{outLine}\PY{p}{)}
+
+                    \PY{c}{\PYZsh{} Call the CHEMKIN\PYZhy{}Pro interpreter, then the solver,}
+                    \PY{c}{\PYZsh{} then the post\PYZhy{}processor, then the transpose}
+                    \PY{c}{\PYZsh{} utility to create the solution .csv files. First}
+                    \PY{c}{\PYZsh{} check if we need the thermo file.}
+                    \PY{k}{if} \PY{n}{thermInChem}\PY{p}{:}
+                        \PY{n}{subprocess}\PY{o}{.}\PY{n}{call}\PY{p}{(}\PY{p}{[}\PY{n}{ckinterp}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZhy{}i}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{chemfilename}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZhy{}o}\PY{l+s}{\PYZsq{}}\PY{p}{,}
+                                        \PY{n}{chemoutput}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZhy{}c}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{chemasc}\PY{p}{]}
+                                        \PY{p}{)}
+                    \PY{k}{else}\PY{p}{:}
+                        \PY{n}{subprocess}\PY{o}{.}\PY{n}{call}\PY{p}{(}\PY{p}{[}\PY{n}{ckinterp}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZhy{}i}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{chemfilename}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZhy{}o}\PY{l+s}{\PYZsq{}}\PY{p}{,}
+                                        \PY{n}{chemoutput}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZhy{}d}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{thermfilename}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZhy{}c}\PY{l+s}{\PYZsq{}}\PY{p}{,}
+                                        \PY{n}{chemasc}\PY{p}{]}
+                                        \PY{p}{)}
+                    \PY{n}{subprocess}\PY{o}{.}\PY{n}{call}\PY{p}{(}\PY{p}{[}\PY{n}{reactor}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZhy{}i}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{n}{inpfile}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZhy{}o}\PY{l+s}{\PYZsq{}}\PY{p}{,}
+                                    \PY{n}{simoutputfile}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{Pro}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZhy{}c}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{chemasc}\PY{p}{]}
+                                    \PY{p}{)}
+                    \PY{n}{subprocess}\PY{o}{.}\PY{n}{call}\PY{p}{(}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{GetSolution}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{CKSolnList.txt}\PY{l+s}{\PYZsq{}}\PY{p}{,}
+                                    \PY{l+s}{\PYZsq{}}\PY{l+s}{XMLdata.zip}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+                                    \PY{p}{)}
+                    \PY{n}{subprocess}\PY{o}{.}\PY{n}{call}\PY{p}{(}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{CKSolnTranspose}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+
+                    \PY{c}{\PYZsh{} Open, read, and close the file with the solution}
+                    \PY{c}{\PYZsh{} information.}
+                    \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{CKSoln\PYZus{}solution\PYZus{}point\PYZus{}value\PYZus{}vs\PYZus{}solution\PYZus{}}\PY{l+s}{\PYZsq{}}
+                              \PY{l+s}{\PYZsq{}}\PY{l+s}{number.csv}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{r}\PY{l+s}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{outputFile}\PY{p}{:}
+                        \PY{n}{ignLines} \PY{o}{=} \PY{n}{outputFile}\PY{o}{.}\PY{n}{readlines}\PY{p}{(}\PY{p}{)}
+
+                    \PY{c}{\PYZsh{} Find the columns with \PYZsq{}Ignition\PYZsq{} in the title \PYZhy{}}
+                    \PY{c}{\PYZsh{} these are the ignition delays. Then, convert the}
+                    \PY{c}{\PYZsh{} ignition delay to a float.}
+                    \PY{n}{ignCol} \PY{o}{=} \PY{p}{[}\PY{n}{x} \PY{k}{for} \PY{n}{x}\PY{p}{,}\PY{n}{val} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{ignLines}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{,}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+                              \PY{k}{if} \PY{l+s}{\PYZsq{}}\PY{l+s}{Ignition}\PY{l+s}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{val}
+                              \PY{p}{]}
+                    \PY{n}{ignDelay} \PY{o}{=} \PY{p}{[}\PY{n+nb}{float}\PY{p}{(}\PY{n}{k}\PY{p}{)} \PY{k}{for} \PY{n}{k} \PY{o+ow}{in}
+                                \PY{p}{[}\PY{n}{ignLines}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{,}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{[}\PY{n}{x}\PY{p}{]}\PY{o}{.}\PY{n}{strip}\PY{p}{(}\PY{p}{)} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in}
+                                \PY{n}{ignCol}\PY{p}{]}
+                                \PY{p}{]}
+
+                    \PY{c}{\PYZsh{} Create a list for writing to the output file,}
+                    \PY{c}{\PYZsh{} including the corrected (i.e. one\PYZhy{}based) reaction}
+                    \PY{c}{\PYZsh{} number, the multiplication factor, and the}
+                    \PY{c}{\PYZsh{} ignition delay. Format the list into a comma\PYZhy{}}
+                    \PY{c}{\PYZsh{} separated format and convert to a string. Then}
+                    \PY{c}{\PYZsh{} append a newline and print the list to the}
+                    \PY{c}{\PYZsh{} sensitivity output file.}
+                    \PY{n}{ignSens} \PY{o}{=} \PY{p}{[}\PY{n}{rxnNum} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{,} \PY{n}{multfactor}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZsq{}}\PY{p}{,}
+                               \PY{n}{reacmatch}\PY{o}{.}\PY{n}{search}\PY{p}{(}\PY{n}{line}\PY{p}{)}\PY{o}{.}\PY{n}{group}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}\PY{o}{.}\PY{n}{strip}\PY{p}{(}\PY{p}{)}
+                               \PY{p}{]}
+                    \PY{n}{ignSens}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{]} \PY{o}{=} \PY{n}{ignDelay}
+                    \PY{n}{printsens} \PY{o}{=} \PY{l+s}{\PYZsq{}}\PY{l+s}{,}\PY{l+s}{\PYZsq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n+nb}{map}\PY{p}{(}\PY{n+nb}{str}\PY{p}{,} \PY{n}{ignSens}\PY{p}{)}\PY{p}{)}
+                    \PY{n}{tignsens}\PY{o}{.}\PY{n}{write}\PY{p}{(}\PY{n}{printsens} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+                    \PY{n}{tignsens}\PY{o}{.}\PY{n}{flush}\PY{p}{(}\PY{p}{)}
+
+                \PY{c}{\PYZsh{} Remove the simulation directory.}
+                \PY{n}{shutil}\PY{o}{.}\PY{n}{rmtree}\PY{p}{(}\PY{n}{chemfolder}\PY{p}{)}
+
+                \PY{c}{\PYZsh{}Print to the screen some progress information.}
+                \PY{n}{caseNo} \PY{o}{=} \PY{n}{i} \PY{o}{+} \PY{l+m+mi}{1} \PY{o}{+} \PY{n}{j}\PY{o}{*}\PY{n+nb}{len}\PY{p}{(}\PY{n}{wantreactions}\PY{p}{)}
+                \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Case \PYZob{}0\PYZcb{} of \PYZob{}1\PYZcb{} }\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{Reaction \PYZsh{}: \PYZob{}2\PYZcb{} }\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{Ignition Delay:}\PY{l+s}{\PYZsq{}}
+                      \PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZob{}3\PYZcb{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{Input File: \PYZob{}4\PYZcb{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{Factor: \PYZob{}5\PYZcb{}}\PY{l+s}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{caseNo}\PY{p}{,}
+                      \PY{n}{totalCases}\PY{p}{,} \PY{n}{rxnNum} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{,} \PY{n}{ignDelay}\PY{p}{,} \PY{n}{inpfile}\PY{p}{,}
+                      \PY{n}{multfactor}\PY{p}{)}
+                      \PY{p}{)}
+
+\PY{k}{if} \PY{n}{\PYZus{}\PYZus{}name\PYZus{}\PYZus{}} \PY{o}{==} \PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZus{}\PYZus{}main\PYZus{}\PYZus{}}\PY{l+s}{\PYZsq{}}\PY{p}{:}
+    \PY{n}{main}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}

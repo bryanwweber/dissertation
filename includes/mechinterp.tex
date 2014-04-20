@@ -1,0 +1,152 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{mechinterp}\PY{p}{(}\PY{n}{lines}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Interpret CHEMKIN chemistry input files and return lists of line}
+\PY{l+s+sd}{    numbers and reaction info.}
+
+\PY{l+s+sd}{    INPUT:}
+\PY{l+s+sd}{    lines \PYZhy{} list of strings, lines of the CHEMKIN format chemistry input file}
+\PY{l+s+sd}{    numRxns \PYZhy{} integer, number of reactions in the input mechanims}
+\PY{l+s+sd}{    OUTPUT:}
+\PY{l+s+sd}{    reacLines \PYZhy{} list of integers, line numbers of reactions in the input set}
+\PY{l+s+sd}{                of lines}
+\PY{l+s+sd}{    searchLines \PYZhy{} list of lists of integers, line numbers of the lines between}
+\PY{l+s+sd}{                  the reactions}
+\PY{l+s+sd}{    extraInfo \PYZhy{} list of integers, status of auxiliary information for a}
+\PY{l+s+sd}{                reaction}
+\PY{l+s+sd}{                    0 \PYZhy{} no auxiliary information}
+\PY{l+s+sd}{                    1 \PYZhy{} LOW parameter specified}
+\PY{l+s+sd}{                    2 \PYZhy{} HIGH parameter specified}
+\PY{l+s+sd}{                    3 \PYZhy{} REV reaction specified}
+\PY{l+s+sd}{                    4 \PYZhy{} PLOG reaction specified}
+\PY{l+s+sd}{                    5 \PYZhy{} CHEB reaction specified}
+\PY{l+s+sd}{    thermInChem \PYZhy{} boolean indicating the status of the thermodynamic data.}
+\PY{l+s+sd}{                  False \PYZhy{} thermo data is stored in a separate file}
+\PY{l+s+sd}{                  True \PYZhy{} thermo data is stored in the chemistry file}
+
+\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+
+    \PY{c}{\PYZsh{} Import the module for regular expressions.}
+    \PY{k+kn}{import} \PY{n+nn}{re}
+
+    \PY{c}{\PYZsh{} Compile regular expressions for each of the expected keywords to}
+    \PY{c}{\PYZsh{} be encountered. (?i) indicates ignore case.}
+    \PY{n}{reactionmatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{=(?!.*}\PY{l+s}{\PYZbs{}}\PY{l+s}{!)}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{commentmatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZca{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{!}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{newlinematch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZca{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{n}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{lowmatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{(?i)\PYZca{}[}\PY{l+s}{\PYZbs{}}\PY{l+s}{s]*LOW}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{highmatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{(?i)\PYZca{}[}\PY{l+s}{\PYZbs{}}\PY{l+s}{s]*HIGH}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{dupmatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{(?i)}\PY{l+s}{\PYZbs{}}\PY{l+s}{bDUP}\PY{l+s}{\PYZbs{}}\PY{l+s}{b|}\PY{l+s}{\PYZbs{}}\PY{l+s}{bDUPLICATE}\PY{l+s}{\PYZbs{}}\PY{l+s}{b}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{endmatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{(?i)\PYZca{}END}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{revmatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{(?i)\PYZca{}[}\PY{l+s}{\PYZbs{}}\PY{l+s}{s]*REV}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{plogmatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{(?i)\PYZca{}[}\PY{l+s}{\PYZbs{}}\PY{l+s}{s]*PLOG}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{chebmatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{(?i)\PYZca{}[}\PY{l+s}{\PYZbs{}}\PY{l+s}{s]*CHEB}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{thermmatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{(?i)THERM ALL|THERMO ALL}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+
+    \PY{c}{\PYZsh{} Initialize \PYZsq{}reactionNum\PYZsq{}, a counter of the number of reactions,}
+    \PY{c}{\PYZsh{} and \PYZsq{}reacLines\PYZsq{}, a zero\PYZhy{}based list of the line numbers of the}
+    \PY{c}{\PYZsh{} reactions in the input file. Set the \PYZsq{}numRxns\PYZsq{} element of the}
+    \PY{c}{\PYZsh{} \PYZsq{}reacLines\PYZsq{} list to the number of lines in the input file so that}
+    \PY{c}{\PYZsh{} it can be used as a search parameter later.}
+    \PY{n}{reactionNum} \PY{o}{=} \PY{l+m+mi}{0}
+    \PY{n}{reacLines} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+
+    \PY{c}{\PYZsh{} Begin a loop over all of the lines in the input file. The lines}
+    \PY{c}{\PYZsh{} are stored in the variable \PYZsq{}line\PYZsq{} for each iteration.}
+    \PY{k}{for} \PY{n}{lineNum}\PY{p}{,}\PY{n}{line} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{lines}\PY{p}{)}\PY{p}{:}
+
+        \PY{c}{\PYZsh{} We have to reverse the line to properly check for a reaction.}
+        \PY{c}{\PYZsh{} This eliminates the case where an auxiliary line may contain}
+        \PY{c}{\PYZsh{} an = sign in a comment, which would otherwise be included in}
+        \PY{c}{\PYZsh{} the reaction list. Since Python does not allow variable length}
+        \PY{c}{\PYZsh{} look behind, the workaround is to reverse the string and use}
+        \PY{c}{\PYZsh{} variable length look ahead.}
+        \PY{n}{line} \PY{o}{=} \PY{n}{line}\PY{p}{[}\PY{p}{:}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+
+        \PY{c}{\PYZsh{} Check for lines that are reactions, defined by the}
+        \PY{c}{\PYZsh{} reactionmatch regular expression}
+        \PY{n}{rxncond} \PY{o}{=} \PY{n}{reactionmatch}\PY{o}{.}\PY{n}{search}\PY{p}{(}\PY{n}{line}\PY{p}{)}
+
+        \PY{c}{\PYZsh{} If the reaction condition contains information the line is a}
+        \PY{c}{\PYZsh{} reaction. Put the line number of this reaction in the}
+        \PY{c}{\PYZsh{} \PYZsq{}reacLines\PYZsq{} list, and increment the reaction counter. Remember}
+        \PY{c}{\PYZsh{} that since Python is zero\PYZhy{}based, the real reaction number of a}
+        \PY{c}{\PYZsh{} reaction will be one more than the number from this loop}
+        \PY{k}{if} \PY{n}{rxncond} \PY{o+ow}{is} \PY{o+ow}{not} \PY{n+nb+bp}{None}\PY{p}{:}
+            \PY{n}{reacLines}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{lineNum}\PY{p}{)}
+            \PY{n}{reactionNum} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+
+    \PY{c}{\PYZsh{} Append the last line number to the reacLines list so that it can}
+    \PY{c}{\PYZsh{} be used to determine the `searchLines` \PYZhy{} see below.}
+    \PY{n}{reacLines}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{lines}\PY{p}{)}\PY{p}{)}
+
+    \PY{c}{\PYZsh{} Initialize two lists to hold information about the reactions.}
+    \PY{c}{\PYZsh{} \PYZsq{}searchLines\PYZsq{} is a list of lists of the line numbers between each}
+    \PY{c}{\PYZsh{} reaction. \PYZsq{}extraInfo\PYZsq{} is a list of integers corresponding to each}
+    \PY{c}{\PYZsh{} type of reaction rate modification.}
+    \PY{n}{searchLines} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+    \PY{n}{extraInfo} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+
+    \PY{c}{\PYZsh{} Begin loop to find and read all of the lines between each reaction}
+    \PY{c}{\PYZsh{} to check for auxiliary information.}
+    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{reacLines}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
+
+        \PY{c}{\PYZsh{} Fill the ith element of \PYZsq{}searchLines\PYZsq{} with a list of lines}
+        \PY{c}{\PYZsh{} in the input file between the line number in the ith element}
+        \PY{c}{\PYZsh{} of \PYZsq{}reacLines\PYZsq{} and the line number in the (i+1)th element. Add}
+        \PY{c}{\PYZsh{} 1 to the first line number to avoid the reaction line itself.}
+        \PY{c}{\PYZsh{} The \PYZsq{}range\PYZsq{} function automatically excludes the last number in}
+        \PY{c}{\PYZsh{} the range, which would be the next reaction, so there is no}
+        \PY{c}{\PYZsh{} need to subtract one from the second line number.}
+        \PY{n}{searchLines}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{n}{reacLines}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{,}\PY{n}{reacLines}\PY{p}{[}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+
+        \PY{c}{\PYZsh{} Loop over the line numbers in the previously appended (i.e.}
+        \PY{c}{\PYZsh{} last) element of \PYZsq{}searchLines\PYZsq{} to look for auxiliary}
+        \PY{c}{\PYZsh{} information.}
+        \PY{k}{for} \PY{n}{lineNum} \PY{o+ow}{in} \PY{n}{searchLines}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{:}
+            \PY{n}{line} \PY{o}{=} \PY{n}{lines}\PY{p}{[}\PY{n}{lineNum}\PY{p}{]}
+
+            \PY{c}{\PYZsh{} Check if the line is a comment or blank.}
+            \PY{n}{blankcond} \PY{o}{=} \PY{n}{newlinematch}\PY{o}{.}\PY{n}{match}\PY{p}{(}\PY{n}{line}\PY{p}{)}
+            \PY{n}{comcond} \PY{o}{=} \PY{n}{commentmatch}\PY{o}{.}\PY{n}{match}\PY{p}{(}\PY{n}{line}\PY{p}{)}
+            \PY{k}{if} \PY{n}{blankcond} \PY{o+ow}{is} \PY{n+nb+bp}{None} \PY{o+ow}{and} \PY{n}{comcond} \PY{o+ow}{is} \PY{n+nb+bp}{None}\PY{p}{:}
+
+                \PY{c}{\PYZsh{} Use an if/elif block to check whether the current line}
+                \PY{c}{\PYZsh{} contains any auxiliary information. The options \PYZsq{}LOW\PYZsq{},}
+                \PY{c}{\PYZsh{} \PYZsq{}HIGH\PYZsq{}, \PYZsq{}REV\PYZsq{}, \PYZsq{}PLOG\PYZsq{}, and \PYZsq{}CHEB\PYZsq{} are mutually}
+                \PY{c}{\PYZsh{} exclusive, so there should be no chance of a different}
+                \PY{c}{\PYZsh{} type being present. Therefore, break out of the loop}
+                \PY{c}{\PYZsh{} through `searchLines[i]` when a keyword is found.}
+                \PY{n}{lowcond} \PY{o}{=} \PY{n}{lowmatch}\PY{o}{.}\PY{n}{search}\PY{p}{(}\PY{n}{line}\PY{p}{)}
+                \PY{n}{highcond} \PY{o}{=} \PY{n}{highmatch}\PY{o}{.}\PY{n}{search}\PY{p}{(}\PY{n}{line}\PY{p}{)}
+                \PY{n}{revcond} \PY{o}{=} \PY{n}{revmatch}\PY{o}{.}\PY{n}{search}\PY{p}{(}\PY{n}{line}\PY{p}{)}
+                \PY{n}{plogcond} \PY{o}{=} \PY{n}{plogmatch}\PY{o}{.}\PY{n}{search}\PY{p}{(}\PY{n}{line}\PY{p}{)}
+                \PY{n}{chebcond} \PY{o}{=} \PY{n}{chebmatch}\PY{o}{.}\PY{n}{search}\PY{p}{(}\PY{n}{line}\PY{p}{)}
+                \PY{k}{if} \PY{n}{lowcond} \PY{o+ow}{is} \PY{o+ow}{not} \PY{n+nb+bp}{None}\PY{p}{:}
+                    \PY{n}{extraInfo}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+                    \PY{k}{break}
+                \PY{k}{elif} \PY{n}{highcond} \PY{o+ow}{is} \PY{o+ow}{not} \PY{n+nb+bp}{None}\PY{p}{:}
+                    \PY{n}{extraInfo}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}
+                    \PY{k}{break}
+                \PY{k}{elif} \PY{n}{revcond} \PY{o+ow}{is} \PY{o+ow}{not} \PY{n+nb+bp}{None}\PY{p}{:}
+                    \PY{n}{extraInfo}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}
+                    \PY{k}{break}
+                \PY{k}{elif} \PY{n}{plogcond} \PY{o+ow}{is} \PY{o+ow}{not} \PY{n+nb+bp}{None}\PY{p}{:}
+                    \PY{n}{extraInfo}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}
+                    \PY{k}{break}
+                \PY{k}{elif} \PY{n}{chebcond} \PY{o+ow}{is} \PY{o+ow}{not} \PY{n+nb+bp}{None}\PY{p}{:}
+                    \PY{n}{extraInfo}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}
+                    \PY{k}{break}
+
+    \PY{c}{\PYZsh{} Check if the thermo data is included in the chemistry. Store the}
+    \PY{c}{\PYZsh{} result in the `thermInChem` boolean, where `True` indicates that}
+    \PY{c}{\PYZsh{} no separate thermo file is required.}
+    \PY{k}{for} \PY{n}{line} \PY{o+ow}{in} \PY{n}{lines}\PY{p}{:}
+        \PY{k}{if} \PY{n}{thermmatch}\PY{o}{.}\PY{n}{search}\PY{p}{(}\PY{n}{line}\PY{p}{)} \PY{o+ow}{is} \PY{o+ow}{not} \PY{n+nb+bp}{None}\PY{p}{:}
+            \PY{n}{thermInChem} \PY{o}{=} \PY{n+nb+bp}{True}
+            \PY{k}{break}
+        \PY{k}{else}\PY{p}{:}
+            \PY{n}{thermInChem} \PY{o}{=} \PY{n+nb+bp}{False}
+
+    \PY{c}{\PYZsh{} Return the output information}
+    \PY{k}{return} \PY{n}{reacLines}\PY{p}{,} \PY{n}{searchLines}\PY{p}{,} \PY{n}{extraInfo}\PY{p}{,} \PY{n}{thermInChem}\PY{p}{,}
+\end{Verbatim}

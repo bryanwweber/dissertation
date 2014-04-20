@@ -1,0 +1,142 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c}{\PYZsh{} System imports}
+\PY{k+kn}{import} \PY{n+nn}{re}
+\PY{k+kn}{import} \PY{n+nn}{os}
+\PY{k+kn}{from} \PY{n+nn}{decimal} \PY{k+kn}{import} \PY{o}{*}
+\PY{k+kn}{import} \PY{n+nn}{configparser}
+\PY{k+kn}{from} \PY{n+nn}{io} \PY{k+kn}{import} \PY{n}{StringIO}
+
+\PY{k}{class} \PY{n+nc}{NoSectionConfigParser}\PY{p}{(}\PY{n}{configparser}\PY{o}{.}\PY{n}{ConfigParser}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+\PY{l+s+sd}{    Subclass of ConfigParser that adds a [DEFAULT] header if one isn\PYZsq{}t present.}
+\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{k}{def} \PY{n+nf}{read}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,}\PY{n}{filename}\PY{p}{)}\PY{p}{:}
+        \PY{k}{try}\PY{p}{:}
+            \PY{n}{text} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{n}{filename}\PY{p}{)}\PY{o}{.}\PY{n}{read}\PY{p}{(}\PY{p}{)}
+        \PY{k}{except} \PY{n+ne}{IOError}\PY{p}{:}
+            \PY{k}{pass}
+        \PY{k}{else}\PY{p}{:}
+            \PY{k}{if} \PY{o+ow}{not} \PY{n}{text}\PY{o}{.}\PY{n}{startswith}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{[DEFAULT]}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb}{file} \PY{o}{=} \PY{n}{StringIO}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{[DEFAULT]}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{\PYZdq{}} \PY{o}{+} \PY{n}{text}\PY{p}{)}
+            \PY{k}{else}\PY{p}{:}
+                \PY{n+nb}{file} \PY{o}{=} \PY{n}{StringIO}\PY{p}{(}\PY{n}{text}\PY{p}{)}
+
+            \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{readfp}\PY{p}{(}\PY{n+nb}{file}\PY{p}{,}\PY{n}{filename}\PY{p}{)}
+\PY{c}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+\PY{k}{def} \PY{n+nf}{chebcheck}\PY{p}{(}\PY{n}{lines}\PY{p}{,}\PY{n}{rfac}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Take Chebychev auxiliary lines and return lines with modified a\PYZus{}(1,1)}
+
+\PY{l+s+sd}{    INPUT:}
+\PY{l+s+sd}{    lines \PYZhy{} list of auxiliary information lines to check}
+\PY{l+s+sd}{    rfac \PYZhy{} rate coefficient  multiplication factor}
+\PY{l+s+sd}{    OUTPUT:}
+\PY{l+s+sd}{    lines \PYZhy{} list of modified auxiliary information lines}
+
+\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{c}{\PYZsh{} Compile the regular expression to match the Chebychev `a`}
+    \PY{c}{\PYZsh{} coefficients and CHEB keyword.}
+    \PY{n}{Amatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{(([\PYZhy{}+]?[0\PYZhy{}9]+(}\PY{l+s}{\PYZbs{}}\PY{l+s}{.[0\PYZhy{}9]+)?[eE][\PYZhy{}+]?[0\PYZhy{}9]+)|}\PY{l+s}{\PYZsq{}}
+                        \PY{l+s}{\PYZsq{}}\PY{l+s}{([0\PYZhy{}9]+(}\PY{l+s}{\PYZbs{}}\PY{l+s}{.[0\PYZhy{}9]+)?))}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{chebmatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{(?i)\PYZca{}[}\PY{l+s}{\PYZbs{}}\PY{l+s}{s]*CHEB}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+
+    \PY{c}{\PYZsh{} Set a logical for whether or not we\PYZsq{}ve found the first line with a}
+    \PY{c}{\PYZsh{} CHEB keyword (not TCHEB or PCHEB).}
+    \PY{n}{firstChebLine} \PY{o}{=} \PY{n+nb+bp}{True}
+
+    \PY{c}{\PYZsh{} Convert the input rfactor to log10 of the rfactor.}
+    \PY{n}{rfac} \PY{o}{=} \PY{n}{Decimal}\PY{p}{(}\PY{n}{rfac}\PY{p}{)}
+    \PY{n}{addfac} \PY{o}{=} \PY{n}{Decimal}\PY{o}{.}\PY{n}{log10}\PY{p}{(}\PY{n}{rfac}\PY{p}{)}
+
+    \PY{c}{\PYZsh{} Loop through the input lines}
+    \PY{k}{for} \PY{n}{lineNum} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{lines}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+        \PY{n}{line} \PY{o}{=} \PY{n}{lines}\PY{p}{[}\PY{n}{lineNum}\PY{p}{]}
+        \PY{n}{chebcond} \PY{o}{=} \PY{n}{chebmatch}\PY{o}{.}\PY{n}{search}\PY{p}{(}\PY{n}{line}\PY{p}{)}
+
+        \PY{c}{\PYZsh{} If this is a \PYZsq{}CHEB\PYZsq{} line and its the first time we\PYZsq{}ve}
+        \PY{c}{\PYZsh{} encountered a \PYZsq{}CHEB\PYZsq{} line, set `firstChebLine` to `False`}
+        \PY{k}{if} \PY{n}{chebcond} \PY{o+ow}{is} \PY{o+ow}{not} \PY{n+nb+bp}{None} \PY{o+ow}{and} \PY{n}{firstChebLine}\PY{p}{:}
+            \PY{n}{firstChebLine} \PY{o}{=} \PY{n+nb+bp}{False}
+
+        \PY{c}{\PYZsh{} If this is a \PYZsq{}CHEB\PYZsq{} line and it is not the first time we\PYZsq{}ve}
+        \PY{c}{\PYZsh{} encountered a \PYZsq{}CHEB\PYZsq{} line, match the a\PYZus{}(1,1) coefficient, and}
+        \PY{c}{\PYZsh{} add log10(rfactor) to it.}
+        \PY{k}{elif} \PY{n}{chebcond} \PY{o+ow}{is} \PY{o+ow}{not} \PY{n+nb+bp}{None} \PY{o+ow}{and} \PY{o+ow}{not} \PY{n}{firstChebLine}\PY{p}{:}
+            \PY{n}{acoeff} \PY{o}{=} \PY{n}{Amatch}\PY{o}{.}\PY{n}{search}\PY{p}{(}\PY{n}{line}\PY{p}{)}
+            \PY{n}{x} \PY{o}{=} \PY{n}{Decimal}\PY{p}{(}\PY{n}{acoeff}\PY{o}{.}\PY{n}{group}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+            \PY{n}{x} \PY{o}{=} \PY{n}{x} \PY{o}{+} \PY{n}{addfac}
+
+            \PY{c}{\PYZsh{} Format the new a\PYZus{}(1,1) into scientific notation. Replace}
+            \PY{c}{\PYZsh{} the correct line in `lines`. Break out of the loop to}
+            \PY{c}{\PYZsh{} avoid changing any more coefficients.}
+            \PY{n}{modline} \PY{o}{=} \PY{n}{line}\PY{p}{[}\PY{p}{:}\PY{n}{acoeff}\PY{o}{.}\PY{n}{start}\PY{p}{(}\PY{p}{)}\PY{p}{]} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZob{}0:13.6E\PYZcb{}}\PY{l+s}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PYZbs{}
+                      \PY{o}{+} \PY{n}{line}\PY{p}{[}\PY{n}{acoeff}\PY{o}{.}\PY{n}{end}\PY{p}{(}\PY{p}{)}\PY{p}{:}\PY{p}{]}
+            \PY{n}{lines}\PY{p}{[}\PY{n}{lineNum}\PY{p}{]} \PY{o}{=} \PY{n}{modline}
+            \PY{k}{break}
+
+    \PY{c}{\PYZsh{} Return the list of modified lines}
+    \PY{k}{return} \PY{n}{lines}
+\PY{c}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+\PY{c}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+\PY{k}{def} \PY{n+nf}{auxcheck}\PY{p}{(}\PY{n}{lines}\PY{p}{,}\PY{n}{matchcond}\PY{p}{,}\PY{n}{rfac}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Take auxiliary lines and return lines with modified Arrhenius coefficients.}
+
+\PY{l+s+sd}{    INPUT:}
+\PY{l+s+sd}{    lines \PYZhy{} list of auxiliary information lines to check}
+\PY{l+s+sd}{    matchcond \PYZhy{} compiled regular expression used to search the auxiliary}
+\PY{l+s+sd}{                lines for a particular condition}
+\PY{l+s+sd}{    rfac \PYZhy{} multiplication factor for the Arrhenius coefficients}
+\PY{l+s+sd}{    OUTPUT:}
+\PY{l+s+sd}{    lines \PYZhy{} list of modified auxiliary information lines}
+
+\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+
+    \PY{c}{\PYZsh{} Compile the regular expression to match the Arrhenius}
+    \PY{c}{\PYZsh{} coefficients. This is intentionally different from the Amatch in}
+    \PY{c}{\PYZsh{} run\PYZus{}sens.py}
+    \PY{n}{Amatch} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{(([\PYZhy{}+]?[0\PYZhy{}9]+(}\PY{l+s}{\PYZbs{}}\PY{l+s}{.[0\PYZhy{}9]+)?[eE][\PYZhy{}+]?[0\PYZhy{}9]+)|(?\PYZlt{}![}\PY{l+s}{\PYZbs{}}\PY{l+s}{d}\PY{l+s}{\PYZbs{}}\PY{l+s}{.])([0]+}\PY{l+s}{\PYZbs{}}\PY{l+s}{.?[0]+)(?![}\PY{l+s}{\PYZbs{}}\PY{l+s}{d]))}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+
+    \PY{c}{\PYZsh{} Loop through the lines in the input list}
+    \PY{k}{for} \PY{n}{lineNum} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{lines}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+        \PY{n}{line} \PY{o}{=} \PY{n}{lines}\PY{p}{[}\PY{n}{lineNum}\PY{p}{]}
+
+        \PY{c}{\PYZsh{} Check that the line matches the input matching condition. If}
+        \PY{c}{\PYZsh{} not, the line is not modified}
+        \PY{n}{skip1} \PY{o}{=} \PY{n}{matchcond}\PY{o}{.}\PY{n}{search}\PY{p}{(}\PY{n}{line}\PY{p}{)}
+        \PY{k}{if} \PY{n}{skip1} \PY{o+ow}{is} \PY{o+ow}{not} \PY{n+nb+bp}{None}\PY{p}{:}
+
+            \PY{c}{\PYZsh{} If the line matches the proper condition, find the}
+            \PY{c}{\PYZsh{} Arrhenius coefficient, multiply it by two, reconstruct}
+            \PY{c}{\PYZsh{} the line, and overwrite the original line in the input}
+            \PY{c}{\PYZsh{} list.}
+            \PY{n}{Afactor} \PY{o}{=} \PY{n}{Amatch}\PY{o}{.}\PY{n}{search}\PY{p}{(}\PY{n}{line}\PY{p}{)}
+            \PY{n}{x} \PY{o}{=} \PY{n}{Decimal}\PY{p}{(}\PY{n}{Afactor}\PY{o}{.}\PY{n}{group}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+            \PY{n}{x} \PY{o}{=} \PY{n}{Decimal}\PY{p}{(}\PY{n}{rfac}\PY{p}{)} \PY{o}{*} \PY{n}{x}
+            \PY{n}{modline} \PY{o}{=} \PY{n}{line}\PY{p}{[}\PY{p}{:}\PY{n}{Afactor}\PY{o}{.}\PY{n}{start}\PY{p}{(}\PY{p}{)}\PY{p}{]} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{x}\PY{p}{)} \PY{o}{+} \PY{n}{line}\PY{p}{[}\PY{n}{Afactor}\PY{o}{.}\PY{n}{end}\PY{p}{(}\PY{p}{)}\PY{p}{:}\PY{p}{]}
+            \PY{n}{lines}\PY{p}{[}\PY{n}{lineNum}\PY{p}{]} \PY{o}{=} \PY{n}{modline}
+
+    \PY{c}{\PYZsh{} Return the list of modified lines}
+    \PY{k}{return} \PY{n}{lines}
+\PY{c}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+\PY{c}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+\PY{k}{class} \PY{n+nc}{cd}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Change directory.}
+
+\PY{l+s+sd}{    For use with the `with` keyword, i.e. `with cd(dir):` changes to the}
+\PY{l+s+sd}{    directory `dir` within the `with` construct}
+
+\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+
+    \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{newPath}\PY{p}{)}\PY{p}{:}
+        \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Set the newPath attribute to be the argument passed to the class.\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{newPath} \PY{o}{=} \PY{n}{newPath}
+
+    \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}enter\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+        \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Change directory when the class is entered.\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{savedPath} \PY{o}{=} \PY{n}{os}\PY{o}{.}\PY{n}{getcwd}\PY{p}{(}\PY{p}{)}
+        \PY{n}{os}\PY{o}{.}\PY{n}{chdir}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{newPath}\PY{p}{)}
+
+    \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}exit\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{etype}\PY{p}{,} \PY{n}{value}\PY{p}{,} \PY{n}{traceback}\PY{p}{)}\PY{p}{:}
+        \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Change back when the class is exited\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{n}{os}\PY{o}{.}\PY{n}{chdir}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{savedPath}\PY{p}{)}
+\PY{c}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+\end{Verbatim}
