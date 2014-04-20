@@ -22,7 +22,7 @@ set label "{/Symbol t}_{/=9 1}" at 2.2,9.5
 set label "{/Symbol t}" at 2.2, 20
 set label 'EOC' at 0,22.5 center
 plot "Definition-Of-Ignition-Delay.TXT" using 1:2 lt 1 lc rgb "black" lw 1.75 title "{/Times-Italic P(t)}, bar",\
-'' using 1:3 lt 1 lc rgb "#7D7D7D" lw 1.5 title "{/Times-Italic P'(t)}, bar",\
+'' using 1:3 lt 1 lc rgb "#7D7D7D" lw 1.5 title "{/Times-Italic P'(t)}, bar/ms",\
 '' using 1:4 lt 2 lc rgb "red" lw 1.75 title "{/Times-Italic P(t)} Non-Reactive, bar"
 set output
 exit
