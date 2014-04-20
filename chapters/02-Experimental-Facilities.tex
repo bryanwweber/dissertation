@@ -1,6 +1,6 @@
-% arara: xelatex: { synctex: on, shell: off }
+% arara: lualatex: { synctex: on, shell: off }
 % arara: biber
-% arara: xelatex: { synctex: on, shell: off }
+% arara: lualatex: { synctex: on, shell: off }
 % arara: sumatrapdf
 \documentclass[../main.tex]{subfiles}
 
@@ -282,14 +282,13 @@ crevice machined into the crown of the piston, shown in cross-section
 in \cref{fig:rcm-piston}. The boundary layer enters the crevice through
 the converging section as the piston moves forward and is trapped
 within the crevice. The dimensions of the crevice were optimized
-by \textcite{Mittal2006a} through CFD simulations for high-pressure
-conditions. Subsequently, \textcite{Mittal2006b} experimentally showed that
-the optimized crevice design provides homogeneous conditions in the
-reaction chamber up to approximately \SI{150}{\milli\second} after the EOC.
-By using PLIF measurements of acetone-seeded mixtures,
-\textcite{Mittal2006b} showed that there was a core region of gases
-near the center of the reactor whose temperature remained spatially
-homogeneous.
+by \textcite{Mittal2006a} through CFD simulations. Subsequently,
+\textcite{Mittal2006b} experimentally showed that the optimized crevice
+design provides homogeneous conditions in the reaction chamber up to
+approximately \SI{150}{\milli\second} after the EOC. By using PLIF
+measurements of acetone-seeded mixtures, \textcite{Mittal2006b}
+showed that there was a core region of gases near the center of the
+reactor whose temperature remained spatially homogeneous.
 
 \begin{figure}[!ht]
     \includegraphics[width=12cm]{02-Experimental-Facilities/rcm-piston}
@@ -298,12 +297,6 @@ homogeneous.
 \end{figure}
 
 \subsection{Determination of Reactant Temperature}
-
-Two independent thermodynamic properties are required to fix the
-thermodynamic state of the reactants in the reaction chamber at a
-given time. The first property is the pressure, measured by the dynamic
-pressure transducer, as discussed previously; the second property
-is chosen to be the temperature.
 
 In general, it is rather difficult to directly measure the temperature
 of the gases in the reaction chamber during and after compression.
@@ -356,20 +349,18 @@ decreases, as can be seen in \cref{fig:ig-delay-def}. This pressure
 decrease is caused by heat loss from the reactants in the constant volume reaction
 chamber and is accompanied by a decrease in the temperature of the
 reactants. To model the thermodynamic state after the end of compression,
-the adiabatic core hypothesis is applied, and the heat loss is
+the adiabatic core hypothesis is applied and the heat loss is
 assumed to occur only in a thin boundary layer near the reactor walls.
 Thus, the core region is modeled as adiabatic, and the heat loss
 from the boundary layer is be modeled as an isentropic volume
 expansion.
 
-\subsection{Determination of Compressed Temperature}
-
-In general, the specific heat ratio used in Eqs. (\ref{eq:tic}) and
-(\ref{eq:tc}) is an unknown function of temperature and composition,
-so \cref{eq:tc} cannot be integrated directly to find $T_C$. If
-the specific heats are parameterized with a linear fit and the
-composition is assumed to be fixed, it is possible to integrate \cref{eq:tc} directly,
-but this process is quite tedious; nonetheless, it will be applied in
+In general, the specific heat ratio used in \cref{eq:tic,eq:tc} is an
+unknown function of temperature and composition, so \cref{eq:tc}
+cannot be integrated directly to find $T_C$. If the specific heats are
+parameterized with a linear fit and the composition is assumed to be
+fixed, it is possible to integrate \cref{eq:tc} directly, but this
+process is quite tedious; nonetheless, it will be applied in
 \cref{sec:uncertainty} to determine the uncertainty of $T_C$. In
 general, the simplest method of calculating $T_C$ is to use software
 to numerically integrate \cref{eq:tc}.
@@ -394,16 +385,23 @@ where $V_1$ and $V_2$ are the volumes at consecutive time points,
 $P_1$ and $P_2$ are the pressures at consecutive time points, and
 $\gamma$ is the temperature dependent specific heat. This equation
 is applied during and after the compression stroke to calculate
-the volume trace. To achieve the best representation of the experiment,
-the reactive pressure trace is used until EOC; after EOC, the
-corresponding non-reactive pressure trace is used. In \cref{eq:volume-trace} it is assumed that
+the volume trace. Since the non-reactive experiment requires slightly
+different initial pressure (on the order of 5 torr) to reach the same
+compressed pressure as the reactive experiment---due to the slightly
+different specific heat ratio in the non-reactive experiment as compared
+to the reactive experiment---the reactive pressure trace is used to
+compute the volume trace until EOC; after EOC, the corresponding
+non-reactive pressure trace is used. In \cref{eq:volume-trace} it is assumed that
 changes in composition of the reactants are negligible during the
-compression stroke. The initial volume is arbitrarily taken
+compression stroke, which is confirmed by comparing simulations with and
+without reaction steps in the chemical kinetic model. The EOC conditions
+are the same in both cases. The initial volume is arbitrarily taken
 to be equal to 1.
 
-For use in \cref{eq:volume-trace}, $\gamma$ is tabulated for each
-time point. Thus, the temperature at each time point must also be
-computed by using the isentropic relation for temperature:
+For use in \cref{eq:volume-trace}, the temperature-dependent specific
+heat ratio $\gamma$ is tabulated for each time point. Thus, the
+temperature at each time point must also be computed by using the
+isentropic relation for temperature:
 %
 \begin{align}
 \frac{T_2}{T_1} = \left[\frac{P_2}{P_1}\right]^{\frac{\gamma-1}{\gamma}}
@@ -419,7 +417,8 @@ influence on the ratio of specific heats.
 The temperature calculated by \cref{eq:isen-temp} is typically within
 1K of the temperature calculated by CHEMKIN-Pro.
 
-\subsection{Uncertainty of Ignition Delay and Compressed Temperature}
+\subsection[Uncertainty of Ignition Delay and Compressed Temperature]%
+{Uncertainty of Ignition Delay and Compressed\\ Temperature}
 \label{sec:uncertainty}
 
 The uncertainty of the compressed temperature is an important parameter
@@ -430,14 +429,14 @@ propagation analysis on the equation used to calculate $T_C$,
 at constant pressure to that at constant volume
 %
 \begin{align}
-\gamma \equiv \frac{C_p}{C_v} = \frac{C_p/R}{C_v/R}
+\gamma \equiv \frac{C_p}{C_v} = \frac{C_p/R}{C_v/R} = \frac{\hat{C}_p}{\hat{C}_v}
 \end{align}
-
+%
 where $C_p$ and $C_v$ are the specific heats in molar units at constant
 pressure and volume, respectively, and $R$ is the universal gas constant,
-used to produce non-dimensional specific heats. Letting a hat denote the
-non-dimensional specific heats, the difference between the non-dimensional
-specific heats is one, $\hat{C}_v = \hat{C}_p - 1$. Then, it follows that
+used to produce non-dimensional specific heats, indicated by a hat. The
+difference between the non-dimensional specific heats is one,
+$\hat{C}_v = \hat{C}_p - 1$. Then, it follows that
 %
 \begin{align}
 \label{eq:simplify-gamma}
@@ -452,7 +451,7 @@ should be used; thus, the simplification as shown in \cref{eq:simplify-gamma}
 requires that the specific heat $\hat{C}_p$ also be the total specific
 heat. In the following, we assume that there is negligible
 change of the total specific heat due to changes in reactant
-mole fractions, as for Eqs. (\ref{eq:volume-trac}) and (\ref{eq:isentemp}).
+mole fractions, as for \cref{eq:volume-trace,eq:isen-temp}.
 The total specific heat is simply the sum of the product of
 the species mole fractions and their specific heats
 %
@@ -478,10 +477,10 @@ since the mixtures prepared in this study are composed primarily of
 O$_2$, N$_2$ and Ar (i.e. no more than 7\% of any mixture is the
 fuel), and since the specific heats of O$_2$, N$_2$ and Ar are only weakly
 temperature dependent over the range of temperatures experienced during
-compression, we will approximate the total specific heat as a linear function
-of temperature.
+compression, for the purposes of this uncertainty analysis, we will
+approximate the total specific heat as a linear function of temperature:
 %
-\begin{equation}%
+\begin{equation}
 \label{eq:cp-total}
 \begin{split}
 \hat{C}_{p\text{,total}} &= \sum_i X_i \hat{C}_{p,i} \\
@@ -491,16 +490,17 @@ of temperature.
 \end{equation}
 %
 $a$ and $b$ are found by fitting the total non-dimensional specific heat
-over the temperature range from \SIrange{300}{1100}{\kelvin}, as discussed below in
-\cref{sec:unc-cp}.
+over the temperature range from \SIrange{300}{1100}{\kelvin}, as
+discussed below in \cref{sec:unc-cp}.
 
 With this approximation of the specific heat, we can integrate \cref{eq:tc}
 to find the compressed temperature
 %
 \begin{subequations}
 \begin{align}
-\ln{\frac{P_C}{P_0}} &= \int_{T_0}^{T_{C}} \! \frac{\gamma}{T\left(\gamma-1\right)} \, \mathrm{d} T
-                      = \int_{T_0}^{T_{C}} \! \frac{\hat{C}_p}{T} \, \mathrm{d} T \\
+\ln{\frac{P_C}{P_0}} 
+&= \int_{T_0}^{T_{C}} \! \frac{\gamma}{T\left(\gamma-1\right)} \, \mathrm{d} T \\
+&= \int_{T_0}^{T_{C}} \! \frac{\hat{C}_p}{T} \, \mathrm{d} T \\
 &= \int_{T_0}^{T_{C}} \! \frac{a + b T}{T} \, \mathrm{d} T\\
 &= \Big[a \ln{T} + b T \Big]_{T_0}^{T_C}
 \end{align}
@@ -1066,11 +1066,11 @@ mentioned previously, many scans of the desired $m/z$ range are
 conducted over the time that a compound is eluting from the column.
 To determine the identity of a compound in a given peak, the set of
 mass intensities over the peak are averaged and the background
-spectrum is subtracted; this average spectrum is compared to a 
-database supplied by the National Institute of Standards and 
+spectrum is subtracted; this average spectrum is compared to a
+database supplied by the National Institute of Standards and
 Technologies (NIST). The database returns several suggested species
 with a degree of matching parameter indicating how well the supplied
-spectrum matches the spectrum in the database. 
+spectrum matches the spectrum in the database.
 
 In this work, the external standard method of quantification is used.
 This requires that calibration curves for each of the species of
