@@ -417,8 +417,8 @@ influence on the ratio of specific heats.
 The temperature calculated by \cref{eq:isen-temp} is typically within
 1K of the temperature calculated by CHEMKIN-Pro.
 
-\subsection[Uncertainty of Ignition Delay and Compressed Temperature]%
-{Uncertainty of Ignition Delay and Compressed\\ Temperature}
+\subsection[Uncertainty of Compressed Temperature and Ignition Delay]%
+{Uncertainty of Compressed Temperature\\ and Ignition Delay}
 \label{sec:uncertainty}
 
 The uncertainty of the compressed temperature is an important parameter
@@ -469,6 +469,7 @@ heat at constant pressure as a function of temperature is represented by a
 fourth-order polynomial fit
 %
 \begin{align}
+\label{eq:cp-nasa}
 \hat{C}_{p,i} = c_{1,i} + c_{2,i} T + c_{3,i} T^2 + c_{4,i} T^3 + c_{5,i} T^4
 \end{align}
 %
@@ -550,15 +551,29 @@ uncertainty is contained in the measurement equipment and can
 be reduced, e.g. by using different equipment; the random uncertainty
 is inherent in any measured process and cannot be reduced by
 experimental techniques. The bias and precision uncertainties
-for each parameter will be discussed in the following.
+for each parameter will be discussed in the following sections.
+
+The partial derivatives of \cref{eq:explicit-tc} with respect to
+each of the parameters are given in \cref{eq:partial-derivs}:
+%
+\begin{subequations}
+\label{eq:partial-derivs}
+\begin{gather}
+\frac{\partial T_C}{\partial P_C} = \frac{T_e}{P_C\left(a + T_e b\right)} \displaybreak[0]\\[1em]
+\frac{\partial T_C}{\partial P_0} = \frac{-T_e}{P_0\left(a + T_e b\right)}\displaybreak[0]\\[1em]
+\frac{\partial T_C}{\partial T_0} = \frac{T_e\left(a + T_0 b\right)}{T_0\left(a + T_e b\right)}\displaybreak[0]\\[1em]
+\frac{\partial T_C}{\partial a} = \frac{T_e \left[b \left(T_e \ln{\frac{T_0}{T_e}} + T_e - T_0 \right) - \ln{\frac{P_C}{P_0}} \right]}{\left(a + T_e b \right)^2} \displaybreak[0]\\[1em]
+\frac{\partial T_C}{\partial b} = -\frac{T_e \left[a \left(T_e \ln{\frac{T_0}{T_e}} + T_e - T_0 \right) + T_e \ln{\frac{P_C}{P_0}}\right]}{\left(a + T_e b \right)^2}
+\end{gather}
+\end{subequations}
 
 \subsubsection{Uncertainty in Initial Temperature}
 
 The bias uncertainty in the initial temperature is due to the standard
 limits of error of the K-type thermocouple used to measure the
 initial temperature. According to the Omega Engineering
-specifications, this is "the greater
-of $\SI{2.2}{\degreeCelsius}$ or 0.75\%". The largest initial temperature
+specifications, this is ``the greater
+of $\SI{2.2}{\degreeCelsius}$ or 0.75\%''. The largest initial temperature
 used in this work, \SI{413}{\kelvin}, leads to an uncertainty of
 $\pm \SI{3}{\kelvin}$; thus, $B_{T_O}=\SI{3}{\kelvin}$. Bias uncertainty
 due to the A/D converter in the process meter is negligible compared
@@ -610,7 +625,8 @@ U_{P_0} = \sqrt{\left(B_{P_0}\right)^2 + \left(R_{P_0}\right)^2} = \sqrt{\left(\
 The bias uncertainty in the compressed pressure is due to the standard
 error in the piezoelectric pressure transducer. According to the
 manufacturer's calibration, the deviation of the full scale output from
-linearity is less then 0.2\%, indicating that $B_{P_C}=\SI{0.5}{\bar}$.
+linearity is less then 0.1\% over the pressure range \SIrange{0}{50}{\bar},
+indicating that $B_{P_C}=\SI{0.05}{\bar}=\SI{5000}{\pascal}$.
 The uncertainties in the signal acquisition equipment are negligible
 compared to this uncertainty. The precision uncertainty is due to the limit
 of precision of the output of the pressure, and is \SI{5E-7}{\bar}. This
@@ -618,7 +634,7 @@ is negligible compared to the bias uncertainty, so the total uncertainty
 of the compressed pressure is
 %
 \begin{equation}
-U_{P_C} = B_{P_C} = \SI{0.5}{\bar}
+U_{P_C} = B_{P_C} = \SI{0.05}{\bar} = \SI{5000}{\pascal}
 \end{equation}
 
 \subsubsection{Uncertainty in the Specific Heat}
@@ -674,112 +690,103 @@ The uncertainties of the pressures $P_i$ and $P$ are equal and can be estimated 
 the same procedure as in \cref{sec:unc-p0} since the same pressure transducer
 is used to measure the pressure. The total pressure $P$ will be different for
 each species as it is filled. The order followed in these experiments is
-liquid fuel injection, followed by oxygen, then nitrogen, then argon.
+liquid fuel injection, followed by oxygen, then nitrogen, then argon when
+applicable. It is assumed that the uncertainty in each partial pressure
+is independent of all the others for simplicity.
 
-A typical total pressure after filling is
-approximately \SI{1300}{\torr} ($\approx$ \SI{173319}{\pascal}). The mixtures in
-\cref{tab:mixtures} are the mixtures that will be analyzed in the
-following because they represent a worst case scenario in that the mole
-fraction of the fuel or oxygen is maximized in them.
-
-\begin{table}
-\centering
-\caption{Mixtures studied in the uncertainty analysis.}
-\label{tab:mixtures}
-\begin{tabular}{l *{4}{c}}
-    \toprule
-    \multirow{2}[0]{*}{Fuel} & \multicolumn{4}{c}{Mole Fraction} \\
-         & Fuel & Oxygen & Nitrogen & Ar \\
-    \midrule
-    Methylcyclohexane   & 0.0107 & 0.2240 & 0.0000 & 0.7653 \\
-    \textit{n}-Butanol  & 0.0676 & 0.2030 & 0.7294 & 0.0000 \\
-    \textit{i}-Pentanol & 0.0531 & 0.1989 & 0.7480 & 0.0000 \\
-    Propene             & 0.0854 & 0.1921 & 0.7225 & 0.0000 \\
-    \bottomrule
-    \end{tabular}
-\end{table}
-
-Once the total specific heat has been calculated, a linear fit as a function
-of temperature is applied by least-squares estimation. Since there is an uncertainty
-in the specific heat, there is a corresponding uncertainty in the fit
-coefficients $a$ and $b$. Following the methodology outlined by
-\textcite{York2004}, the values and uncertainties of $a$ and $b$
-are calculated iteratively. This procedure gives identical values of the
-slope, intercept, and standard errors as maximum likelihood estimation \cite{York2004}.
-\Cref{eq:york} is reproduced from \textcite{York2004}, and is presented
-as Eq. (13) in that work.
+A line is fit through the end points of the total specific heat curve
+via simultaneous solution of the equations
 %
-\begin{subequations}
-\label{eq:york}
+\begin{equation}
+\label{eq:cp-line}
+\begin{split}
+\hat{C}_{p,2} = b T_2 + a \\
+\hat{C}_{p,1} = b T_1 + a
+\end{split}
+\end{equation}
+%
+where $\hat{C}_{p,1}$ and $\hat{C}_{p,2}$ are the total specific heats
+at $T_1$ and $T_2$ respectively; in this analysis, the temperatures are
+\SI{300}{\kelvin} and \SI{1100}{\kelvin}. Solving \cref{eq:cp-line} for
+$b$ and $a$ gives:
+%
+\begin{equation}
+\begin{split}
+b &= \frac{\hat{C}_{p,2} - \hat{C}_{p,1}}{T_2 - T_1} \\[0.5em]
+a &= \frac{f_2 \hat{C}_{p,2} - f_1 \hat{C}_{p,1}}{f_2-f_1}
+\end{split}
+\end{equation}
+%
+where $f_1$ and $f_2$ are chosen so that $b$ is eliminated in
+\cref{eq:cp-line}.
+
+Uncertainty in the slope and $y$-intercept can be found by
+%
+\begin{equation}
+\begin{split}
+\left(U_{b}\right)^2 = \left(\frac{\partial b}{\partial \hat{C}_{p,1}}U_{C_{p,1}}\right)^2 + \left(\frac{\partial b}{\partial \hat{C}_{p,2}}U_{C_{p,2}}\right)^2 \\[0.5em]
+\left(U_{a}\right)^2 = \left(\frac{\partial a}{\partial \hat{C}_{p,1}}U_{C_{p,1}}\right)^2 + \left(\frac{\partial a}{\partial \hat{C}_{p,2}}U_{C_{p,2}}\right)^2
+\end{split}
+\end{equation}
+%
+where the partial derivatives are
+%
 \begin{align}
-a &= \overline{Y} - b\overline{X}  \label{eq:intercept}\\
-b &= \frac{\sum W_i \beta_i V_i}{\sum W_i \beta_i U_i} \label{eq:slope}\\
-\sigma_a^2 &= \frac{1}{\sum W_i} + \overline{x}^2\sigma_b^2 \label{eq:unc-intercept}\\
-\sigma_b^2 &= \frac{1}{\sum W_i u_i^2} \label{eq:unc-slope}
+\frac{\partial b}{\partial \hat{C}_{p,1}} &= \frac{-1}{T_2 - T_1} & \frac{\partial b}{\partial \hat{C}_{p,2}} &= \frac{1}{T_2 - T_1} \\
+\frac{\partial a}{\partial \hat{C}_{p,1}} &= \frac{-f_1}{f_2 - f_1} & \frac{\partial a}{\partial \hat{C}_{p,2}} &= \frac{f_2}{f_2 - f_1}
 \end{align}
-\end{subequations}
 %
-where the symbols in \cref{eq:york} are defined in \cref{tab:york-syms}.
-The general formulation is given here because it will be reused in
-\cref{sec:unc-gcms}; application to this section will
-be given below.
+and the uncertainties of the specific heats $U_{C_{p,1}}$ and $U_{C_{p,2}}$
+are calculated as described earlier.
 
-\begin{table}
-\centering
-\caption{Symbols in \cref{eq:york}. Reproduced from the work of \textcite{York2004}.}
-\label{tab:york-syms}
-\begin{tabular}{ll}
-\toprule
-Symbol & Meaning \\
-\midrule
-$a$, $b$ & $y$ intercept and slope of best line, $y=a+b x$ \\
-$\sigma_a$, $\sigma_b$ & Standard errors of $a$ and $b$ \\
-$X_i$, $Y_i$ & ``Observed'' data points \\
-$r_i$ & Correlation coefficient between uncertainty in $X_i$ and $Y_i$ \\
-$\omega(X_i)$, $\omega(Y_i)$ & Weights of $X_i$ and $Y_i$ \\
-\addlinespace
-$x_i$, $y_i$ & Least squares adjusted points: $\overline{X} + \beta_i$, $\overline{Y}+b\beta_i$ \\
-\addlinespace
-$\alpha_i$ & $\sqrt{\omega(X_i)\omega(Y_i)}$ \\
-\addlinespace
-$W_i$ & $\dfrac{\omega(X_i)\omega(Y_i)}{\omega(X_i) + b^2\omega(Y_i) - 2r_i \alpha_i b}$ \\
-\addlinespace
-$\overline{X}$, $\overline{Y}$ & $\dfrac{\sum W_i X_i}{\sum W_i}$, $\dfrac{\sum W_i Y_i}{\sum W_i}$ \\
-\addlinespace
-$U_i$, $V_i$ & $X_i - \overline{X}$, $Y_i - \overline{Y}$ \\
-\addlinespace
-$\overline{x}$ & $\dfrac{\sum W_i x_i}{\sum W_i}$ \\
-\addlinespace
-$\beta_i$ & $W_i \left[\dfrac{U_i}{\omega(Y_i)} + \dfrac{bV_i}{\omega(X_i)} - \left(bU_i + V_i\right)\dfrac{r_i}{\alpha_i}\right]$ \\
-\addlinespace
-$u_i$ & $x_i - \overline{x}$ \\
-\bottomrule
-\end{tabular}
-\end{table}
+\subsection{Uncertainty in Compressed Temperature}
 
-In this section, $X_i$ are the temperatures at which \cref{eq:cp-total}
-is evaluated and $Y_i$ are the total specific heats evaluated from \cref{eq:cp-total}.
-The weighting of the specific heats---$\omega(Y_i)$---is taken
-to be the reciprocal of the uncertainty as calculated by
-\cref{eq:cp-uncertainty}. Furthermore, there is no uncertainty in the
-abscissa (i.e. the temperature) and $\omega(X_i) = \num{1}$. Finally, since there
-is no uncertainty in the temperature, there is no correlation between
-the uncertainties, i.e. $r_i = \num{0}$.
+The following analysis is considered for a representative mixture of
+\SI{3.38}{\mole\percent} \tBuOH{}, \SI{20.30}{\mol\percent} O$_2$,
+\SI{76.32}{\mole\percent} N$_2$, i.e. a $\phi=1.0$ mixture of \tBuOH{}
+and air. A typical total pressure after filling is approximately
+\SI{1520}{\torr} ($=\SI{202650}{\pascal}$), with approximately
+\SI{42000}{\pascal} of O$_2$ and \SI{160650}{\pascal} of N$_2$. Thus,
+the uncertainty in the mole fractions of the components are:
+%
+\begin{gather*}
+\left(U_F\right)^2 = \left(0.0338 \cdot 0.05\right)^2 = \num{2.8561E-6} \\
+\left(U_{O_2}\right)^2 = \left(\frac{\SI{4309.2}{\pascal}}{\SI{42000}{\pascal}}\right)^2 + \left(\frac{-\SI{4309.2}{\pascal}}{\SI{42000}{\pascal}}\right)^2 = \num{2.1054E-2} \\
+\left(U_{O_2}\right)^2 = \left(\frac{\SI{ 346.6}{\pascal}}{\SI{42000}{\pascal}}\right)^2 + \left(\frac{-\SI{ 346.6}{\pascal}}{\SI{42000}{\pascal}}\right)^2 = \num{1.3620E-4} \\
+\left(U_{N_2}\right)^2 = \left(\frac{\SI{4309.2}{\pascal}}{\SI{202650}{\pascal}}\right)^2 + \left(\frac{-\SI{160650}{\pascal}}{\left(\SI{202650}{\pascal}\right)^2}\SI{4309.2}{\pascal}\right)^2 = \num{7.3633E-4} \\
+\left(U_{N_2}\right)^2 = \left(\frac{\SI{346.6}{\pascal}}{\SI{202650}{\pascal}}\right)^2 + \left(\frac{-\SI{160650}{\pascal}}{\left(\SI{202650}{\pascal}\right)^2}\SI{346.6}{\pascal}\right)^2 = \num{4.7636E-6}
+\end{gather*}
+%
+where two uncertainties for O$_2$ and N$_2$ are given representing the two
+pressure transducers used. The uncertainties in $\hat{C}_{p,total}$ at
+the temperature limits of \SIlist{300;1100}{\kelvin} are
+%
+\begin{gather*}
+\left(U_{C_{p,1}}\right)^2 = 3.5346^2 \cdot \num{2.1054E-2} + 3.5030^2 \cdot \num{7.3633E-4} + 13.7490^2 \cdot \num{2.8561E-6} = \num{2.7260E-1} \\
+\left(U_{C_{p,2}}\right)^2 = 4.2377^2 \cdot \num{2.1054E-2} + 3.9910^2 \cdot \num{7.3633E-4} + 30.9381^2 \cdot \num{2.8561E-6} = \num{3.9254E-1} \\
+\left(U_{C_{p,1}}\right)^2 = 3.5346^2 \cdot \num{1.3620E-4} + 3.5030^2 \cdot \num{4.7636E-6} + 13.7490^2 \cdot \num{2.8561E-6} = \num{2.2300E-3} \\
+\left(U_{C_{p,2}}\right)^2 = 4.2377^2 \cdot \num{1.3620E-4} + 3.9910^2 \cdot \num{4.7636E-6} + 30.9381^2 \cdot \num{2.8561E-6} = \num{5.2556E-3}
+\end{gather*}
 
-First, the slope $b$ is estimated by simple least-squares regression of the total
-specific heat on the temperature. Then, this slope is used to estimate the
-adjusted weighting of each point, $W_i$. Next, $U_i$ and $V_i$ are calculated
-based on the adjusted weighting. Using $U_i$, $V_i$, and $\beta_i$, a new value of the
-slope is calculated from \cref{eq:slope}, and the process is repeated until the slope converges.
-Convergence is determined when the slope changes by less than 0.001 on successive
-iterations. Then, using \cref{eq:intercept}, the intercept $a$ is calculated.
-Finally, the standard error of each parameter is
-calculated using the final values of the slope and intercept with
-\cref{eq:unc-slope,eq:unc-intercept}).
-
-For the mixtures considered in
-this study, the correlation coefficient for the linear fits are greater than
-0.99 (i.e. $r^2 > 0.99$), indicating a good fit.
+With the given values of the fuel and oxidizer concentration, the total
+specific heat can be calculated using the NASA polynomial formulation
+\cref{eq:cp-nasa} and \cref{eq:cp-total}. Fitting over the temperature
+range \SIrange{300}{1100}{\kelvin} with $f_1 = 11$ and $f_2 = 3$ yields
+values for $a$ and $b$ of
+%
+\begin{align*}
+b &= \frac{4.9519 - 3.8557}{\SI{1100}{\kelvin} - \SI{300}{\kelvin}} = \SI{1.3701E-3}{\per\kelvin} \\
+a &= \frac{3 \cdot 4.9519 - 11 \cdot 3.8557}{3 - 11} = 3.4447
+\end{align*}
+%
+and uncertainties in the slope and $y$-intercept of
+%
+\begin{align*}
+\left(U_{b}\right)^2 = \frac{\num{2.7260E-1}}{\left(-\SI{800}{\kelvin}\right)^2} + \frac{\num{3.9254E-1}}{\left(\SI{800}{\kelvin}\right)^2} = \num{1.0393E-6} \\
+\left(U_{a}\right)^2 = \frac{11^2\cdot\num{2.7260E-1}}{\left(-8\right)^2} + \frac{3^2\cdot\num{3.9254E-1}}{\left(8\right)^2} = \num{5.7059E-1} \\
+\left(U_{b}\right)^2 = \frac{\num{2.2300E-3}}{\left(-\SI{800}{\kelvin}\right)^2} + \frac{\num{5.2556E-3}}{\left(\SI{800}{\kelvin}\right)^2} = \num{1.1806E-8} \\
+\left(U_{a}\right)^2 = \frac{11^2\cdot\num{2.2300E-3}}{\left(-8\right)^2} + \frac{3^2\cdot\num{5.2556E-3}}{\left(8\right)^2} = \num{5.0875E-3}
+\end{align*}
 
 \section{Fast Sampling System}
 \label{sec:fast-sampling}
@@ -826,7 +833,7 @@ signal from the reaction chamber is read from the cDAQ in \SI{1}{\milli\second}
 chunks in a loop. On each loop iteration, the maximum pressure is checked
 against a desired trigger pressure; when the reaction chamber pressure exceeds
 the trigger pressure, the cDAQ sends the trigger to the GSV controller. The
-GSV controller has an adjustable delay \todo{Check this range} (\SIrange{4.5}{50}{\milli\second}) that
+GSV controller has an adjustable delay (\SIrange{4.5}{70}{\milli\second}) that
 is used to control the timing of the opening of the GSV during the induction period.
 The absolute opening time of the GSV is thus dependent on three parameters:
 \begin{enumerate}
