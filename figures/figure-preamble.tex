@@ -1,0 +1,47 @@
+\documentclass[tikz]{standalone}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows.meta}
+\pgfplotsset{
+    compat=1.10,
+    width=9cm,
+    height=7cm,
+    % every tick/.style={color=black, semithick},
+    % every minor tick/.style={thin},
+    % axis line style = semithick,
+    every axis/.append style={
+        semithick,
+        tick style = {color=black, semithick},
+        minor tick style={thin},
+    },
+    legend style ={
+        cells={anchor=west},
+        draw=none,
+        fill=none,
+    }
+}
+\usepackage{mathtools}
+\usepackage{unicode-math}
+\unimathsetup{math-style=TeX}
+\setmathfont[range=\mathup/{num}]{Times New Roman}
+\setmathfont[range=\mathit/{greek,Greek,latin,Latin}]{Cambria Math}
+\setmathfont[range=\mathup/{greek,Greek,latin,Latin}]{Cambria Math}
+\setmainfont[Ligatures=TeX]{Times New Roman}
+\setmonofont{Inconsolata}
+\setmathfont[range={"2212,"002B,"003D,"0028,"0029,"005B,"005D,"221A,
+"2211,"2248,"222B,"007C,"2026,"2202,"00D7,"0302,"2261,"0025,"22C5,
+"00B1,"2194,"21D4,"2032}]
+{Cambria Math}
+\usepackage{siunitx}
+\sisetup{%
+    group-separator = {,} ,
+    range-units = single ,
+    range-phrase = {\text{--}} ,
+    list-units = single ,
+    list-separator = {\text{, }} ,
+    list-final-separator = {\text{, and }} ,
+    list-pair-separator = {\text{ and }} ,
+    alsoload = synchem ,
+    mode = text ,
+}%
+\DeclareSIUnit\calorie{cal}
+\DeclareSIUnit\atmosphere{atm}
