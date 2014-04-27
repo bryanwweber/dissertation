@@ -1,13 +1,11 @@
 \documentclass[tikz]{standalone}
 \usepackage{pgfplots}
+\usepackage{pgfplotstable}
 \usetikzlibrary{arrows.meta}
 \pgfplotsset{
     compat=1.10,
     width=9cm,
     height=7cm,
-    % every tick/.style={color=black, semithick},
-    % every minor tick/.style={thin},
-    % axis line style = semithick,
     every axis/.append style={
         semithick,
         tick style = {color=black, semithick},
@@ -19,6 +17,30 @@
         fill=none,
     }
 }
+
+\newcommand{\deflisttick}[1]{
+\gdef\listticks{}
+\gdef\listlabels{}
+\gdef\minorticks{}
+\foreach \x[count=\xi] in {#1}{\global\let\maxitems\xi}
+\foreach \x[count=\xi] in {#1}{
+\pgfmathsetmacro{\xx}{1000/\x}
+\pgfmathsetmacro{\m}{1000/(\x+10)}
+\pgfmathsetmacro{\mm}{1000/(\x+20)}
+\pgfmathsetmacro{\mmm}{1000/(\x+30)}
+\pgfmathsetmacro{\mmmm}{1000/(\x+40)}
+ \ifnum\xi=\maxitems
+   \xdef\listticks{\listticks \xx}
+   \xdef\listlabels{\listlabels \x}
+   \xdef\minorticks{\minorticks \m,\mm,\mmm,\mmmm}
+ \else
+   \xdef\listticks{\listticks \xx,}
+   \xdef\listlabels{\listlabels \x,}
+   \xdef\minorticks{\minorticks \m,\mm,\mmm,\mmmm,}
+ \fi  
+}
+}
+
 \usepackage{mathtools}
 \usepackage{unicode-math}
 \unimathsetup{math-style=TeX}
