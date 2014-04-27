@@ -1,0 +1,58 @@
+% arara: lualatex
+\input{../../figure-preamble.tex}
+\begin{document}
+\begin{tikzpicture}
+\pgfplotsset{set layers}
+\begin{semilogyaxis}[
+    scale only axis,
+    ylabel={Ignition Delay, \si{\milli\second}},
+    xlabel={$1000/T_C$, \si{\per\kelvin}},
+    xmin=1.13, xmax=1.40,
+    ymin=8, ymax=200,
+    ytickten={0,1,2},
+    log ticks with fixed point,
+    minor x tick num=4,
+    minor y tick num=8,
+    legend style={
+        at={(0.75,0.85)},
+    },
+    axis x line*=bottom,
+]
+\addplot[only marks, red, mark=o, error bars/.cd, y dir=both, y explicit] table[x index={0}, y index={1}, y error index={2}] {tbuoh.txt};
+\addplot[only marks, blue, mark=square, error bars/.cd, y dir=both, y explicit]   table[x index={0}, y index={1}, y error index={2}] {ibuoh.txt};
+\addplot[only marks, green!60!black, mark=diamond, error bars/.cd, y dir=both, y explicit]  table[x index={0}, y index={1}, y error index={2}] {sbuoh.txt};
+\addplot+[only marks, violet, mark=triangle, error bars/.cd, y dir=both, y explicit] table[x index={0}, y index={1}, y error index={2}] {nbuoh.txt};
+\addplot[no markers, red, dashed] table[x index={0}, y={create col/linear regression={y=Tig}}] {tbuoh.txt};
+\addplot[no markers, blue, dashed] table[x index={0}, y={create col/linear regression={y=Tig}}] {ibuoh.txt};
+\addplot[no markers, green!60!black, dashed] table[x index={0}, y={create col/linear regression={y=Tig}}] {sbuoh.txt};
+\addplot[no markers, violet, dashed] table[x index={0}, y={create col/linear regression={y=Tig}}] {nbuoh.txt};
+\addplot[no markers, red, solid] table[x index={0}, y=Vpro] {tbuoh.txt};
+\addplot[no markers, blue, solid] table[x index={0}, y=Vpro] {ibuoh.txt};
+\addplot[no markers, green!60!black, solid] table[x index={0}, y=Vpro] {sbuoh.txt};
+\addplot[no markers, violet, solid] table[x index={0}, y=Vpro] {nbuoh.txt};
+\legend{{[red]\textit{t}-butanol},{[blue]\textit{i}-butanol},{[green!60!black]\textit{s}-butanol},{[violet]\textit{n}-butanol}}
+\node[align=left,text width=3.6cm] at (axis description cs:0.75,0.9) {Symbols: Experiments Solid Lines: Simulations};
+\end{semilogyaxis}
+\deflisttick{700,750,...,900}
+\edef\temp{%
+  \noexpand\pgfplotsset{%
+      x tick labels list/.style={xticklabels={\listlabels}}
+  }%
+}
+\temp
+\begin{semilogyaxis}[
+    scale only axis,
+    title style={yshift=7pt},
+    title={\large Butanol/O$_2$/N$_2$, $\phi=1.0$, $P_C=\SI{15}{\bar}$},
+    xmin=1.13, xmax=1.40,
+    ymin=8, ymax=200,
+    axis y line=none,
+    axis x line*=top,
+    xtick={\listticks},
+    x tick labels list,
+    minor xtick ={\minorticks}
+]
+\node at (axis cs:1.33,18) {O$_2$ : N$_2$ = 1 : 3.76};
+\end{semilogyaxis}
+\end{tikzpicture}
+\end{document}
