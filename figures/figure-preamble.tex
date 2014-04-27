@@ -7,10 +7,10 @@
     width=9cm,
     height=7cm,
     every axis/.append style={
-        semithick,
         tick style = {color=black, semithick},
         minor tick style={thin},
     },
+    axis line style={semithick},
     legend style ={
         cells={anchor=west},
         draw=none,
@@ -37,10 +37,12 @@
    \xdef\listticks{\listticks \xx,}
    \xdef\listlabels{\listlabels \x,}
    \xdef\minorticks{\minorticks \m,\mm,\mmm,\mmmm,}
- \fi  
+ \fi
 }
 }
-
+\makeatletter
+\def\pgfplots@drawtickgridlines@INSTALLCLIP@onorientedsurf#1{}
+\makeatother
 \usepackage{mathtools}
 \usepackage{unicode-math}
 \unimathsetup{math-style=TeX}
