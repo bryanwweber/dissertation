@@ -9,9 +9,10 @@
     xlabel={$1000/T_C$, \si{\per\kelvin}},
     xmin=1.13, xmax=1.40,
     ymin=10, ymax=200,
-    ytickten={1,2},
+    ytickten={0,1,2},
     log ticks with fixed point,
     minor x tick num=4,
+    minor y tick num=8,
     legend style={
         at={(0.8,0.95)},
     },
@@ -46,6 +47,7 @@
     x tick labels list,
     minor xtick ={\minorticks}
 ]
+\node at (axis cs:1.33,18) {O$_2$ : N$_2$ = 1 : 3.76};
 \end{semilogyaxis}
 \end{tikzpicture}
 \end{document}
