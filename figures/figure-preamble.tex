@@ -31,11 +31,11 @@
 \pgfmathsetmacro{\mmmm}{1000/(\x+40)}
  \ifnum\xi=\maxitems
    \xdef\listticks{\listticks \xx}
-   \xdef\listlabels{\listlabels \x}
+   \xdef\listlabels{\listlabels \SI{\x}{\kelvin}}
    \xdef\minorticks{\minorticks \m,\mm,\mmm,\mmmm}
  \else
    \xdef\listticks{\listticks \xx,}
-   \xdef\listlabels{\listlabels \x,}
+   \xdef\listlabels{\listlabels \SI{\x}{\kelvin},}
    \xdef\minorticks{\minorticks \m,\mm,\mmm,\mmmm,}
  \fi
 }
