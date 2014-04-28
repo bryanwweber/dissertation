@@ -1,0 +1,25 @@
+% arara: lualatex
+\input{../../figure-preamble.tex}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[%
+    xmin=-7, xmax=22,
+    ymin=18, ymax=45,
+    xlabel={Time, \si{\milli\second}},
+    ylabel={Pressure, \si{\bar}},
+    title={\Large \textit{t}-Butanol/O$_2$/N$_2$, $P_C=\SI{30}{\bar}$, $\phi=2.0$},
+    minor x tick num=3,
+    minor y tick num=4,
+    every axis legend/.append style={
+        at={(axis cs:-5,40)},
+        anchor=west,
+    }
+]
+\addplot[black,solid,no markers] table[x index={0}, y index={1}, col sep=comma] {tbuoh-20press.txt};
+\addplot[gray,dashed,no markers] table[x index={2}, y index={3}, col sep=comma] {tbuoh-20press.txt};
+\addplot[green!60!black,dashdotted,no markers] table[x index={4}, y index={5}, col sep=comma] {tbuoh-20press.txt};
+\legend{{[black]$T_C=\SI{784}{\kelvin}$, Experiment},{[gray]$T_C=\SI{784}{\kelvin}$, Non-Reactive},{[green!60!black]$T_C=\SI{784}{\kelvin}$, Simulation}};
+\node[anchor=south] at (axis cs:15,21) {O$_2$ : N$_2$ = 1 : 3.76};
+\end{axis}
+\end{tikzpicture}
+\end{document}
