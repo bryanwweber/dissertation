@@ -1,0 +1,53 @@
+% arara: lualatex
+\input{../../figure-preamble.tex}
+\begin{document}
+\begin{tikzpicture}
+\pgfplotsset{set layers}
+\begin{semilogyaxis}[
+    scale only axis,
+    ylabel={Ignition Delay, \si{\milli\second}},
+    xlabel={$1000/T_C$, \si{\per\kelvin}},
+    xmin=1.05, xmax=1.45,
+    ymin=7, ymax=200,
+    ytickten={0,1,2},
+    log ticks with fixed point,
+    minor x tick num=4,
+    minor y tick num=8,
+    every axis legend/.append style={
+        at={(axis cs:1.35,25)},
+        anchor=north west,
+        /tikz/column sep=0.25cm,
+    },
+    axis x line*=bottom,
+]
+\addplot[only marks, black, mark=o, error bars/.cd, y dir=both, y explicit] table[x=1000/Tc, y=Tig, y error=Error] {phi-05.txt};
+\addplot[only marks, red, mark=square, error bars/.cd, y dir=both, y explicit] table[x=1000/Tc, y=Tig, y error=Error] {phi-10.txt};
+\addplot[only marks, green!60!black, mark=diamond, error bars/.cd, y dir=both, y explicit] table[x=1000/Tc, y=Tig, y error=Error] {phi-20.txt};
+\addplot[no markers, black, dashed] table[x=1000/Tc, y={create col/linear regression={y=Tig}}] {phi-05.txt};
+\addplot[no markers, red, dashed] table[x=1000/Tc, y={create col/linear regression={y=Tig}}] {phi-10.txt};
+\addplot[no markers, green!60!black, dashed] table[x=1000/Tc, y={create col/linear regression={y=Tig}}] {phi-20.txt};
+\legend{{$\phi=0.5$},{$\phi=1.0$},{$\phi=2.0$}};
+\end{semilogyaxis}
+\deflisttick{650,700,...,1000}
+\edef\temp{%
+  \noexpand\pgfplotsset{%
+      x tick labels list/.style={xticklabels={\listlabels}}
+  }%
+}
+\temp
+\begin{semilogyaxis}[
+    scale only axis,
+    title style={yshift=7pt},
+    title={\large \textit{t}-Butanol/O$_2$/N$_2$, $P_C=\SI{30}{\bar}$},
+    xmin=1.05, xmax=1.45,
+    ymin=7, ymax=200,
+    axis y line=none,
+    axis x line*=top,
+    xtick={\listticks},
+    x tick labels list,
+    minor xtick ={\minorticks}
+]
+\node[anchor=west,align=left] at (axis cs:1.3,9) {O$_2$ : N$_2$ = 1 : 3.76};
+\end{semilogyaxis}
+\end{tikzpicture}
+\end{document}
