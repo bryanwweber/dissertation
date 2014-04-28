@@ -1,0 +1,63 @@
+% arara: lualatex
+\input{../../figure-preamble.tex}
+\pgfplotsset{width=10cm,height=10cm}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[%
+    name=main,
+    axis x line*=bottom,
+    xmin=0, xmax=100,
+    ymin=0, ymax=15,
+    ylabel={Total Cumulative Heat Release, \si{\joule\per\centi\meter\cubed}},
+    xlabel={Fuel Conversion, \si{\percent}},
+    title={\Large Cumulative Heat Release, \SI{750}{\kelvin}, \SI{30}{\bar}, $\phi=1.0$},
+    xtick={0,10,...,100},
+    minor x tick num=3,
+    ytick={0,5,10,15},
+    minor y tick num=4,
+    every axis legend/.append style={
+        at={(axis cs:70,3.5)},
+        anchor=north west,
+    }
+]
+\addplot[no markers, red, solid] table[x index={0}, y index={1}, col sep=comma] {buoh-heat-main.txt};
+\addplot[no markers, blue, solid] table[x index={2}, y index={3}, col sep=comma] {buoh-heat-main.txt};
+\addplot[no markers, green!60!black, solid] table[x index={4}, y index={5}, col sep=comma] {buoh-heat-main.txt};
+\addplot[no markers, violet, solid] table[x index={6}, y index={7}, col sep=comma] {buoh-heat-main.txt};
+\legend{{[red]\textit{t}-butanol},{[blue]\textit{i}-butanol},{[green!60!black]\textit{s}-butanol},{[violet]\textit{n}-butanol}};
+\end{axis}
+\begin{axis}[%
+    at={(main.north)},
+    anchor=north,
+    xshift=0cm,
+    yshift=-0.1cm,
+    width=7cm,
+    height=5.5cm,
+    axis x line*=bottom,
+    xmin=0, xmax=100,
+    ymin=0, ymax=0.9,
+    xtick={0,10,...,100},
+    minor x tick num=3,
+    ytick={0,0.1,...,0.9},
+    minor y tick num=1,
+    ylabel={\footnotesize Cumulative Heat Release, \si{\joule\per\centi\meter\cubed}},
+    xlabel={\footnotesize Fuel Conversion, \si{\percent}},
+    tick label style={font=\footnotesize},
+]
+\addplot[no markers, red, solid] table[x index={0}, y index={1}, col sep=comma] {buoh-heat-inset.txt};
+\addplot[no markers, blue, solid] table[x index={2}, y index={3}, col sep=comma] {buoh-heat-inset.txt};
+\addplot[no markers, green!60!black, solid] table[x index={4}, y index={5}, col sep=comma] {buoh-heat-inset.txt};
+\addplot[no markers, violet, solid] table[x index={6}, y index={7}, col sep=comma] {buoh-heat-inset.txt};
+
+% set arrow from first 30,0.67 to first 30,0.5 lc rgb "#FF0000" filled
+% set arrow from first 65,0.82 to first 77,0.725 lc rgb "#0000FF" filled
+% set arrow from first 65,0.25 to first 80,0.625 lc rgb "#CC00FF" filled
+% set arrow from first 90,0.12 to first 90,0.725 lc rgb "#006400" filled
+
+\draw[-stealth,red] (axis cs:30,0.68) node[anchor=south, red, font=\footnotesize] at (axis cs:35,0.68) {R1: tc4h8oh + o2 $\Leftrightarrow$ tc4h8oh-o2} -- (axis cs:30,0.5);
+\draw[-stealth,blue] (axis cs: 65,0.82) node[anchor=south, blue, font=\footnotesize] at (axis cs:58,0.82) {R2: ic4h8oh-1 + o2 $\Leftrightarrow$ ic3h7cho + ho2} -- (axis cs:77,0.725);
+\draw[-stealth,green!60!black] (axis cs:90,0.12) node[anchor=north, green!60!black, font=\footnotesize] at (axis cs:55,0.12) {R3: sch48oh-1 + o2 $\Leftrightarrow$ c2h5coch3 + ho2} -- (axis cs:90,0.725);
+\draw[-stealth,violet] (axis cs:65,0.25) node[anchor=north, violet, font=\footnotesize] at (axis cs:55,0.25) {R4: 2ho2 $\Leftrightarrow$ h2o2 + o2} -- (axis cs:80,0.625);
+\end{axis}
+\end{tikzpicture}
+\end{document}
