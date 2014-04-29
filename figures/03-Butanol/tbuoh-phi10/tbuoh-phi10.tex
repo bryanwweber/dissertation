@@ -24,25 +24,13 @@
 \addplot[green!60!black,restrict x to domain=-10:55] table[x index={4}, y index={5}, col sep=comma] {tbuoh-phi10.txt};
 \addplot[blue,restrict x to domain=-10:30] table[x index={6}, y index={7}, col sep=comma] {tbuoh-phi10.txt};
 \addplot[violet,restrict x to domain=-10:18] table[x index={8}, y index={9}, col sep=comma] {tbuoh-phi10.txt};
-% \addplot[cyan] table[x index={10}, y index={11}, col sep=comma] {tbuoh-phi10.txt};
 \addplot[gray] table[x index={10}, y index={11}, col sep=comma] {tbuoh-phi10.txt};
 \node[anchor=south] at (axis cs:125,19) {O$_2$ : N$_2$ = 1 : 3.76};
-
-% set label at 105,21 "{/=16 O_{2} : N_{2} = 1 : 3.76}"
-% set label at 148,35 rotate by 90 tc rgb "#000000" "{/=14 {/Times-Italic T_{C}} = 728 K}"
-% set label at 81,37 rotate by 90 tc rgb "#FF0000" "{/=14 750 K}"
-% set label at 45,37 rotate by 90 tc rgb "#006400" "{/=14 777 K}"
-% set label at 22,37 rotate by 90 tc rgb "#0000FF" "{/=14 810 K}"
-% set label at 7,37 rotate by 90 tc rgb "#FF00FF" "{/=14 856 K}"
-% set label at 90,23 right tc rgb "#666699" "{/=14 Non-Reactive}"
-% set arrow from 90,23 to 100,25.5 filled size 0.01,15 lc rgb "#666699" lw 1.5
-
 \node[anchor=south,rotate=90,black] at (axis cs:153,39) {$T_C=\SI{728}{\kelvin}$};
 \node[anchor=south,rotate=90,red] at (axis cs:86,39) {\SI{750}{\kelvin}};
 \node[anchor=south,rotate=90,green!60!black] at (axis cs:49,39) {\SI{777}{\kelvin}};
 \node[anchor=south,rotate=90,blue] at (axis cs:26,39) {\SI{810}{\kelvin}};
 \node[anchor=south,rotate=90,violet] at (axis cs:11,39) {\SI{856}{\kelvin}};
-% \node[anchor=west,rotate=90,cyan] at (axis cs:41,17) {\SI{853}{\kelvin}};
 \node[anchor=east,gray] at (axis cs:90,23) {Non-Reactive};
 \draw[-stealth,gray] (axis cs:90,23) -- (axis cs:100,25.5);
 \end{axis}
