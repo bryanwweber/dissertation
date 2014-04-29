@@ -1,39 +1,11 @@
 % arara: lualatex
-\documentclass[tikz]{standalone}
-\usepackage{pgfplots}
-\pgfplotsset{width=9cm,height=7cm,compat=1.10}
-
-%Set the math font
-\usepackage{unicode-math}
-\setmainfont[Ligatures=TeX]{Times New Roman}
-\unimathsetup{math-style=TeX}
-\setmathfont[range=\mathup/{num}]{Times New Roman}
-\setmathfont[range=\mathit/{greek,Greek,latin,Latin}]{Cambria Math}
-\setmathfont[range=\mathup/{greek,Greek,latin,Latin}]{Cambria Math}
-\setmathfont[range={"2212,"002B,"003D,"0028,"0029,"005B,"005D,"221A,
-"2211,"2248,"222B,"007C,"2026,"2202,"00D7,"0302,"2261,"0025,"22C5,
-"00B1,"2194}]
-{Cambria Math}
-\usepackage{siunitx}
-\sisetup{%
-    group-separator = {,} ,
-    range-units = single ,
-    range-phrase = {\text{--}} ,
-    list-units = single ,
-    list-separator = {\text{, }} ,
-    list-final-separator = {\text{, and }} ,
-    list-pair-separator = {\text{ and }} ,
-    alsoload = synchem ,
-    mode = text ,
-}%
-\newcommand{\iPeOH}{\textit{i}-pentanol}
-
+\input{../../figure-preamble.tex}
 \begin{document}
 \begin{tikzpicture}
 \begin{axis}[
     ymin=10, ymax=60,
     xmin=-10, xmax=90,
-    title={\textit{i}-Pentanol/O$_2$/N$_2$, $\phi=2.0$, $P_C=\SI{40}{\bar}$, $T_C=\SI{653}{\kelvin}$},
+    title={\textit{i}-Pentanol/O$_2$/N$_2$, $\phi=2.0$, $P_C=\SI{40}{\bar}$},
     ylabel={Pressure, \si{\bar}},
     xlabel={Time, \si{\milli\second}},
     minor x tick num = 3,
@@ -41,19 +13,12 @@
     every tick/.style={color=black, semithick},
     every minor tick/.style={thin},
     axis line style = semithick,
-    legend entries = {Experiment,Simulation,Non-Reactive},
+    legend entries = {{$T_C=\SI{653}{\kelvin}$, Experiment},{$T_C=\SI{653}{\kelvin}$, Simulation},{$T_C=\SI{653}{\kelvin}$, Non-Reactive}},
     legend style = {at={(0.55,0.27)},anchor=center},
     legend cell align = left,
+    table/col sep=comma,
 ]
-\addplot[
-red,
-x filter/.code={
-    \ifnum\coordindex>1350
-        \def\pgfmathresult{}
-    \fi
-},
-semithick,
-] table[x=Time-Expt,y=Pres-Expt, col sep=comma] {phi-20-pressure.txt};
+\addplot[red,restrict x to domain=-10:32,semithick] table[x=Time-Expt,y=Pres-Expt, col sep=comma] {phi-20-pressure.txt};
 \addplot[blue,semithick] table[x=Time-Sim,y=Pres-Sim, col sep=comma] {phi-20-pressure.txt};
 \addplot[gray,semithick] table[x=Time-NR,y=Pres-NR, col sep=comma] {phi-20-pressure.txt};
 \end{axis}
