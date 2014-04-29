@@ -1,0 +1,55 @@
+% arara: lualatex
+\input{../../figure-preamble.tex}
+\pgfplotsset{width=10cm,height=10cm}
+\begin{document}
+\begin{tikzpicture}[inner sep=0pt, outer sep=0pt]
+\begin{axis}[%
+    xbar=0pt,
+    bar width=0.4,
+    xmin=-60, xmax=80,
+    enlarge y limits=0.1,
+    table/header=false,
+    table/y expr=\coordindex,
+    table/meta index={0},
+    ytick=\empty,
+    axis y line*=middle,
+    title={\Large \textit{i}-Butanol/O$_2$/N$_2$, \SI{30}{\bar}, $\phi=1.0$},
+    xlabel={Percent Sensitivity, \si{\percent}},
+    xlabel shift=0.15cm,
+    xticklabel shift=0.15cm,
+    clip=false,
+    minor x tick num=3,
+    every axis legend/.append style={
+        at={(axis cs:45,4.5)},
+        anchor=west,
+        fill=white,
+    },
+    area legend,
+]
+\addplot[blue,fill,draw=none] table[x index={1}] {buoh-sens.txt};
+\addplot[violet,fill,draw=none] table[x index={2}] {buoh-sens.txt};
+\legend{{\SI{750}{\kelvin}},{\SI{1200}{\kelvin}}};
+
+\draw[gray,dashed]  (axis cs:-60,0.5) -- (axis cs:80,0.5)
+                    (axis cs:-60,1.5) -- (axis cs:80,1.5)
+                    (axis cs:-60,2.5) -- (axis cs:80,2.5)
+                    (axis cs:-60,3.5) -- (axis cs:80,3.5)
+                    (axis cs:-60,4.5) -- (axis cs:80,4.5)
+                    (axis cs:-60,5.5) -- (axis cs:80,5.5)
+                    (axis cs:-60,6.5) -- (axis cs:80,6.5)
+                    (axis cs:-60,7.5) -- (axis cs:80,7.5)
+                    (axis cs:-60,8.5) -- (axis cs:80,8.5);
+\node[anchor=east,font=\footnotesize] at (axis cs:-2,0) {ic4h9oh+ho2$\Leftrightarrow$ic4h8oh-1+h2o2};
+\node[anchor=east,font=\footnotesize] at (axis cs:-2,1) {ic4h8oh-1+o2$\Leftrightarrow$ic4h8oh-1o2};
+\node[anchor=east,font=\footnotesize] at (axis cs:-2,2) {ic4h9oh+oh$\Leftrightarrow$ic4h8oh-3+h2o};
+\node[anchor=west,font=\footnotesize] at (axis cs: 2,3) {ic4h9oh+oh$\Leftrightarrow$ic4h8oh-1+h2o};
+\node[anchor=west,font=\footnotesize] at (axis cs: 2,4) {2ho2$\Leftrightarrow$h2o2+o2};
+\node[anchor=east,font=\footnotesize] at (axis cs:-2,5) {ic4h8oh-1o2$\Leftrightarrow$ic4h7oh-1ooh-3};
+\node[anchor=west,font=\footnotesize] at (axis cs: 2,6) {ic3h7o2$\Leftrightarrow$c3h6+ho2};
+\node[anchor=east,font=\footnotesize] at (axis cs:-2,7) {ic3h7o2$\Leftrightarrow$c3h6ooh2-1};
+\node[anchor=west,font=\footnotesize] at (axis cs: 2,8) {ic4h8oh-1o2$\Leftrightarrow$ic3h6choh+ho2};
+\node[anchor=east,font=\footnotesize] at (axis cs:-2,9) {ic3h7cho+ho2$\Leftrightarrow$ic3h7co+h2o2};
+
+\end{axis}
+\end{tikzpicture}
+\end{document}
