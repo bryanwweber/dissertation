@@ -5,6 +5,9 @@
 \makeatother
 \usepackage{pax}
 
+%Allow to use \doi to link to DOI links.
+\newcommand*{\doi}[1]{\href{http://dx.doi.org/#1}{\texttt{#1}}}
+
 %Set the package to import preambles
 \usepackage{subfiles}
 
@@ -102,6 +105,16 @@
   \setunit*{\addcomma\space}%
   \usebibmacro{date}%
   \newunit}
+
+%Fix in-text full citations
+\DeclareCiteCommand{\fullcite}
+  {\usebibmacro{prenote}}
+  {\usedriver
+     {\defcounter{minnames}{99}%
+      \defcounter{maxnames}{99}}
+     {\thefield{entrytype}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
 
 %Use fancy tables.
 \usepackage{booktabs}
