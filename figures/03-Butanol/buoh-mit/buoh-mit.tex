@@ -38,7 +38,7 @@
 \addplot[no markers, red, solid] table[x=1000/Tc, y={create col/linear regression={y=MIT}}] {30-mit.txt};
 \legend{{\SI{15}{\bar}},{\SI{30}{\bar}},,,Experiments,,,,,,{Sarathy et al. Mechanism},{MIT Mechanism}};
 \end{semilogyaxis}
-\deflisttick{700,750,...,900}
+\deflisttick{700,750,...,900}{10}
 \edef\temp{%
   \noexpand\pgfplotsset{%
       x tick labels list/.style={xticklabels={\listlabels}}

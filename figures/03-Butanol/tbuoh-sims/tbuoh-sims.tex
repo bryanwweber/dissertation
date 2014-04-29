@@ -31,7 +31,7 @@
 \addplot[no markers, green!60!black, solid] table[x=1000/Tc, y=VPRO] {phi-20.txt};
 \legend{{$\phi=0.5$},{$\phi=1.0$},{$\phi=2.0$}};
 \end{semilogyaxis}
-\deflisttick{650,700,...,1000}
+\deflisttick{650,700,...,1000}{10}
 \edef\temp{%
   \noexpand\pgfplotsset{%
       x tick labels list/.style={xticklabels={\listlabels}}

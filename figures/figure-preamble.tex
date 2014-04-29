@@ -20,17 +20,17 @@
     }
 }
 
-\newcommand{\deflisttick}[1]{
+\newcommand{\deflisttick}[2]{
 \gdef\listticks{}
 \gdef\listlabels{}
 \gdef\minorticks{}
 \foreach \x[count=\xi] in {#1}{\global\let\maxitems\xi}
 \foreach \x[count=\xi] in {#1}{
 \pgfmathsetmacro{\xx}{1000/\x}
-\pgfmathsetmacro{\m}{1000/(\x+10)}
-\pgfmathsetmacro{\mm}{1000/(\x+20)}
-\pgfmathsetmacro{\mmm}{1000/(\x+30)}
-\pgfmathsetmacro{\mmmm}{1000/(\x+40)}
+\pgfmathsetmacro{\m}{1000/(\x+#2)}
+\pgfmathsetmacro{\mm}{1000/(\x+2*#2)}
+\pgfmathsetmacro{\mmm}{1000/(\x+3*#2)}
+\pgfmathsetmacro{\mmmm}{1000/(\x+4*#2)}
  \ifnum\xi=\maxitems
    \xdef\listticks{\listticks \xx}
    \xdef\listlabels{\listlabels \SI{\x}{\kelvin}}
