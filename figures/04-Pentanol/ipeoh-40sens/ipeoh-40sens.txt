@@ -1,0 +1,16 @@
+#Reactions   \ff\n=0.5   \ff\n=1.0   \ff\n=2.0
+{ic5h11oh+oh$\Leftrightarrow$$\alpha$-hydroxypentyl+h2o}             149.06  114.87  80.538
+{$\alpha$-hydroxypentyl+o2$\Leftrightarrow$iso-pentanal+ho2}         54.330  49.647  42.903
+{ic5h11oh+oh$\Leftrightarrow$$\gamma$-hydroxypentyl+h2o}             -43.892 -35.873 -29.343
+{$\alpha$-hydroxypentyl+o2$\Leftrightarrow$ic5h10oh-1o2 (RO$_2$)}    -39.634 -35.629 -31.592
+{ic5h11oh+ho2$\Leftrightarrow$$\alpha$-hydroxypentyl+h2o2}           -16.741 -19.216 -20.471
+{ic5h11oh+oh$\Leftrightarrow$$\delta$-hydroxypentyl+h2o}             -24.955 -17.603 -12.412
+{2ho2$\Leftrightarrow$h2o2+o2}                                       11.504  11.190  11.680
+{ic5h11oh+ho2$\Leftrightarrow$$\gamma$-hydroxypentyl+h2o2}           -8.7714 -10.119 -10.833
+{ic5h10oh-3o2$\Rightarrow$tc4h8o2h-i+ch2o}                           11.540  9.1038  7.0297
+{ic5h10oh-3o2 (RO$_2$)$\Leftrightarrow$ic5h9oh-3ooh-1 (QOOH)}        -10.812 -9.0747 -7.7825
+{ic5h9oh-3ooh-1+o2$\Leftrightarrow$ic5h9oh-3ooh-1o2}                  5.8519 8.1808  8.4310
+{ic5h10oh-4o2$\Leftrightarrow$ic5h9oh-4ooh-2}                        -9.6302 -6.8656 -4.9096
+{ch2o+oh$\Leftrightarrow$hco+h2o}                                    13.559  6.2244  3.0384
+{ic5h9oh-4ooh-1+o2$\Leftrightarrow$ic5h9oh-4ooh-1o2}                 -9.0826 -6.0774 -3.9305
+{ic5ketdb$\Rightarrow$ch3coch3+ch2cho+oh}                            -4.4500 -5.4796 -5.9898

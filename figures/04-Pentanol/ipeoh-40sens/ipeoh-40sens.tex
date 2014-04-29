@@ -1,0 +1,66 @@
+% arara: lualatex
+\input{../../figure-preamble.tex}
+\pgfplotsset{width=10cm,height=10cm}
+\begin{document}
+\begin{tikzpicture}[inner sep=0pt, outer sep=0pt]
+\begin{axis}[%
+    xbar=0pt,
+    bar width=0.3,
+    xmin=-120, xmax=160,
+    enlarge y limits=0.075,
+    table/header=false,
+    table/y expr=\coordindex,
+    table/meta index={0},
+    ytick=\empty,
+    axis y line*=middle,
+    title={Ignition Delay Sensitivity, \SI{40}{atm}, \SI{689}{\kelvin}},
+    xlabel={Percent Sensitivity, \si{\percent}},
+    xlabel shift=0.15cm,
+    xticklabel shift=0.15cm,
+    clip=false,
+    xtick={-120,-80,...,160},
+    minor x tick num=3,
+    every axis legend/.append style={
+        at={(axis cs:-120,8.5)},
+        anchor=west,
+        fill=white,
+    },
+    area legend,
+]
+\addplot[blue,fill,draw=none] table[x index={1}] {ipeoh-40sens.txt};
+\addplot[red,fill,draw=none] table[x index={2}] {ipeoh-40sens.txt};
+\addplot[teal,fill,draw=none] table[x index={3}] {ipeoh-40sens.txt};
+\legend{{$\phi=0.5$},{$\phi=1.0$},{$\phi=2.0$}};
+
+\draw[gray,dashed]  (axis cs:-120, 0.5) -- (axis cs:160, 0.5)
+                    (axis cs:-120, 1.5) -- (axis cs:160, 1.5)
+                    (axis cs:-120, 2.5) -- (axis cs:160, 2.5)
+                    (axis cs:-120, 3.5) -- (axis cs:160, 3.5)
+                    (axis cs:-120, 4.5) -- (axis cs:160, 4.5)
+                    (axis cs:-120, 5.5) -- (axis cs:160, 5.5)
+                    (axis cs:-120, 6.5) -- (axis cs:160, 6.5)
+                    (axis cs:-120, 7.5) -- (axis cs:160, 7.5)
+                    (axis cs:-120, 8.5) -- (axis cs:160, 8.5)
+                    (axis cs:-120, 9.5) -- (axis cs:160, 9.5)
+                    (axis cs:-120,10.5) -- (axis cs:160,10.5)
+                    (axis cs:-120,11.5) -- (axis cs:160,11.5)
+                    (axis cs:-120,12.5) -- (axis cs:160,12.5)
+                    (axis cs:-120,13.5) -- (axis cs:160,13.5);
+\node[anchor=east,font=\footnotesize] at (axis cs:-2, 0) {ic5h11oh+oh$\Leftrightarrow$$\alpha$-hydroxypentyl+h2o};
+\node[anchor=east,font=\footnotesize] at (axis cs:-2, 1) {$\alpha$-hydroxypentyl+o2$\Leftrightarrow$iso-pentanal+ho2};
+\node[anchor=west,font=\footnotesize] at (axis cs: 2, 2) {ic5h11oh+oh$\Leftrightarrow$$\gamma$-hydroxypentyl+h2o};
+\node[anchor=west,font=\footnotesize] at (axis cs: 2, 3) {$\alpha$-hydroxypentyl+o2$\Leftrightarrow$ic5h10oh-1o2 (RO$_2$)};
+\node[anchor=west,font=\footnotesize] at (axis cs: 2, 4) {ic5h11oh+ho2$\Leftrightarrow$$\alpha$-hydroxypentyl+h2o2};
+\node[anchor=west,font=\footnotesize] at (axis cs: 2, 5) {ic5h11oh+oh$\Leftrightarrow$$\delta$-hydroxypentyl+h2o};
+\node[anchor=west,font=\footnotesize] at (axis cs:15, 6) {2ho2$\Leftrightarrow$h2o2+o2};
+\node[anchor=west,font=\footnotesize] at (axis cs: 2, 7) {ic5h11oh+ho2$\Leftrightarrow$$\gamma$-hydroxypentyl+h2o2};
+\node[anchor=west,font=\footnotesize] at (axis cs:12, 8) {ic5h10oh-3o2$\Rightarrow$tc4h8o2h-i+ch2o};
+\node[anchor=west,font=\footnotesize] at (axis cs: 2, 9) {ic5h10oh-3o2 (RO$_2$)$\Leftrightarrow$ic5h9oh-3ooh-1 (QOOH)};
+\node[anchor=west,font=\footnotesize] at (axis cs:10,10) {ic5h9oh-3ooh-1+o2$\Leftrightarrow$ic5h9oh-3ooh-1o2};
+\node[anchor=west,font=\footnotesize] at (axis cs: 2,11) {ic5h10oh-4o2$\Leftrightarrow$ic5h9oh-4ooh-2};
+\node[anchor=west,font=\footnotesize] at (axis cs:15,12) {ch2o+oh$\Leftrightarrow$hco+h2o};
+\node[anchor=west,font=\footnotesize] at (axis cs: 2,13) {ic5h9oh-4ooh-1+o2$\Leftrightarrow$ic5h9oh-4ooh-1o2};
+\node[anchor=west,font=\footnotesize] at (axis cs: 2,14) {ic5ketdb$\Rightarrow$ch3coch3+ch2cho+oh};
+\end{axis}
+\end{tikzpicture}
+\end{document}
