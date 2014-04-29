@@ -1,0 +1,59 @@
+% arara: lualatex
+\input{../../figure-preamble.tex}
+\begin{document}
+\begin{tikzpicture}[every mark/.append style={scale=2}]
+\begin{semilogyaxis}[%
+    scale only axis,
+    ylabel={Ignition Delay, \si{\milli\second}},
+    xlabel={$1000/T_C$, \si{\per\kelvin}},
+    xmin=0.65, xmax=1.2,
+    ymin=0.01, ymax=200,
+    ytickten={-2,-1,0,1,2},
+    log ticks with fixed point,
+    minor x tick num=4,
+    minor y tick num=8,
+    axis x line*=bottom,
+    table/col sep=comma,
+    every axis legend/.append style={
+        at={(axis cs:0.68,12)},
+        anchor=north west,
+        /tikz/column sep=0.25cm,
+    },
+]
+\addplot[blue,mark=o,only marks] table[x=1000/Tc,y=Tig,restrict x to domain=1:1.2] {phi-05-vpro.txt};
+\addplot[red,mark=square,only marks] table[x=1000/Tc,y=Tig,restrict x to domain=1:1.2] {phi-10-vpro.txt};
+\addplot[green!60!black,mark=triangle*,only marks] table[x=1000/Tc,y=Tig,restrict x to domain=0.65:1] {phi-20-vpro.txt};
+\addplot[blue,mark=*,only marks] table[x=1000/Tc,y=Tig,restrict x to domain=0.65:1] {phi-05-vpro.txt};
+\addplot[blue,dashed,no markers] table[x=1000/Tc,y=VPRO,restrict x to domain=1:1.2] {phi-05-vpro.txt};
+\addplot[blue,solid,no markers] table[x=1000/Tc,y=CONV] {phi-05-conv.txt};
+\addplot[red,mark=square*,only marks] table[x=1000/Tc,y=Tig,restrict x to domain=0.65:1] {phi-10-vpro.txt};
+\addplot[red,dashed,no markers] table[x=1000/Tc,y=VPRO,restrict x to domain=1:1.2] {phi-10-vpro.txt};
+\addplot[red,solid,no markers] table[x=1000/Tc,y=CONV] {phi-10-conv.txt};
+\addplot[green!60!black,solid,no markers] table[x=1000/Tc,y=CONV] {phi-20-conv.txt};
+\legend{{[blue]$\phi=0.5$},{[red]$\phi=1.0$},{[green!60!black]$\phi=2.0$}};
+\end{semilogyaxis}
+\deflisttick{800,1000,...,1400}{40}
+\edef\temp{%
+  \noexpand\pgfplotsset{%
+      x tick labels list/.style={xticklabels={\listlabels}}
+  }%
+}
+\temp
+\begin{semilogyaxis}[
+    scale only axis,
+    title style={yshift=7pt},
+    title={\textit{i}-Pentanol/O$_2$/N$_2$, $P_C=\SI{7}{\bar}$},
+    xmin=0.65, xmax=1.2,
+    ymin=0.01, ymax=200,
+    axis y line=none,
+    axis x line*=top,
+    xtick={\listticks},
+    x tick labels list,
+    minor xtick ={\minorticks},
+    extra x ticks={1.1111},
+    extra x tick labels = {\SI{900}{\kelvin}},
+]
+\node[anchor=south west,text width=3.6cm] at (axis cs:0.68,12) {Open Symbols: RCM Filled Symbols: ST Solid Lines: Const. Vol. Dashed Lines: Vol. Pro.};
+\end{semilogyaxis}
+\end{tikzpicture}
+\end{document}
