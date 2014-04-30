@@ -1,4 +1,0 @@
-#1000/Tc (1/K)	\ft\n Overall (ms)	Overall Error	\ft\n First Stage (ms)	First Stage Error	v9f Overall	v9f FIrst Stage
-1.4477	26.810	1.7500	?   	?   	13.899	13.600
-1.4020	10.170	0.32000	?   	?   	5.6056	5.2210
-1.3452	3.5200	0.26000	?   	?   	1.5082	1.0000
