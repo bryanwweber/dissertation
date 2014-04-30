@@ -1,0 +1,38 @@
+% arara: lualatex
+\input{../../figure-preamble.tex}
+\pgfplotsset{width=7cm, height=7cm}
+\pgfplotscreateplotcyclelist{pressure}{%
+    black,no markers,solid\\%
+    black,no markers,densely dashed\\%
+    black,no markers,densely dashdotdotted\\%
+    red,no markers,solid\\%
+    red,no markers,densely dashed\\%
+    red,no markers,densely dashdotdotted\\%
+}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[%
+    xmin=-3, xmax=12,
+    ymin=30, ymax=90,
+    xtick={-5,0,...,30},
+    minor x tick num=4,
+    ytick={30,40,...,90},
+    minor y tick num=3,
+    table/col sep=comma,
+    cycle list name=pressure,
+    ylabel={Pressure, \si{\bar}},
+    xlabel={Time, \si{\milli\second}},
+]
+\addplot table[x={Time729}, y={729K}] {exp_output_mix_3.csv};
+\addplot table[x={Time729}, y={729K}] {sim_output_mix_3.csv};
+\addplot table[x={Time729}, y={729K}] {non_output_mix_3.csv};
+\addplot table[x={Time797}, y={797K},restrict x to domain=-3:5] {exp_output_mix_3.csv};
+\addplot table[x={Time797}, y={797K}] {sim_output_mix_3.csv};
+\addplot table[x={Time797}, y={797K}] {non_output_mix_3.csv};
+\draw[stealth-stealth,semithick] (axis cs:10,47.9) -- (axis cs:9,36) node[left] {Non-Reactive Pressure} -- (axis cs:11,48.5);
+\draw[stealth-stealth,semithick] (axis cs:3.9,51.1) -- (axis cs:3.25,65)   node[left,inner sep=0pt] {\SI{729}{\kelvin}} -- (axis cs:10.2,56);
+\draw[stealth-stealth,semithick,red] (axis cs:4.6,68) -- (axis cs:3.25,74) node[left,inner sep=0pt] {\SI{797}{\kelvin}} -- (axis cs:6.625,68);
+
+\end{axis}
+\end{tikzpicture}
+\end{document}

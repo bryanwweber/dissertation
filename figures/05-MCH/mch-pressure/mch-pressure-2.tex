@@ -1,0 +1,33 @@
+% arara: lualatex
+\input{../../figure-preamble.tex}
+\pgfplotsset{width=7cm, height=7cm}
+\pgfplotscreateplotcyclelist{pressure}{%
+    black,no markers,solid\\%
+    black,no markers,densely dashed\\%
+    black,no markers,densely dashdotdotted\\%
+    red,no markers,solid\\%
+    red,no markers,densely dashed\\%
+    red,no markers,densely dashdotdotted\\%
+}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[%
+    xmin=-3, xmax=28,
+    ymin=30, ymax=90,
+    xtick={-5,0,...,30},
+    minor x tick num=4,
+    ytick={30,40,...,90},
+    minor y tick num=3,
+    table/col sep=comma,
+    cycle list name=pressure,
+    ylabel={Pressure, \si{\bar}},
+    xlabel={Time, \si{\milli\second}},
+]
+\addplot table[x={Time691}, y={691K}] {exp_output_mix_2.csv};
+\addplot table[x={Time691}, y={691K}] {sim_output_mix_2.csv};
+\addplot table[x={Time691}, y={691K}] {non_output_mix_2.csv};
+\draw[stealth-,semithick] (axis cs:27,47) -- (axis cs:24,40) node[left] {Non-Reactive Pressure};
+\draw[stealth-stealth,semithick] (axis cs:14.2,75) -- (axis cs:26.7,75) node[midway,fill=white] {\SI{691}{\kelvin}};
+\end{axis}
+\end{tikzpicture}
+\end{document}
