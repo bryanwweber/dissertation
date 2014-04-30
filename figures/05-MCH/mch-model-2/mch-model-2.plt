@@ -34,7 +34,7 @@ set xrange [1.2:1.5]
 set yrange [0.9:100]
 set label 1 at first 1.21,4
 set label 2 at first 1.21,1.4
-set label 3 at first  1.37,1.5
+set label 3 at first 1.37,1.5
 set label 4 at first 1.21,70
 plot "Mix 2 15 bar Expt.txt" using 2:3 with points pt 4 ps 1.5 lc rgb "blue",\
      "Mix 2 15 bar.txt" using 2:4 smooth csplines with lines lt 1 lw 1.5 lc rgb "blue",\

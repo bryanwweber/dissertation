@@ -1,0 +1,4 @@
+#1000/Tc (1/K)	\ft\n Overall (ms)	Overall Error	\ft\n First Stage (ms)	First Stage Error	v9j Overall	v9j First Stage
+1.4477	26.810	1.7500	nan   	nan   	14.18373	13.87534
+1.4020	10.170	0.32000	nan   	nan   	5.711430	5.327560
+1.3452	3.5200	0.26000	nan   	nan   	1.562370	1.019880
