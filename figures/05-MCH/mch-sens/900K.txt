@@ -1,0 +1,7 @@
+#900K
+#Overall        Reaction
+-0.273708466    "mch + ho2 = mchr2 + h2o2"
+-0.218806126    "mch + oh = cychexch2 + h2o"
+-0.197605478    "mch + ho2 = mchr3 + h2o2"
+-0.146998124    "mch2qx+o2 = mch2qxqj"
+-0.121075277    "mch + ho2 = mchr4 + h2o2"

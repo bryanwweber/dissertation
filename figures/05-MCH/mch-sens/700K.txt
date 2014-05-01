@@ -1,0 +1,7 @@
+#700K
+First          Overall          Reaction
+ 0.267646071     0.301042346    "mch + oh = mchr1 + h2o"
+-0.245027800    -0.290478029    "mch + oh = mchr2 + h2o"
+ 0.163859487     0.240581780    "mch2oo = mch2ene + ho2"
+ 0.136557186     0.199445558    "mch3oo = mch2ene + ho2"
+-0.143666210    -0.182049619    "mch2qx+o2 = mch2qxqj"

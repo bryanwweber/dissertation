@@ -1,0 +1,78 @@
+% arara: lualatex
+\input{../../figure-preamble.tex}
+\pgfplotsset{width=10cm,height=10cm}
+\begin{document}
+\begin{tikzpicture}[inner sep=0pt, outer sep=0pt]
+\begin{axis}[%
+    xbar=0pt,
+    bar width=0.4,
+    xmin=-0.7, xmax=0.5,
+    enlarge y limits=0.1,
+    table/meta index={0},
+    ytick=\empty,
+    axis y line*=middle,
+    title={Ignition Delay Sensitivity, \SI{25.5}{\bar}, Mix \#1},
+    xlabel={Sensitivity Index},
+    xlabel shift=0.15cm,
+    xticklabel shift=0.15cm,
+    clip=false,
+    minor x tick num=3,
+    every axis legend/.append style={%
+        at={(axis cs:-80,8.5)},
+        anchor=west,
+        fill=white,
+    },
+    area legend,
+    every axis plot/.append style={%
+        fill,
+        draw=none,
+    },
+]
+\addplot[blue] table[x=First,y expr=\coordindex,restrict y to domain=0:4] {log_sensitivity.txt};
+\addplot[red] table[x=Overall,y expr=\coordindex,restrict y to domain=0:4] {log_sensitivity.txt};
+\addplot[darkgreen] table[x=First,y expr={\coordindex},restrict y to domain=5:9] {log_sensitivity.txt};
+\addplot[gray] table[x=Overall,y expr={\coordindex},restrict y to domain=5:9] {log_sensitivity.txt};
+\addplot[black] table[x=Overall,y expr={\coordindex},restrict y to domain=10:14] {log_sensitivity.txt};
+\draw[semithick] (axis cs:-0.7,4.25)--(axis cs:0.5,4.25);
+\draw[semithick] (axis cs:-0.7,10)--(axis cs:0.5,10);
+\draw[semithick,stealth-stealth] (axis cs:-0.7,3.75) -- (axis cs: -0.7,4.75);
+\draw[semithick,stealth-stealth] (axis cs:0.5,3.75) -- (axis cs: 0.5,4.75);
+\draw[semithick,stealth-stealth] (axis cs:-0.7,9.5) -- (axis cs: -0.7,10.5);
+\draw[semithick,stealth-stealth] (axis cs:0.5,9.5) -- (axis cs: 0.5,10.5);
+
+\node[anchor=east,font=\footnotesize] at (axis cs:-0.02,-0.500) {mch + oh $\Leftrightarrow$ mchr1 + h2o};
+\node[anchor=west,font=\footnotesize] at (axis cs: 0.02, 0.500) {mch + oh $\Leftrightarrow$ mchr2 + h2o};
+\node[anchor=east,font=\footnotesize] at (axis cs:-0.02, 1.500) {mch2oo $\Leftrightarrow$ mch2ene + ho2};
+\node[anchor=east,font=\footnotesize] at (axis cs:-0.02, 2.500) {mch3oo $\Leftrightarrow$ mch2ene + ho2};
+\node[anchor=west,font=\footnotesize] at (axis cs: 0.02, 3.500) {mch2qx+o2 $\Leftrightarrow$ mch2qxqj};
+
+\node[anchor=west,font=\footnotesize] at (axis cs: 0.02, 5.250) {mch2qx+o2 $\Leftrightarrow$ mch2qxqj};
+\node[anchor=west,font=\footnotesize] at (axis cs: 0.02, 6.250) {mch + oh $\Leftrightarrow$ mchr2 + h2o};
+\node[anchor=west,font=\footnotesize] at (axis cs: 0.02, 7.250) {mch + oh $\Leftrightarrow$ cychexch2 + h2o};
+\node[anchor=east,font=\footnotesize] at (axis cs:-0.02, 8.250) {mch2oo $\Leftrightarrow$ mch2ene + ho2};
+\node[anchor=west,font=\footnotesize] at (axis cs: 0.02, 9.250) {mch + ho2 $\Leftrightarrow$ mchr2 + h2o2};
+
+\node[anchor=west,font=\footnotesize] at (axis cs: 0.02,10.875) {mch + ho2 $\Leftrightarrow$ mchr2 + h2o2};
+\node[anchor=west,font=\footnotesize] at (axis cs: 0.02,11.875) {mch + oh $\Leftrightarrow$ cychexch2 + h2o};
+\node[anchor=west,font=\footnotesize] at (axis cs: 0.02,12.875) {mch + ho2 $\Leftrightarrow$ mchr3 + h2o2};
+\node[anchor=west,font=\footnotesize] at (axis cs: 0.02,13.875) {mch2qx+o2 $\Leftrightarrow$ mch2qxqj};
+\node[anchor=west,font=\footnotesize] at (axis cs: 0.02,14.875) {mch + ho2 $\Leftrightarrow$ mchr4 + h2o2};
+
+\node[anchor=west] at (axis cs:-0.8, 1.500) {$T=\SI{700}{\kelvin}$};
+\node[anchor=west] at (axis cs:-0.8, 7.250) {$T=\SI{800}{\kelvin}$};
+\node[anchor=west] at (axis cs:-0.8,12.875) {$T=\SI{900}{\kelvin}$};
+
+\node[anchor=west,font=\scriptsize] at (axis cs: 0.277646071,-0.875) {(1)};
+\node[anchor=east,font=\scriptsize] at (axis cs:-0.255027800, 0.125) {(2)};
+\node[anchor=west,font=\scriptsize] at (axis cs: 0.173859487, 1.125) {(3)};
+\node[anchor=west,font=\scriptsize] at (axis cs: 0.146557186, 2.125) {(6)};
+\node[anchor=east,font=\scriptsize] at (axis cs:-0.153666210, 3.125) {(5)};
+
+\node[anchor=east,font=\scriptsize] at (axis cs:-0.331629380, 4.875) {(8)};
+\node[anchor=east,font=\scriptsize] at (axis cs:-0.479898490, 5.875) {(2)};
+\node[anchor=east,font=\scriptsize] at (axis cs:-0.388617899, 6.875) {(7)};
+\node[anchor=west,font=\scriptsize] at (axis cs: 0.465278304, 7.875) {(3)};
+\node[anchor=east,font=\scriptsize] at (axis cs:-0.284080329, 8.875) {(10)};
+\end{axis}
+\end{tikzpicture}
+\end{document}
