@@ -20,10 +20,10 @@
     minor y tick num=3,
     table/col sep=comma,
     cycle list name=pressure,
-    ylabel={Pressure, \si{\bar}},
+    % ylabel={Pressure, \si{\bar}},
     xlabel={Time, \si{\milli\second}},
 ]
-\addplot table[x={Time729}, y={729K}] {exp_output_mix_3.csv};
+\addplot table[x={Time729}, y={729K},restrict x to domain=-3:12] {exp_output_mix_3.csv};
 \addplot table[x={Time729}, y={729K}] {sim_output_mix_3.csv};
 \addplot table[x={Time729}, y={729K}] {non_output_mix_3.csv};
 \addplot table[x={Time797}, y={797K},restrict x to domain=-3:5] {exp_output_mix_3.csv};
