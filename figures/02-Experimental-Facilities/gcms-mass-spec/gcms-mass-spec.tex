@@ -1,34 +1,16 @@
 % arara: xelatex
-\documentclass[tikz]{standalone}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.10,width=9cm,height=7cm}
-\makeatletter
-\def\pgfplots@drawtickgridlines@INSTALLCLIP@onorientedsurf#1{}
-\makeatother
-\usepackage{unicode-math}
-\unimathsetup{math-style=TeX}
-\setmathfont[range=\mathup/{num}]{Times New Roman}
-\setmathfont[range=\mathit/{greek,Greek,latin,Latin}]{Cambria Math}
-\setmathfont[range=\mathup/{greek,Greek,latin,Latin}]{Cambria Math}
-\setmathfont[range={"2212,"002B,"003D,"0028,"0029,"005B,"005D,"221A,"2211,"2248,"222B,"007C,"2026,"2202,"00D7,"0302,"2261,"0025,"22C5}]{Cambria Math}
-%\usepackage{fontspec}
-\setmainfont{Times New Roman}
+\input{../../figure-preamble.tex}
 \begin{document}
 \begin{tikzpicture}
 \begin{axis}[
     ylabel={Relative Intensity},
     xlabel={$m/z$},
-    xmin = 0,
-    xmax = 70,
-    ymin = 0,
-    ymax = 1.05,
-    minor x tick num = 9,
-    minor y tick num = 3,
-    xtick align = outside,
-    xtick pos = left,
-    every tick/.style={color=black, semithick},
-    every minor tick/.style={thin},
-    axis line style = semithick,
+    xmin=0, xmax=70,
+    ymin=0, ymax=1.05,
+    minor x tick num=9,
+    minor y tick num=3,
+    xtick align=outside,
+    xtick pos=left,
 ]
 \addplot[ycomb,semithick] table[x index={0}, y index={2}] {mass-spec-data.txt};
 \end{axis}

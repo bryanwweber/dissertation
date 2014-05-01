@@ -3,28 +3,32 @@
 \begin{document}
 \begin{tikzpicture}
 \begin{axis}[
-    title={\large MCH/O$_2$/N$_2$/Ar, $\phi=1.5$, $P_C=\SI{50}{\bar}$, $T_C=\SI{761}{\kelvin}$},
+    title={MCH/O$_2$/N$_2$/Ar, $\phi=1.5$, $P_C=\SI{50}{\bar}$},
     ylabel style={align=center},
-    ylabel={Pressure, \si{\bar}\\Time Derivative of Pressure, \si[per-mode=symbol]{\bar\per\milli\second}},
+    ylabel={Pressure, \si{\bar}\\Time Derivative of Pressure, \si{\bar\per\milli\second}},
     xlabel={Time, \si{\milli\second}},
     xmin=-20, xmax=10,
     ymin=-5, ymax=80,
     minor x tick num = 4,
-    minor y tick num = 4,
+    minor y tick num = 3,
     no markers,
-    legend style ={
-        at={(0.05,0.95)},
-        anchor = north west,
+    every axis legend/.append style ={
+        at={(axis cs:-18,50)},
+        anchor = south west,
     },
+    table/col sep=comma,
+    table/ignore chars={?},
+    table/x index={0},
 ]
 \draw (axis cs:-20,0) -- (axis cs:10,0);
-\addplot[black]        table[x index={0}, y index={1}, ignore chars={?}, col sep=comma] {definition-of-ign-delay.csv};
-\addplot[gray]         table[x index={0}, y index={2}, ignore chars={?}, col sep=comma] {definition-of-ign-delay.csv};
-\addplot[red, dashed]  table[x index={0}, y index={3}, ignore chars={?}, col sep=comma] {definition-of-ign-delay.csv};
-\legend{{$P(t)$, \si{\bar}},{$P'(t)$, \si[per-mode=symbol]{\bar\per\milli\second}},{$P(t)$ Non-Reactive, \si{\bar}}}
-\draw[stealth-stealth] (axis cs:0,5) -- (axis cs:4.4,5) node[midway, above] {$\tau_{\footnotesize 1}$};
-\draw[stealth-stealth] (axis cs:0,17) -- (axis cs:5.35,17) node[midway, above] {$\tau$};
-\draw (axis cs:0,-5) -- (axis cs:0,20) node[above] {EOC} (axis cs:4.4,-5) -- (axis cs:4.4,7) (axis cs:5.35,-5) -- (axis cs:5.35,20);
+\addplot[black]        table[y index={1}] {definition-of-ign-delay.csv};
+\addplot[gray]         table[y index={2}] {definition-of-ign-delay.csv};
+\addplot[red, dashed]  table[y index={3}] {definition-of-ign-delay.csv};
+\legend{{$P(t)$, \si{\bar}},{$P'(t)$, \si{\bar\per\milli\second}},{$P(t)$ Non-Reactive, \si{\bar}}};
+\node[align=left,anchor=north west] at (axis cs:-18,50) {$T_0=\SI{308}{\kelvin}$\\$P_0=\SI{3.2250}{\bar}$\\$T_C=\SI{761}{\kelvin}$};
+\draw[semithick,stealth-stealth] (axis cs:0,5) -- (axis cs:4.4,5) node[midway, above] {$\tau_{1}$};
+\draw[semithick,stealth-stealth] (axis cs:0,17) -- (axis cs:5.35,17) node[midway, above] {$\tau$};
+\draw[semithick] (axis cs:0,-5) -- (axis cs:0,20) node[above] {EOC} (axis cs:4.4,-5) -- (axis cs:4.4,7) (axis cs:5.35,-5) -- (axis cs:5.35,20);
 \end{axis}
 \end{tikzpicture}
 \end{document}
