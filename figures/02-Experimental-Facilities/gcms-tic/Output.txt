@@ -1,4 +1,4 @@
-Ret.Time, min	Absolute Intensity, A.U.	Relative Intensity
+{Ret. Time}	{Absolute Intensity}	Relative Intensity
 9.100	10879	0.06
 9.106	10497	0.06
 9.111	11202	0.06

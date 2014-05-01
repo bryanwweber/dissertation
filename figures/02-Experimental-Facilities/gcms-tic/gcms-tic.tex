@@ -1,0 +1,26 @@
+% arara: lualatex
+\input{../../figure-preamble.tex}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+    ylabel={Intensity, A.U.},
+    xlabel={Time, \si{\minute}},
+    every axis plot/.append style={
+        solid,
+        no markers,
+    },
+    scaled y ticks=false,
+    yticklabel style={%
+        /pgf/number format/.cd,
+        sci,
+        sci generic={mantissa sep=\times,exponent={10^{####1}}},
+    },
+    xmin=0, xmax=150,
+    minor x tick num=3,
+    minor y tick num=4,
+    ymin=-2E6, ymax=2E7,
+]
+\addplot[black,thin] table[x={Ret. Time}, y={Absolute Intensity}] {Output.txt};
+\end{axis}
+\end{tikzpicture}
+\end{document}
