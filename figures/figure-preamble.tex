@@ -25,33 +25,42 @@
     /pgf/number format/1000 sep={},
 }
 
+% Set a color alias
 \colorlet{darkgreen}{green!60!black}
 
+% Loop to set upper axis to have temperature on Arrhenius plots. Takes
+% two arguments, the first is the list of temperatures at which major 
+% ticks should be plotted, the second is the spacing of the four minor
+% ticks.
 \newcommand{\deflisttick}[2]{
-\gdef\listticks{}
-\gdef\listlabels{}
-\gdef\minorticks{}
-\foreach \x[count=\xi] in {#1}{\global\let\maxitems\xi}
-\foreach \x[count=\xi] in {#1}{
-\pgfmathsetmacro{\xx}{1000/\x}
-\pgfmathsetmacro{\m}{1000/(\x+#2)}
-\pgfmathsetmacro{\mm}{1000/(\x+2*#2)}
-\pgfmathsetmacro{\mmm}{1000/(\x+3*#2)}
-\pgfmathsetmacro{\mmmm}{1000/(\x+4*#2)}
- \ifnum\xi=\maxitems
-   \xdef\listticks{\listticks \xx}
-   \xdef\listlabels{\listlabels \SI{\x}{\kelvin}}
-   \xdef\minorticks{\minorticks \m,\mm,\mmm,\mmmm}
- \else
-   \xdef\listticks{\listticks \xx,}
-   \xdef\listlabels{\listlabels \SI{\x}{\kelvin},}
-   \xdef\minorticks{\minorticks \m,\mm,\mmm,\mmmm,}
- \fi
+    \gdef\listticks{}
+    \gdef\listlabels{}
+    \gdef\minorticks{}
+    \foreach \x[count=\xi] in {#1}{\global\let\maxitems\xi}
+    \foreach \x[count=\xi] in {#1}{
+        \pgfmathsetmacro{\xx}{1000/\x}
+        \pgfmathsetmacro{\m}{1000/(\x+#2)}
+        \pgfmathsetmacro{\mm}{1000/(\x+2*#2)}
+        \pgfmathsetmacro{\mmm}{1000/(\x+3*#2)}
+        \pgfmathsetmacro{\mmmm}{1000/(\x+4*#2)}
+        \ifnum\xi=\maxitems
+            \xdef\listticks{\listticks \xx}
+            \xdef\listlabels{\listlabels \SI{\x}{\kelvin}}
+            \xdef\minorticks{\minorticks \m,\mm,\mmm,\mmmm}
+        \else
+            \xdef\listticks{\listticks \xx,}
+            \xdef\listlabels{\listlabels \SI{\x}{\kelvin},}
+            \xdef\minorticks{\minorticks \m,\mm,\mmm,\mmmm,}
+        \fi
+    }
 }
-}
+
+% Fix how tick marks are drawn when they align with the axes
 \makeatletter
 \def\pgfplots@drawtickgridlines@INSTALLCLIP@onorientedsurf#1{}
 \makeatother
+
+% Copy of relevant parts from the main preamble.
 \usepackage{mathtools}
 \usepackage{unicode-math}
 \unimathsetup{math-style=TeX}
