@@ -1,41 +1,68 @@
 % arara: lualatex
 \input{../../figure-preamble.tex}
+\pgfplotsset{
+    every axis/.append style={%
+        scale only axis,
+        xmin=1.14, xmax=1.35,
+        ymin=7, ymax=380,
+        table/ignore chars={?},
+        table/x=1000/Tc,
+    },
+    every axis plot/.append style={%
+        error bars/y dir=both,
+        error bars/y explicit,
+    },
+}
+\pgfplotscreateplotcyclelist{buoh}{%
+    only marks,mark=square,black\\%
+    only marks,mark=o,black\\%
+    only marks,mark=square,blue\\%
+    only marks,mark=o,blue\\%
+    no markers,dashed,blue\\%
+    no markers,dashed,blue\\%
+    only marks,mark=square*,gray\\%
+    only marks,mark=square*,red\\%
+    only marks,mark=*,gray\\%
+    only marks,mark=*,red\\%
+    no markers,solid,gray\\%
+    no markers,solid,red\\%
+    no markers,solid,gray\\%
+    no markers,solid,red\\%
+}
 \begin{document}
 \begin{tikzpicture}
 \pgfplotsset{set layers}
 \begin{semilogyaxis}[
-    scale only axis,
     ylabel={Ignition Delay, \si{\milli\second}},
     xlabel={$1000/T_C$, \si{\per\kelvin}},
-    xmin=1.14, xmax=1.35,
-    ymin=7, ymax=380,
     ytickten={0,1,2},
     xtick={1.15,1.2,...,1.35},
     log ticks with fixed point,
     minor x tick num=4,
     minor y tick num=8,
     legend style={
-        at={(axis cs:1.245,30)},
+        at={(axis cs:1.24,27.5)},
         anchor=north west,
     },
     axis x line*=bottom,
+    cycle list name=buoh,
 ]
-\pgfplotstableread[ignore chars={?}]{15-bar.txt}\fifbar;
-\pgfplotstableread[ignore chars={?}]{30-bar.txt}\thibar;
-\addplot[only marks, black, mark=square, error bars/.cd, y dir=both, y explicit] table[x=1000/Tc, y=Expt, y error=Error] {\fifbar};
-\addplot[only marks, black, mark=o, error bars/.cd, y dir=both, y explicit] table[x=1000/Tc, y=Expt, y error=Error] {\thibar};
-\addplot[only marks, blue, mark=square, error bars/.cd, y dir=both, y explicit] table[x=1000/Tc, y=Expt, y error=Error] {\fifbar};
-\addplot[only marks, blue, mark=o, error bars/.cd, y dir=both, y explicit] table[x=1000/Tc, y=Expt, y error=Error] {\thibar};
-\addplot[no markers, blue, dashed] table[x=1000/Tc, y={create col/linear regression={y=Expt}}] {\fifbar};
-\addplot[no markers, blue, dashed] table[x=1000/Tc, y={create col/linear regression={y=Expt}}] {\thibar};
-\addplot[only marks, gray, mark=square*] table[x=1000/Tc, y=Sarathy] {\fifbar};
-\addplot[only marks, red, mark=square*] table[x=1000/Tc, y=MIT] {15-mit.txt};
-\addplot[only marks, gray, mark=*] table[x=1000/Tc, y=Sarathy] {\thibar};
-\addplot[only marks, red, mark=*] table[x=1000/Tc, y=MIT] {30-mit.txt};
-\addplot[no markers, gray, solid] table[x=1000/Tc, y={create col/linear regression={y=Sarathy}}] {\fifbar};
-\addplot[no markers, red, solid] table[x=1000/Tc, y={create col/linear regression={y=MIT}}] {15-mit.txt};
-\addplot[no markers, gray, solid] table[x=1000/Tc, y={create col/linear regression={y=Sarathy}}] {\thibar};
-\addplot[no markers, red, solid] table[x=1000/Tc, y={create col/linear regression={y=MIT}}] {30-mit.txt};
+\pgfplotstableread{15-bar.txt}\fifbar;
+\pgfplotstableread{30-bar.txt}\thibar;
+\addplot table[y=Expt, y error=Error] {\fifbar};
+\addplot table[y=Expt, y error=Error] {\thibar};
+\addplot table[y=Expt, y error=Error] {\fifbar};
+\addplot table[y=Expt, y error=Error] {\thibar};
+\addplot table[y={create col/linear regression={y=Expt}}] {\fifbar};
+\addplot table[y={create col/linear regression={y=Expt}}] {\thibar};
+\addplot table[y=Sarathy] {\fifbar};
+\addplot table[y=MIT] {15-mit.txt};
+\addplot table[y=Sarathy] {\thibar};
+\addplot table[y=MIT] {30-mit.txt};
+\addplot table[y={create col/linear regression={y=Sarathy}}] {\fifbar};
+\addplot table[y={create col/linear regression={y=MIT}}] {15-mit.txt};
+\addplot table[y={create col/linear regression={y=Sarathy}}] {\thibar};
+\addplot table[y={create col/linear regression={y=MIT}}] {30-mit.txt};
 \legend{{\SI{15}{\bar}},{\SI{30}{\bar}},,,Experiments,,,,,,{Sarathy et al. Mechanism},{MIT Mechanism}};
 \end{semilogyaxis}
 \deflisttick{700,750,...,900}{10}
@@ -46,11 +73,8 @@
 }
 \temp
 \begin{semilogyaxis}[
-    scale only axis,
     title style={yshift=7pt},
     title={\textit{i}-Butanol/O$_2$/N$_2$, $\phi=1.0$},
-    xmin=1.14, xmax=1.35,
-    ymin=7, ymax=380,
     axis y line=none,
     axis x line*=top,
     xtick={\listticks},

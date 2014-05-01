@@ -1,32 +1,52 @@
 % arara: lualatex
 \input{../../figure-preamble.tex}
+\pgfplotsset{
+    every axis/.append style={%
+        scale only axis,
+        xmin=1.13, xmax=1.40,
+        ymin=10, ymax=200,
+    },
+    every axis plot/.append style={
+        error bars/y dir=both,
+        error bars/y explicit,
+    },
+}
+\pgfplotscreateplotcyclelist{buoh}{%
+    only marks,mark=o,red\\%
+    only marks,mark=square,blue\\%
+    only marks,mark=diamond,darkgreen\\%
+    only marks,mark=triangle,violet\\%
+    no markers,dashed,red\\%
+    no markers,dashed,blue\\%
+    no markers,dashed,darkgreen\\%
+    no markers,dashed,violet\\%
+}
 \begin{document}
 \begin{tikzpicture}
 \pgfplotsset{set layers}
 \begin{semilogyaxis}[
-    scale only axis,
     ylabel={Ignition Delay, \si{\milli\second}},
     xlabel={$1000/T_C$, \si{\per\kelvin}},
-    xmin=1.13, xmax=1.40,
-    ymin=10, ymax=200,
     ytickten={0,1,2},
     log ticks with fixed point,
     minor x tick num=4,
     minor y tick num=8,
-    legend style={
+    every axis legend/.append style={
         at={(0.8,0.95)},
     },
     axis x line*=bottom,
+    cycle list name=buoh,
+    table/x index={0},
 ]
-\addplot[only marks, red, mark=o, error bars/.cd, y dir=both, y explicit] table[x index={0}, y index={1}, y error index={2}] {tbuoh.txt};
-\addplot[only marks, blue, mark=square, error bars/.cd, y dir=both, y explicit]   table[x index={0}, y index={1}, y error index={2}] {ibuoh.txt};
-\addplot[only marks, green!60!black, mark=diamond, error bars/.cd, y dir=both, y explicit]  table[x index={0}, y index={1}, y error index={2}] {sbuoh.txt};
-\addplot+[only marks, violet, mark=triangle, error bars/.cd, y dir=both, y explicit] table[x index={0}, y index={1}, y error index={2}] {nbuoh.txt};
-\addplot[no markers, red, dashed] table[x index={0}, y={create col/linear regression={y=Tig}}] {tbuoh.txt};
-\addplot[no markers, blue, dashed] table[x index={0}, y={create col/linear regression={y=Tig}}] {ibuoh.txt};
-\addplot[no markers, green!60!black, dashed] table[x index={0}, y={create col/linear regression={y=Tig}}] {sbuoh.txt};
-\addplot+[no markers, violet, dashed] table[x index={0}, y={create col/linear regression={y=Tig}}] {nbuoh.txt};
-\legend{{[red]\textit{t}-butanol},{[blue]\textit{i}-butanol},{[green!60!black]\textit{s}-butanol},{[violet]\textit{n}-butanol}}
+\addplot table[y index={1}, y error index={2}] {tbuoh.txt};
+\addplot table[y index={1}, y error index={2}] {ibuoh.txt};
+\addplot table[y index={1}, y error index={2}] {sbuoh.txt};
+\addplot table[y index={1}, y error index={2}] {nbuoh.txt};
+\addplot table[y={create col/linear regression={y=Tig}}] {tbuoh.txt};
+\addplot table[y={create col/linear regression={y=Tig}}] {ibuoh.txt};
+\addplot table[y={create col/linear regression={y=Tig}}] {sbuoh.txt};
+\addplot table[y={create col/linear regression={y=Tig}}] {nbuoh.txt};
+\legend{{[red]\textit{t}-butanol},{[blue]\textit{i}-butanol},{[darkgreen]\textit{s}-butanol},{[violet]\textit{n}-butanol}}
 \end{semilogyaxis}
 \deflisttick{700,750,...,900}{10}
 \edef\temp{%
@@ -36,11 +56,8 @@
 }
 \temp
 \begin{semilogyaxis}[
-    scale only axis,
     title style={yshift=7pt},
     title={Butanol/O$_2$/N$_2$, $\phi=1.0$, $P_C=\SI{15}{\bar}$},
-    xmin=1.13, xmax=1.40,
-    ymin=10, ymax=200,
     axis y line=none,
     axis x line*=top,
     xtick={\listticks},

@@ -2,7 +2,7 @@
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
 \usetikzlibrary{arrows.meta}
-\pgfplotsset{
+\pgfplotsset{%
     compat=1.10,
     width=9cm,
     height=7cm,
@@ -12,12 +12,17 @@
         title style={font=\Large},
     },
     axis line style={semithick},
-    every axis plot/.append style={semithick},
+    every axis plot/.append style={%
+        semithick,
+        mark size=3,
+        },
     legend style ={
         cells={anchor=west},
         draw=none,
         fill=none,
-    }
+        /tikz/column sep=0.25cm,
+    },
+    /pgf/number format/1000 sep={},
 }
 
 \colorlet{darkgreen}{green!60!black}

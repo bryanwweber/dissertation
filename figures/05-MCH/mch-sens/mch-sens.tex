@@ -1,6 +1,13 @@
 % arara: lualatex
 \input{../../figure-preamble.tex}
 \pgfplotsset{width=10cm,height=10cm}
+\pgfplotscreateplotcyclelist{sens}{%
+    blue\\%
+    red\\%
+    darkgreen\\%
+    gray\\%
+    black\\%
+}
 \begin{document}
 \begin{tikzpicture}[inner sep=0pt, outer sep=0pt]
 \begin{axis}[%
@@ -27,12 +34,13 @@
         fill,
         draw=none,
     },
+    cycle list name=sens,
 ]
-\addplot[blue] table[x=First,y expr=\coordindex,restrict y to domain=0:4] {log_sensitivity.txt};
-\addplot[red] table[x=Overall,y expr=\coordindex,restrict y to domain=0:4] {log_sensitivity.txt};
-\addplot[darkgreen] table[x=First,y expr={\coordindex},restrict y to domain=5:9] {log_sensitivity.txt};
-\addplot[gray] table[x=Overall,y expr={\coordindex},restrict y to domain=5:9] {log_sensitivity.txt};
-\addplot[black] table[x=Overall,y expr={\coordindex},restrict y to domain=10:14] {log_sensitivity.txt};
+\addplot table[x=First,  y expr=\coordindex,restrict y to domain=0:4] {log_sensitivity.txt};
+\addplot table[x=Overall,y expr=\coordindex,restrict y to domain=0:4] {log_sensitivity.txt};
+\addplot table[x=First,  y expr=\coordindex,restrict y to domain=5:9] {log_sensitivity.txt};
+\addplot table[x=Overall,y expr=\coordindex,restrict y to domain=5:9] {log_sensitivity.txt};
+\addplot table[x=Overall,y expr=\coordindex,restrict y to domain=10:14] {log_sensitivity.txt};
 \draw[semithick] (axis cs:-0.7,4.25)--(axis cs:0.5,4.25);
 \draw[semithick] (axis cs:-0.7,10)--(axis cs:0.5,10);
 \draw[semithick,stealth-stealth] (axis cs:-0.7,3.75) -- (axis cs: -0.7,4.75);

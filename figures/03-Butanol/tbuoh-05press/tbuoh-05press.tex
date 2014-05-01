@@ -1,5 +1,10 @@
 % arara: lualatex
 \input{../../figure-preamble.tex}
+\pgfplotscreateplotcyclelist{buoh}{%
+    black,solid,no markers\\%
+    gray,dashed,no markers\\%
+    darkgreen,dashdotted,no markers\\%
+}
 \begin{document}
 \begin{tikzpicture}
 \begin{axis}[%
@@ -13,12 +18,14 @@
     every axis legend/.append style={
         at={(axis cs:-5,40)},
         anchor=west,
-    }
+    },
+    cycle list name=buoh,
+    table/col sep=comma,
 ]
-\addplot[black,solid,no markers] table[x index={0}, y index={1}, col sep=comma] {tbuoh-05press.txt};
-\addplot[gray,dashed,no markers] table[x index={2}, y index={3}, col sep=comma] {tbuoh-05press.txt};
-\addplot[green!60!black,dashdotted,no markers] table[x index={4}, y index={5}, col sep=comma] {tbuoh-05press.txt};
-\legend{{[black]$T_C=\SI{792}{\kelvin}$, Experiment},{[gray]$T_C=\SI{792}{\kelvin}$, Non-Reactive},{[green!60!black]$T_C=\SI{792}{\kelvin}$, Simulation}};
+\addplot table[x index={0}, y index={1}] {tbuoh-05press.txt};
+\addplot table[x index={2}, y index={3}] {tbuoh-05press.txt};
+\addplot table[x index={4}, y index={5}] {tbuoh-05press.txt};
+\legend{{[black]$T_C=\SI{792}{\kelvin}$, Experiment},{[gray]$T_C=\SI{792}{\kelvin}$, Non-Reactive},{[darkgreen]$T_C=\SI{792}{\kelvin}$, Simulation}};
 \node[anchor=west] at (axis cs:70,21) {O$_2$ : N$_2$ = 1 : 3.76};
 \end{axis}
 \end{tikzpicture}

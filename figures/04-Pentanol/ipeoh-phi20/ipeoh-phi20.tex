@@ -1,5 +1,10 @@
 % arara: lualatex
 \input{../../figure-preamble.tex}
+\pgfplotscreateplotcyclelist{ipeohpressure}{%
+    red\\%
+    blue\\%
+    gray\\%
+}
 \begin{document}
 \begin{tikzpicture}
 \begin{axis}[
@@ -8,20 +13,19 @@
     title={\textit{i}-Pentanol/O$_2$/N$_2$, $\phi=2.0$, $P_C=\SI{40}{\bar}$},
     ylabel={Pressure, \si{\bar}},
     xlabel={Time, \si{\milli\second}},
-    minor x tick num = 3,
-    minor y tick num = 4,
-    every tick/.style={color=black, semithick},
-    every minor tick/.style={thin},
-    axis line style = semithick,
-    legend entries = {{$T_C=\SI{653}{\kelvin}$, Experiment},{$T_C=\SI{653}{\kelvin}$, Simulation},{$T_C=\SI{653}{\kelvin}$, Non-Reactive}},
-    legend style = {at={(0.55,0.27)},anchor=center},
-    legend cell align = left,
+    minor x tick num=3,
+    minor y tick num=4,
+    every axis legend/.append style={
+        at={(0.55,0.27)},
+        anchor=center,
+    },
     table/col sep=comma,
+    cycle list name=ipeohpressure,
 ]
-\addplot[red,restrict x to domain=-10:32,semithick] table[x=Time-Expt,y=Pres-Expt, col sep=comma] {phi-20-pressure.txt};
-\addplot[blue,semithick] table[x=Time-Sim,y=Pres-Sim, col sep=comma] {phi-20-pressure.txt};
-\addplot[gray,semithick] table[x=Time-NR,y=Pres-NR, col sep=comma] {phi-20-pressure.txt};
+\addplot table[x=Time-Expt,y=Pres-Expt,restrict x to domain=-10:32] {phi-20-pressure.txt};
+\addplot table[x=Time-Sim,y=Pres-Sim]   {phi-20-pressure.txt};
+\addplot table[x=Time-NR,y=Pres-NR]     {phi-20-pressure.txt};
+\legend{{$T_C=\SI{653}{\kelvin}$, Experiment},{$T_C=\SI{653}{\kelvin}$, Simulation},{$T_C=\SI{653}{\kelvin}$, Non-Reactive}};
 \end{axis}
 \end{tikzpicture}
-
 \end{document}

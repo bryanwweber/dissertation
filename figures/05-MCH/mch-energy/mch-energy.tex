@@ -1,15 +1,24 @@
 % arara: lualatex
 \input{../../figure-preamble.tex}
-\pgfplotsset{every axis/.append style={%
-    scale only axis,
-    xmin=1.07, xmax=1.5,
-    ymin=1, ymax=50,
-}}
+\pgfplotsset{
+    every axis/.append style={%
+        scale only axis,
+        xmin=1.07, xmax=1.5,
+        ymin=1, ymax=50,
+    },
+}
+\pgfplotscreateplotcyclelist{mchenergy}{%
+    only marks,mark=square,darkgreen\\%
+    only marks,mark=square*,darkgreen\\%
+    no markers,solid,red,smooth\\%
+    no markers,dashed,red,smooth\\%
+    no markers,solid,blue,smooth\\%
+    no markers,dashed,blue,smooth\\%
+}
 \begin{document}
 \begin{tikzpicture}
 \pgfplotsset{set layers}
 \begin{semilogyaxis}[
-    scale only axis,
     ylabel={Ignition Delay, \si{\milli\second}},
     xlabel={$1000/T_C$, \si{\per\kelvin}},
     ytickten={0,1,2},
@@ -17,20 +26,20 @@
     minor x tick num=4,
     minor y tick num=8,
     legend style={
-        at={(axis cs:1.075,2)},
+        at={(axis cs:1.075,3)},
         anchor=north west,
-        /tikz/column sep=0.15cm,
     },
     axis x line*=bottom,
     table/header=false,
+    cycle list name=mchenergy,
 ]
-\addplot[only marks, mark=square, green!60!black] table[x index={1}, y index={3}] {mix-1-25-bar-expt.txt};
-\addplot[only marks, mark=square*,green!60!black] table[x index={1}, y index={2}] {mix-1-25-bar-expt.txt};
-\addplot[no markers, solid, red, smooth] table[x index={1}, y index={2}] {mix-1-25-bar-v9i.txt};
-\addplot[no markers, dashed, red, smooth] table[x index={1}, y index={3}] {mix-1-25-bar-v9i.txt};
-\addplot[no markers, solid, blue, smooth] table[x index={1}, y index={2}] {mix-1-25-bar.txt};
-\addplot[no markers, dashed, blue, smooth] table[x index={1}, y index={3}] {mix-1-25-bar.txt};
-\legend{{[green!60!black]Overall Ignition Delay},{[green!60!black]First Stage Ignition Delay}};
+\addplot table[x index={1}, y index={3}] {mix-1-25-bar-expt.txt};
+\addplot table[x index={1}, y index={2}] {mix-1-25-bar-expt.txt};
+\addplot table[x index={1}, y index={2}] {mix-1-25-bar-v9i.txt};
+\addplot table[x index={1}, y index={3}] {mix-1-25-bar-v9i.txt};
+\addplot table[x index={1}, y index={2}] {mix-1-25-bar.txt};
+\addplot table[x index={1}, y index={3}] {mix-1-25-bar.txt};
+\legend{{[darkgreen]Overall Ignition Delay},{[darkgreen]First Stage Ignition Delay}};
 \end{semilogyaxis}
 \deflisttick{650,700,...,950}{10}
 \edef\temp{%
@@ -40,7 +49,6 @@
 }
 \temp
 \begin{semilogyaxis}[
-    scale only axis,
     title style={yshift=7pt},
     title={MCH/O$_2$/N$_2$/Ar, $\phi=1.0$, Mix \#1, $P_C=\SI{25.5}{\bar}$},
     axis y line=none,
@@ -49,7 +57,7 @@
     x tick labels list,
     minor xtick ={\minorticks}
 ]
-\node[anchor=south west,inner ysep=0pt,outer ysep=0pt] at (axis cs: 1.075,2) {Experiments:};
+\node[anchor=south west,inner ysep=0pt,outer ysep=0pt] at (axis cs: 1.075,3) {Experiments:};
 \draw[-stealth,semithick] (axis cs:1.35,23) node[above,text width=2cm,align=center] {Simulated Overall} -- (axis cs:1.4,11.75);
 \draw[-stealth,semithick] (axis cs:1.35,23) -- (axis cs:1.38,7.4);
 \draw[-stealth,semithick] (axis cs:1.41,1.8) node[right, text width=1.7cm,align=center,inner sep=0pt,outer sep=0pt] {Simulated First Stage} -- (axis cs:1.33,3.5);

@@ -1,14 +1,29 @@
 % arara: lualatex
 \input{../../figure-preamble.tex}
-\pgfplotsset{every axis/.append style={%
-    scale only axis,
-    xmin=0.7, xmax=1.6,
-    ymin=0.01, ymax=200,
-}}
+\pgfplotsset{
+    every axis/.append style={%
+        scale only axis,
+        xmin=0.7, xmax=1.6,
+        ymin=0.01, ymax=200,
+    },
+}
+\pgfplotscreateplotcyclelist{ipeoh}{%
+    only marks,mark=o,blue\\%
+    only marks,mark=square,red\\%
+    only marks,mark=triangle,darkgreen\\%
+    only marks,mark=*,blue\\%
+    no markers,dash pattern=on 6pt off 3pt,blue\\%
+    no markers,solid,blue\\%
+    only marks,mark=square*,red\\%
+    no markers,dash pattern=on 6pt off 3pt,red\\%
+    no markers,solid,red\\%
+    only marks,mark=triangle*,darkgreen\\%
+    no markers,dash pattern=on 6pt off 3pt,darkgreen\\%
+    no markers,solid,darkgreen\\%
+}
 \begin{document}
-\begin{tikzpicture}[every mark/.append style={scale=2}]
+\begin{tikzpicture}
 \begin{semilogyaxis}[%
-    scale only axis,
     ylabel={Ignition Delay, \si{\milli\second}},
     xlabel={$1000/T_C$, \si{\per\kelvin}},
     ytickten={-2,-1,0,1,2},
@@ -20,22 +35,22 @@
     every axis legend/.append style={
         at={(axis cs:0.73,12)},
         anchor=north west,
-        /tikz/column sep=0.25cm,
     },
+    cycle list name=ipeoh,
 ]
-\addplot[blue,mark=o,only marks] table[x=1000/Tc,y=Tig,restrict x to domain=1.09:1.6] {phi-05-vpro.txt};
-\addplot[red,mark=square,only marks] table[x=1000/Tc,y=Tig,restrict x to domain=1.09:1.6] {phi-10-vpro.txt};
-\addplot[green!60!black,mark=triangle,only marks] table[x=1000/Tc,y=Tig,restrict x to domain=1.09:1.6] {phi-20-vpro.txt};
+\addplot table[x=1000/Tc,y=Tig,  restrict x to domain=1.09:1.6] {phi-05-vpro.txt};
+\addplot table[x=1000/Tc,y=Tig,  restrict x to domain=1.09:1.6] {phi-10-vpro.txt};
+\addplot table[x=1000/Tc,y=Tig,  restrict x to domain=1.09:1.6] {phi-20-vpro.txt};
 
-\addplot[blue,mark=*,only marks] table[x=1000/Tc,y=Tig,restrict x to domain=0.7:1.09] {phi-05-vpro.txt};
-\addplot[blue,dash pattern=on 6pt off 3pt,no markers] table[x=1000/Tc,y=Model,restrict x to domain=1.09:1.6] {phi-05-vpro.txt};
-\addplot[blue,solid,no markers] table[x=1000/Tc,y=CONV] {phi-05-conv.txt};
-\addplot[red,mark=square*,only marks] table[x=1000/Tc,y=Tig,restrict x to domain=0.7:1.09] {phi-10-vpro.txt};
-\addplot[red,dash pattern=on 6pt off 3pt,no markers] table[x=1000/Tc,y=Model,restrict x to domain=1.09:1.6] {phi-10-vpro.txt};
-\addplot[red,solid,no markers] table[x=1000/Tc,y=CONV] {phi-10-conv.txt};
-\addplot[green!60!black,mark=triangle*,only marks] table[x=1000/Tc,y=Tig,restrict x to domain=0.7:1.09] {phi-20-vpro.txt};
-\addplot[green!60!black,no markers,dash pattern=on 6pt off 3pt] table[x=1000/Tc,y=Model,restrict x to domain=1.09:1.6] {phi-20-vpro.txt};
-\addplot[green!60!black,solid,no markers] table[x=1000/Tc,y=CONV] {phi-20-conv.txt};
+\addplot table[x=1000/Tc,y=Tig,  restrict x to domain=0.7:1.09] {phi-05-vpro.txt};
+\addplot table[x=1000/Tc,y=Model,restrict x to domain=1.09:1.6] {phi-05-vpro.txt};
+\addplot table[x=1000/Tc,y=CONV]                                {phi-05-conv.txt};
+\addplot table[x=1000/Tc,y=Tig,  restrict x to domain=0.7:1.09] {phi-10-vpro.txt};
+\addplot table[x=1000/Tc,y=Model,restrict x to domain=1.09:1.6] {phi-10-vpro.txt};
+\addplot table[x=1000/Tc,y=CONV]                                {phi-10-conv.txt};
+\addplot table[x=1000/Tc,y=Tig,  restrict x to domain=0.7:1.09] {phi-20-vpro.txt};
+\addplot table[x=1000/Tc,y=Model,restrict x to domain=1.09:1.6] {phi-20-vpro.txt};
+\addplot table[x=1000/Tc,y=CONV]                                {phi-20-conv.txt};
 \legend{{[blue]$\phi=0.5$},{[red]$\phi=1.0$},{[green!60!black]$\phi=2.0$}};
 \end{semilogyaxis}
 \deflisttick{600,700,800,900,1100,1300,1500}{50}
@@ -46,7 +61,6 @@
 }
 \temp
 \begin{semilogyaxis}[
-    scale only axis,
     title style={yshift=7pt},
     title={\textit{i}-Pentanol/O$_2$/N$_2$, $P_C=\SI{20}{\bar}$},
     axis y line=none,
