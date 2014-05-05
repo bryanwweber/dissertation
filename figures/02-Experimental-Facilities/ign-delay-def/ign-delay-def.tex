@@ -24,7 +24,7 @@
 \addplot[black]        table[y index={1}] {definition-of-ign-delay.csv};
 \addplot[gray]         table[y index={2}] {definition-of-ign-delay.csv};
 \addplot[red, dashed]  table[y index={3}] {definition-of-ign-delay.csv};
-\legend{{$P(t)$, \si{\bar}},{$P'(t)$, \si{\bar\per\milli\second}},{$P(t)$ Non-Reactive, \si{\bar}}};
+\legend{{$P(t)$, \si{\bar}},{[gray]$P'(t)$, \si{\bar\per\milli\second}},{[red]$P(t)$ Non-Reactive, \si{\bar}}};
 \node[align=left,anchor=north west] at (axis cs:-18,50) {$T_0=\SI{308}{\kelvin}$\\$P_0=\SI{3.2250}{\bar}$\\$T_C=\SI{761}{\kelvin}$};
 \draw[semithick,stealth-stealth] (axis cs:0,5) -- (axis cs:4.4,5) node[midway, above] {$\tau_{1}$};
 \draw[semithick,stealth-stealth] (axis cs:0,17) -- (axis cs:5.35,17) node[midway, above] {$\tau$};
