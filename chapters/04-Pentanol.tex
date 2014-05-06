@@ -37,7 +37,7 @@ distance from the hydroxyl moeity, with $\alpha$ being the closest and
 $\delta$ being the farthest. The Greek letter notation will be used to
 refer to the carbon-centered radicals in \cref{sec:ipeoh-discussion}.
 \textit{i}-Pentanol can be produced biologically \cite{Peralta-Yahya2012},
-and offers several similar advantages as the butanol isomers as compared
+and offers several similar advantages as the butanol isomers compared
 to ethanol. \Cref{tab:ipeoh-heats} compares the HHV of ethanol, \iPeOH{},
 and gasoline.
 
@@ -78,7 +78,7 @@ before and after the injection, with the difference being the amount of
 fuel in the mixing tank. Based on this mass, required proportions of
 the gaseous oxidizer (O2, 99.994\% purity, N2, 99.999\% purity) are
 calculated. The gases are added to the mixing tank sequentially at
-room temperature and the total pressure is monitored to ensure the
+room temperature and the total pressure is monitored to ensure that the
 proper mixture concentrations are attained. Finally, the heaters and
 stirring vane are switched on and the system is allowed approximately
 \SI{1.5}{\hour} to reach steady state.
@@ -105,13 +105,13 @@ improvements are highlighted below; see the article for more detail
 \end{enumerate}
 
 Moreover, the following data sets from the literature and presented in
-\cite{Sarathy2013} were used to validate the newly updated model, in
-addition to the new data at $P_C=\SI{40}{\bar}$ presented here.
+the work of \textcite{Sarathy2013} were used to validate the newly
+updated model, in addition to the new data at $P_C=\SI{40}{\bar}$ presented here.
 
 \begin{enumerate}
-\item Ignition delays measured in a shock tube and RCM\cite{Tang2013, Tsujimura2012}
+\item Ignition delays measured in a ST and an RCM\cite{Tang2013, Tsujimura2012}
 \item JSR species data \cite{Dayma2011}
-\item New ignition delays measured in shock tubes \cite{Sarathy2013}
+\item New ignition delays measured in STs \cite{Sarathy2013}
 \item New JSR species data \cite{Sarathy2013}
 \item New flame speed and flame extinction measurements \cite{Sarathy2013}
 \end{enumerate}
@@ -121,7 +121,7 @@ addition to the new data at $P_C=\SI{40}{\bar}$ presented here.
 
 The experimental ignition delays measured in the RCM are shown in
 \cref{fig:ipeoh-7bar,fig:ipeoh-20bar,,fig:ipeoh-40bar}, along with
-ignition delays measured in the shock tube and comparison with
+ignition delays measured in the ST and comparison with
 the model simulations. There is no $\phi=2.0$ data set for \SI{7}{\atmosphere}
 because no conditions at which ignition occurred could be found.
 In \cref{fig:ipeoh-7bar,fig:ipeoh-20bar,fig:ipeoh-40bar}, solid
@@ -131,7 +131,7 @@ lines represent volume-profile simulations.
 \begin{figure}
     \ffigbox[\FBwidth]
         {\includegraphics[width=10cm]{04-Pentanol/ipeoh-7bar}}
-        {\caption{Shock tube and RCM ignition delay times from
+        {\caption{ST and RCM ignition delay times from
         \textcite{Tsujimura2012} at \SI{7}{\atmosphere} compared
         with model predictions by the model from \textcite{Sarathy2013}.}
         \label{fig:ipeoh-7bar}}
@@ -139,7 +139,7 @@ lines represent volume-profile simulations.
     \vspace{10pt}
     \ffigbox[\FBwidth]
         {\includegraphics[width=10cm]{04-Pentanol/ipeoh-20bar}}
-        {\caption{Shock tube and RCM ignition delay times from
+        {\caption{ST and RCM ignition delay times from
         \textcite{Tsujimura2012} at \SI{20}{\atmosphere} compared
         with model predictions by the model from \textcite{Sarathy2013}.}
         \label{fig:ipeoh-20bar}}
@@ -147,7 +147,7 @@ lines represent volume-profile simulations.
 \begin{figure}
     \ffigbox[\FBwidth]
         {\includegraphics[width=10cm]{04-Pentanol/ipeoh-40bar}}
-        {\caption{Shock tube and RCM ignition delay times from
+        {\caption{ST and RCM ignition delay times from
         \textcite{Sarathy2013} at \SI{40}{\atmosphere} compared
         with model predictions by the model from \textcite{Sarathy2013}.}
         \label{fig:ipeoh-40bar}}
@@ -178,14 +178,14 @@ lines represent volume-profile simulations.
 \end{figure}
 
 At \SI{7}{\atmosphere} (\cref{fig:ipeoh-7bar}), the high-temperature ignition delays
-measured in the shock tube are generally predicted to within a factor of 1.5. The RCM experiments
+measured in the ST are generally predicted to within a factor of 1.5. The RCM experiments
 are also well predicted at low temperature---within a factor of 2---but
 the disagreement grows to approximately a factor of 4 in the
 intermediate temperature regime. At \SI{20}{\atmosphere} (\cref{fig:ipeoh-20bar}), the
 high-temperature ignition delays are well predicted, including
 capturing the equivalence ratio sensitivity of the ignition delays.
 The ignition delays measured in the RCM are fairly well predicted
-at the lean and stoichiometric condition, but are over-predicted
+at the lean and stoichiometric conditions, but are over-predicted
 at the rich condition.
 
 At \SI{40}{\atmosphere} (\cref{fig:ipeoh-40bar}), the model is able to
@@ -223,11 +223,11 @@ overall reactivity at lean conditions while increase it at rich conditions.
 Representative experimental and simulated pressure profiles for the lean,
 stoichiometric, and rich conditions are shown in
 \cref{fig:ipeoh-phi05,fig:ipeoh-phi10,,fig:ipeoh-phi20} respectively,
-with the profiles shifted so TDC occurs at \SI{0}{\second}. Interestingly,
+with the profiles shifted so EOC occurs at \SI{0}{\second}. Interestingly,
 the experimental pressure traces after the induction period do not show
 a sharp increase in pressure (i.e., heat release is more gradual,
 similar to two-stage ignition). For the lean case, there is a moderate
-heat release \SI{25}{\milli\second} after TDC followed by a larger heat
+heat release \SI{25}{\milli\second} after EOC followed by a larger heat
 release event, and similar behavior is observed at other equivalence ratios.
 It is noted that similar heat release prior to the main ignition event
 was found in an HCCI engine experiment using \iPeOH{} by \textcite{Yang2010}
@@ -249,7 +249,7 @@ The sensitivity of the ignition delay to changes in the reaction rate
 coefficients is shown in \cref{fig:ipeoh-20sens} for a constant volume,
 adiabatic simulation at \SI{20}{\atmosphere}, \SI{800}{\kelvin}, and for
 equivalence ratios varying from $\phi=\numrange{0.5}{2.0}$. The percent
-sensitivity is computed by the formula
+sensitivity is computed by the formula:
 %
 \begin{align}
 S = \frac{\tau(2k_i)-\tau(k_i)}{\tau(k_i)} \times \SI{100}{\percent}
@@ -260,7 +260,7 @@ reaction $i$ is doubled, and $\tau(k_i)$ is the nominal ignition delay.
 Positive sensitivities therefore represent an increase in the ignition
 delay when the rate coefficient of reaction $i$ is increased. Both the
 forward and reverse rates of each reaction are increased simultaneously.
-Since the reaction 2ho2$\Leftrightarrow$h2o2+o2 is represented by two sets of $A$, $b$,
+Since the reaction 2ho2$\Leftrightarrow$h2o2+o2 is represented by two sets of $\mathrm{A}$, $b$,
 and $E_a$ in the reaction mechanism, both Arrhenius coefficients were
 simultaneously doubled to give the sensitivity value shown in \cref{fig:ipeoh-20sens}.
 
@@ -290,7 +290,7 @@ ignition delay. Similar to the \SI{20}{\atmosphere} sensitivity analysis,
 the most sensitive reactions are the H-abstractions from the fuel and
 the subsequent reactions of these initial fuel radicals. However,
 stronger equivalence ratio dependence of the sensitivity results is
-seen in \cref{fig:ipeoh-40sens} as compared to \cref{fig:ipeoh-20sens}.
+seen in \cref{fig:ipeoh-40sens} compared to \cref{fig:ipeoh-20sens}.
 It is interesting to note that the most sensitive reaction, formation
 of the $\alpha$-hydroxypentyl radical through H-abstraction by
 OH, is nearly twice as sensitive at $\phi=0.5$ than at $\phi=2.0$, while
@@ -298,7 +298,7 @@ most of the other reactions have nearly the same sensitivity for
 the three equivalence ratios.
 
 In addition, the reaction of formaldehyde and hydroxyl radical to form
-formyl radical and water shows up as somewhat sensitive, especially for
+formyl radical and water is somewhat sensitive, especially for
 the lean case. The importance of this reaction is demonstrated by the
 path analysis shown in \cref{fig:ipeoh-20path} (similar results are
 obtained for a path analysis at \SI{40}{\atmosphere} as at
@@ -341,19 +341,19 @@ The main \iPeOH{} reaction pathways after 20\% fuel consumption at
 ratios are shown in \cref{fig:ipeoh-20path}, describing the key low
 temperature reaction pathways. The percent flux of each reaction path
 is the contribution of that path to destroying the reactant, integrated
-up to 20\% fuel consumption. It is seen that fuel is mainly consumed by
+up to 20\% fuel consumption. The fuel is mainly consumed by
 the H atom abstraction at the $\alpha$ site because \iPeOH{} has a weak
 C-H bond at the $\alpha$ site. As discussed previously, subsequent
 reactions of $\alpha$-hydroxypentyl with O$_2$ generate \textit{i}-pentanal
 + HO$_2$, an OH terminating pathway. The other hydroxypentyl radicals tend
 to add to molecular oxygen and form hydroxyalkylperoxy (ROO) radicals.
 These radicals are mainly isomerized to hydroxyalkylhydroperoxide (QOOH)
-or decomposed to enol species by the concerted elimination of HO$_2$. Around
+or decomposed to enol species by the concerted elimination of HO$_2$. Approximately
 18\% of $\beta$-hydroxyalkylperoxy radicals are decomposed to produce
 \textit{i}-butanal (2-methylpropanal), formaldehyde, and OH radical via ROO
 isomerization and $\beta$-scission reactions by the Waddington mechanism
 \cite{Ray1973, Sway1983}. It is also interesting to note that a similar
-pathway involving hydrogen transfer from the OH group is shown to be
+pathway involving hydrogen transfer from the OH group is
 important for the $\gamma$-ROO (6\%) via a 7-membered transition state
 ring, which is a reaction sequence we included based on the work
 of \textcite{Welz2012}.
@@ -371,7 +371,7 @@ of \textcite{Welz2012}.
 \section{Conclusions}
 \label{sec:ipeoh-conclusions}
 
-New experimental ignition delay data has been collected in an RCM at
+New experimental ignition delay data have been collected in an RCM at
 conditions of \SI{40}{\atmosphere}, $\phi=\numrange{0.5}{2.0}$, and
 temperatures below \SI{800}{\kelvin}. The measured pressure histories
 showed interesting behavior of slow initial pressure rise prior to a
@@ -383,7 +383,7 @@ pre-ignition phase.
 An existing model \cite{Tsujimura2012} for \iPeOH{} combustion has been updated with newly
 calculated reaction rate coefficients and newly discovered reaction
 pathways. The updated model was able to predict the ignition
-delays measured in the RCM and shock tubes fairly well, although
+delays measured in the RCM and STs fairly well, although
 it was unable to reproduce the equivalence ratio sensitivity of
 the low-temperature RCM ignition delay measurements. The model was
 also able to qualitatively capture the slow initial pressure rise
