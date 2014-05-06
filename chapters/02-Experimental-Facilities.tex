@@ -41,7 +41,7 @@ The RCM consists of four chambers and
 three pistons that are used to control the machine. The chambers are
 called the reaction chamber, the hydraulic chamber, the pneumatic
 chamber, and the driving tank; similarly, the pistons are called
-the reactor, hydraulic, and pneumatic pistons and are each installed
+the reactor, hydraulic, and pneumatic pistons and each is installed
 in the chamber of the same name. The rear of the reaction chamber
 is bolted to the front of the hydraulic chamber; seals in the face
 of the hydraulic chamber prevent oil from leaking into and contaminating
@@ -72,19 +72,19 @@ At the start of an experimental run, with the piston in the
 EOC position, the reaction chamber is vacuumed to less
 than \SI{1}{\torr}. Next, the piston assembly is retracted by pressurizing
 the front face of the piston in the pneumatic chamber.
-For safety, and to prevent damage to the RCM, the driving tank should
-be filled to limit the acceleration of the piston assembly during the
+For safety, and to prevent damage to the RCM, the driving tank is
+filled to limit the acceleration of the piston assembly during the
 retraction.
 The pressure on the front of the pneumatic piston pulls the
 piston assembly rearward and seats the rear of the
 hydraulic piston onto an O-ring in the rear of the
 hydraulic chamber. The hydraulic chamber is filled with oil to
 a pressure of approximately \SI{800}{psi}, providing a rearward force on the
-front face of the hydraulic piston. Then, the air pressure is released from
+front face of the hydraulic piston. The air pressure is released from
 the front of the pneumatic chamber and the driving tank is filled to
 the desired driving pressure. The
 force on the hydraulic piston opposes the force on the pneumatic piston
-from the driving tank and the piston assembly remains at rest. Then, the
+from the driving tank and the piston assembly remains at rest. The
 reaction chamber is filled with the required initial pressure of test
 gas mixture from the mixing tank. Finally, compression is triggered by
 releasing the hydraulic pressure through an electrically-operated solenoid
@@ -117,8 +117,8 @@ of the pneumatic piston, and $d_r$ is the diameter of the reactor piston.
 The minimum driving pressure is such that the piston does not rebound at
 the EOC due to pressure on the reactor piston. So that the driving
 pressure can be much lower than the EOC pressure, the diameter ratio of
-the reactor piston to the driver piston is \num{2/5}, allowing a factor of
-\num{6.25} lower driving pressure than EOC pressure. The actual driving
+the reactor piston to the driver piston is 2:5, allowing the driving pressure
+to be lower than the EOC pressure by a factor of 6.25. The actual driving
 pressure should exceed the minimum by some safety margin so that the
 reactor remains at constant volume even if there is some pressure rise
 due to heat release in the reaction chamber prior to the main ignition.
@@ -148,18 +148,18 @@ ignition delay if it reduces the pressure rise rate during the ignition;
 it is expected that this effect will be very small relative to the
 typical random uncertainty in ignition delay experiments. Moreover,
 the driving pressures required to balance the full pressure rise during
-to ignition are more likely cause elastic rebound,
+ignition are more likely cause elastic rebound,
 especially for high $P_C$ when the post-ignition pressure rise is greater.
 
 The EOC conditions ($P_C$ and $T_C$) can be independently varied. This
 is made possible by independent variation of the compression ratio,
 initial pressure and initial temperature, and the specific heat ratio
 of the test gases. The compression ratio can be
-increased by adding spacers onto the rear of the hydraulic chamber,
+increased by adding spacers onto the rear of the hydraulic chamber or
 increasing the stroke, and can be reduced by adding split shims onto
-the rear of the reaction chamber, increasing the EOC clearance length.
+the rear of the reaction chamber or increasing the EOC clearance length.
 Adjustment of the specific heat ratio of the gas can be accomplished
-by substituting components (i.e. substituting Ar for N$_2$ results in
+by substituting components (e.g. substituting Ar for N$_2$ results in
 higher $P_C$ and $T_C$ if all other conditions are fixed). The initial
 temperature is controlled by heaters, as described in the following
 section.
@@ -177,7 +177,7 @@ the wall of the reaction chamber, and near the inlet valve of the reaction chamb
 preheat temperature of the mixture. A static pressure transducer
 measures the pressure in the manifold and mixing tanks. This transducer is used
 during mixture preparation and to measure the initial pressure of a given experiment.
-Two transducers are for various experiments in this work, as described below
+Two transducers are used for various experiments in this work, as described below
 in \cref{sec:unc-p0}.
 
 Most of the fuels studied in this work are liquids at room temperature and
@@ -202,8 +202,8 @@ contents by GC/MS \cite{Weber2011}, GC-FID \cite{Kumar2009}, and GC-TCD
 both the work by \textcite{Kumar2009} on \textit{n}-decane and the study of
 \textcite{Weber2011} on \textit{n}-butanol confirmed that there was no fuel
 decomposition over the course of a typical set of experiments. Furthermore,
-within this study, each new mixture preparation is checked against previously
-tested conditions to ensure reproducibility.
+each new mixture preparation is checked against previously tested
+conditions to ensure reproducibility.
 
 \subsection{Definition of Ignition Delay}
 \label{sec:ig-delay-def}
@@ -240,12 +240,13 @@ compression until the largest peak in the time derivative of the pressure.
 Each unique $P_C$ and $T_C$ condition is repeated at least 5 times to
 ensure repeatability of the experiments. The experiment closest to the
 mean of the runs at a particular condition is chosen for analysis and
-presentation. The standard deviation of all of the runs at a condition
-is less than 10\% of the mean in all cases.
+presentation. The standard deviation of all of the runs at a particular
+condition is less than 10\% of the mean in all cases.
 
 \subsection{Non-Reactive Experiments}
 
-\Cref{fig:ig-delay-def} also shows a non-reactive pressure trace.
+\Cref{fig:ig-delay-def} also shows a representative non-reactive pressure
+trace corresponding to the experimental conditions in the figure.
 Due to heat loss from the test mixture to the cold reactor walls,
 the pressure and temperature of the gas in the reaction chamber will
 decrease after the end of compression. A non-reactive pressure trace
@@ -253,13 +254,12 @@ is measured that corresponds to each unique $P_C$ and $T_C$ condition
 studied to quantify the effect of the heat loss on the ignition process
 and to verify that no heat release has occurred during the compression
 stroke. The non-reactive pressure trace is acquired by replacing the
-oxygen in the oxidizer with nitrogen, so that the specific heat ratio
+O$_2$ in the oxidizer with N$_2$, so that the specific heat ratio
 of the initial mixture is maintained, but the heat release due to
 exothermic oxidation reactions is eliminated. Maintaining a similar
 specific heat ratio ensures that the non-reactive experiment faithfully
-reproduces the conditions of the reactive experiment. A representative
-non-reactive pressure trace is shown in \cref{fig:ig-delay-def}
-corresponding to the experimental conditions in the figure.
+reproduces the conditions of the reactive experiment.
+
 
 \subsection{Reaction Chamber Homogeneity}
 
@@ -277,15 +277,16 @@ temperature and species.
 
 To facilitate spatially homogeneous conditions in the reactor
 and reduce the effect of the roll-up vortex, it is necessary to trap
-the boundary layer. This is accomplished on the present RCM by a
+the boundary layer. This is accomplished in the present RCM by a
 crevice machined into the crown of the piston, shown in cross-section
 in \cref{fig:rcm-piston}. The boundary layer enters the crevice through
 the converging section as the piston moves forward and is trapped
 within the crevice. The dimensions of the crevice were optimized
-by \textcite{Mittal2006a} through CFD simulations. Subsequently,
-\textcite{Mittal2006b} experimentally showed that the optimized crevice
-design provides homogeneous conditions in the reaction chamber up to
-approximately \SI{150}{\milli\second} after the EOC. By using PLIF
+by \textcite{Mittal2006a} through computational fluid dynamic (CFD) 
+simulations. Subsequently, \textcite{Mittal2006b} experimentally showed 
+that the optimized crevice design provided homogeneous conditions in the 
+reaction chamber up to approximately \SI{150}{\milli\second} after the 
+EOC. By using planar laser induced fluorescence (PLIF)
 measurements of acetone-seeded mixtures, \textcite{Mittal2006b}
 showed that there was a core region of gases near the center of the
 reactor whose temperature remained spatially homogeneous.
@@ -324,7 +325,7 @@ $T_{ic}$ is the temperature at the end of isentropic compression, $\gamma$ is th
 temperature-dependent ratio of specific heats, $P_{ic}$ is the pressure at the
 end of isentropic compression, and $P_0$ is the initial pressure.
 
-However, experiments show that the measured pressure in the reaction chamber
+However, experiments have shown that the measured pressure in the reaction chamber
 does not reach the value of $P_{ic}$ calculated by using the geometric
 compression ratio. The difference is due to finite heat loss from the
 reactants to the reactor walls and the crevice volume during the
@@ -352,7 +353,7 @@ reactants. To model the thermodynamic state after the end of compression,
 the adiabatic core hypothesis is applied and the heat loss is
 assumed to occur only in a thin boundary layer near the reactor walls.
 Thus, the core region is modeled as adiabatic, and the heat loss
-from the boundary layer is be modeled as an isentropic volume
+from the boundary layer is modeled as an isentropic volume
 expansion.
 
 In general, the specific heat ratio used in \cref{eq:tic,eq:tc} is an
@@ -388,7 +389,7 @@ is applied during and after the compression stroke to calculate
 the volume trace. Since the non-reactive experiment requires slightly
 different initial pressure (on the order of 5 torr) to reach the same
 compressed pressure as the reactive experiment---due to the slightly
-different specific heat ratio in the non-reactive experiment as compared
+different specific heat ratio in the non-reactive experiment compared
 to the reactive experiment---the reactive pressure trace is used to
 compute the volume trace until EOC; after EOC, the corresponding
 non-reactive pressure trace is used. In \cref{eq:volume-trace} it is assumed that
@@ -426,7 +427,7 @@ to report. Since $T_C$ is not measured, we must perform an uncertainty
 propagation analysis on the equation used to calculate $T_C$,
 \cref{eq:tc}. First, we simplify the term involving $\gamma$ in
 \cref{eq:tc}. By definition, $\gamma$ is the ratio of the specific heat
-at constant pressure to that at constant volume
+at constant pressure to that at constant volume:
 %
 \begin{align}
 \gamma \equiv \frac{C_p}{C_v} = \frac{C_p/R}{C_v/R} = \frac{\hat{C}_p}{\hat{C}_v}
@@ -436,7 +437,7 @@ where $C_p$ and $C_v$ are the specific heats in molar units at constant
 pressure and volume, respectively, and $R$ is the universal gas constant,
 used to produce non-dimensional specific heats, indicated by a hat. The
 difference between the non-dimensional specific heats is one,
-$\hat{C}_v = \hat{C}_p - 1$. Then, it follows that
+$\hat{C}_v = \hat{C}_p - 1$. Then, it follows that:
 %
 \begin{align}
 \label{eq:simplify-gamma}
@@ -453,7 +454,7 @@ heat. In the following, we assume that there is negligible
 change of the total specific heat due to changes in reactant
 mole fractions, as for \cref{eq:volume-trace,eq:isen-temp}.
 The total specific heat is simply the sum of the product of
-the species mole fractions and their specific heats
+the species mole fractions and their specific heats:
 %
 \begin{subequations}
 \label{eq:cp}
@@ -466,7 +467,7 @@ C_{p\text{,total}} &= \sum_i X_i C_{p,i} \\
 where $i$ indicates the species and $X_i$ is the species mole fraction.
 In the NASA polynomial formulation used by CHEMKIN, the non-dimensional specific
 heat at constant pressure as a function of temperature is represented by a
-fourth-order polynomial fit
+fourth-order polynomial fit:
 %
 \begin{align}
 \label{eq:cp-nasa}
@@ -490,12 +491,12 @@ approximate the total specific heat as a linear function of temperature:
 \end{split}
 \end{equation}
 %
-$a$ and $b$ are found by fitting the total non-dimensional specific heat
+where $a$ and $b$ are found by fitting the total non-dimensional specific heat
 over the temperature range from \SIrange{300}{1100}{\kelvin}, as
 discussed below in \cref{sec:unc-cp}.
 
 With this approximation of the specific heat, we can integrate \cref{eq:tc}
-to find the compressed temperature
+to find the compressed temperature:
 %
 \begin{subequations}
 \begin{align}
@@ -537,7 +538,7 @@ U_{T_C} = \sqrt{\left(\frac{\partial T_C}{\partial P_C} U_{P_C}\right)^2 + \left
 \end{align}
 
 The uncertainties of the parameters, $U_j$ in \cref{eq:tc-unc}, are in
-general found by their own root square sum procedure
+general found by their own root square sum procedure:
 %
 \begin{align}
 {U_j}^2 = {B_j}^2 + {R_j}^2
@@ -581,7 +582,7 @@ to this uncertainty.
 The precision uncertainty is due to the limit of precision of
 the display on the Omega Engineering CNi3254 process meter used
 to control the process temperature. This is $\pm\SI{0.05}{\kelvin}$.
-The total uncertainty of the initial temperature is
+The total uncertainty of the initial temperature is:
 %
 \begin{align}
 U_{T_0} = \sqrt{\left(B_{T_0}\right)^2 + \left(R_{T_0}\right)^2} = \sqrt{\left(\SI{3}{K}\right)^2 + \left(\SI{0.05}{K}\right)^2} = \SI{3}{\kelvin}
@@ -611,7 +612,7 @@ is negligible compared to the standard error in the pressure transducers.
 The precision uncertainty is due to the limit of precision of the display
 on the Omega Engineering DP41-B process meter used to monitor the initial
 pressure. This is $\pm\SI{0.005}{\torr} \ (\SI{0.666}{\pascal})$. The total
-uncertainty of the initial pressure is
+uncertainty of the initial pressure is:
 %
 \begin{subequations}
 \begin{align}
@@ -631,7 +632,7 @@ The uncertainties in the signal acquisition equipment are negligible
 compared to this uncertainty. The precision uncertainty is due to the limit
 of precision of the output of the pressure, and is \SI{5E-7}{\bar}. This
 is negligible compared to the bias uncertainty, so the total uncertainty
-of the compressed pressure is
+of the compressed pressure is:
 %
 \begin{equation}
 U_{P_C} = B_{P_C} = \SI{0.05}{\bar} = \SI{5000}{\pascal}
@@ -646,7 +647,7 @@ the linear fit to the total specific heat. The uncertainty in the mixture
 composition can be estimated by the same method as is used for $T_C$. The
 specific heat is given by \cref{eq:cp}, so we can take partial derivatives
 of that equation with respect to the mole fractions of the species to find
-the total uncertainty
+the total uncertainty:
 %
 \begin{equation}
 \label{eq:cp-uncertainty}
@@ -670,14 +671,14 @@ variation in mole fraction from the expected value \cite{Weber2011}; this value 
 the total uncertainty of all liquid fuels. The mole fraction of the gaseous species
 is determined by their partial pressures when filling; the mole fraction is
 related to the pressure by Dalton's Law of Partial Pressure
-\cite{Dalton1801,Gillespie1930}
+\cite{Dalton1801,Gillespie1930}:
 %
 \begin{equation}
 X_i = \frac{P_i}{P}
 \end{equation}
 %
 where $P_i$ is the partial pressure of a species and $P$ is the total pressure.
-It follows that
+It follows that:
 %
 \begin{equation}
 \begin{split}
@@ -695,7 +696,7 @@ applicable. It is assumed that the uncertainty in each partial pressure
 is independent of all the others for simplicity.
 
 A line is fit through the end points of the total specific heat curve
-via simultaneous solution of the equations
+via simultaneous solution of the equations:
 %
 \begin{equation}
 \label{eq:cp-line}
@@ -720,7 +721,7 @@ a &= \frac{f_2 \hat{C}_{p,2} - f_1 \hat{C}_{p,1}}{f_2-f_1}
 where $f_1$ and $f_2$ are chosen so that $b$ is eliminated in
 \cref{eq:cp-line}.
 
-Uncertainty in the slope and $y$-intercept can be found by
+Uncertainty in the slope and $y$-intercept can be found by:
 %
 \begin{equation}
 \begin{split}
@@ -729,7 +730,7 @@ Uncertainty in the slope and $y$-intercept can be found by
 \end{split}
 \end{equation}
 %
-where the partial derivatives are
+where the partial derivatives are:
 %
 \begin{align}
 \frac{\partial b}{\partial \hat{C}_{p,1}} &= \frac{-1}{T_2 - T_1} & \frac{\partial b}{\partial \hat{C}_{p,2}} &= \frac{1}{T_2 - T_1} \\
@@ -759,7 +760,7 @@ the uncertainty in the mole fractions of the components are:
 %
 where two uncertainties for O$_2$ and N$_2$ are given representing the two
 pressure transducers used. The uncertainties in $\hat{C}_{p,total}$ at
-the temperature limits of \SIlist{300;1100}{\kelvin} are
+the temperature limits of \SIlist{300;1100}{\kelvin} are:
 %
 \begin{gather*}
 \left(U_{C_{p,1}}\right)^2 = 3.5346^2 \cdot \num{2.1054E-2} + 3.5030^2 \cdot \num{7.3633E-4} + 13.7490^2 \cdot \num{2.8561E-6} = \num{2.7260E-1} \\
@@ -772,14 +773,14 @@ With the given values of the fuel and oxidizer concentration, the total
 specific heat can be calculated using the NASA polynomial formulation
 \cref{eq:cp-nasa} and \cref{eq:cp-total}. Fitting over the temperature
 range \SIrange{300}{1100}{\kelvin} with $f_1 = 11$ and $f_2 = 3$ yields
-values for $a$ and $b$ of
+values for $a$ and $b$ of:
 %
 \begin{align*}
 b &= \frac{4.9519 - 3.8557}{\SI{1100}{\kelvin} - \SI{300}{\kelvin}} = \SI{1.3701E-3}{\per\kelvin} \\
 a &= \frac{3 \cdot 4.9519 - 11 \cdot 3.8557}{3 - 11} = 3.4447
 \end{align*}
 %
-and uncertainties in the slope and $y$-intercept of
+and uncertainties in the slope and $y$-intercept of:
 %
 \begin{align*}
 \left(U_{b}\right)^2 = \frac{\num{2.7260E-1}}{\left(-\SI{800}{\kelvin}\right)^2} + \frac{\num{3.9254E-1}}{\left(\SI{800}{\kelvin}\right)^2} = \num{1.0393E-6} \\
@@ -808,7 +809,7 @@ end wall.
 
 The portion of the GSV protruding into the reaction chamber has minimal
 effect on the homogeneity of the reaction chamber. Moreover, the removal of
-samples also has minimal effect on the measured ignition delay.
+samples has minimal effect on the measured ignition delay.
 This has been verified experimentally by measuring the ignition delay with
 and without the GSV present, and with and without sampling occurring.
 In both cases, the difference in ignition delay was statistically insignificant
@@ -824,7 +825,7 @@ position after being extended.
 
 The GSV has an adjustable COC time, by adjusting the
 distance the plate is allowed to move. Furthermore, the GSV has the ability
-measure the displacement of the mass, allowing the direct measurement of
+to measure the displacement of the mass, allowing the direct measurement of
 the COC time and the absolute time of opening.
 
 The GSV controller is triggered by a \SI{5}{\volt} signal from the cDAQ.
@@ -906,7 +907,7 @@ split mode, where a percentage of the injected sample is removed from the
 injector prior to injection onto the column, or in the splitless mode,
 where nearly all of the sample is injected into the column. The split mode
 is used in this work. The amount of sample removed is controlled by a valve
-in the injector. The split ratio is calculated according to \cref{eq:split-ratio}
+in the injector. The split ratio is calculated according to \cref{eq:split-ratio}:
 %
 \begin{gather}
 \label{eq:split-ratio}
@@ -1006,7 +1007,7 @@ can be imagined as four round rods, arranged in a cross pattern, with
 their long axes aligned parallel to the ion beam (i.e. the $z$ axis).
 The ions are admitted to the rods at one end (e.g. at the origin in
 \cref{fig:gcms-quad}) and the detector is placed parallel to the $x-y$ plane
-in \cref{fig:gcms-quad} at the other end of the rods(not shown in
+in \cref{fig:gcms-quad} at the other end of the rods (not shown in
 \cref{fig:gcms-quad}). A positive DC voltage is applied
 to one pair of the rods, while a negative DC voltage is applied to the other
 pair of rods; in addition, an AC voltage is applied simultaneously to all four
@@ -1075,7 +1076,7 @@ the number of moles of analyte reaching the detector. The number of
 moles of analyte can in turn be related to the number of moles of
 sample in the gas sample injection valve sample loop. Once the
 calibration curve is generated, it is used to relate the measured
-area of the peak of particular component to its mole fraction. Detailed
+area of the peak of the particular component to its mole fraction. Detailed
 methods for the construction of calibration curves will be given in
 \cref{sec:gcms-procedure}.
 
@@ -1106,7 +1107,7 @@ interest in the liquid state are prepared by massing each
 component on a high-accuracy AND-201 scale. A small mass
 of this mixture is drawn into a syringe and massed on the
 same scale. The mixture is injected through a septum into
-the sample bottle. Then the sample bottle is filled with
+the sample bottle. The sample bottle is filled with
 high-purity nitrogen so that the largest mole fraction of
 a species of interest is approximately 0.001. The sample
 bottle is connected to the sample injection valve on the
@@ -1114,10 +1115,9 @@ GC/MS and the valve on the sample bottle is opened and
 quickly closed. The pressure is allowed to equalize and
 the GC/MS is started.
 
-After the completion of the GC/MS method, the total ion
-chromatogram (TIC) is analyzed by the Shimadzu GCMS Post-run
-Analysis software (version XXXX). Each peak is automatically
-integrated by the software so that its area can be found.
+After the completion of the GC/MS method, the TIC is analyzed by the 
+Shimadzu GCMS Post-run Analysis software (version XXXX). Each peak is 
+automatically integrated by the software so that its area can be found.
 The peak area is then related to the number of moles of
 sample sent to the detector by linear least-squares regression.
 This calibration curve is used to compute the mole fraction
