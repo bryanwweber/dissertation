@@ -372,12 +372,14 @@ to numerically integrate \cref{eq:tc}.
 In this work, the CHEMKIN-Pro \cite{Chemkin2012} software is used to
 perform the numerical integration and calculation of $T_C$. The
 CHEMKIN-Pro software provides the facility for a user-specified
-volume as a function of time to be applied to a homogeneous,
+volume profile as a function of time to be applied to a homogeneous,
 adiabatic reactor. Since the adiabatic core of the reaction chamber
 is modeled as undergoing an isentropic volumetric compression followed
-by an isentropic volumetric expansion, the user-specified volume
+by an isentropic volumetric expansion, this user-specified volume
 functionality is used to compute the RCM reactor state as a function
-of time. A volume trace for simulation is computed from the measured
+of time in CHEMKIN-Pro.
+
+A volume trace for simulation is computed from the measured
 pressure trace using the isentropic relation:
 %
 \begin{align}
@@ -420,6 +422,35 @@ Once again, it is assumed that changes in composition have a negligible
 influence on the ratio of specific heats.
 The temperature calculated by \cref{eq:isen-temp} is typically within
 1K of the temperature calculated by CHEMKIN-Pro.
+
+CHEMKIN-Pro expects the volume profile in a tabular format, with each row
+containing the volume at a specified time. For ease of import, the
+\texttt{csv} file format is used. Since the volume is computed at each
+point that the pressure is experimentally measured (i.e. at a rate of
+\SI{50}{\kilo\hertz}), every fifth volume point is selected for tabulation
+to reduce the computation time in CHEMKIN-Pro.
+
+\subsection{Numerical Methods}
+Two types of simulations are conducted using the Closed Homogeneous
+Batch Reactor in CHEMKIN-Pro \cite{Chemkin2012}. The first type uses the
+tabulated volume profile and is specified in the CHEMKIN-Pro input file
+with the VPRO keyword. Therefore, this type of simulation is referred to
+as a VPRO simulation hereafter. The second type is a constant volume,
+adiabatic simulation and is referred to as CONV hereafter, again named
+after the CHEMKIN-Pro input keyword used to specify this problem type.
+The CONV type simulations do not capture the effect of the compression
+stroke and post-compression heat loss; therefore, they allow direct
+analysis of the kinetic model with no influence of potentially
+confounding experimental effects.
+
+As mentioned previously, VPRO simulations are used to calculate the
+temperature at the end of compression, $T_C$. This temperature is used
+as the reference temperature for reporting the ignition delay.
+Simulations to determine TC are conducted with and without detailed
+reaction steps to determine if there is significant reactivity in the
+compression stroke. If there is no significant reactivity
+(and hence heat release), the pressure and temperature at EOC are the
+same whether or not reactions are included in the simulation.
 
 \subsection[Uncertainty of Compressed Temperature and Ignition Delay]%
 {Uncertainty of Compressed Temperature\\ and Ignition Delay}
