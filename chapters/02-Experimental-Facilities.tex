@@ -452,8 +452,7 @@ compression stroke. If there is no significant reactivity
 (and hence heat release), the pressure and temperature at EOC are the
 same whether or not reactions are included in the simulation.
 
-\subsection[Uncertainty of Compressed Temperature and Ignition Delay]%
-{Uncertainty of Compressed Temperature\\ and Ignition Delay}
+\subsection{Uncertainty of Compressed Temperature}
 \label{sec:uncertainty}
 
 The uncertainty of the compressed temperature is an important parameter
@@ -558,11 +557,11 @@ T_C = \frac{\ln{\frac{P_C}{P_0}} + a \ln{\frac{T_0}{T_e}} + b\left(T_0 - T_e\rig
 where $T_e$ is the temperature about which the Taylor expansion is performed.
 
 With an explicit function for $T_C$, we can estimate the uncertainty in
-$T_C$ by the root square sum of the uncertainty in the parameters in
+$T_C$ by the quadratic sum of the uncertainty in the parameters in
 \cref{eq:explicit-tc} multiplied by the partial derivative of
 \cref{eq:explicit-tc} with respect to each of the parameters
 \cite{Taylor1982}. The parameters are $P_C$, $P_0$, $T_0$, $a$, and $b$
-and are assumed to be independent.
+and are assumed to be independent with normally distributed uncertainties.
 %
 \begin{align}
 \label{eq:tc-unc}
@@ -570,6 +569,12 @@ U_{T_C} = \sqrt{\left(\frac{\partial T_C}{\partial P_C} U_{P_C}\right)^2 + \left
                 \left(\frac{\partial T_C}{\partial T_0} U_{T_0}\right)^2 + \left(\frac{\partial T_C}{\partial a} U_{a}\right)^2 +
                 \left(\frac{\partial T_C}{\partial b} U_{b}\right)^2}
 \end{align}
+%
+In general, the uncertainties of each parameter may not be normally
+distributed and several of the parameters are correlated (i.e. not
+independent), so the following analysis provides only an approximation
+of the true uncertainty. More detailed analysis (e.g. by a Monte Carlo
+method) is required to investigate the interactions of the uncertainties.
 
 The uncertainties of the parameters, $U_j$ in \cref{eq:tc-unc}, are in
 general found by their own root square sum procedure:
@@ -708,26 +713,25 @@ related to the pressure by Dalton's Law of Partial Pressure
 \cite{Dalton1801,Gillespie1930}:
 %
 \begin{equation}
-X_i = \frac{P_i}{P}
+X_i = \frac{P_i}{\sum_i P_i}
 \end{equation}
 %
-where $P_i$ is the partial pressure of a species and $P$ is the total pressure.
-It follows that:
+where $P_i$ is the partial pressure of a species and the sum is over all
+of the species. It follows that:
 %
 \begin{equation}
 \begin{split}
-\left(U_{X_i}\right)^2 &= \left(\frac{\partial X_i}{\partial P_i} U_{P_i}\right)^2 + \left(\frac{\partial X_i}{\partial P} U_P\right)^2 \\
-&= \left(\frac{U_{P_i}}{P}\right)^2 + \left(\frac{{-P_i}}{P^2} U_P\right)^2
+\left(U_{X_i}\right)^2 &= \left(\frac{\partial X_i}{\partial P_i} U_{P_i}\right)^2 + \sum_{j\neq i} \left(\frac{\partial X_i}{\partial P_j}U_{P_j}\right)^2\\
+&= \left(\frac{\sum_{j \neq i} P_j}{\left(\sum_i P_i\right)^2}U_{P_i}\right)^2 + \sum_{j \neq i}\left(\frac{{-P_i}}{\left(\sum_i P_i\right)^2} U_{P_j}\right)^2
 \end{split}
 \end{equation}
 %
-The uncertainties of the pressures $P_i$ and $P$ are equal and can be estimated by
+The uncertainties of each of the pressures $P_i$ are equal and can be estimated by
 the same procedure as in \cref{sec:unc-p0} since the same pressure transducer
-is used to measure the pressure. The total pressure $P$ will be different for
-each species as it is filled. The order followed in these experiments is
-liquid fuel injection, followed by oxygen, then nitrogen, then argon when
-applicable. It is assumed that the uncertainty in each partial pressure
-is independent of all the others for simplicity.
+is used to measure the pressure. It is assumed that the uncertainty in
+each partial pressure is independent of all the others for simplicity,
+although this will not strictly be the case because the gases are filled
+sequentially.
 
 A line is fit through the end points of the total specific heat curve
 via simultaneous solution of the equations:
@@ -741,11 +745,11 @@ via simultaneous solution of the equations:
 \end{equation}
 %
 where $\hat{C}_{p,1}$ and $\hat{C}_{p,2}$ are the total specific heats
-at $T_1$ and $T_2$ respectively; in this analysis, the temperatures are
-\SI{300}{\kelvin} and \SI{1100}{\kelvin}. Solving \cref{eq:cp-line} for
+at $T_1$ and $T_2$ respectively. Solving \cref{eq:cp-line} for
 $b$ and $a$ gives:
 %
 \begin{equation}
+\label{eq:cp-slope-intercept}
 \begin{split}
 b &= \frac{\hat{C}_{p,2} - \hat{C}_{p,1}}{T_2 - T_1} \\[0.5em]
 a &= \frac{f_2 \hat{C}_{p,2} - f_1 \hat{C}_{p,1}}{f_2-f_1}
@@ -774,54 +778,54 @@ where the partial derivatives are:
 and the uncertainties of the specific heats $U_{C_{p,1}}$ and $U_{C_{p,2}}$
 are calculated as described earlier.
 
-\subsection{Uncertainty in Compressed Temperature}
+\subsubsection{Uncertainty in Compressed Temperature for Alcohol Experiments}
+\label{sec:unc-alcohol}
 
 The following analysis is considered for a representative mixture of
-\SI{3.38}{\mole\percent} \tBuOH{}, \SI{20.30}{\mol\percent} O$_2$,
+\SI{3.38}{\mole\percent} \tBuOH{}, \SI{20.30}{\mole\percent} O$_2$, and
 \SI{76.32}{\mole\percent} N$_2$, i.e. a $\phi=1.0$ mixture of \tBuOH{}
-and air. A typical total pressure after filling is approximately
-\SI{1520}{\torr} ($=\SI{202650}{\pascal}$), with approximately
-\SI{42000}{\pascal} of O$_2$ and \SI{160650}{\pascal} of N$_2$. Thus,
-the uncertainty in the mole fractions of the components are:
-%
-\begin{gather*}
-\left(U_F\right)^2 = \left(0.0338 \cdot 0.05\right)^2 = \num{2.8561E-6} \\
-\left(U_{O_2}\right)^2 = \left(\frac{\SI{4309.2}{\pascal}}{\SI{42000}{\pascal}}\right)^2 + \left(\frac{-\SI{4309.2}{\pascal}}{\SI{42000}{\pascal}}\right)^2 = \num{2.1054E-2} \\
-\left(U_{O_2}\right)^2 = \left(\frac{\SI{ 346.6}{\pascal}}{\SI{42000}{\pascal}}\right)^2 + \left(\frac{-\SI{ 346.6}{\pascal}}{\SI{42000}{\pascal}}\right)^2 = \num{1.3620E-4} \\
-\left(U_{N_2}\right)^2 = \left(\frac{\SI{4309.2}{\pascal}}{\SI{202650}{\pascal}}\right)^2 + \left(\frac{-\SI{160650}{\pascal}}{\left(\SI{202650}{\pascal}\right)^2}\SI{4309.2}{\pascal}\right)^2 = \num{7.3633E-4} \\
-\left(U_{N_2}\right)^2 = \left(\frac{\SI{346.6}{\pascal}}{\SI{202650}{\pascal}}\right)^2 + \left(\frac{-\SI{160650}{\pascal}}{\left(\SI{202650}{\pascal}\right)^2}\SI{346.6}{\pascal}\right)^2 = \num{4.7636E-6}
-\end{gather*}
-%
-where two uncertainties for O$_2$ and N$_2$ are given representing the two
-pressure transducers used. The uncertainties in $\hat{C}_{p,total}$ at
-the temperature limits of \SIlist{300;1100}{\kelvin} are:
-%
-\begin{gather*}
-\left(U_{C_{p,1}}\right)^2 = 3.5346^2 \cdot \num{2.1054E-2} + 3.5030^2 \cdot \num{7.3633E-4} + 13.7490^2 \cdot \num{2.8561E-6} = \num{2.7260E-1} \\
-\left(U_{C_{p,2}}\right)^2 = 4.2377^2 \cdot \num{2.1054E-2} + 3.9910^2 \cdot \num{7.3633E-4} + 30.9381^2 \cdot \num{2.8561E-6} = \num{3.9254E-1} \\
-\left(U_{C_{p,1}}\right)^2 = 3.5346^2 \cdot \num{1.3620E-4} + 3.5030^2 \cdot \num{4.7636E-6} + 13.7490^2 \cdot \num{2.8561E-6} = \num{2.2300E-3} \\
-\left(U_{C_{p,2}}\right)^2 = 4.2377^2 \cdot \num{1.3620E-4} + 3.9910^2 \cdot \num{4.7636E-6} + 30.9381^2 \cdot \num{2.8561E-6} = \num{5.2556E-3}
-\end{gather*}
+and air. Similar results are obtained for experiments with the other butanol
+isomers and \iPeOH{} and experiments at different fuel concentrations,
+because the fuel specific heats are similar and each experiment uses
+similar diluent concentrations.
 
-With the given values of the fuel and oxidizer concentration, the total
-specific heat can be calculated using the NASA polynomial formulation
-\cref{eq:cp-nasa} and \cref{eq:cp-total}. Fitting over the temperature
-range \SIrange{300}{1100}{\kelvin} with $f_1 = 11$ and $f_2 = 3$ yields
-values for $a$ and $b$ of:
-%
-\begin{align*}
-b &= \frac{4.9519 - 3.8557}{\SI{1100}{\kelvin} - \SI{300}{\kelvin}} = \SI{1.3701E-3}{\per\kelvin} \\
-a &= \frac{3 \cdot 4.9519 - 11 \cdot 3.8557}{3 - 11} = 3.4447
-\end{align*}
-%
-and uncertainties in the slope and $y$-intercept of:
-%
-\begin{align*}
-\left(U_{b}\right)^2 = \frac{\num{2.7260E-1}}{\left(-\SI{800}{\kelvin}\right)^2} + \frac{\num{3.9254E-1}}{\left(\SI{800}{\kelvin}\right)^2} = \num{1.0393E-6} \\
-\left(U_{a}\right)^2 = \frac{11^2\cdot\num{2.7260E-1}}{\left(8\right)^2} + \frac{3^2\cdot\num{3.9254E-1}}{\left(8\right)^2} = \num{5.7059E-1} \\
-\left(U_{b}\right)^2 = \frac{\num{2.2300E-3}}{\left(-\SI{800}{\kelvin}\right)^2} + \frac{\num{5.2556E-3}}{\left(\SI{800}{\kelvin}\right)^2} = \num{1.1806E-8} \\
-\left(U_{a}\right)^2 = \frac{11^2\cdot\num{2.2300E-3}}{\left(8\right)^2} + \frac{3^2\cdot\num{5.2556E-3}}{\left(8\right)^2} = \num{5.0875E-3}
-\end{align*}
+A typical total pressure after filling is approximately
+\SI{1520}{\torr} (\SI{202650}{\pascal}), with approximately
+\SI{42000}{\pascal} of O$_2$ and \SI{160650}{\pascal} of N$_2$. The partial
+pressure of the liquid fuel is assumed to contribute a negligible amount
+to the total pressure during the filling of the gases for the purposes of
+this uncertainty analysis. The results shown below use the
+uncertainty associated with the PX-303-type pressure transducer because
+this transducer was used for all of the experiments with alcohol fuels.
+
+Applying \cref{eq:tc-unc} to typical conditions of $P_0 = \SIrange{500}{760}{\torr}$,
+$T_0=\SIrange{300}{400}{\kelvin}$, and $P_C=\SIrange{15}{30}{\bar}$ yields
+a maximum uncertainty of approximately \SIrange{2}{3}{\percent} of the
+compressed temperature $T_C$.
+
+\subsubsection{Uncertainty in Compressed Temperature for Methylcyclohexane Experiments}
+\label{sec:unc-mch}
+
+The following analysis is considered for a representative mixture of
+\SI{1.05}{\mole\percent} MCH, \SI{10.99}{\mole\percent} O$_2$,
+\SI{12.83}{\mole\percent} N$_2$, and \SI{75.13}{\mole\percent} Ar, i.e.
+the stoichiometric mixture (\#1) from \cref{tab:mch-props}. Similar
+results are obtained for the other mixtures.
+
+A typical total pressure after filling is approximately
+\SI{3390}{\torr} (\SI{452000}{\pascal}), with approximately
+\SI{33500}{\pascal} of O$_2$, \SI{78200}{\pascal} of N$_2$, and
+\SI{340300}{\pascal} of Ar. The partial pressure of the liquid fuel is
+again assumed to contribute a negligible amount to the total pressure
+during the filling of the gases for the purposes of this uncertainty
+analysis. The results shown below use the uncertainty associated with
+the MMA-type pressure transducer because this transducer was used for
+all of the experiments with MCH.
+
+Applying \cref{eq:tc-unc} to typical conditions of $P_0 = \SIrange{500}{1520}{\torr}$,
+$T_0=\SIrange{300}{400}{\kelvin}$, and $P_C=\SIrange{15.1}{50}{\bar}$ yields
+a maximum uncertainty of approximately \SI{1}{\percent} of the
+compressed temperature $T_C$.
 
 \section{Fast Sampling System}
 \label{sec:fast-sampling}
