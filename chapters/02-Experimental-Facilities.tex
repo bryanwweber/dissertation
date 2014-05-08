@@ -241,7 +241,9 @@ Each unique $P_C$ and $T_C$ condition is repeated at least 5 times to
 ensure repeatability of the experiments. The experiment closest to the
 mean of the runs at a particular condition is chosen for analysis and
 presentation. The standard deviation of all of the runs at a particular
-condition is less than 10\% of the mean in all cases.
+condition is less than \SI{10}{\percent} of the mean in all cases. The uncertainty of
+the ignition delay at each condition is estimated as twice the standard
+deviation of all the runs at a particular condition.
 
 \subsection{Non-Reactive Experiments}
 
@@ -388,7 +390,7 @@ $P_1$ and $P_2$ are the pressures at consecutive time points, and
 $\gamma$ is the temperature dependent specific heat. This equation
 is applied during and after the compression stroke to calculate
 the volume trace. Since the non-reactive experiment requires slightly
-different initial pressure (on the order of 5 torr) to reach the same
+different initial pressure (typically on the order of \SI{5}{\torr}) to reach the same
 compressed pressure as the reactive experiment---due to the slightly
 different specific heat ratio in the non-reactive experiment compared
 to the reactive experiment---the reactive pressure trace is used to
@@ -398,7 +400,7 @@ changes in composition of the reactants are negligible during the
 compression stroke, which is confirmed by comparing simulations with and
 without reaction steps in the chemical kinetic model. The EOC conditions
 are the same in both cases. The initial volume is arbitrarily taken
-to be equal to 1.
+to be equal to \num{1.0}.
 
 For use in \cref{eq:volume-trace}, the temperature-dependent specific
 heat ratio $\gamma$ is tabulated for each time point. Thus, the
@@ -477,7 +479,7 @@ fourth-order polynomial fit:
 %
 In general, this means that the specific heat can be non-linear. However,
 since the mixtures prepared in this study are composed primarily of
-O$_2$, N$_2$ and Ar (i.e. no more than 7\% of any mixture is the
+O$_2$, N$_2$ and Ar (i.e. no more than \SI{7}{\percent} of any mixture is the
 fuel), and since the specific heats of O$_2$, N$_2$ and Ar are only weakly
 temperature dependent over the range of temperatures experienced during
 compression, for the purposes of this uncertainty analysis, we will
@@ -575,7 +577,7 @@ The bias uncertainty in the initial temperature is due to the standard
 limits of error of the K-type thermocouple used to measure the
 initial temperature. According to the Omega Engineering
 specifications, this is ``the greater
-of $\SI{2.2}{\degreeCelsius}$ or 0.75\%''. The largest initial temperature
+of $\SI{2.2}{\degreeCelsius}$ or \SI{0.75}{\percent}''. The largest initial temperature
 used in this work, \SI{413}{\kelvin}, leads to an uncertainty of
 $\pm \SI{3}{\kelvin}$; thus, $B_{T_O}=\SI{3}{\kelvin}$. Bias uncertainty
 due to the A/D converter in the process meter is negligible compared
@@ -596,13 +598,13 @@ The bias uncertainty in the initial pressure is due to the
 standard error in the pressure transducer used to measure
 the initial pressure. Two different pressure transducers have
 been used in this study; the first, an Omega Engineering PX-303
-(range: \SIrange{0}{50}{psia}), has a full scale uncertainty of 1.25\%, or
+(range: \SIrange{0}{50}{psia}), has a full scale uncertainty of \SI{1.25}{\percent}, or
 $\pm \SI{0.625}{psi} \ (\SI{4309.2}{\pascal})$. The second transducer is an
-Omega Engineering MMA100V10T2D0T4A6 type (range: \SIrange{0}{5200}{Torr}) and was
+Omega Engineering MMA100V10T2D0T4A6 type (range: \SIrange{0}{5200}{\torr}) and was
 purchased because preliminary results of this uncertainty analysis
 indicated that the largest contributor to the uncertainty of $T_C$ was
 the initial pressure measurement. The full scale uncertainty of the MMA
-type transducers is 0.05\%, resulting in an uncertainty of
+type transducers is \SI{0.05}{\percent}, resulting in an uncertainty of
 $\pm \SI{2.6}{\torr} \ (\SI{346.6}{\pascal})$, an order of magnitude lower than
 the PX-303 while also providing more than double the operating range. Total
 uncertainties using the appropriate pressure transducer are reported in
@@ -627,7 +629,7 @@ U_{P_0} = \sqrt{\left(B_{P_0}\right)^2 + \left(R_{P_0}\right)^2} = \sqrt{\left(\
 The bias uncertainty in the compressed pressure is due to the standard
 error in the piezoelectric pressure transducer. According to the
 manufacturer's calibration, the deviation of the full scale output from
-linearity is less then 0.1\% over the pressure range \SIrange{0}{50}{\bar},
+linearity is less then \SI{0.1}{\percent} over the pressure range \SIrange{0}{50}{\bar},
 indicating that $B_{P_C}=\SI{0.05}{\bar}=\SI{5000}{\pascal}$.
 The uncertainties in the signal acquisition equipment are negligible
 compared to this uncertainty. The precision uncertainty is due to the limit
@@ -667,7 +669,7 @@ $\hat{C}_p$ fits causes approximately \SI{1}{\kelvin} changes in $T_C$.
 
 The uncertainty of the mole fraction of the species is estimated differently
 depending on how the species was introduced to the mixing tank. For liquid fuel
-species, experiments with GC/MS have shown that there is approximately 5\%
+species, experiments with GC/MS have shown that there is approximately \SI{5}{\percent}
 variation in mole fraction from the expected value \cite{Weber2011}; this value is adopted for
 the total uncertainty of all liquid fuels. The mole fraction of the gaseous species
 is determined by their partial pressures when filling; the mole fraction is
