@@ -2,7 +2,7 @@
 % arara: biber
 % arara: lualatex: { synctex: on, shell: off }
 % arara: sumatrapdf
-\documentclass[12pt, letterpaper, oneside, draft]{book}
+\documentclass[12pt,letterpaper,oneside,draft]{book}
 
 \usepackage{luacode}
 \edef \user{\directlua{tex.sprint(os.getenv('USERNAME'))}}
@@ -155,10 +155,13 @@ So long, and thanks for all the fish.
 \printbibliography[heading=bibintoc]
 
 \begin{appendices}
-% \noappendicestocpagenum
-% \addappheadtotoc
+\makeatletter
+\addappheadtotoc
+\addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
 \titleformat{\chapter}[display]{\normalfont\Huge\bfseries}{Appendix \thechapter}{0.7em}{}
-\titlecontents{chapter}[0pc]{}{\bfseries Appendix \thecontentslabel\quad}{}{\titlerule*[0.5pc]{.}\contentspage}
+\titlecontents{section}[1em]{}{Appendix \thecontentslabel\quad}{}{\titlerule*[0.5pc]{.}\contentspage}
+\xpatchcmd{\Hy@org@chapter}{{toc}{chapter}}{{toc}{section}}{}{}%
+\makeatother
 \crefalias{chapter}{appchap}
 \chapter[Definition of Species Names in the Methylcyclohexane Mechanism]%
 {Definition of Species Names in\\the Methylcyclohexane Mechanism}
