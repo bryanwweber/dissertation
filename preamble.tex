@@ -212,22 +212,43 @@
 \usepackage{floatrow}
 \floatsetup[table]{style=plaintop}
 
+%Use the titling package to allow easy access to custom title pages
+\usepackage{titling}
+\title{High Pressure Ignition Chemistry of Alternative Fuels}
+\author{Bryan William Weber}
+
+%Add bibliography and indices to the TOC
+\usepackage{tocbibind}
+
+%Improve handling of appendices
+\usepackage{appendix}
+
+%Use package that allows inline patching of commands. This is used in
+%the appendices section.
+\usepackage{xpatch}
+
+%Use the bookmark package (which loads hyperref) so that only one
+%compilation is necessary to get references.
+\usepackage{bookmark}
+
 %Set the color of the links and PDF metadata
-\usepackage[
+\hypersetup{%
+    pdfinfo={
+        Title={High Pressure Ignition Chemistry of Alternative Fuels},
+        Author={Bryan W. Weber},
+    },
     colorlinks=true,
     citecolor=blue,
     linkcolor=black,
     final,
-]{hyperref}
-
-\hypersetup{%
-    pdfinfo={
-        Title={High Pressure Ignition Chemistry of Alternative Fuels},
-        Author={Bryan W. Weber}
-    }
 }
 
-%Do a better job with the automatic references.
+%Allow inserting PDF documents directly to the output. According to
+%http://tex.stackexchange.com/a/13660/32374, should come after hyperref
+\usepackage{pdfpages}
+
+%Do a better job with the automatic references. According to
+%http://tex.stackexchange.com/a/1868/32374, should come after hyperref
 \usepackage[capitalise, sort&compress]{cleveref}
 
 %Set the auto-format names for the cleveref operations
@@ -250,20 +271,6 @@
 
 \newcommand{\creflastconjunction}{, and~}
 \newcommand{\crefrangeconjunction}{--}
-
-%Use the titling package to allow easy access to custom title pages
-\usepackage{titling}
-\title{High Pressure Ignition Chemistry of Alternative Fuels}
-\author{Bryan William Weber}
-
-%Add bibliography and indices to the TOC
-\usepackage{tocbibind}
-
-%Allow inserting PDF documents directly to the output
-\usepackage{pdfpages}
-
-%Improve handling of appendices
-\usepackage{appendix}
 
 %Set the size of the margins and the paper
 %According to http://tex.stackexchange.com/a/26592/32374
