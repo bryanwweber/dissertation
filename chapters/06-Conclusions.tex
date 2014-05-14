@@ -6,4 +6,85 @@
 
 \begin{document}
 
+\section{Fast Sampling System}
+\label{sec:fast-sampling}
+
+The fast sampling system (FSS) used in this work is a commercial system supplied by
+SME-Tec Gmbh. from Germany. The FSS is composed of two parts, the gas sampling valve
+(GSV) and the Controller. A schematic of the GSV is shown in \cref{fig:valve-schematic}.
+Gases are admitted from the reaction chamber into the heated carrying tubes
+through the poppet-style valve on the left of the GSV. The sampled gases are then
+conducted through the GSV outlet into the \SI{150}{\milli\liter} sampling bottle.
+
+A schematic of the GSV assembly is shown in \cref{fig:gsv-assem-schematic}.
+The GSV is mounted to the RCM by a custom-made end plug. The reaction chamber
+is sealed by an O-ring on the small- and large-diameter portions of the GSV.
+The depth that the GSV is inserted into the reaction chamber is adjustable
+by adding or removing shims in the end plug assembly. The insertion depth
+is chosen so that the tip of the GSV is outside the boundary layer on the
+end wall.
+
+The portion of the GSV protruding into the reaction chamber has minimal
+effect on the homogeneity of the reaction chamber. Moreover, the removal of
+samples has minimal effect on the measured ignition delay.
+This has been verified experimentally by measuring the ignition delay with
+and without the GSV present, and with and without sampling occurring.
+In both cases, the difference in ignition delay was statistically insignificant
+for $\alpha=0.05$.
+
+The close-open-close (COC) cycle of the GSV is controlled by a mass-spring
+system. The poppet face is connected to a rod running the length of the
+GSV and connected to the mass at the rear of the valve. To open the poppet,
+the mass is accelerated forward by passing current through the coil around
+the mass. The rod is also
+connected to a spring that is used to restore the poppet to its original
+position after being extended.
+
+The GSV has an adjustable COC time, by adjusting the
+distance the plate is allowed to move. Furthermore, the GSV has the ability
+to measure the displacement of the mass, allowing the direct measurement of
+the COC time and the absolute time of opening.
+
+The GSV controller is triggered by a \SI{5}{\volt} signal from the cDAQ.
+The timing of the trigger signal is controlled by the LabView VI. The pressure
+signal from the reaction chamber is read from the cDAQ in \SI{1}{\milli\second}
+chunks in a loop. On each loop iteration, the maximum pressure is checked
+against a desired trigger pressure; when the reaction chamber pressure exceeds
+the trigger pressure, the cDAQ sends the trigger to the GSV controller. The
+GSV controller has an adjustable delay (\SIrange{4.5}{70}{\milli\second}) that
+is used to control the timing of the opening of the GSV during the induction period.
+The absolute opening time of the GSV is thus dependent on three parameters:
+\begin{enumerate}
+\item The cable delays from the PC to the cDAQ; from the cDAQ to the GSV
+      controller; and from the GSV controller to the GSV itself
+\item The processing time of the LabView VI
+\item The delay set in the GSV controller.
+\end{enumerate}
+
+However, since the absolute opening time of the GSV can be measured by
+the signal sent from the GSV to the controller (and thence to the cDAQ),
+the uncertainty in the opening time is actually quite small, and is related
+to the cable delay in sending the COC signal from the GSV to the cDAQ and
+the precision of the A/D conversion in the cDAQ. The uncertainty of the
+absolute opening time is thus estimated as $\pm \SI{1}{\micro\second}$. \todo{Verify this number}
+
+Furthermore, the correspondence of the COC signal from the valve with
+the physical valve movements has been experimentally verified by
+high speed video. Frames from these videos are shown in \cref{fig:valve-video}.
+The frames show that the opening and closing times of the valve face
+correspond closely with repeatable points in the peak of the voltage.
+
+\missingfigure{GSV Video}
+
+\subsection{Experimental Procedure}
+
+Prior to an experiment, the GSV and sampling bottle are vacuumed to less
+than \SI{1}{\torr}. The reaction chamber is vacuumed and filled in the same
+procedure as described previously, and the compression is triggered. For a given
+trigger pressure and controller delay, the GSV opens at some time after the EOC
+and removes a gas sample from the reaction chamber. The sample is diluted by
+high purity helium. Then the sample bottle is disconnected from the GSV and transported
+to the Gas Chromatograph/Mass Spectrometer, where the sample undergoes analysis.
+
+
 \end{document}
