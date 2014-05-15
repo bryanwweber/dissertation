@@ -825,6 +825,60 @@ $T_0=\SIrange{300}{400}{\kelvin}$, and $P_C=\SIrange{15.1}{50}{\bar}$ yields
 a maximum uncertainty of approximately \SI{1}{\percent} of the
 compressed temperature $T_C$.
 
+\section{Rapid Sampling Apparatus}
+\label{sec:rsa}
+
+The Rapid Sampling Apparatus (RSA) used in this study is an adaptation
+of the RSA described in the work of \textcite{Mittal2007, Mittal2006}.
+The basic concept is the same as that developed by \textcite{Roblee1961}.
+An aluminum diaphragm is punctured by a pointed rod at the appointed time,
+evacuating the contents of the reaction chamber into a large vessel. The
+temperature drop caused by the expansion of the gases into the sampling
+chamber quenches the reactions, and the products can be removed to an
+analysis system.
+
+The design of Mittal \cite{Mittal2007, Mittal2006} used an electromagnet
+to hold a spring in compression. At the designated sampling time, the
+power to the electromagnet was cut, and the spring force thrust the
+puncture rod forward into the diaphragm. This system was prone to
+premature puncture if the spring force overcame the electromagnetic
+force (e.g.\ due to a small drop in the current to the electromagnet).
+
+To alleviate the premature puncture problem, the puncture mechanism has
+been updated as shown in \cref{fig:sampling-tank}. The
+electromagnet/spring system has been replaced with a linear-acting
+solenoid. The puncture rod is held in the retracted position by a
+permanent magnet (not shown) to overcome the pressure force acting on
+the radial cross section of the rod when the sampling tank is under
+vacuum. At the sampling time, the solenoid is actuated by a DC voltage
+to puncture the diaphragm.
+
+\begin{figure}
+\includegraphics[width=0.9\textwidth]{02-Experimental-Facilities/sampling-tank}
+\caption{Schematic of the modified RSA used in this study}
+\label{fig:sampling-tank}
+\end{figure}
+
+The sampled gases flow from the sample tank into an evacuated sampling
+bottle, as shown schematically in \cref{fig:rcm-schematic}. The sample
+is diluted with ultra-high-purity helium (\SI{99.999}{\percent} purity)
+and taken to the analysis system, which is described in \cref{sec:gcms}.
+
+\Cref{fig:rsa-pressure} shows a pressure trace from the reaction chamber
+when the solenoid has been triggered and a pressure trace when the
+solenoid is not actuated. It can be seen that there is a very rapid drop
+in pressure in the reaction chamber. The ratio of the EOC volume of the
+reaction chamber to the total (approximate) volume of the sampling tank
+plus the reaction chamber is \num{1.1772E-2}. Assuming the expansion
+into the sampling tank is isentropic and the ratio of specific heats is
+fixed at $\gamma=1.3$, the temperature ratio is approximately
+\num{2.6379E-1}, leading to temperatures after expansion on the order of
+$T\approx\SI{200}{\kelvin}$, depending on $T_C$. After expansion, the
+gases are warmed to room temperature in the sample bottle. The fuel
+partial pressure in the sampling bottle is a factor of two lower than
+the saturated vapor pressure at room temperature, so that heating of the
+sample bottle is not required.
+
 \section{Gas Chromatograph/Mass Spectrometer}
 \label{sec:gcms}
 
