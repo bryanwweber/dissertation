@@ -1,0 +1,67 @@
+% arara: lualatex
+\input{../../figure-preamble.tex}
+\pgfplotsset{
+    every axis/.append style={%
+        scale only axis,
+        xmin=1.11, xmax=1.26,
+        ymin=15, ymax=150,
+    },
+    every axis plot/.append style={
+        error bars/y dir=both,
+        error bars/y explicit,
+    },
+}
+\pgfplotscreateplotcyclelist{buoh}{%
+    only marks,mark=diamond,darkgreen\\%
+    only marks,mark=square,red\\%
+    only marks,mark=o,blue\\%
+    no markers,dashed,darkgreen\\%
+    no markers,dashed,red\\%
+    no markers,dashed,blue\\%
+}
+\begin{document}
+\begin{tikzpicture}
+\pgfplotsset{set layers}
+\begin{semilogyaxis}[
+    ylabel={Ignition Delay, \si{\milli\second}},
+    xlabel={$1000/T_C$, \si{\per\kelvin}},
+    ytickten={0,1,2},
+    log ticks with fixed point,
+    % xtick={1.05,1.1,...,1.25},
+    minor x tick num=4,
+    minor y tick num=8,
+    every axis legend/.append style={
+        at={(axis cs:1.12,125)},
+        anchor=west,
+    },
+    axis x line*=bottom,
+    cycle list name=buoh,
+    table/x index={0},
+]
+\addplot table[y=Tig, y error=Error] {phi05-15bar.txt};
+\addplot table[y=Tig, y error=Error] {phi10-15bar.txt};
+\addplot table[y=Tig, y error=Error] {phi20-15bar.txt};
+\addplot table[y={create col/linear regression={y=Tig}}] {phi05-15bar.txt};
+\addplot table[y={create col/linear regression={y=Tig}}] {phi10-15bar.txt};
+\addplot table[y={create col/linear regression={y=Tig}}] {phi20-15bar.txt};
+\legend{{[darkgreen]$\phi=0.5$, O$_2$:N$_2$=1:1.38},{[blue]$\phi=0.5$, O$_2$:N$_2$=1:3.76},{[red]$\phi=1.0$, O$_2$:N$_2$=1:8.52}}
+\end{semilogyaxis}
+\deflisttick{800,850,...,950}{10}
+\edef\temp{%
+  \noexpand\pgfplotsset{%
+      x tick labels list/.style={xticklabels={\listlabels}}
+  }%
+}
+\temp
+\begin{semilogyaxis}[
+    title style={yshift=7pt},
+    title={\textit{i}-Butanol/O$_2$/N$_2$, $P_C=\SI{15}{\bar}$},
+    axis y line=none,
+    axis x line*=top,
+    xtick={\listticks},
+    x tick labels list,
+    minor xtick ={\minorticks}
+]
+\end{semilogyaxis}
+\end{tikzpicture}
+\end{document}
