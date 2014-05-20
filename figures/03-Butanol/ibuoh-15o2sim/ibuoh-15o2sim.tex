@@ -1,0 +1,73 @@
+% arara: lualatex
+\input{../../figure-preamble.tex}
+\pgfplotsset{
+    every axis/.append style={%
+        scale only axis,
+        xmin=1.11, xmax=1.26,
+        ymin=10, ymax=400,
+    },
+    every axis plot/.append style={
+        error bars/y dir=both,
+        error bars/y explicit,
+    },
+}
+\pgfplotscreateplotcyclelist{buoh}{%
+    only marks,mark=diamond,darkgreen\\%
+    no markers,solid,darkgreen\\%
+    only marks,mark=square,red\\%
+    no markers,solid,red\\%
+    only marks,mark=o,blue\\%
+    no markers,solid,blue\\%
+    no markers,dashed,darkgreen\\%
+    no markers,dashed,red\\%
+    no markers,dashed,blue\\%
+}
+\begin{document}
+\begin{tikzpicture}
+\pgfplotsset{set layers}
+\begin{semilogyaxis}[
+    ylabel={Ignition Delay, \si{\milli\second}},
+    xlabel={$1000/T_C$, \si{\per\kelvin}},
+    ytickten={0,1,2},
+    log ticks with fixed point,
+    % xtick={1.05,1.1,...,1.25},
+    minor x tick num=3,
+    minor y tick num=8,
+    every axis legend/.append style={
+        at={(axis cs:1.115,175)},
+        anchor=west,
+    },
+    axis x line*=bottom,
+    cycle list name=buoh,
+    table/x index={0},
+]
+\addplot table[y=Tig, y error=Error] {phi20-15bar.txt};
+\addplot table[y={create col/linear regression={y=VPRO}}] {phi20-15sim.txt};
+\addplot table[y=Tig, y error=Error] {phi10-15bar.txt};
+\addplot table[y={create col/linear regression={y=VPRO}}] {phi10-15sim.txt};
+\addplot table[y=Tig, y error=Error] {phi05-15bar.txt};
+\addplot table[y={create col/linear regression={y=VPRO}}] {phi05-15sim.txt};
+\addplot table[y={create col/linear regression={y=Tig}}] {phi20-15bar.txt};
+\addplot table[y={create col/linear regression={y=Tig}}] {phi10-15bar.txt};
+\addplot table[y={create col/linear regression={y=Tig}}] {phi05-15bar.txt};
+\legend{{[darkgreen]$\phi=2.0$, Experiment},{[darkgreen]$\phi=2.0$, Simulation},{[red]$\phi=1.0$, Experiment},{[red]$\phi=1.0$, Simulation},{[blue]$\phi=2.0$, Experiment},{[blue]$\phi=2.0$, Simulation}}
+\end{semilogyaxis}
+\deflisttick{800,850,...,950}{10}
+\edef\temp{%
+  \noexpand\pgfplotsset{%
+      x tick labels list/.style={xticklabels={\listlabels}}
+  }%
+}
+\temp
+\begin{semilogyaxis}[
+    title style={yshift=7pt},
+    title={\textit{i}-Butanol/O$_2$/N$_2$, $P_C=\SI{15}{\bar}$},
+    axis y line=none,
+    axis x line*=top,
+    xtick={\listticks},
+    x tick labels list,
+    minor xtick ={\minorticks}
+]
+\end{semilogyaxis}
+\end{tikzpicture}
+\end{document}
