@@ -50,7 +50,11 @@
 \addplot table[y={create col/linear regression={y=Tig}}] {phi20-15bar.txt};
 \addplot table[y={create col/linear regression={y=Tig}}] {phi10-15bar.txt};
 \addplot table[y={create col/linear regression={y=Tig}}] {phi05-15bar.txt};
-\legend{{[darkgreen]$\phi=2.0$, Experiment},{[darkgreen]$\phi=2.0$, Simulation},{[red]$\phi=1.0$, Experiment},{[red]$\phi=1.0$, Simulation},{[blue]$\phi=2.0$, Experiment},{[blue]$\phi=2.0$, Simulation}}
+\legend{%
+    {[darkgreen]$\phi=2.0$, Experiment},{[darkgreen]$\phi=2.0$, Simulation},
+    {[red]$\phi=1.0$, Experiment},{[red]$\phi=1.0$, Simulation},
+    {[blue]$\phi=0.5$, Experiment},{[blue]$\phi=0.5$, Simulation},
+}
 \end{semilogyaxis}
 \deflisttick{800,850,...,950}{10}
 \edef\temp{%
