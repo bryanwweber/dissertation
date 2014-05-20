@@ -39,9 +39,9 @@
     table/x index={0},
 ]
 \addplot table[y=Tig, y error=Error] {phi05-30bar.txt};
-\addplot table[y={create col/linear regression={y=VPRO}}] {phi05-30sim.txt};
+\addplot+[restrict x to domain=1.13:1.22] table[y={create col/linear regression={y=VPRO}}] {phi05-30bar.txt};
 \addplot table[y=Tig, y error=Error] {phi10-30bar.txt};
-\addplot table[y={create col/linear regression={y=VPRO}}] {phi10-30sim.txt};
+\addplot table[y={create col/linear regression={y=VPRO}}] {phi10-30bar.txt};
 \addplot table[y={create col/linear regression={y=Tig}}] {phi05-30bar.txt};
 \addplot table[y={create col/linear regression={y=Tig}}] {phi10-30bar.txt};
 \legend{{[blue]$\phi=0.5$, Expt.},{[blue]$\phi=0.5$, Simulation},{[red]$\phi=1.0$, Expt.},{[red]$\phi=1.0$, Simulation}}
