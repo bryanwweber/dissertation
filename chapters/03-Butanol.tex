@@ -124,19 +124,26 @@ in any other study, to our knowledge.
     \cmidrule{1-5}
     \multicolumn{5}{c}{Mole Percentage}   & & \\
     \midrule
-    3.38  &       &       & 20.30 & 76.32 & 1.0 & 15 \\
-    3.38  &       &       & 20.30 & 76.32 & 1.0 & 30 \\
-          & 3.38  &       & 20.30 & 76.32 & 1.0 & 15 \\
-          & 3.38  &       & 20.30 & 76.32 & 1.0 & 30 \\
-          &       & 3.38  & 20.30 & 76.32 & 1.0 & 15 \\
-          &       & 3.38  & 20.30 & 76.32 & 1.0 & 30 \\
-          &       & 1.72  & 20.65 & 77.63 & 0.5 & 30 \\
-          &       & 6.54  & 19.63 & 73.83 & 2.0 & 30 \\
+    3.38 &      &      & 20.30 & 76.32 & 1.0 & 15 \\
+    3.38 &      &      & 20.30 & 76.32 & 1.0 & 30 \\
+         & 3.38 &      & 20.30 & 76.32 & 1.0 & 15 \\
+         & 3.38 &      & 20.30 & 76.32 & 1.0 & 30 \\
+         &      & 3.38 & 20.30 & 76.32 & 1.0 & 15 \\
+         &      & 3.38 & 20.30 & 76.32 & 1.0 & 30 \\
+         &      & 1.72 & 20.65 & 77.63 & 0.5 & 30 \\
+         &      & 6.54 & 19.63 & 73.83 & 2.0 & 30 \\
+         & 1.72 &      & 20.65 & 77.63 & 0.5 & 15 \\
+         & 1.72 &      & 20.65 & 77.63 & 0.5 & 30 \\
+         & 3.38 &      & 40.60 & 56.02 & 0.5 & 15 \\
+         & 3.38 &      & 40.60 & 56.02 & 0.5 & 30 \\
+         & 3.38 &      & 10.15 & 86.47 & 2.0 & 30 \\
+         & 3.38 &      & 10.15 & 86.47 & 2.0 & 30 \\
     \bottomrule
     \end{tabular}
 \end{table}
 
 \section{Experimental Results}
+\subsection{Comparison of Butanol Isomers Ignition}
 \label{sec:buoh-expts}
 
 \Cref{fig:buoh-15bar} shows the ignition delays of the four isomers of
@@ -203,7 +210,8 @@ range (\SIrange{715}{910}{\kelvin}) investigated.
     \end{floatrow}
 \end{figure}
 
-\subsection{\tBuOH{} Ignition}
+\subsection{Ignition of \textit{t}-Butanol}
+\label{sec:tbuoh-ignition}
 
 The fact that \tBuOH{} becomes relatively more reactive than
 \textit{i}- and \sBuOH{} as pressure increases is surprising at first
@@ -286,16 +294,70 @@ fraction, where higher fuel loading promotes pre-ignition heat release.
     \end{floatrow}
 \end{figure}
 
-\subsection{\iBuOH{} Ignition}
-\todo{Add ibuoh section}
+\subsection{Ignition of \textit{i}-Butanol}
+\label{sec:ibuoh-ignition}
+
+The experimental ignition delays of \iBuOH{} measured at
+$P_C=\SIlist{15;30}{\bar}$ and $\phi=0.5$ in oxygen/nitrogen air are shown in
+\cref{fig:ibuoh-expts}. The error bars are equal to twice the standard
+deviation of all the runs at that condition. The lines are curve fits to
+the data. The circles represent the \SI{15}{\bar} data, while the
+squares represent the \SI{30}{\bar} data. Also shown in
+\cref{fig:ibuoh-expts} are the experimental ignition delays presented in
+\cref{sec:buoh-expts} at $\phi=1.0$ and $P_C=\SIlist{15;30}{\bar}$. The
+$\phi=0.5$ cases are shown in blue and the $\phi=1.0$ cases are shown in
+red.
+
+For both equivalence ratios, the \SI{15}{\bar} cases are less reactive
+than the \SI{30}{\bar} cases, as judged by the inverse of the
+ignition delay. Furthermore, in comparing the $\phi=1.0$ data to the
+$\phi=0.5$ data at the same compressed pressure, it is seen that the
+strong equivalence ratio dependence of the ignition delays previously
+measured for two other isomers of butanol, \nBuOH{} \cite{Weber2011} and
+\tBuOH{} (\cref{sec:tbuoh-ignition}), is also present for \iBuOH{}.
+
+\begin{figure}
+\includegraphics[width=11cm]{03-Butanol/ibuoh-expts}
+\caption{Comparison of the experimentally measured ignition delays of
+         \iBuOH{} at two compressed pressures, $P_C=\SI{15}{\bar}$
+         (circles) and $P_C=\SI{30}{\bar}$ (squares), and two equivalence
+         ratios, $\phi=0.5$ (blue) and $\phi=1.0$ (red).}
+\label{fig:ibuoh-expts}
+\end{figure}
+
+\Cref{fig:ibuoh-15o2expt,fig:ibuoh-30o2expt} show the ignition delays of
+\iBuOH{} at three equivalence ratios $\phi=\numlist{0.5;1.0;2.0}$ and
+$P_C=\SIlist{15;30}{\bar}$ respectively. In these figures, the equivalence
+ratio is varied by holding the initial fuel mole fraction constant and
+varying the oxygen and nitrogen mole fractions. The ignition delay
+of \iBuOH{} depends strongly on the initial oxygen mole fraction, similar
+to the trend shown for \nBuOH{} \cite{Weber2011}.
+
+\begin{figure}
+    \begin{floatrow}
+    \ffigbox
+        {\includegraphics[width=7.9cm]{03-Butanol/ibuoh-15o2expt}}
+        {\caption{Comparison of the experimentally measured ignition
+        delays of \iBuOH{} at three equivalence ratios and $P_C=\SI{15}{\bar}$.
+        The equivalence ratio is changed by varying the initial oxygen
+        mole fraction at constant initial fuel mole fraction.}
+        \label{fig:ibuoh-15o2expt}}
+    \ffigbox
+        {\includegraphics[width=7.9cm]{03-Butanol/ibuoh-30o2expt}}
+        {\caption{Comparison of the experimentally measured ignition
+        delays of \iBuOH{} at three equivalence ratios and $P_C=\SI{30}{\bar}$.
+        The equivalence ratio is changed by varying the initial oxygen
+        mole fraction at constant initial fuel mole fraction.}
+        \label{fig:ibuoh-30o2expt}}
+    \end{floatrow}
+\end{figure}
 
 \section{Simulation Results}
+\subsection{Comparison of Simulated Butanol Isomers Ignition}
 \label{sec:buoh-sims}
 
 Simulations are performed with the kinetic mechanism from
-\textcite{Sarathy2012} denoted as the Sarathy et al.\ mechanism, and a
-recent mechanism discussed by \textcite{Hansen2013} and
-\textcite{Merchant2013} that is denoted as the MIT mechanism hereafter.
+\textcite{Sarathy2012} denoted as the Sarathy et al.\ mechanism.
 Other recent mechanisms, such as the mechanism from
 \textcite{Frassoldati2012} do not include low temperature chemistry and are
 therefore unable to reproduce the low-temperature ignition delays measured in
@@ -343,17 +405,7 @@ model is not validated for these conditions.
     \end{floatrow}
 \end{figure}
 
-VPRO simulations for \textit{n}- and \sBuOH{} (and also \tBuOH{} under
-some conditions) using the MIT mechanism
-\cite{Hansen2013,Merchant2013} do not ignite during the duration of the
-simulations (the same as the experimental duration), and therefore no
-simulations are shown for these fuels. In \cref{fig:buoh-mit}, VPRO
-simulations at \SIlist{15;30}{\bar} using both mechanisms are shown for
-\iBuOH{}. The mechanism from \textcite{Sarathy2012}
-is in better agreement at \SI{15}{\bar}. However, at \SI{30}{\bar} the MIT mechanism
-\cite{Hansen2013,Merchant2013} over-predicts the ignition delay (as at \SI{15}{\bar}),
-while the \textcite{Sarathy2012} mechanism under-predicts the ignition delay.
-The reason for these diverging predictions will be explored and discussed below.
+\subsection{Simulated \textit{t}-Butanol Ignition}
 
 The agreement of the mechanism by \textcite{Sarathy2012} with the
 off-stoichiometric mixtures of \tBuOH{} is also quite good, as shown
@@ -371,23 +423,11 @@ pressure, and equivalence ratio regime, the mismatch of the pre-ignition
 behavior may not be of critical importance, depending on the application.
 
 \begin{figure}
-    \begin{floatrow}
-        \ffigbox
-            {\includegraphics[width=7.9cm]{03-Butanol/buoh-mit}}
-            {\caption{Comparison of VPRO simulations using the kinetic mechanism of
-                \textcite{Sarathy2012} (solid lines) and the MIT mechanism
-                \cite{Hansen2013,Merchant2013} (dotted lines) with the experimental
-                ignition delay results (dashed lines) for stoichiometric mixtures of
-                \iBuOH{} in air at $P_C=\SI{15}{\bar}$ (squares) and $P_C=\SI{30}{\bar}$
-                (circles).}
-            \label{fig:buoh-mit}}
-        \ffigbox
-            {\includegraphics[width=7.9cm]{03-Butanol/tbuoh-sims}}
-            {\caption{Comparison of the simulations using the kinetic mechanism of
-                \textcite{Sarathy2012} for three equivalence ratio mixtures of
-                \tBuOH{} in air at $P_C=\SI{30}{\bar}$.}
-            \label{fig:tbuoh-sims}}
-    \end{floatrow}
+\includegraphics[width=11cm]{03-Butanol/tbuoh-sims}
+\caption{Comparison of the simulations using the kinetic mechanism of
+\textcite{Sarathy2012} for three equivalence ratio mixtures of
+\tBuOH{} in air at $P_C=\SI{30}{\bar}$.}
+\label{fig:tbuoh-sims}
 \end{figure}
 
 \begin{figure}
@@ -412,6 +452,38 @@ behavior may not be of critical importance, depending on the application.
      non-reactive and simulated traces, using the mechanism of
      \textcite{Sarathy2012}.}
     }
+\end{figure}
+
+\subsection{Simulated \textit{i}-Butanol Ignition}
+
+Recently, a kinetic model for the combustion of \iBuOH{} was developed and
+presented by \textcite{Hansen2013,Merchant2013}. This model
+has been validated for species profiles measured in a low-pressure, premixed
+flame by \textcite{Hansen2013}, an atmospheric pressure diffusion flame by
+\textcite{Grana2010}, and a doped methane flame by \textcite{McEnally2005},
+ignition delays measured by \textcite{Stranic2012}, JSR species profiles
+measured by \textcite{Togbe2010}, laminar flame speeds measured by
+\textcite{Veloo2011a,Liu2011a}, and species profiles from a pyrolysis
+reactor \textcite{Merchant2013}.
+
+In \cref{fig:buoh-mit}, VPRO simulations at \SIlist{15;30}{\bar} using 
+the \textcite{Sarathy2012} and the mechanism from \textcite{Hansen2013,
+Merchant2013} are shown for \iBuOH{}. The mechanism from \textcite{Sarathy2012}
+is in better agreement at \SI{15}{\bar}. However, at \SI{30}{\bar} the 
+model by \textcite{Hansen2013,Merchant2013} over-predicts the ignition delay 
+(as at \SI{15}{\bar}), while the \textcite{Sarathy2012} mechanism 
+under-predicts the ignition delay. The reason for these diverging 
+predictions will be explored and discussed in \cref{sec:buoh-discussion}.
+
+\begin{figure}
+\includegraphics[width=11cm]{03-Butanol/buoh-mit}
+\caption{Comparison of VPRO simulations using the kinetic mechanism of
+\textcite{Sarathy2012} (solid lines) and the MIT mechanism
+\cite{Hansen2013,Merchant2013} (dotted lines) with the experimental
+ignition delay results (dashed lines) for stoichiometric mixtures of
+\iBuOH{} in air at $P_C=\SI{15}{\bar}$ (squares) and $P_C=\SI{30}{\bar}$
+(circles).}
+\label{fig:buoh-mit}
 \end{figure}
 
 \section{Discussion}
