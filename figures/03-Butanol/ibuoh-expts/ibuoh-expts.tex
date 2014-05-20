@@ -1,0 +1,76 @@
+% arara: lualatex
+\input{../../figure-preamble.tex}
+\pgfplotsset{
+    every axis/.append style={%
+        scale only axis,
+        xmin=1.04, xmax=1.30,
+        ymin=4, ymax=200,
+    },
+    every axis plot/.append style={
+        error bars/y dir=both,
+        error bars/y explicit,
+    },
+    unbounded coords=jump,
+}
+\pgfplotscreateplotcyclelist{buoh}{%
+    only marks,mark=o,blue\\%
+    only marks,mark=square,blue\\%
+    only marks,mark=o,red\\%
+    only marks,mark=square,red\\%
+    no markers,dashed,blue\\%
+    no markers,dashdotted,blue\\%
+    no markers,dashed,red\\%
+    no markers,dashdotted,red\\%
+}
+\begin{document}
+\begin{tikzpicture}
+\pgfplotsset{set layers}
+\begin{semilogyaxis}[
+    ylabel={Ignition Delay, \si{\milli\second}},
+    xlabel={$1000/T_C$, \si{\per\kelvin}},
+    ytickten={0,1,2},
+    log ticks with fixed point,
+    xtick={1.05,1.1,...,1.40},
+    minor xtick={1.06,1.07,...,1.34},
+    minor y tick num=8,
+    every axis legend/.append style={
+        at={(axis cs:1.18,9)},
+        anchor=west,
+    },
+    axis x line*=bottom,
+    cycle list name=buoh,
+    table/x index={0},
+]
+\addplot table[y=Tig, y error=Error] {phi05-15bar.txt};
+\addplot table[y=Tig, y error=Error] {phi05-30bar.txt};
+\addplot table[y=Tig, y error=Error] {phi10-15bar.txt};
+\addplot table[y=Tig, y error=Error] {phi10-30bar.txt};
+\addplot table[y={create col/linear regression={y=Tig}}] {phi05-15bar.txt};
+\addplot table[y={create col/linear regression={y=Tig}}] {phi05-30bar.txt};
+\addplot table[y={create col/linear regression={y=Tig}}] {phi10-15bar.txt};
+\addplot table[y={create col/linear regression={y=Tig}}] {phi10-30bar.txt};
+\legend{%
+    {[blue]$P_C=\SI{15}{\bar}\text{, }\phi=0.5$},{[blue]$P_C=\SI{30}{\bar}\text{, }\phi=0.5$},
+    {[red]$P_C=\SI{15}{\bar}\text{, }\phi=1.0$},{[red]$P_C=\SI{30}{\bar}\text{, }\phi=1.0$},
+}
+\end{semilogyaxis}
+\deflisttick{700,750,...,1000}{10}
+\edef\temp{%
+  \noexpand\pgfplotsset{%
+      x tick labels list/.style={xticklabels={\listlabels}}
+  }%
+}
+\temp
+\begin{semilogyaxis}[
+    title style={yshift=7pt},
+    title={\textit{i}-Butanol/O$_2$/N$_2$},
+    axis y line=none,
+    axis x line*=top,
+    xtick={\listticks},
+    x tick labels list,
+    minor xtick ={\minorticks}
+]
+\node[anchor=west] at (axis cs:1.06,150) {O$_2$ : N$_2$ = 1 : 3.76};
+\end{semilogyaxis}
+\end{tikzpicture}
+\end{document}
