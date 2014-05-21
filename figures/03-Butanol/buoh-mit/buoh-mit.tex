@@ -55,14 +55,14 @@
 \addplot table[y={create col/linear regression={y=Expt}}] {\fifbar};
 \addplot table[y={create col/linear regression={y=Expt}}] {\thibar};
 \addplot table[y=Sarathy] {\fifbar};
-\addplot table[y=MIT] {\fifbar};
+\addplot table[y=MITnew] {\fifbar};
 \addplot table[y=Sarathy] {\thibar};
-\addplot table[y=MIT] {\thibar};
+\addplot table[y=MITnew] {\thibar};
 \addplot table[y={create col/linear regression={y=Sarathy}}] {\fifbar};
-\addplot+[restrict x to domain=1.16:1.22] table[y={create col/linear regression={y=MIT}}] {\fifbar};
+\addplot+[restrict x to domain=1.16:1.22] table[y={create col/linear regression={y=MITnew}}] {\fifbar};
 \addplot table[y={create col/linear regression={y=Sarathy}}] {\thibar};
-\addplot+[restrict x to domain=1.16:1.30] table[y={create col/linear regression={y=MIT}}] {\thibar};
-\legend{{\SI{15}{\bar}},{\SI{30}{\bar}},,,{[blue] Experiments},,,,,,{[gray] Sarathy et al.\ Model},{[red] Hansen et al.\ Model}};
+\addplot+[restrict x to domain=1.16:1.30] table[y={create col/linear regression={y=MITnew}}] {\thibar};
+\legend{{\SI{15}{\bar}},{\SI{30}{\bar}},,,{[blue] Experiments},,,,,,{[gray] Sarathy et al.\ Model},{[red] MIT Model}};
 \end{semilogyaxis}
 \deflisttick{700,750,...,900}{10}
 \edef\temp{%

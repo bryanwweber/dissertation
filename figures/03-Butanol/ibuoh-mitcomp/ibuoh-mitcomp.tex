@@ -4,7 +4,7 @@
     every axis/.append style={%
         scale only axis,
         xmin=1.14, xmax=1.35,
-        ymin=7, ymax=380,
+        ymin=7, ymax=400,
     },
     every axis plot/.append style={%
         error bars/y dir=both,
@@ -39,8 +39,8 @@
     minor x tick num=4,
     minor y tick num=8,
     legend style={
-        at={(axis cs:1.24,27.5)},
-        anchor=north west,
+        at={(axis cs:1.345,28)},
+        anchor=north east,
     },
     axis x line*=bottom,
     cycle list name=buoh,
@@ -60,9 +60,9 @@
 \addplot table[y=MITold] {\thibar};
 \addplot+[restrict x to domain=1.16:1.22] table[y={create col/linear regression={y=MITnew}}] {\fifbar};
 \addplot+[restrict x to domain=1.16:1.22] table[y={create col/linear regression={y=MITold}}] {\fifbar};
-\addplot table[y={create col/linear regression={y=MITnew}}] {\thibar};
-\addplot table[y={create col/linear regression={y=MITold}}] {\thibar};
-\legend{{\SI{15}{\bar}},{\SI{30}{\bar}},,,Experiments,,,,,,{MIT New},{MIT Old}};
+\addplot+[restrict x to domain=1.16:1.30] table[y={create col/linear regression={y=MITnew}}] {\thibar};
+\addplot+[restrict x to domain=1.16:1.30] table[y={create col/linear regression={y=MITold}}] {\thibar};
+\legend{{\SI{15}{\bar}},{\SI{30}{\bar}},,,Experiments,,,,,,{MIT Mechanism},{Hansen et al.\ Model}};
 \end{semilogyaxis}
 \deflisttick{700,750,...,900}{10}
 \edef\temp{%
@@ -80,7 +80,7 @@
     x tick labels list,
     minor xtick ={\minorticks}
 ]
-\node[anchor=west] at (axis cs:1.15,250) {O$_2$ : N$_2$ = 1 : 3.76};
+\node[anchor=west] at (axis cs:1.145,275) {O$_2$ : N$_2$ = 1 : 3.76};
 \end{semilogyaxis}
 \end{tikzpicture}
 \end{document}

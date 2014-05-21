@@ -42,11 +42,11 @@
     table/x index={0},
 ]
 \addplot table[y=Tig, y error=Error] {phi20-30bar.txt};
-\addplot table[y={create col/linear regression={y=MIT}}] {phi20-30bar.txt};
+\addplot table[y={create col/linear regression={y=Sarathy}}] {phi20-30bar.txt};
 \addplot table[y=Tig, y error=Error] {phi10-30bar.txt};
-\addplot+[restrict x to domain=1.16:1.30] table[y={create col/linear regression={y=MIT}}] {phi10-30bar.txt};
+\addplot+[restrict x to domain=1.16:1.30] table[y={create col/linear regression={y=Sarathy}}] {phi10-30bar.txt};
 \addplot table[y=Tig, y error=Error] {phi05-30bar.txt};
-\addplot+[restrict x to domain=1.2:1.3] table[y={create col/linear regression={y=MIT}}] {phi05-30bar.txt};
+\addplot+[restrict x to domain=1.2:1.3] table[y={create col/linear regression={y=Sarathy}}] {phi05-30bar.txt};
 \addplot table[y={create col/linear regression={y=Tig}}] {phi20-30bar.txt};
 \addplot table[y={create col/linear regression={y=Tig}}] {phi10-30bar.txt};
 \addplot table[y={create col/linear regression={y=Tig}}] {phi05-30bar.txt};
