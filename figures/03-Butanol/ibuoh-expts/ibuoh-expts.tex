@@ -3,8 +3,8 @@
 \pgfplotsset{
     every axis/.append style={%
         scale only axis,
-        xmin=1.04, xmax=1.30,
-        ymin=4, ymax=200,
+        xmin=1.04, xmax=1.35,
+        ymin=4, ymax=300,
     },
     every axis plot/.append style={
         error bars/y dir=both,
@@ -31,11 +31,11 @@
     ytickten={0,1,2},
     log ticks with fixed point,
     xtick={1.05,1.1,...,1.40},
-    minor xtick={1.06,1.07,...,1.34},
+    minor xtick={1.06,1.07,...,1.35},
     minor y tick num=8,
     every axis legend/.append style={
-        at={(axis cs:1.18,9)},
-        anchor=west,
+        at={(axis cs:1.32,9)},
+        anchor=east,
     },
     axis x line*=bottom,
     cycle list name=buoh,

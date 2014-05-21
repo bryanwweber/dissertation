@@ -4,13 +4,12 @@
     every axis/.append style={%
         scale only axis,
         xmin=1.05, xmax=1.25,
-        ymin=5, ymax=300,
+        ymin=4, ymax=300,
     },
-    every axis plot/.append style={
+    every axis plot/.append style={%
         error bars/y dir=both,
         error bars/y explicit,
     },
-    unbounded coords=jump,
 }
 \pgfplotscreateplotcyclelist{buoh}{%
     only marks,mark=o,blue\\%
@@ -27,20 +26,20 @@
     ylabel={Ignition Delay, \si{\milli\second}},
     xlabel={$1000/T_C$, \si{\per\kelvin}},
     ytickten={0,1,2},
-    log ticks with fixed point,
     xtick={1.05,1.1,...,1.30},
-    minor xtick={1.06,1.07,...,1.25},
+    log ticks with fixed point,
+    minor x tick num=4,
     minor y tick num=8,
-    every axis legend/.append style={
+    legend style={
         at={(axis cs:1.15,10)},
         anchor=west,
     },
     axis x line*=bottom,
     cycle list name=buoh,
-    table/x index={0},
+    table/x=1000/Tc,
 ]
 \addplot table[y=Tig, y error=Error] {phi05-15bar.txt};
-\addplot table[y={create col/linear regression={y=VPRO}}] {phi05-15bar.txt};
+\addplot+[restrict x to domain=1.04:1.17] table[y={create col/linear regression={y=VPRO}}] {phi05-15bar.txt};
 \addplot table[y=Tig, y error=Error] {phi10-15bar.txt};
 \addplot+[restrict x to domain=1.16:1.22] table[y={create col/linear regression={y=VPRO}}] {phi10-15bar.txt};
 \addplot table[y={create col/linear regression={y=Tig}}] {phi05-15bar.txt};
