@@ -456,24 +456,37 @@ behavior may not be of critical importance, depending on the application.
 
 \subsection{Simulated \textit{i}-Butanol Ignition}
 
-Recently, a kinetic model for the combustion of \iBuOH{} was developed and
-presented by \textcite{Hansen2013,Merchant2013}. This model
-has been validated for species profiles measured in a low-pressure, premixed
-flame by \textcite{Hansen2013}, an atmospheric pressure diffusion flame by
-\textcite{Grana2010}, and a doped methane flame by \textcite{McEnally2005},
-ignition delays measured by \textcite{Stranic2012}, JSR species profiles
-measured by \textcite{Togbe2010}, laminar flame speeds measured by
+In addition to the model by \textcite{Sarathy2012} which is validated for
+all four isomers of butanol, a kinetic model for the combustion of
+\iBuOH{} has been developed and presented by \textcite{Hansen2013,
+Merchant2013}. This model has been validated for species profiles
+measured in a low-pressure, premixed flame by \textcite{Hansen2013},
+an atmospheric pressure diffusion flame by \textcite{Grana2010}, and a
+doped methane flame by \textcite{McEnally2005}, ignition delays measured
+by \textcite{Stranic2012}, JSR species profiles measured by
+\textcite{Togbe2010}, laminar flame speeds measured by
 \textcite{Veloo2011a,Liu2011a}, and species profiles from a pyrolysis
 reactor \textcite{Merchant2013}.
 
-In \cref{fig:buoh-mit}, VPRO simulations at \SIlist{15;30}{\bar} using 
-the \textcite{Sarathy2012} and the mechanism from \textcite{Hansen2013,
-Merchant2013} are shown for \iBuOH{}. The mechanism from \textcite{Sarathy2012}
-is in better agreement at \SI{15}{\bar}. However, at \SI{30}{\bar} the 
-model by \textcite{Hansen2013,Merchant2013} over-predicts the ignition delay 
-(as at \SI{15}{\bar}), while the \textcite{Sarathy2012} mechanism 
-under-predicts the ignition delay. The reason for these diverging 
-predictions will be explored and discussed in \cref{sec:buoh-discussion}.
+Recently, the \iBuOH{} model developed by \textcite{Hansen2013,
+Merchant2013} has been updated with new reaction rates and pathways.
+The updates are detailed in the work of \textcite{Weber2013a}. The
+primary updates were to add detailed low-temperature peroxy pathways
+involving \iBuOH{} and its primary radicals. This model is still undergoing
+validation, but is presented here as the state-of-the-art in butanol
+modeling. This kinetic model will be referred to as the MIT mechanism.
+
+In \cref{fig:buoh-mit}, VPRO simulations at \SIlist{15;30}{\bar} using
+the Sarathy et al.\ mechanism \cite{Sarathy2012} and the MIT mechanism
+\cite{Weber2013a} are shown for \iBuOH{}. Some conditions using the MIT
+mechanism did not ignite during the simulated time (approximately
+\SI{800}{\milli\second}, so those points are not shown on
+\cref{fig:buoh-mit}. The mechanism by Sarathy et al.\ is in better
+agreement with the experiments at \SI{15}{\bar} than the MIT model. At
+\SI{30}{\bar} the MIT model over-predicts the ignition delay---as at
+\SI{15}{\bar}---while the Sarathy et al.\ mechanism under-predicts the
+ignition delay. The reason for these diverging predictions will be
+explored and discussed in \cref{sec:buoh-discussion}.
 
 \begin{figure}
 \includegraphics[width=11cm]{03-Butanol/buoh-mit}
@@ -486,12 +499,42 @@ ignition delay results (dashed lines) for stoichiometric mixtures of
 \label{fig:buoh-mit}
 \end{figure}
 
+\Cref{fig:ibuoh-15o2sim,fig:ibuoh-30o2sim} show comparisons of VPRO
+simulations using the MIT mechanism with the experimental data at three
+equivalence ratios with constant initial fuel mole fraction. In general,
+the model is unable to predict the oxygen concentration dependence of the
+ignition delays. A similar result was found for the comparison of
+\nBuOH{} experiments with a model constructed using the same principles
+as the present model for \iBuOH{} \cite{Weber2011}. Moreover, comparing
+the experimental results with modeling results using the mechanism of
+\textcite{Sarathy2012} reveals a similar qualitative discrepancy,
+although the Sarathy et al.\ model tends to under-predict the experimental
+ignition delays whereas the MIT model tends to over-predict the experimental
+values.
+
+\begin{figure}
+    \begin{floatrow}
+    \ffigbox
+        {\includegraphics[width=7.9cm]{03-Butanol/ibuoh-15o2sim}}
+        {\caption{Comparison of the experimentally measured ignition
+        delays of \iBuOH{} at three equivalence ratios and $P_C=\SI{15}{\bar}$
+        with VPRO simulations using the MIT mechanism.}
+        \label{fig:ibuoh-15o2sim}}
+    \ffigbox
+        {\includegraphics[width=7.9cm]{03-Butanol/ibuoh-30o2sim}}
+        {\caption{Comparison of the experimentally measured ignition
+        delays of \iBuOH{} at three equivalence ratios and $P_C=\SI{30}{\bar}$
+        with VPRO simulations using the MIT mechanism.}
+        \label{fig:ibuoh-30o2sim}}
+    \end{floatrow}
+\end{figure}
+
 \section{Discussion}
 \label{sec:buoh-discussion}
 
 The relatively good agreement of the mechanism of \textcite{Sarathy2012} with
 the experimental data, even for conditions at which the mechanism has not been
-validated, suggests that using the mechanism to further interpret our
+validated, suggests that using the mechanism to further interpret the
 experimental data is a worthwhile exercise. In particular,
 \cref{fig:buoh-npath,fig:buoh-spath,fig:buoh-tpath,fig:buoh-ipath}
 show the initial steps of the fuel breakdown process for each isomer.
