@@ -455,6 +455,7 @@ behavior may not be of critical importance, depending on the application.
 \end{figure}
 
 \subsection{Simulated \textit{i}-Butanol Ignition}
+\label{sec:ibuoh-sims}
 
 In addition to the model by \textcite{Sarathy2012} which is validated for
 all four isomers of butanol, a kinetic model for the combustion of
@@ -480,20 +481,19 @@ In \cref{fig:buoh-mit}, VPRO simulations at \SIlist{15;30}{\bar} using
 the Sarathy et al.\ mechanism \cite{Sarathy2012} and the MIT mechanism
 \cite{Weber2013a} are shown for \iBuOH{}. Some conditions using the MIT
 mechanism did not ignite during the simulated time (approximately
-\SI{800}{\milli\second}, so those points are not shown on
+\SI{800}{\milli\second}), so those points are not shown in
 \cref{fig:buoh-mit}. The mechanism by Sarathy et al.\ is in better
 agreement with the experiments at \SI{15}{\bar} than the MIT model. At
 \SI{30}{\bar} the MIT model over-predicts the ignition delay---as at
 \SI{15}{\bar}---while the Sarathy et al.\ mechanism under-predicts the
-ignition delay. The reason for these diverging predictions will be
-explored and discussed in \cref{sec:buoh-discussion}.
+ignition delay.
 
 \begin{figure}
 \includegraphics[width=11cm]{03-Butanol/buoh-mit}
 \caption{Comparison of VPRO simulations using the kinetic mechanism of
-\textcite{Sarathy2012} (solid lines) and the MIT mechanism
-\cite{Hansen2013,Merchant2013} (dotted lines) with the experimental
-ignition delay results (dashed lines) for stoichiometric mixtures of
+\textcite{Sarathy2012} (gray) and the MIT mechanism
+\cite{Hansen2013,Merchant2013} (red) with the experimental
+ignition delay results (blue) for stoichiometric mixtures of
 \iBuOH{} in air at $P_C=\SI{15}{\bar}$ (squares) and $P_C=\SI{30}{\bar}$
 (circles).}
 \label{fig:buoh-mit}
@@ -510,7 +510,8 @@ the experimental results with modeling results using the mechanism of
 \textcite{Sarathy2012} reveals a similar qualitative discrepancy,
 although the Sarathy et al.\ model tends to under-predict the experimental
 ignition delays whereas the MIT model tends to over-predict the experimental
-values.
+values. The reason for these diverging predictions will be explored and
+discussed in \cref{sec:ibuoh-discussion}.
 
 \begin{figure}
     \begin{floatrow}
@@ -533,7 +534,8 @@ values.
 \label{sec:buoh-discussion}
 
 The relatively good agreement of the mechanism of \textcite{Sarathy2012} with
-the experimental data, even for conditions at which the mechanism has not been
+the experimental data as shown in \cref{fig:buoh-15sim,fig:buoh-30sim},
+even for conditions at which the mechanism has not been
 validated, suggests that using the mechanism to further interpret the
 experimental data is a worthwhile exercise. In particular,
 \cref{fig:buoh-npath,fig:buoh-spath,fig:buoh-tpath,fig:buoh-ipath}
@@ -702,7 +704,7 @@ version of this model (by \textcite{Frassoldati2012}) is unable to predict the
 low-temperature ignition delays measured in this study and hence is not
 considered for analysis.
 
-In contrast to the study of \textcite{Lefkowitz2012} path analysis of the
+In contrast to the study of \textcite{Lefkowitz2012}, path analysis of the
 mechanism by \textcite{Sarathy2012} shows that unimolecular decomposition
 of the hydroxybutyl radicals is not the most important pathway; as mentioned
 earlier, the most important pathway is the formation of
@@ -729,13 +731,26 @@ University, \textcite{Vranckx2011} showed the importance of peroxy chemistry
 pathways in the autoignition of \nBuOH{}. By adding a lumped peroxy
 model to an existing kinetic model for \nBuOH{} combustion, they were
 able to substantially improve agreement of the model with their experiments at
-high pressure and low temperature. In their mechanism, \textcite{Sarathy2012}
-included a semi-detailed peroxy chemistry model for all the isomers of butanol.
-In fact, one of the main differences between the mechanism from
-\textcite{Sarathy2012} and the MIT mechanism \cite{Hansen2013,Merchant2013} is
-their respective treatment of the peroxy mechanism. Specifically,
-oxygen-addition chemistry is not included in the MIT mechanism for
-\iBuOH{} \cite{Hansen2013,Merchant2013}. In addition, the radical
+high pressure and low temperature \cite{Vranckx2011}.
+% In their mechanism, \textcite{Sarathy2012}
+% included a semi-detailed peroxy chemistry model, while in the MIT model, a detailed peroxy chemistry model was included, using
+% rates computed from the work of \textcite{Welz2013} for ethanol.
+% In fact, one of the main differences between the mechanism from
+% \textcite{Sarathy2012} and the MIT mechanism \cite{Hansen2013,Merchant2013} is
+% their respective treatment of the peroxy mechanism. Specifically,
+% oxygen-addition chemistry is not included in the MIT mechanism for
+% \iBuOH{} \cite{Hansen2013,Merchant2013}.
+
+\subsection{Comparison of \textit{i}-Butanol Mechanisms}
+\label{sec:ibuoh-discussion}
+
+As discussed in \cref{sec:ibuoh-sims}, the Sarathy et al.\ mechanism
+tends to under-predict the experimental ignition delays of \iBuOH{},
+whereas the MIT mechanism tends to over-predict the experimental data.
+One of the reasons for this is demonstrated by the path flux diagram
+shown in \cref{fig:ibuoh-mitpath}.
+
+In addition, the radical
 that primarily controls \iBuOH{} decomposition is hydroxyl (OH) in
 the mechanism of \textcite{Sarathy2012} (generated by the peroxy chemistry
 sub-mechanism), but is hydroperoxyl (HO$_2$) in the MIT mechanism
@@ -807,18 +822,21 @@ fuel radical is arbitrarily set to zero; that is, the rate of the reaction
 ic4h8oh-1+o2=ic4h8oh-1o2 is set to zero by zeroing the $\mathrm{A}$-factor, while the
 rates of the other oxygen addition reactions were unchanged. This unphysical
 situation substantially changes the results of simulations for
-\iBuOH{} --- removing this pathway in the mechanism from
+\iBuOH{}---removing this pathway in the mechanism from
 \textcite{Sarathy2012} brings the simulations into close agreement with the
-ignition delay results from the MIT mechanism \cite{Hansen2013,Merchant2013},
-which does not consider this reaction for \iBuOH{}. Since the other
-oxygen addition reactions were unchanged, it is apparent that the addition of
-oxygen to $\alpha$-hydroxybutyl is one of the controlling reactions for the
-high-pressure, low-temperature ignition of \iBuOH{} using the
-mechanism of \textcite{Sarathy2012}. It is therefore concluded that a detailed
-examination of the rates of direct formation of aldehyde+HO$_2$ and oxygen
-addition to the $\alpha$-hydroxybutyl radical are required to better predict
-the low-temperature ignition behavior of \iBuOH{}. Furthermore, based
-on the other results of this study, a detailed analysis of the oxygen addition
+ignition delay results from the MIT mechanism. In the MIT mechanism, the
+reactions of $\alpha$-hydroxybutylperoxy exclusively produce
+\textit{i}-butyraldehyde, whereas in the Sarathy et al.\ mechanism, some
+of the $\alpha$-hydroxybutylperoxy radicals enter chain-branching
+pathways. Since the other oxygen addition reactions were unchanged, it
+is apparent that the addition of oxygen to $\alpha$-hydroxybutyl is one
+of the controlling reactions for the high-pressure, low-temperature
+ignition of \iBuOH{} using the mechanism of \textcite{Sarathy2012}. It
+is therefore concluded that a detailed examination of the rates of
+direct formation of aldehyde+HO$_2$ and oxygen addition to the
+$\alpha$-hydroxybutyl radical are required to better predict the
+low-temperature ignition behavior of \iBuOH{}. Furthermore, based on the
+other results of this study, a detailed analysis of the oxygen addition
 reactions to all the isomers of butanol is probably warranted.
 
 \section{Conclusions}
