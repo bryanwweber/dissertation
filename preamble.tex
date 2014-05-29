@@ -1,14 +1,3 @@
-%Allow lualatex to properly add links processed from pax files.
-\usepackage{pdftexcmds}
-\makeatletter
-\let\pdfescapename=\pdf@escapename
-\let\pdfstrcmp=\pdf@strcmp
-\makeatother
-\usepackage{pax}
-
-%Allow to use \doi to link to DOI links.
-\newcommand*{\doi}[1]{\href{http://dx.doi.org/#1}{\texttt{#1}}}
-
 %Set the package to import preambles
 \usepackage{subfiles}
 
@@ -242,8 +231,20 @@
     colorlinks=true,
     citecolor=blue,
     linkcolor=black,
+    plainpages=false,
     final,
 }
+
+%Allow lualatex to properly add links processed from pax files.
+\usepackage{pdftexcmds}
+\makeatletter
+\let\pdfescapename=\pdf@escapename
+\let\pdfstrcmp=\pdf@strcmp
+\makeatother
+\usepackage{pax}
+
+%Allow to use \doi to link to DOI links.
+\usepackage{doi}
 
 %Allow inserting PDF documents directly to the output. According to
 %http://tex.stackexchange.com/a/13660/32374, should come after hyperref
