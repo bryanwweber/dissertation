@@ -829,7 +829,7 @@ compressed temperature $T_C$.
 \label{sec:rsa}
 
 The Rapid Sampling Apparatus (RSA) used in this study is an adaptation
-of the RSA described in the work of \textcite{Mittal2007, Mittal2006}.
+of the RSA described in the work of \textcite{Mittal2007, Mittal2006a}.
 The basic concept is the same as that developed by \textcite{Roblee1961}.
 An aluminum diaphragm is punctured by a pointed rod at the appointed time,
 evacuating the contents of the reaction chamber into a large vessel. The
@@ -849,7 +849,7 @@ been updated as shown in \cref{fig:sampling-tank}. The
 electromagnet/spring system has been replaced with a linear-acting
 solenoid. The puncture rod is held in the retracted position by a
 permanent magnet (not shown) to overcome the pressure force acting on
-the radial cross section of the rod when the sampling tank is under
+the cross section of the rod when the sampling tank is under
 vacuum. At the sampling time, the solenoid is actuated by a DC voltage
 to puncture the diaphragm.
 
@@ -858,11 +858,6 @@ to puncture the diaphragm.
 \caption{Schematic of the modified RSA used in this study}
 \label{fig:sampling-tank}
 \end{figure}
-
-The sampled gases flow from the sample tank into an evacuated sampling
-bottle, as shown schematically in \cref{fig:rcm-schematic}. The sample
-is diluted with ultra-high-purity helium (\SI{99.999}{\percent} purity)
-and taken to the analysis system, which is described in \cref{sec:gcms}.
 
 \Cref{fig:rsa-pressure} shows a pressure trace from the reaction chamber
 when the solenoid has been triggered and a pressure trace when the
@@ -874,10 +869,21 @@ into the sampling tank is isentropic and the ratio of specific heats is
 fixed at $\gamma=1.3$, the temperature ratio is approximately
 \num{2.6379E-1}, leading to temperatures after expansion on the order of
 $T\approx\SI{200}{\kelvin}$, depending on $T_C$. After expansion, the
-gases are warmed to room temperature in the sample bottle. The fuel
-partial pressure in the sampling bottle is a factor of two lower than
-the saturated vapor pressure at room temperature, so that heating of the
-sample bottle is not required.
+gases are warmed to room temperature. The fuel partial pressure in the
+sampling tank is a factor of two lower than the saturated vapor pressure
+at room temperature, so that heating of the sampling tank is not required.
+
+The sampled gases are removed from the sampling tank by a gas-tight
+syringe through a septum. The syringe is equipped with a pressure lock
+so that the barrel of the syringe can be closed to the atmosphere after
+the sample is withdrawn. In addition, closing the barrel of the syringe
+allows the sampled gases to be pressurized for injecion into the gas
+chromatograph by pushing on the plunger. \textcite{He2007} used a similar
+procedure in their experiments, and compared results using a heated
+syringe and an unheated syringe. They found that excellent agreement
+between results with the heated and unheated syringes; since a similar
+procedure is used in these experiments, an unheated syringe is used as
+well.
 
 \section{Gas Chromatograph/Mass Spectrometer}
 \label{sec:gcms}
