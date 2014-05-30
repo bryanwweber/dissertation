@@ -262,6 +262,25 @@ Since the reaction 2ho2$\Leftrightarrow$h2o2+o2 is represented by two sets of $\
 and $E_a$ in the reaction mechanism, both Arrhenius coefficients were
 simultaneously doubled to give the sensitivity value shown in \cref{fig:ipeoh-20sens}.
 
+\begin{figure}
+    \ffigbox
+        {\includegraphics[width=10cm]{04-Pentanol/ipeoh-20sens}}
+        {\caption{Sensitivity of the ignition delay to changes in
+        the reaction rate coefficients for three equivalence ratios.
+        Initial conditions for constant-volume adiabatic simulations are
+        \SI{800}{\kelvin} and \SI{20}{\atmosphere}.}
+        \label{fig:ipeoh-20sens}}
+    \par
+    \vspace{10pt}
+    \ffigbox
+        {\includegraphics[width=10cm]{04-Pentanol/ipeoh-40sens}}
+        {\caption{Sensitivity of the ignition delay to changes in
+        the reaction rate coefficients for three equivalence ratios.
+        Initial conditions for constant-volume adiabatic simulations are
+        \SI{689}{\kelvin} and \SI{40}{\atmosphere}.}
+        \label{fig:ipeoh-40sens}}
+\end{figure}
+
 It is seen from \cref{fig:ipeoh-20sens} that the most sensitive reaction
 under these conditions is H-abstraction by OH to form the $\alpha$-hydroxypentyl
 radical (ic5h10oh-1). Increasing the rate of abstraction by OH from the
@@ -315,25 +334,6 @@ rates in the low temperature chain branching pathways to decrease
 reactivity at lean conditions but increase reactivity at rich
 conditions, which warrants further investigation.
 
-\begin{figure}
-    \ffigbox
-        {\includegraphics[width=10cm]{04-Pentanol/ipeoh-20sens}}
-        {\caption{Sensitivity of the ignition delay to changes in
-        the reaction rate coefficients for three equivalence ratios.
-        Initial conditions for constant-volume adiabatic simulations are
-        \SI{800}{\kelvin} and \SI{20}{\atmosphere}.}
-        \label{fig:ipeoh-20sens}}
-    \par
-    \vspace{10pt}
-    \ffigbox
-        {\includegraphics[width=10cm]{04-Pentanol/ipeoh-40sens}}
-        {\caption{Sensitivity of the ignition delay to changes in
-        the reaction rate coefficients for three equivalence ratios.
-        Initial conditions for constant-volume adiabatic simulations are
-        \SI{689}{\kelvin} and \SI{40}{\atmosphere}.}
-        \label{fig:ipeoh-40sens}}
-\end{figure}
-
 The main \iPeOH{} reaction pathways after \SI{20}{\percent} fuel consumption at
 \SI{800}{\kelvin}, \SI{20}{\atmosphere}, and for three equivalence
 ratios are shown in \cref{fig:ipeoh-20path}, describing the key low
@@ -356,8 +356,11 @@ important for the $\gamma$-ROO (\SI{6}{\percent}) via a 7-membered transition st
 ring, which is a reaction sequence we included based on the work
 of \textcite{Welz2012}.
 
+\afterpage{%
+\clearpage
+\begin{landscape}
 \begin{figure}
-    \includegraphics[width=15cm]{04-Pentanol/ipeoh-20path}
+    \includegraphics[width=0.89\textwidth]{04-Pentanol/ipeoh-20path}
     \caption{Reaction path analysis for \iPeOH{} at \SI{800}{\kelvin},
     \SI{20}{\atmosphere}, and three equivalence ratios, based on
     constant-volume adiabatic simulations. Plain text: $\phi=0.5$.
@@ -365,6 +368,8 @@ of \textcite{Welz2012}.
     integrated up to \SI{20}{\percent} fuel consumption.}
     \label{fig:ipeoh-20path}
 \end{figure}
+\end{landscape}
+}
 
 \section{Conclusions}
 \label{sec:ipeoh-conclusions}
