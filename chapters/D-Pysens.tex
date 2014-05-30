@@ -1,0 +1,99 @@
+
+\begin{singlespace}
+{\setlength{\parindent}{0pt}
+\DefineShortVerb[commandchars=\\\{\}]{\`}
+{\large \textbf{Usage:}}
+
+Download the repository by using git
+
+`git clone git://github.com/bryanwweber/pysens.git`
+
+No other compilation is necessary. Python 3 is required.
+The runtime behavior of the script is configured by setting options in
+the `pysens.conf` file. A sample `pysens.conf` is included in the
+distribution and reproduced below.
+
+The script can be run on Linux either by setting the executable bit
+and executing the program from the shell e.g.\\
+`./run_sens.py`\\
+or by calling\\
+`python3 run_sens.py`.\\
+On Windows, it should be run by\\
+`py run_sens.py`\\
+Note: I haven't tested this on Windows
+
+\blankline
+
+{\large `pysens.conf` \textbf{options:}}
+
+The `pysens.conf` file must either have `[DEFAULT]` on the first line,
+or one of the following options. No other text is supported on the first
+line. If options are given that aren't specified below, they will be
+ignored.
+
+The options can be specified by:
+
+`option = value or option : value`
+
+The following options are available:
+
+\begin{Verbatim}
+reactions - The set of reactions to be analyzed. Can be one of:
+
+all - use all of the reactions in the mechanism
+comma-separated list (e.g. 1,2,3) - use the specified reactions
+colon-separated values - specify a range of reactions
+                         with either start:stop or
+                         start:interval:stop syntax.
+                         If stop is not given, it
+                         defaults to the number of
+                         reactions in the mechanism.
+                         Thus, all and 1: are
+                         equivalent. end is a
+                         synonym for the number
+                         of reactions. E.g. 1:10 or
+                         1:2:10 or 1:2: or 1:2:end
+
+mech input file - The mechanism to be analyzed.
+
+thermo input file - Optional if the thermo information
+                    is specified in the mech input file.
+
+outputfile - The base name of the output file. The full
+             output file name will be set by concatenating
+             outputfile + rfactor + sim input file.
+
+factors - The multiplication factors to be considered.
+          Multiple multiplication factors should be
+          separated by commas.
+
+sim input files - Valid CHEMKIN-Pro input files for the
+                  test cases desired.
+
+chemkin root - The root directory of the CHEMKIN-Pro
+               install. Accepts shell variables, including
+               those set by the CHEMKIN setup script
+               that should run at logon.
+\end{Verbatim}
+
+{\large \textbf{Sample} `pysens.conf` \textbf{file:}}
+\VerbatimInput{includes/pysens.conf}
+
+The following is the code that makes up this script.
+
+\cleardoublepage
+
+{\Large `run\_sens.py`, the main driver script}
+\input{includes/run_sens}
+
+\cleardoublepage
+
+{\Large `mechinterp.py`, containing the mechanism interpreter}
+\input{includes/mechinterp}
+
+\cleardoublepage
+
+{\Large `sens\_helper.py`, containing helper functions}
+\input{includes/sens_helper}
+}
+\end{singlespace}
