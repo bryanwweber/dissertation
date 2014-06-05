@@ -7,10 +7,10 @@
 
 The fast sampling system (FSS) used in this work is a commercial system supplied by
 SME-Tec Gmbh. from Germany. The FSS is composed of two parts, the gas sampling valve
-(GSV) and the Controller. A schematic of the GSV is shown in \cref{fig:valve-schematic}.
+(GSV) and the Controller. A photo of the GSV is shown in \cref{fig:gsv-photo}.
 Gases are admitted from the reaction chamber into the heated carrying tubes
 through the poppet-style valve on the left of the GSV. The sampled gases are then
-conducted through the GSV outlet into the \SI{15}{\milli\liter} sampling bottle.
+conducted through the GSV outlet into a sampling bottle.
 
 A schematic of the GSV assembly is shown in \cref{fig:gsv-assem-schematic}.
 The GSV is mounted to the RCM by a custom-made end plug. The reaction chamber
@@ -20,6 +20,22 @@ by adding or removing shims in the end plug assembly. The insertion depth
 is chosen so that the tip of the GSV is outside the boundary layer on the
 end wall.
 
+\begin{figure}
+    \begin{floatrow}
+        \ffigbox
+            {\includegraphics[width=7.9cm]{B-Fast-Sampling-System/gsv-photo}}
+            {\caption{Photo of the GSV prior to installation in the RCM. Samples
+            enter the valve from the left and are removed through the ports in the
+            center of the GSV.}
+            \label{fig:gsv-photo}}
+        \ffigbox
+            {\includegraphics[width=7.9cm]{B-Fast-Sampling-System/gsv-assem-schematic}}
+            {\caption{Schematic of the GSV assembled into the reaction chamber showing
+            the position of the sealing o-rings and the protrusion of the poppet face.}
+            \label{fig:gsv-assem-schematic}}
+    \end{floatrow}
+\end{figure}
+
 The portion of the GSV protruding into the reaction chamber has minimal
 effect on the homogeneity of the reaction chamber. Moreover, the removal of
 samples has minimal effect on the measured ignition delay.
@@ -28,13 +44,52 @@ and without the GSV present, and with and without sampling occurring.
 In both cases, the difference in ignition delay was statistically insignificant
 for $\alpha=0.05$.
 
+Tests of the ignition delay with and without the valve, and with and
+without sampling are shown in \cref{fig:gsv-pressure}. It can be seen
+that the pressure traces follow each other closely, including through the
+ignition event, indicating that the presence of the valve and the
+activation of the valve to remove a sample do not substantially disturb
+the ignition process.
+
+\begin{figure}
+\includegraphics[width=9cm]{B-Fast-Sampling-System/gsv-pressure}
+\caption{Representative pressure traces from RCM experiments with and
+without the GSV present, and with and without sampling occurring. Two
+sampling times are shown. The corresponding non-reactive pressure trace
+is also shown.}
+\label{fig:gsv-pressure}
+\end{figure}
+
 The close-open-close (COC) cycle of the GSV is controlled by a mass-spring
-system. The poppet face is connected to a rod running the length of the
+system shown in \cref{fig:gsv-magnet-section}. The poppet face is connected
+to a rod running the length of the
 GSV and connected to the mass at the rear of the valve. To open the poppet,
 the mass is accelerated forward by passing current through the coil around
 the mass. The rod is also
 connected to a spring that is used to restore the poppet to its original
 position after being extended.
+
+\begin{figure}
+    \ffigbox{%
+        \begin{subfloatrow}
+            \ffigbox[\FBwidth]
+                {\includegraphics[width=13cm]{B-Fast-Sampling-System/tube-valve-section}}
+                {\caption{Front section of the GSV containing the sample transfer tubes
+                and the poppet valve that is inserted into the reaction chamber}
+                \label{fig:gsv-tube-valve-section}}
+        \end{subfloatrow}%
+        \par
+        \begin{subfloatrow}%
+            \ffigbox[\FBwidth]
+                {\includegraphics[width=13cm]{B-Fast-Sampling-System/magnet-section}}
+                {\caption{Rear section of the GSV containing the driving magnet and
+                sample extraction fittings.}
+                \label{fig:gsv-magnet-section}}
+        \end{subfloatrow}}
+        {\caption{Schematic of the front and rear portions of the GSV. Images courtesy
+        SMETec GMBH.}
+        \label{fig:gsv-schematic}}
+\end{figure}
 
 The GSV has an adjustable COC time, by adjusting the
 distance the plate is allowed to move. Furthermore, the GSV has the ability
@@ -57,19 +112,29 @@ The absolute opening time of the GSV is thus dependent on three parameters:
 \item The delay set in the GSV controller.
 \end{enumerate}
 
-However, since the absolute opening time of the GSV can be measured by
-the signal sent from the GSV to the controller (and thence to the cDAQ),
-the uncertainty in the opening time is actually quite small, and is related
-to the cable delay in sending the COC signal from the GSV to the cDAQ and
-the precision of the A/D conversion in the cDAQ. The uncertainty of the
-absolute opening time is thus estimated as $\pm \SI{1}{\micro\second}$. \todo{Verify this number}
+The absolute opening time of the GSV is measured by
+the signal sent from the GSV to the controller (and thence to the cDAQ).
+This signal is shown in \cref{fig:gsv-voltage}. The time that
+the cDAQ sent the trigger signal to the GSV controller is set to be the
+zero time; \cref{fig:gsv-voltage} thus demonstrates the
+repeatability of the delay (within \SI{1}{\milli\second}) in 
+GSV motion relative to the trigger signal.
 
-Furthermore, the correspondence of the COC signal from the valve with
-the physical valve movements has been experimentally verified by
-high speed video. Frames from these videos are shown in \cref{fig:valve-video}.
-The frames show that the opening and closing times of the valve face
-correspond closely with repeatable points in the peak of the voltage.
+The COC time is measured as the width of the first peak in the
+GSV valve signal in \cref{fig:gsv-voltage}. \Cref{fig:gsv-voltage} 
+shows the repeatability of the COC time as the width of the first 
+peak for the two sampling times corresponds closely between runs.
 
-\missingfigure{GSV Video}
+\begin{figure}
+\includegraphics[width=11cm]{B-Fast-Sampling-System/gsv-voltage}
+\caption{Representative voltage traces from three runs each of two
+COC times: dotted: \SI{0.8}{\milli\second}; solid: \SI{2.5}{\milli\second}.}
+\label{fig:gsv-voltage}
+\end{figure}
+
+Further characterization work is required to determine the temperature
+drop of the gas as it enters the GSV and to ensure that the GSV tip
+protrudes beyond the boundary layer. In addition, an experimental
+procedure must be developed to integrate the GSV with the GC/MS analysis.
 
 \end{document}
