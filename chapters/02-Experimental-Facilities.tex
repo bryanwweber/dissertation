@@ -837,7 +837,7 @@ compressed temperature $T_C$.
 The Rapid Sampling Apparatus (RSA) used in this study is an adaptation
 of the RSA described in the work of \textcite{Mittal2007, Mittal2006a}.
 The basic concept is the same as that developed by \textcite{Roblee1961}.
-An polyester-film diaphragm is punctured by a pointed rod at the appointed time,
+A diaphragm is punctured by a pointed rod at the appointed time,
 evacuating the contents of the reaction chamber into a large vessel. The
 temperature drop caused by the expansion of the gases into the sampling
 chamber quenches the reactions, and the products can be removed to an
@@ -874,6 +874,23 @@ between the reaction chamber and the sampling tank. In the other two cases,
 the puncture rod breaks the diaphragm and the pressure differential evacuates
 the reaction chamber gases into the sampling tank.
 
+\begin{figure}
+\includegraphics[width=11cm]{02-Experimental-Facilities/rsa-pressure}
+\caption{Pressure traces of representative experiments utilizing the
+rapid sampling apparatus. Blue: rupture due to ignition. Red and Black:
+rupture due to puncture rod.}
+\label{fig:rsa-pressure}
+\end{figure}
+
+The EOC pressure is limited by the pressure that the diaphragm can withstand
+before rupture. For the polyester-film diaphragm (thickness: \SI{0.003}{\inch})
+used in this work, the maximum EOC pressure is approximately 15 bar; to allow
+for cases with pressure rise prior to the main ignition event, an EOC pressure
+near \SI{12}{\bar} is chosen for the studies in this work. A higher EOC pressure
+is possible with stronger diaphragms; however, the stronger diaphragms are more
+difficult to puncture and have longer pressure drop times when punctured,
+resulting in incomplete reaction quenching.
+
 The ratio of the EOC volume of the
 reaction chamber to the total (approximate) volume of the sampling tank
 plus the reaction chamber is \num{1.1772E-2}. Assuming the expansion
@@ -884,14 +901,6 @@ $T\approx\SI{200}{\kelvin}$, depending on $T_C$. After expansion, the
 gases are warmed to room temperature. The fuel partial pressure in the
 sampling tank is a factor of two lower than the saturated vapor pressure
 at room temperature, so that heating of the sampling tank is not required.
-
-\begin{figure}
-\includegraphics[width=11cm]{02-Experimental-Facilities/rsa-pressure}
-\caption{Pressure traces of representative experiments utilizing the
-rapid sampling apparatus. Blue: rupture due to ignition. Red and Black:
-rupture due to puncture rod.}
-\label{fig:rsa-pressure}
-\end{figure}
 
 The sampled gases are removed from the sampling tank by a gas-tight
 syringe through a septum. The syringe is equipped with a pressure lock
@@ -1116,6 +1125,31 @@ spectrum matches the spectrum in the database.
 % methods for the construction of calibration curves will be given in
 % \cref{sec:gcms-procedure}.
 
+\begin{table}
+\caption{GC/MS Method Parameters}
+\label{tab:gcms}
+\begin{tabular}{lr}
+\toprule
+Name & Value\\
+\midrule
+Column Flow Rate & \SI{0.98}{\milli\liter\per\minute}\\
+Purge Flow Rate & \SI{3.0}{\milli\liter\per\minute}\\
+Linear Velocity & \SI{19.7}{\centi\meter\per\second}\\
+Split Ratio & 100 : 1\\
+\midrule
+Column Temperature & \SI{50}{\degreeCelsius}\\
+Injector Temperature & \SI{200}{\degreeCelsius}\\
+Interface Temperature & \SI{200}{\degreeCelsius}\\
+Ion Source Temperature & \SI{200}{\degreeCelsius}\\
+\midrule
+Ionization Voltage & \linebreakcell{\SI{0.73}{\kilo\volt} for \SI{8}{\minute};\\\SI{0.83}{\kilo\volt} for \SI{27}{\minute}}\\
+Scan Interval & \SI{0.11}{\second}\\
+Scan Range & \SIrange{10}{150}{\dalton}\\
+MS Threshold & 100 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \subsection{Experimental Procedure}
 \label{sec:gcms-procedure}
 
@@ -1123,8 +1157,18 @@ The GC/MS used in this study is a
 Shimadzu model QP-2010S, equipped with a split/splitless injector, as mentioned previously. The column
 used is a Restek RTX-1PONA capillary column
 with length \SI{100}{\meter}, inner diameter \SI{0.25}{\milli\meter}, and film
-thickness of \SI{0.5}{\micro\meter}. The operating parameters of the GC/MS
+thickness of \SI{0.5}{\micro\meter}. The carrier gas is helium with \SI{99.9999}{\percent} purity. The operating parameters of the GC/MS
 (known as the \textit{method}) are shown in \cref{tab:gcms}.
+
+The data files produced the GC/MS are post-processed in the
+Shimadzu GCMS Post-run Analysis software (version 2.70).
+Each peak integrated by averaging the mass spectra
+at the three scans around the peak value and subtracting
+the background signal. Then the peaks are manually identified
+by comparing the spectra to the NIST library. The matching
+parameter indicating the degree that the measured spectrum matches the
+spectrum in the library is recorded for each peak. The species with the
+highest matching parameter is chosen for display.
 
 % The pressure in the gas injection valve sample loop is monitored by an
 % MMA type pressure transducer, the same model as used in \cref{sec:unc-p0}. The
