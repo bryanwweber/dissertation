@@ -102,6 +102,9 @@ from 2007 by \textcite{Pitz2007} is substantial.
 \section{Experimental Results}
 \label{sec:mch-expts}
 
+\subsection{Ignition Delays}
+\label{sec:mch-ign-delays}
+
 The experimental ignition delays measured at the three equivalence ratios and
 compressed pressure of \SI{50}{\bar} are shown in \cref{fig:mch-expts}. The open symbols are the
 overall ignition delays, and the filled symbols are the first stage ignition
@@ -148,6 +151,37 @@ case is the least reactive. As has been shown for other fuels, including
 \textit{n}-butanol \cite{Weber2011} and Jet-A \cite{Kumar2010}, decreasing the
 equivalence ratio by increasing the oxygen mole fraction but holding the fuel
 mole fraction constant increases the reactivity.
+
+\subsection{Species Sampling}
+\label{sec:mch-sampling}
+
+The pressure profiles for three experiments with Mix \#2 ($\phi=0.5$) are shown
+in \cref{fig:mch-sample} (repeated from \cref{fig:rsa-pressure}). The corresponding
+TICs are shown in \cref{fig:mch-tic}. Note that the peak for MCH is not shown
+for the black line because of an error in the method that was corrected for later
+experiments. 14 peaks are uniquely identified by the GC/MS, including peaks
+for important aldehyde and ketone intermediates that are the product of
+low-temperature chain branching pathways.
+
+\begin{figure}
+\includegraphics[width=11cm]{02-Experimental-Facilities/rsa-pressure}
+\caption{Pressure traces of experiments utilizing the
+rapid sampling apparatus. Blue: rupture due to ignition. Red and Black:
+rupture due to puncture rod.}
+\label{fig:mch-sample}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=11cm]{05-MCH/mch-tic}
+\caption{TIC of samples extracted from MCH ignition experiments. The colors
+correspond to \cref{fig:mch-sample}. Note that due to an experimental error,
+the TIC for \SIlist{26;12}{\milli\second} is cut off prior to the elution
+of the MCH peak, but this error was fixed for the \SI{0}{\milli\second} case.
+The numbers after each species name represent the value of the matching
+parameter returned by the software; peaks with multiple species either had
+identical matching parameters or eluted simultaneously.}
+\label{fig:mch-tic}
+\end{figure}
 
 \section{Comparison to Model}
 \label{sec:model-comparison}
