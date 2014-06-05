@@ -837,7 +837,7 @@ compressed temperature $T_C$.
 The Rapid Sampling Apparatus (RSA) used in this study is an adaptation
 of the RSA described in the work of \textcite{Mittal2007, Mittal2006a}.
 The basic concept is the same as that developed by \textcite{Roblee1961}.
-An aluminum diaphragm is punctured by a pointed rod at the appointed time,
+An polyester-film diaphragm is punctured by a pointed rod at the appointed time,
 evacuating the contents of the reaction chamber into a large vessel. The
 temperature drop caused by the expansion of the gases into the sampling
 chamber quenches the reactions, and the products can be removed to an
@@ -866,9 +866,15 @@ to puncture the diaphragm.
 \end{figure}
 
 \Cref{fig:rsa-pressure} shows a pressure trace from the reaction chamber
-when the solenoid has been triggered and a pressure trace when the
-solenoid is not actuated. It can be seen that there is a very rapid drop
-in pressure in the reaction chamber. The ratio of the EOC volume of the
+when the solenoid has been triggered (red, black) and a pressure trace when the
+solenoid is not actuated (blue). It can be seen that there is a very rapid drop
+in pressure in the reaction chamber when the diaphragm is ruptured. In the case
+with ignition, the diaphragm is ruptured purely by the pressure differential
+between the reaction chamber and the sampling tank. In the other two cases,
+the puncture rod breaks the diaphragm and the pressure differential evacuates
+the reaction chamber gases into the sampling tank.
+
+The ratio of the EOC volume of the
 reaction chamber to the total (approximate) volume of the sampling tank
 plus the reaction chamber is \num{1.1772E-2}. Assuming the expansion
 into the sampling tank is isentropic and the ratio of specific heats is
@@ -878,6 +884,14 @@ $T\approx\SI{200}{\kelvin}$, depending on $T_C$. After expansion, the
 gases are warmed to room temperature. The fuel partial pressure in the
 sampling tank is a factor of two lower than the saturated vapor pressure
 at room temperature, so that heating of the sampling tank is not required.
+
+\begin{figure}
+\includegraphics[width=11cm]{02-Experimental-Facilities/rsa-pressure}
+\caption{Pressure traces of representative experiments utilizing the
+rapid sampling apparatus. Blue: rupture due to ignition. Red and Black:
+rupture due to puncture rod.}
+\label{fig:rsa-pressure}
+\end{figure}
 
 The sampled gases are removed from the sampling tank by a gas-tight
 syringe through a septum. The syringe is equipped with a pressure lock

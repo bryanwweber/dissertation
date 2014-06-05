@@ -1,0 +1,26 @@
+% arara: lualatex
+\input{../../figure-preamble.tex}
+\pgfplotscreateplotcyclelist{rsa}{
+    blue,red,black%
+}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+    xmin=-20,xmax=30,
+    ylabel={Pressure, \si{\bar}},
+    xlabel={Time, \si{\milli\second}},
+    minor x tick num = 4,
+    minor y tick num = 3,
+    no markers,
+    table/col sep=comma,
+    table/x index={0},
+    title={MCH/O$_2$/N$_2$/Ar, $\phi=0.5$},
+    cycle list name=rsa,
+]
+\addplot table[y index={1}] {04-Jun-1849-pressure.csv};
+\addplot table[y index={1}] {04-Jun-1454-pressure.csv};
+\addplot table[y index={1}] {04-Jun-2007-pressure.csv};
+\node[anchor=north west,align=left] at (axis cs:-15,30) {$T_C=\SI{753}{\kelvin}$\\$P_C=\SI{12}{\bar}$\\$P_0=\SI{565}{\torr}$};
+\end{axis}
+\end{tikzpicture}
+\end{document}
