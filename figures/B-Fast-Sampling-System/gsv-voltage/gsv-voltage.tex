@@ -1,0 +1,37 @@
+% arara: lualatex
+\input{../../figure-preamble.tex}
+\pgfplotscreateplotcyclelist{voltage}{
+    densely dotted,red,\\%
+    densely dotted,blue,\\%
+    densely dotted,black,\\%
+    solid,red,\\%
+    solid,blue,\\%
+    solid,black,\\%
+}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+    xmin=0,xmax=13,
+    minor x tick num=3,
+    minor y tick num=3,
+    no markers,
+    table/x expr=\thisrow{Time}*1000,
+    y filter/.code={
+        \ifnum\coordindex=0
+            \xdef\firstvalue{\pgfmathresult}
+        \fi
+        \pgfmathparse{\pgfmathresult-\firstvalue}
+    },
+    xlabel={Time, \si{\milli\second}},
+    ylabel={Voltage, \si{\volt}},
+    cycle list name=voltage,
+]
+\addplot+[restrict x to domain=0:10.30] table[y=Sample] {run-1.txt};
+\addplot+[restrict x to domain=0:10.30] table[y=Sample] {run-2.txt};
+\addplot+[restrict x to domain=0:10.30] table[y=Sample] {run-3.txt};
+\addplot+[restrict x to domain=0:11.75] table[y=Sample] {run-4.txt};
+\addplot+[restrict x to domain=0:12.35] table[y=Sample] {run-5.txt};
+\addplot+[restrict x to domain=0:12.35] table[y=Sample] {run-6.txt};
+\end{axis}
+\end{tikzpicture}
+\end{document}

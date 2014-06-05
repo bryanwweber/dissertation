@@ -1,0 +1,40 @@
+% arara: lualatex
+\input{../../figure-preamble.tex}
+\pgfplotscreateplotcyclelist{pressure}{%
+    blue\\%
+    red\\%
+    darkgreen\\%
+    cyan\\%
+    black\\%
+}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+    table/col sep=comma,
+    restrict x to domain=-20:33,
+    xmin=-20,xmax=33,
+    ymin=0,ymax=25,
+    minor x tick num=4,
+    minor y tick num=4,
+    no markers,
+    every axis legend/.append style ={
+        at={(axis cs:-18,23)},
+        anchor = north west,
+    },
+    xlabel={Time, \si{\milli\second}},
+    ylabel={Pressure, \si{\bar}},
+    cycle list name=pressure,
+    title={\textit{t}-Butanol/O$_2$/N$_2$, $\phi=0.5$},
+]
+\foreach \xindex/\yindex in {0/1,2/3,4/5,6/7,8/9}
+{%
+    \addplot table[x index=\xindex, y index=\yindex] {pressure-traces-gsv.csv};
+}
+\draw[darkgreen,semithick] (axis cs:23.75,8) -- (axis cs:23.75,10);
+\draw[cyan,semithick] (axis cs:13.25,8.25) -- (axis cs:13.25,10);
+\node[align=center] at (axis cs:18.5,11) {Sampling Times};
+\node[anchor=east] at (axis cs:25,5) {O$_2$ : N$_2$ = 1 : 3.76};
+\legend{{Without Valve}, {With Valve, Without Sampling}, {With Valve, With Sampling}, {With Valve, With Sampling}, {Non-Reactive}}
+\end{axis}
+\end{tikzpicture}
+\end{document}
