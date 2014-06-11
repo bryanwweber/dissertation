@@ -14,16 +14,22 @@
     minor y tick num = 4,
     no markers,
     table/col sep=comma,
-    title={MCH/O$_2$/N$_2$/Ar, $\phi=0.5$},
+    title={MCH/O$_2$/Ar, Mix \#2, $\phi=0.5$},
     cycle list name=rsa,
+    every axis legend/.append style={
+        at={(axis cs:-0.8,23.5)},
+        anchor=north west,
+        legend columns=2,
+    },
 ]
-\addplot table[x index={0} , y index={1} ] {norm-pressure-traces.csv};
-\addplot table[x index={2} , y index={3} ] {norm-pressure-traces.csv};
 \addplot table[x index={4} , y index={5} ] {norm-pressure-traces.csv};
+\addplot table[x index={0} , y index={1} ] {norm-pressure-traces.csv};
 \addplot table[x index={6} , y index={7} ] {norm-pressure-traces.csv};
+\addplot table[x index={2} , y index={3} ] {norm-pressure-traces.csv};
 \addplot table[x index={8} , y index={9} ] {norm-pressure-traces.csv};
 \addplot table[x index={10}, y index={11}] {norm-pressure-traces.csv};
-\node[anchor=north west,align=left] at (axis cs:-15,24) {$T_C=\SI{755}{\kelvin}$\\$P_C=\SI{12}{\bar}$\\$P_0=\SI{0.7079}{\bar}$\\$T_0=\SI{295}{\kelvin}$};
+\legend{{Case 1}, {Case 2}, {Case 3}, {Case 4}, {Case 5}, {Non-reactive}}
+% \node[anchor=north west,align=left] at (axis cs:-15,24) {$T_C=\SI{755}{\kelvin}$\\$P_C=\SI{12}{\bar}$\\$P_0=\SI{0.7079}{\bar}$\\$T_0=\SI{295}{\kelvin}$};
 \end{axis}
 \end{tikzpicture}
 \end{document}
