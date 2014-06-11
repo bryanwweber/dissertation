@@ -155,17 +155,46 @@ mole fraction constant increases the reactivity.
 \subsection{Species Sampling}
 \label{sec:mch-sampling}
 
-The pressure profiles for three experiments with Mix \#2 ($\phi=0.5$) are shown
-in \cref{fig:mch-sample} (repeated from \cref{fig:rsa-pressure}). The corresponding
-TICs are shown in \cref{fig:mch-tic}. 14 peaks are uniquely identified by the GC/MS, including peaks
+The pressure profiles for seven experiments with Mix \#2 ($\phi=0.5$) are shown
+in \cref{fig:mch-sample}---the orange case is the representative non-reactive
+experiment. The abscissa is normalized time, where 1 is the
+first stage ignition and 2 is the overall ignition. This requires scaling
+the time axis twice. The first scaling is created by normalizing the
+time until the first-stage ignition (including the time prior to EOC) by
+the first-stage ignition delay. The second scaling is applied to the time
+after the first-stage ignition. The time in this period is normalized by
+$\tau_2$---the difference between the overall ignition delay and the
+first-stage ignition delay---and then added to the first time scaling.
+
+Cases where the diaphragm was punctured prior to the first stage of
+ignition were normalized according to the first-stage ignition delay of
+the purple case in \cref{fig:mch-sample}. The case where the diaphragm was
+punctured after first-stage ignition was normalized by the first-stage
+ignition delay of that case for the time prior to the first-stage ignition
+delay; the time after the first-stage ignition was normalized by the
+difference between the first-stage ignition delay of that case and the
+overall ignition delay of the purple case.
+
+The sampling times are chosen to correspond to important points during
+the ignition delay:
+\begin{itemize}
+\item Just prior to EOC
+\item Prior to the first-stage ignition
+\item During the first-stage ignition
+\item Prior to the overall ignition
+\item During the overall ignition
+\end{itemize}
+
+Representative total ion chromatograms (TICs) corresponding to the
+experiments in \cref{fig:mch-sample} are shown in \cref{fig:mch-tic}. 14
+peaks are uniquely identified by the GC/MS, including peaks
 for important aldehyde and ketone intermediates that are the product of
 low-temperature chain branching pathways.
 
 \begin{figure}
-\includegraphics[width=11cm]{02-Experimental-Facilities/rsa-pressure}
+\includegraphics[width=11cm]{05-MCH/sample-pressure}
 \caption{Pressure traces of experiments utilizing the
-rapid sampling apparatus. Blue: rupture due to ignition. Red and Black:
-rupture due to puncture rod.}
+rapid sampling apparatus.}
 \label{fig:mch-sample}
 \end{figure}
 
@@ -190,7 +219,7 @@ symbols) and the first stage ignition delays computed using the updated model
 fig:mch-model-3-first} for Mix \#1, \#2, and \#3. In
 addition, a comparison of the experimentally measured overall ignition delays
 (open symbols) and the overall ignition delay computed by the updated model
-(lines) is shown in \cref{fig:mch-model-1-over,fig:mch-model-2-over,,%
+(lines) is shown in \cref{fig:mch-model-1-over,fig:mch-model-2-over,,%Comma necessary to avoid compression
 fig:mch-model-3-over}. The experiments include the new work being
 presented here at $P_C=\SI{50}{\bar}$ in addition to the previous RCM experiments at
 $P_C=\SIlist{15.1;25.5}{\bar}$ \cite{Mittal2009}. The simulations are of
