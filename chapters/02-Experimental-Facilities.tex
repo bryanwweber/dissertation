@@ -8,6 +8,7 @@
 \section{Rapid Compression Machine}
 \label{sec:rcm}
 \subsection{Experimental Procedure}
+\label{sec:rcm-procedure}
 The studies in this dissertation were conducted using the Rapid
 Compression Machine (RCM) constructed by Mittal around 2005 and described in the
 work of \textcite{Mittal2007,Mittal2006a}. This RCM has been used to
@@ -268,6 +269,7 @@ reproduces the conditions of the reactive experiment.
 
 
 \subsection{Reaction Chamber Homogeneity}
+\label{sec:rcm-homogeneity}
 
 An RCM to be used for studies of homogeneous chemistry---as in this study---%
 must ensure that homogeneous conditions exist inside the reaction
@@ -834,8 +836,8 @@ compressed temperature $T_C$.
 \section{Rapid Sampling Apparatus}
 \label{sec:rsa}
 
-The Rapid Sampling Apparatus (RSA) used in this study is an adaptation
-of the RSA described in the work of \textcite{Mittal2007, Mittal2006a}.
+The Rapid Sampling Apparatus (RSA) used in this study is redesigned based
+on the RSA described in the work of \textcite{Mittal2007, Mittal2006a}.
 The basic concept is the same as that developed by \textcite{Roblee1961}.
 A diaphragm is punctured by a pointed rod at the appointed time,
 evacuating the contents of the reaction chamber into a large vessel. The
@@ -844,20 +846,22 @@ chamber quenches the reactions, and the products can be removed to an
 analysis system.
 
 The design of Mittal \cite{Mittal2007, Mittal2006a} used an electromagnet
-to hold a spring in compression. At the designated sampling time, the
-power to the electromagnet was cut, and the spring force thrust the
-puncture rod forward into the diaphragm. This system was prone to
+to hold the puncture rod in the retracted position agains the force of a
+spring in compression. At the designated sampling time, the
+power to the electromagnet was switched off and the spring force thrust
+the puncture rod forward through the diaphragm. This system was prone to
 premature puncture if the spring force overcame the electromagnetic
 force (e.g.\ due to a small drop in the current to the electromagnet).
 
 To alleviate the premature puncture problem, the puncture mechanism has
-been updated as shown in \cref{fig:sampling-tank}. The
+been upgraded as shown in \cref{fig:sampling-tank}. The
 electromagnet/spring system has been replaced with a linear-acting
 solenoid. The puncture rod is held in the retracted position by a
 permanent magnet (not shown) to overcome the pressure force acting on
 the cross section of the rod when the sampling tank is under
-vacuum. At the sampling time, the solenoid is actuated by a DC voltage
-to puncture the diaphragm.
+vacuum. At the sampling time, the solenoid is actuated by a DC voltage and
+the electromotive force overcomes the force of the permanent magnet to thrust
+the puncture rod forward into the diaphragm.
 
 \begin{figure}
 \includegraphics[width=0.9\textwidth]{02-Experimental-Facilities/sampling-tank}
@@ -865,14 +869,25 @@ to puncture the diaphragm.
 \label{fig:sampling-tank}
 \end{figure}
 
-\Cref{fig:rsa-pressure} shows a pressure trace from the reaction chamber
-when the solenoid has been triggered (red, black) and a pressure trace when the
-solenoid is not actuated (blue). It can be seen that there is a very rapid drop
-in pressure in the reaction chamber when the diaphragm is ruptured. In the case
-with ignition, the diaphragm is ruptured purely by the pressure differential
-between the reaction chamber and the sampling tank. In the other two cases,
-the puncture rod breaks the diaphragm and the pressure differential evacuates
-the reaction chamber gases into the sampling tank.
+A \SI{1}{\liter} sampling bottle is attached to the right side of the sampling tank
+above the puncture rod. The purpose of the sampling bottle is to collect
+the sampled gases and isolate them from any leakage after an experiment is
+conducted. The position of this sampling bottle is shown schematically in
+\cref{fig:rcm-schematic} but is not shown in \cref{fig:sampling-tank} for
+simplicity.
+
+\Cref{fig:rsa-pressure} shows pressure traces from the reaction chamber with the RSA installed.
+It can be seen that there is a very rapid drop in pressure in the
+reaction chamber when the diaphragm is ruptured. In Case 5, the diaphragm
+is ruptured purely by the pressure differential between the reaction
+chamber and the sampling tank. In the other cases, the puncture rod
+breaks the diaphragm and the pressure differential evacuates the reaction
+chamber gases into the sampling tank.
+
+It can be seen that the pressure traces prior to EOC and up to the first
+stage of ignition follow each other closely. Case 4 has a slightly shorter
+first-stage ignition delay than Cases 3 and 5, but the difference is
+within the experimental uncertainty for this case.
 
 \begin{figure}
 \includegraphics[width=11cm]{02-Experimental-Facilities/rsa-pressure}
@@ -891,28 +906,87 @@ is possible with stronger diaphragms; however, the stronger diaphragms are more
 difficult to puncture and have longer pressure drop times when punctured,
 resulting in incomplete reaction quenching.
 
-The ratio of the EOC volume of the
-reaction chamber to the total (approximate) volume of the sampling tank
-plus the reaction chamber is \num{1.1772E-2}. Assuming the expansion
-into the sampling tank is isentropic and the ratio of specific heats is
-fixed at $\gamma=1.3$, the temperature ratio is approximately
-\num{2.6379E-1}, leading to temperatures after expansion on the order of
-$T\approx\SI{200}{\kelvin}$, depending on $T_C$. After expansion, the
-gases are warmed to room temperature. The fuel partial pressure in the
-sampling tank is a factor of two lower than the saturated vapor pressure
-at room temperature, so that heating of the sampling tank is not required.
+The ratio of the EOC volume of the reaction chamber to the total
+approximate volume of the sampling tank plus the reaction chamber is
+\num{1.1772E-2}. Assuming the expansion into the sampling tank is
+isentropic and the ratio of specific heats is fixed at $\gamma=1.5$,
+the temperature ratio is approximately \num{1.0850E-1}, leading to
+temperatures after expansion on the order of $T\approx\SI{100}{\kelvin}$,
+depending on $T_C$. After expansion, the gases are allowed to warm to room
+temperature. All the sampling experiments conducted in this work use an
+initial temperature of \SI{295}{\kelvin}; at this temperature, the saturated
+vapor pressure of the fuel is a factor of $\approx\num{50}$ above the
+partial pressure in the sampling tank and sampling bottle.
 
-The sampled gases are removed from the sampling tank by a gas-tight
-syringe through a septum. The syringe is equipped with a pressure lock
-so that the barrel of the syringe can be closed to the atmosphere after
-the sample is withdrawn. In addition, closing the barrel of the syringe
-allows the sampled gases to be pressurized for injection into the gas
-chromatograph by pushing on the plunger. \textcite{He2007} used a similar
-procedure in their experiments, and compared results using a heated
-syringe and an unheated syringe. They found that excellent agreement
-between results with the heated and unheated syringes; since a similar
-procedure is used in these experiments, an unheated syringe is used as
-well.
+\subsection{Experimental Procedure}
+\label{sec:rsa-procedure}
+
+A similar procedure is followed as in \cref{sec:rcm-procedure} with some
+additions for the RSA. In particular, the RSA must be removed from the
+reaction chamber prior to each run so that the diaphragm can be replaced.
+After diaphragm installation, the sampling tank and reaction chamber
+are allowed to vacuum for \SI{5}{\minute}. For the room temperature
+experiments conducted in this work, this is sufficient for the pressure
+to stabilize at its lowest value.
+
+Then, an RCM experiment is run as usual. Immediately after the experiment,
+the valve to the sample bottle is closed. Typical pressures in the sample bottle for the experiments
+in this study are on the order of \SI{70}{\torr}. The sampled gases are
+removed from the sampling bottle by a gas-tight syringe through a septum.
+\SI{10}{\milli\liter} samples are removed from the sampling bottle; the
+pressure drop in the sampling bottle due to the sample removal is negligible.
+The syringe is equipped with a pressure lock so that the barrel of the
+syringe can be closed to the atmosphere after the sample is withdrawn.
+In addition, closing the barrel of the syringe allows the sampled gases
+to be pressurized for injection into the gas chromatograph.
+
+Three samples are withdrawn and analyzed for each sampling time
+investigated here. The agreement of the peak areas between the three runs
+for a given sampling time is excellent, indicating the reproducibility
+of this method. Moreover, \textcite{He2007} used a similar procedure in their sampling experiments
+of isooctane, and compared results using a heated syringe and an
+unheated syringe. They found that excellent agreement between results
+with the heated and unheated syringes; since a similar procedure is used
+in these experiments, an unheated syringe is used here.
+
+\subsection{Uncertainty in Mole Fractions}
+\label{sec:rsa-uncertainty}
+
+The uncertainty of the reported species mole fractions from the sampling
+is dependent on the dead volume in the reaction chamber and the uncertainty
+of the calibration coefficients used to calculate the mole fraction from
+the peak area. The dead volume consists of any spaces where the reactants do not
+experience the same conditions as the adiabatic core and includes the
+crevice volume of the piston---see \cref{sec:rcm-homogeneity}---and the
+boundary layer along the reactor walls. When the diaphragm is ruptured,
+the unreacted gases effectively dilute the sample. The amount of
+dilution depends on the EOC volume of the reaction chamber, the volume of
+the crevice, and the boundary layer thickness.
+
+The crevice volume is fixed by the dimensions of the piston and is
+approximately \SI{4646}{\milli\meter\cubed}. For the sampling experiments
+in this study, \SI{10}{\milli\meter} of split shims were used to increase
+the EOC reaction chamber volume. This results in a clearance length of
+\SI{23}{\milli\meter} at EOC and an EOC reactor volume of approximately
+\SI{51587}{\milli\meter\cubed}, such that the crevice volume is
+approximately \SI{9}{\percent} of the final clearance volume.
+
+\textcite{Mittal2012a} conducted CFD studies of an RCM equipped with a
+novel piston using the concept of ``crevice containment'', whereby the
+piston crevice is closed from the reaction chamber at the end of
+compression by a seal. These CFD simulations thus consider the dilution
+due to the boundary layer while eliminating the dilution due to the
+crevice volume. \textcite{Mittal2012a} found good agreement for species
+profiles during ignition of \textit{n}-heptane between the CFD studies and zero-dimensional
+homogeneous calculations (i.e. without a boundary layer). Since similar
+pressure and temperature conditions are considered in this study, the
+dilution effect of the boundary layer is expected to be minimal.
+
+The uncertainty of the mole fractions is thus very conservatively estimated
+at $\pm\SI{20}{\percent}$. Better quantification of the error from the
+GC/MS measurements could lead to insights in how to reduce this uncertainty;
+nonetheless, the value is comparable to the work by \textcite{Walton2011,
+Karwat2012, Karwat2013, Karwat2011a}.
 
 \section{Gas Chromatograph/Mass Spectrometer}
 \label{sec:gcms}
@@ -1114,16 +1188,16 @@ Technologies (NIST). The database returns several suggested species
 with a degree of matching parameter indicating how well the supplied
 spectrum matches the spectrum in the database.
 
-% In this work, the external standard method of quantification is used.
-% This requires that calibration curves for each of the species of
-% interest be created, relating the area of the peak in the TIC to
-% the number of moles of analyte reaching the detector. The number of
-% moles of analyte can in turn be related to the number of moles of
-% sample in the gas sample injection valve sample loop. Once the
-% calibration curve is generated, it is used to relate the measured
-% area of the peak of the particular component to its mole fraction. Detailed
-% methods for the construction of calibration curves will be given in
-% \cref{sec:gcms-procedure}.
+In this work, the external standard method of quantification is used.
+This requires that calibration curves for each of the species of
+interest be created, relating the area of the peak in the TIC to
+the number of moles of analyte reaching the detector. The number of
+moles of analyte can in turn be related to the number of moles in the
+syringe used for injection. Once the
+calibration curve is generated, it is used to relate the measured
+area of the peak of the particular component to its mole fraction. Detailed
+methods for the construction of calibration curves will be given in
+\cref{sec:gcms-procedure}.
 
 \begin{table}
 \caption{GC/MS Method Parameters}
@@ -1132,20 +1206,23 @@ spectrum matches the spectrum in the database.
 \toprule
 Name & Value\\
 \midrule
-Column Flow Rate & \SI{0.98}{\milli\liter\per\minute}\\
+Head Pressure & \SI{182.5}{\kilo\pascal}\\
+Column Flow Rate & \SI{1.00}{\milli\liter\per\minute}\\
 Purge Flow Rate & \SI{3.0}{\milli\liter\per\minute}\\
-Linear Velocity & \SI{19.7}{\centi\meter\per\second}\\
+Linear Velocity & \SI{19.9}{\centi\meter\per\second}\\
 Split Ratio & 100 : 1\\
 \midrule
-Column Temperature & \SI{50}{\degreeCelsius}\\
+Column Temperature & \SI{50}{\degreeCelsius} for \SI{40}{\minute}\\
 Injector Temperature & \SI{200}{\degreeCelsius}\\
 Interface Temperature & \SI{200}{\degreeCelsius}\\
 Ion Source Temperature & \SI{200}{\degreeCelsius}\\
 \midrule
-Ionization Voltage & \linebreakcell{\SI{0.73}{\kilo\volt} for \SI{8}{\minute};\\\SI{0.83}{\kilo\volt} for \SI{27}{\minute}}\\
+Solvent Cut Time & \SI{7}{\minute}\\
+Data Acquisition Start Time & \SI{8}{\minute}\\
+Ionization Voltage & \linebreakcell{\SI{0.73}{\kilo\volt} for \SI{8.9}{\minute};\\\SI{0.83}{\kilo\volt} for \SI{31.1}{\minute}}\\
 Scan Interval & \SI{0.11}{\second}\\
 Scan Range & \SIrange{10}{150}{\dalton}\\
-MS Threshold & 100 \\
+MS Intensity Threshold & 100 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1153,16 +1230,17 @@ MS Threshold & 100 \\
 \subsection{Experimental Procedure}
 \label{sec:gcms-procedure}
 
-The GC/MS used in this study is a
-Shimadzu model QP-2010S, equipped with a split/splitless injector, as mentioned previously. The column
-used is a Restek RTX-1PONA capillary column
-with length \SI{100}{\meter}, inner diameter \SI{0.25}{\milli\meter}, and film
-thickness of \SI{0.5}{\micro\meter}. The carrier gas is helium with \SI{99.9999}{\percent} purity. The operating parameters of the GC/MS
-(known as the \textit{method}) are shown in \cref{tab:gcms}.
+The GC/MS used in this study is a Shimadzu model QP-2010S, equipped with
+a split/splitless injector, as mentioned previously. The column used is
+a Restek RTX-1PONA column with length \SI{100}{\meter}, inner diameter
+\SI{0.25}{\milli\meter}, and film thickness of \SI{0.5}{\micro\meter}.
+The carrier gas is helium with \SI{99.9999}{\percent} purity. The operating
+parameters of the GC/MS (known as the \textit{method}) are shown in
+\cref{tab:gcms}.
 
 The data files produced the GC/MS are post-processed in the
 Shimadzu GCMS Post-run Analysis software (version 2.70).
-Each peak integrated by averaging the mass spectra
+Each peak is identified by averaging the mass spectra
 at the three scans around the peak value and subtracting
 the background signal. Then the peaks are manually identified
 by comparing the spectra to the NIST library. The matching
@@ -1179,26 +1257,38 @@ highest matching parameter is chosen for display.
 % the number of moles of sample can be calculated by the ideal
 % gas law.
 
-% A calibration curve is built for the major species by the
-% following procedure. First, the sample bottle is vacuumed
-% to less than \SI{1}{\torr}. Mixtures of the species of
-% interest in the liquid state are prepared by massing each
-% component on a high-accuracy AND-201 scale. A small mass
-% of this mixture is drawn into a syringe and massed on the
-% same scale. The mixture is injected through a septum into
-% the sample bottle. The sample bottle is filled with
-% high-purity nitrogen or helium to dilute the sample. The sample
-% bottle is connected to the sample injection valve on the
-% GC/MS and the valve on the sample bottle is opened and
-% quickly closed. The pressure is allowed to equalize and
-% the GC/MS is started.
+A calibration curve is built for MCH by the following procedure. First,
+the sample bottle (of the same volume as used in \cref{sec:rsa-procedure})
+is vacuumed to less than \SI{1}{\torr}. A small mass of MCH is drawn
+into a syringe and massed on an AND HR-201 high-accuracy scale. The MCH
+is injected through a septum into the sample bottle. The sample bottle
+is filled with high-purity argon to a pressure of \SI{140}{\torr} such
+that the mole fraction of MCH in the sample bottle is approximately the
+initial mole fraction of the MCH sampling experiments.
+\SI{5}{\milli\liter} of the sample is withdrawn into the same gas-tight
+syringe as used in \cref{sec:rsa-procedure} and injected into the GC/MS.
 
-% After the completion of the GC/MS method, the TIC is analyzed by the
-% Shimadzu GCMS Post-run Analysis software (version XXXX). Each peak is
-% automatically integrated by the software so that its area can be found.
-% The peak area is then related to the number of moles of
-% sample sent to the detector by linear least-squares regression.
-% This calibration curve is used to compute the mole fraction
-% of any given peak area for that species.
+After the completion of the GC/MS method, the TIC is analyzed by the
+Shimadzu GCMS Post-run Analysis software. Each peak is automatically
+integrated by the software according to the parameters in
+\cref{tab:gcms-integrate} and the area of each peak is found. The peak
+area is then related to the number of moles of sample sent to the
+detector by linear least-squares regression. This calibration curve is
+used to compute the mole fraction of any given peak area for that species.
+
+\begin{table}
+\caption{Parameters used by the automatic integrator in Shimadzu GCMS Post-Run Analysis}
+\label{tab:gcms-integrate}
+\begin{tabular}{lr}
+\toprule
+Name & Value\\
+\midrule
+Peak Slope Threshold & Automatically Determined\\
+Minimum Peak Width & \SI{3}{\second}\\
+Smoothing Method & Savitzky-Golay\\
+Smoothing Width & 11 points\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \end{document}
