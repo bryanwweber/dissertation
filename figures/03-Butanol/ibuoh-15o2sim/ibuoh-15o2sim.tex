@@ -41,11 +41,11 @@
     cycle list name=buoh,
     table/x index={0},
 ]
-\addplot table[y=Tig, y error=Error] {phi20-15bar.txt};
+\addplot+[legend image post style={dashed,sharp plot,mark options=solid},] table[y=Tig, y error=Error] {phi20-15bar.txt};
 \addplot table[y={create col/linear regression={y=MIT}}] {phi20-15bar.txt};
-\addplot table[y=Tig, y error=Error] {phi10-15bar.txt};
+\addplot+[legend image post style={dashed,sharp plot,mark options=solid},] table[y=Tig, y error=Error] {phi10-15bar.txt};
 \addplot+[restrict x to domain=1.16:1.22] table[y={create col/linear regression={y=MIT}}] {phi10-15bar.txt};
-\addplot table[y=Tig, y error=Error] {phi05-15bar.txt};
+\addplot+[legend image post style={dashed,sharp plot,mark options=solid},] table[y=Tig, y error=Error] {phi05-15bar.txt};
 \addplot+[restrict x to domain=1.17:1.21] table[y={create col/linear regression={y=MIT}}] {phi05-15bar.txt};
 \addplot table[y={create col/linear regression={y=Tig}}] {phi20-15bar.txt};
 \addplot table[y={create col/linear regression={y=Tig}}] {phi10-15bar.txt};

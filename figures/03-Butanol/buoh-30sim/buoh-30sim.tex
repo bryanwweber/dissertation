@@ -42,6 +42,7 @@
     axis x line*=bottom,
     cycle list name=buoh,
     table/x index={0},
+    legend image post style={dashed,sharp plot,mark options=solid},
 ]
 \addplot table[y index={1}, y error index={2}] {ibuoh.txt};
 \addplot table[y index={1}, y error index={2}] {sbuoh.txt};

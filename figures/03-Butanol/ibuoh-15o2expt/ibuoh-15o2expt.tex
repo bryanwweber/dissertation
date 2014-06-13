@@ -4,7 +4,7 @@
     every axis/.append style={%
         scale only axis,
         xmin=1.11, xmax=1.26,
-        ymin=15, ymax=150,
+        ymin=15, ymax=250,
     },
     every axis plot/.append style={
         error bars/y dir=both,
@@ -31,12 +31,13 @@
     minor x tick num=3,
     minor y tick num=8,
     every axis legend/.append style={
-        at={(axis cs:1.12,110)},
-        anchor=west,
+        at={(axis cs:1.1125,230)},
+        anchor=north west,
     },
     axis x line*=bottom,
     cycle list name=buoh,
     table/x index={0},
+    legend image post style={dashed,sharp plot,mark options=solid},
 ]
 \addplot table[y=Tig, y error=Error] {phi20-15bar.txt};
 \addplot table[y=Tig, y error=Error] {phi10-15bar.txt};
