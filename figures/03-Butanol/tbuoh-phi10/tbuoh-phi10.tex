@@ -28,6 +28,7 @@
     },
     table/col sep=comma,
     cycle list name=buoh,
+    /tikz/line join=bevel,
 ]
 \addplot+[restrict x to domain=-10:160] table[x index={0}, y index={1}]   {tbuoh-phi10.txt};
 \addplot+[restrict x to domain=-10:90]  table[x index={2}, y index={3}]   {tbuoh-phi10.txt};

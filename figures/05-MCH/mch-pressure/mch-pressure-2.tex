@@ -22,6 +22,7 @@
     cycle list name=pressure,
     % ylabel={Pressure, \si{\bar}},
     xlabel={Time, \si{\milli\second}},
+    /tikz/line join=bevel,
 ]
 \addplot table[x={Time691}, y={691K}] {exp_output_mix_2.csv};
 \addplot table[x={Time691}, y={691K}] {sim_output_mix_2.csv};

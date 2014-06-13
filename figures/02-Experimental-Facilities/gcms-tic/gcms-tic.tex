@@ -19,6 +19,7 @@
     minor x tick num=3,
     minor y tick num=4,
     ymin=-2E6, ymax=2E7,
+    /tikz/line join=bevel,
 ]
 \addplot[black,thin] table[x={Ret. Time}, y={Absolute Intensity}] {Output.txt};
 \end{axis}

@@ -19,6 +19,7 @@
     table/col sep=comma,
     table/ignore chars={?},
     table/x index={0},
+    /tikz/line join=bevel,
 ]
 \draw (axis cs:-20,0) -- (axis cs:10,0);
 \addplot[black]        table[y index={1}] {definition-of-ign-delay.csv};
