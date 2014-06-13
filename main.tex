@@ -2,7 +2,7 @@
 % arara: biber
 % arara: lualatex: { synctex: on, shell: off }
 % arara: sumatrapdf
-\documentclass[12pt,letterpaper,oneside,draft]{book}
+\documentclass[12pt,letterpaper,oneside,final]{book}
 
 \usepackage{luacode}
 \edef \user{\directlua{tex.sprint(os.getenv('USERNAME'))}}
