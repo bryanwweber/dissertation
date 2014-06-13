@@ -256,6 +256,8 @@ correspond to \cref{fig:mch-sample}.}
 \section{Comparison to Model}
 \label{sec:model-comparison}
 
+\subsection{Ignition Delays}
+
 A comparison of the experimentally measured first stage ignition delays (open
 symbols) and the first stage ignition delays computed using the updated model
 (lines) is shown in \cref{fig:mch-model-1-first,fig:mch-model-2-first,,%Comma necessary to avoid compression
@@ -451,6 +453,69 @@ ignition delays demonstrating the effect of this update is shown in
             \label{fig:mch-energy}}
     \end{floatrow}
 \end{figure}
+
+\subsection{Species Sampling}
+
+\Cref{fig:mch-sim-pres-comp} shows the pressure traces of the experiments
+with the RSA installed compared to a simulated case under those conditions.
+The simulated ignition delays are $\tau_1=\SI{2.53}{\milli\second}$ and
+$\tau_{\text{overall}}=\SI{33.59}{\milli\second}$, which are, respectively,
+shorter and longer than their experimental counterparts. A similar
+phenomenon can be observed in \cref{fig:mch-pressure-3}, where the first-stage
+ignition delay is under predicted and the overall ignition delay is over
+predicted.
+
+\begin{figure}
+\includegraphics[width=11cm]{05-MCH/mch-sim-pres-comp}
+\caption{Pressure traces of the experiments with the RSA installed compared
+with the simulated pressure trace.}
+\label{fig:mch-sim-pres-comp}
+\end{figure}
+
+In the following comparisons, the time of the simulation has been
+normalized by the first-stage and overall ignition delays of the simulation
+presented previously. In addition, calibration curves for the methylcyclohexene
+isomers were unavailable. Thus, the calibration curve for MCH was applied
+to the peak areas for the methylcyclohexenes.
+
+\Cref{fig:mch-mole-fracs,fig:mchene-mole-fracs} show the mole fractions
+of MCH and the unsaturated methylcyclohexene species compared to model
+predictions. In \cref{fig:mch-mole-fracs}, the mole fraction from each
+GC/MS run is shown; in \cref{fig:mchene-mole-fracs} the average mole
+fraction of each species is shown for simplicity. The error bars are shown
+as discussed in \cref{sec:rsa-uncertainty}---mole fraction uncertainties of
+$\pm\SI{20}{\percent}$ and normalized time uncertainties of $\pm\num{0.1}$.
+In these experiments, the initial fuel mole fraction is \num{0.0105}.
+
+\begin{figure}
+    \begin{floatrow}
+        \ffigbox
+            {\includegraphics[width=7.9cm]{05-MCH/mch-mole-fracs}}
+            {\caption{Comparison of the present model with the sampling
+            experiments for methylcyclohexane.}
+            \label{fig:mch-mole-fracs}}
+        \ffigbox
+            {\includegraphics[width=7.9cm]{05-MCH/mchene-mole-fracs}}
+            {\caption{Comparison of the present model with the sampling
+            experiments for the isomers of methylcyclohexene.}
+            \label{fig:mchene-mole-fracs}}
+    \end{floatrow}
+\end{figure}
+
+\Cref{fig:mch-mole-fracs} shows that the model predicts no significant
+fuel decomposition during the compression stroke, in contrast to the
+experiments which show significantly lower fuel mole fraction near EOC.
+The disagreement is possibly due to experimental errors not accounted for
+in the brief error analysis of \cref{sec:rsa-uncertainty}. Nonetheless,
+the model predicts the mole fraction of the fuel relatively well in the
+time near to and after the first-stage ignition.
+
+In \cref{fig:mchene-mole-fracs}, the mole fractions of the methylcyclohexene
+isomers are well predicted prior to the first-stage ignition. However,
+after the first-stage ignition, the experimental mole fractions are
+over predicted by approximatlye a factor of 3. In addition, the relative
+amounts of the 1-methylcyclohexene (with the double bond closest to the
+methyl group) and methylenecyclohexane are switched by the model.
 
 \section{Discussion}
 \label{sec:discussion}
