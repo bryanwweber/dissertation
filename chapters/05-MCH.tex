@@ -182,34 +182,76 @@ first-stage ignition delay, $\tau_{1,3}=\SI{11.05}{\milli\second}$. Case
 $\tau_{1,4}=\SI{9.09}{\milli\second}$ until the first-stage ignition;
 after first-stage ignition, Case 4 was normalized by
 $\tau_{2,4}=\tau_{\text{overall},5}-\tau_{1,4}=\SI{16.41}{\milli\second}$.
+The absolute and normalized sampling times are shown in \cref{tab:mch-sample}.
 
-The sampling times are chosen to correspond to important points during
-the ignition delay:
-\begin{itemize}
-\item Just prior to EOC
-\item Prior to the first-stage ignition
-\item During the first-stage ignition
-\item Prior to the overall ignition
-\item During the overall ignition
-\end{itemize}
+\begin{table}
+\caption{Absolute and normalized sampling times for the MCH experiments.
+Normalized times of 1 and 2 represent the first-stage and overall ignition
+delays respectively.}
+\label{tab:mch-sample}
+\begin{tabular}{lSS}
+\toprule
+{Case} & {Absolute Time (\si{\milli\second})} & {Normalized Time}\\
+\midrule
+Case 1 & -0.61 & -0.06\\
+Case 2 &  7.49 &  0.69\\
+Case 3 & 11.15 &  1.01\\
+Case 4 & 11.93 &  1.17\\
+Case 5 & 25.84 &  2.03\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 Representative total ion chromatograms (TICs) corresponding to the
-experiments in \cref{fig:mch-sample} are shown in \cref{fig:mch-tic}. 14
-peaks are uniquely identified by the GC/MS, including peaks
-for important aldehyde and ketone intermediates that are the product of
-low-temperature chain branching pathways.
+experiments in \cref{fig:mch-sample} are shown in \cref{fig:mch-tic}.
+The corresponding peaks identified from the TICs are shown in \cref{tab:mch-tic}.
+The peaks shown in \cref{tab:mch-tic} had matching coefficients greater
+than 80, indicating a good match.
+
+The species identified by the GC/MS are indicative of fuel breakdown
+through low-temperature chain-branching pathways. In particular, the path
+analysis in \cref{sec:mch-path-analysis} demonstrates the importance of
+the formation of the methylcyclohexene isomers. Other species of importance
+to low-temperature ignition chemistry are cyclic ether and ketone species, which
+are represented by epoxyethane, epoxypropane, and methyl vinyl ketone,
+among other species, in the present analysis.
 
 \begin{figure}
 \includegraphics[width=11cm]{05-MCH/mch-tic}
-\caption{TIC of samples extracted from MCH ignition experiments. The colors
-correspond to \cref{fig:mch-sample}. Note that due to an experimental error,
-the TIC for \SIlist{26;12}{\milli\second} is cut off prior to the elution
-of the MCH peak, but this error was fixed for the \SI{0}{\milli\second} case.
-The numbers after each species name represent the value of the matching
-parameter returned by the software; peaks with multiple species either had
-identical matching parameters or eluted simultaneously.}
+\caption{TICs of samples extracted from MCH ignition experiments. The colors
+correspond to \cref{fig:mch-sample}.}
 \label{fig:mch-tic}
 \end{figure}
+
+\begin{table}
+\caption{Species identified from the TICs shown in \cref{fig:mch-tic}.}
+\label{tab:mch-tic}
+\begin{tabular}{SSr}
+\toprule
+{Number} & {Retention Time (\si{\minute})} & Name\\
+\midrule
+1  &  8.610 & Argon\\
+2  &  8.689 & Carbon Dioxide\\
+3  &  8.875 & Formaldehyde\\
+4  &  8.977 & Water\\
+5  &  9.370 & Acetaldehyde\\
+6  &  9.607 & Butene Isomer\\
+7  &  9.813 & Epoxyethane\\
+8  & 10.603 & 2-Propenal\\
+9  & 10.747 & Acetone\\
+10 & 10.927 & Epoxypropane\\
+11 & 11.508 & 2-methyl-1,3-Butadiene\\
+12 & 13.036 & 2-methyl-2-propenal\\
+13 & 13.606 & Methyl vinyl ketone\\
+14 & 21.903 & Cyclohexene\\
+15 & 28.329 & Methylcyclohexane\\
+16 & 30.730 & 3-methylcyclohexene\\
+17 & 30.883 & 4-methylcyclohexene\\
+18 & 31.194 & methylenecyclohexane\\
+19 & 37.289 & 1-methylcyclohexene\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \section{Comparison to Model}
 \label{sec:model-comparison}
