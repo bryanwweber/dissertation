@@ -1281,6 +1281,15 @@ area is then related to the number of moles of sample sent to the
 detector by linear least-squares regression. This calibration curve is
 used to compute the mole fraction of any given peak area for that species.
 
+This procedure requires constructing a calibration curve for every species
+of interest, a tedious and time-consuming task. However, for species that
+are substantially similar, it is expected that the response factor of
+the detector to those species will be similar. Thus, the same response
+factor may be used for several species to reduce the number of calibration
+curves that are required. In this study, the structures of MCH and the
+methylcyclohexene isomers are expected to have similar response factors,
+so the same calibration curve is used to quantify those species.
+
 \begin{table}
 \caption{Parameters used by the automatic integrator in Shimadzu GCMS Post-Run Analysis}
 \label{tab:gcms-integrate}
