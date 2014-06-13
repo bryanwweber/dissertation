@@ -1,0 +1,31 @@
+% arara: lualatex
+\input{../../figure-preamble.tex}
+\pgfplotscreateplotcyclelist{pressure}{
+    blue,red,darkgreen%
+}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+    table/col sep=comma,
+    no markers,
+    cycle list name=pressure,
+    xmin=-20,xmax=37,
+    ymin=0,ymax=25,
+    minor y tick num=4,
+    minor x tick num=4,
+    every axis legend/.append style={
+        at={(axis cs:-15,24)},
+        anchor=north west,
+    },
+    xlabel={Time, \si{\milli\second}},
+    ylabel={Pressure, \si{\bar}},
+    /tikz/line join=bevel,
+    title={MCH/O$_2$/Ar, $\phi=0.5$, \SI{12}{\bar}},
+]
+\addplot table {reac-pres.csv};
+\addplot table[x=06-1755-Time,y=06-1755-Pressure] {pressure-traces.csv};
+\addplot table[x=Nonreactive-Time,y=Nonreactive-Pressure] {pressure-traces.csv};
+\legend{{Simulated},{Reactive Experiment},{Nonreactive Experiment}}
+\end{axis}
+\end{tikzpicture}
+\end{document}

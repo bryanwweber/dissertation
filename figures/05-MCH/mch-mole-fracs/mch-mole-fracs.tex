@@ -1,0 +1,28 @@
+% arara: lualatex
+\input{../../figure-preamble.tex}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+    table/col sep=comma,
+    xmin=-1,xmax=2.5,
+    ylabel={Mole Fraction},
+    xlabel={Normalized Time},
+    yticklabel style={
+        /pgf/number format/fixed,
+        /pgf/number format/precision=4,
+    },
+    scaled y ticks=false,
+    minor y tick num=3,
+    minor x tick num=4,
+    every axis legend/.append style={
+        at={(axis cs:1,0.011)},
+        anchor=north west,
+    },
+]
+\addplot+[only marks,mark=o,error bars/.cd, y fixed relative=0.2,
+    y dir=both,x fixed=0.1,x dir=both,] table[x={Norm. Time}, y=MCH] {norm-expt.csv};
+\addplot+[no markers] table[x={Norm. Time}, y=MCH] {norm-sim.csv};
+\legend{Experiments,Model}
+\end{axis}
+\end{tikzpicture}
+\end{document}
