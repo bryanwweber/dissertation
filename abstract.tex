@@ -1,8 +1,48 @@
 % arara: lualatex
-% \documentclass{article}
+% \documentclass[12pt]{article}
+
+% \usepackage[margin=1in, letterpaper, head=15pt,]{geometry}
+% \input{preamble}
 % \usepackage{xcolor}
 % \usepackage{soul}
+%Set the document font
+% \usepackage[no-math]{fontspec}
+% \setmainfont[Ligatures=TeX]{Times New Roman}
+% \setmonofont{Inconsolata}
+% \usepackage[onehalfspacing]{setspace}
+% \newcommand{\blankline}{\vspace*{\baselineskip}}
+% \newcommand*{\hl}[1]{#1}%
+% \usepackage{mathtools}
+
+% %Set the math font. Has to come after mathtools because
+% %some font stuff gets overwritten.
+% \usepackage{unicode-math}
+% \unimathsetup{math-style=TeX}
+% \setmathfont[range=\mathup/{num}]{Times New Roman}
+% \setmathfont[range=\mathit/{greek,Greek,latin,Latin}]{Cambria Math}
+% \setmathfont[range=\mathup/{greek,Greek,latin,Latin}]{Cambria Math}
+% \setmathfont[range={"2212,"002B,"003D,"0028,"0029,"005B,"005D,"221A,
+% "2211,"2248,"222B,"007C,"2026,"2202,"00D7,"0302,"2261,"0025,"22C5,
+% "00B1,"2194,"21D4,"2260}]
+% {Cambria Math}
+
+% %Better looking fonts
+% \usepackage[final]{microtype}
 % \usepackage{siunitx}
+% \sisetup{%
+    % group-separator = {,},
+    % range-phrase = {\text{ to }},
+    % list-separator = {\text{, }},
+    % list-final-separator = {\text{, and }},
+    % list-pair-separator = {\text{ and }},
+% }%
+% \DeclareSIUnit\calorie{cal}
+% \DeclareSIUnit\atmosphere{atm}
+% \DeclareSIUnit\torr{Torr}
+% \DeclareSIUnit\inch{in}
+
+% %Declare convenience macros for printing the
+% %names of the alcohols.
 % \newcommand{\iPeOH}{\textit{i}-pentanol}
 % \newcommand{\nBuOH}{\textit{n}-butanol}
 % \newcommand{\sBuOH}{\textit{s}-butanol}
@@ -10,6 +50,16 @@
 % \newcommand{\iBuOH}{\textit{i}-butanol}
 
 % \begin{document}
+% \pagestyle{empty}
+% % \begin{onehalfspace}
+% \begin{center}
+% Ph.D. Defense of\\
+% Bryan W. Weber\\
+% High Pressure Ignition Chemistry of Alternative Fuels\\
+% 12:30 PM, Thursday June 19, 2014\\
+% UTEB 476
+% \end{center}
+
 Using the Rapid Compression Machine at the University of Connecticut,
 studies of the autoignition behavior of alternative fuels are conducted
 in the temperature range \SIrange{650}{900}{\kelvin} and the pressure
@@ -21,7 +71,7 @@ studied here include five bio-alcohol fuels---\nBuOH{}, \sBuOH{}, \tBuOH{},
 \iBuOH{}, and \iPeOH{}---that are studied to investigate the effect of
 the alcohol group and molecular structures on autoignition behavior. In
 addition, methylcyclohexane---an important component of fuels derived from
-alternative petroleum sources and a component in surrogate fuel
+alternative petroleum sources and a component in surrogate transportation fuel
 formulations---is studied.}
 
 The ignition delay of the \hl{alcohols} shows no evidence of phenomena such
@@ -51,4 +101,5 @@ chemical kinetic models for the combustion of alternative fuels. These
 data also indicate the remaining gaps in the understanding of the
 high-pressure ignition chemistry of alternative fuels and provide preliminary
 directions for future research to close the gaps.
+% \end{singlespace}
 % \end{document}
