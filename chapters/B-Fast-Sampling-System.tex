@@ -60,14 +60,15 @@ is also shown.}
 \label{fig:gsv-pressure}
 \end{figure}
 
-The close-open-close (COC) cycle of the GSV is controlled by a mass-spring
-system shown in \cref{fig:gsv-magnet-section}. The poppet face is connected
-to a rod running the length of the
-GSV and connected to the mass at the rear of the valve. To open the poppet,
-the mass is accelerated forward by passing current through the coil around
-the mass. The rod is also
-connected to a spring that is used to restore the poppet to its original
-position after being extended.
+The close-open-close (COC) cycle of the GSV is controlled by a
+mass-spring system shown in \cref{fig:gsv-magnet-section}. The poppet
+face (shown in \cref{fig:gsv-tube-valve-section}) is connected to a rod
+running the length of the GSV and connected to the mass at the rear
+of the valve (shown in \cref{fig:gsv-magnet-section}). To open the
+poppet, the mass is accelerated forward by the electromotive force
+created by passing current through the coil. The rod is also connected
+to a spring that is used to restore the poppet to its original position
+after being extended.
 
 \begin{figure}
     \ffigbox{%
@@ -117,12 +118,12 @@ the signal sent from the GSV to the controller (and thence to the cDAQ).
 This signal is shown in \cref{fig:gsv-voltage}. The time that
 the cDAQ sent the trigger signal to the GSV controller is set to be the
 zero time; \cref{fig:gsv-voltage} thus demonstrates the
-repeatability of the delay (within \SI{1}{\milli\second}) in 
+repeatability of the delay (within \SI{1}{\milli\second}) in
 GSV motion relative to the trigger signal.
 
 The COC time is measured as the width of the first peak in the
-GSV valve signal in \cref{fig:gsv-voltage}. \Cref{fig:gsv-voltage} 
-shows the repeatability of the COC time as the width of the first 
+GSV valve signal in \cref{fig:gsv-voltage}. \Cref{fig:gsv-voltage}
+shows the repeatability of the COC time as the width of the first
 peak for the two sampling times corresponds closely between runs.
 
 \begin{figure}
