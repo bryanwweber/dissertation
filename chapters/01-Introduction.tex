@@ -43,9 +43,11 @@ on an annual basis. Furthermore, biofuels offer the potential to offset carbon
 emissions created from their combustion by reusing the emitted carbon to grow
 the plants from which the fuels are produced.
 
-However, the combustion
-properties of biofuels may be substantially different from the traditional
-fuels they are intended to replace. This makes it difficult to quickly switch
+In the ideal case, biofuels could be used as drop-in replacements for traditional
+fuels, requiring few changes in engine design. However, the combustion properties
+of biofuels may be substantially different from the fuels they are intended to
+replace. Moreover, finding sustainable large-scale production methods for biofuels
+may be challenging. These concerns make it difficult to quickly switch
 the energy economy to biofuels and necessitates medium-term investigation of
 alternative sources for traditional fuels. These sources include shale oil and
 liquefied coal, which have different chemical compositions than traditional
@@ -54,16 +56,17 @@ different combustion properties. Collectively, all of these fuels created from
 non-traditional sources are known as alternative fuels.
 
 In addition to new fuel sources, new engine technologies are rapidly being
-developed. These include engines capable of operating in favorable combustion
-regimes, such as so-called Low Temperature Combustion (LTC) engines and
-Homogeneous Charge Compression Ignition (HCCI) engines. These devices avoid
+developed. These include advanced engines capable of operating in favorable combustion
+regimes such as so-called Low Temperature Combustion (LTC) engines, of which one type is the
+Homogeneous Charge Compression Ignition (HCCI) engine. These devices avoid
 regions in the temperature-equivalence ratio space where combustion generates a
 large amount of emissions and operate in regions where efficiency is
 maximized and emissions are reduced. Other devices, such as the well-known
 catalytic converter, operate on the exhaust after it leaves the cylinder to
-improve emissions characteristics.
+improve emissions characteristics, but do not necessarily improve fuel economy.
 
-Neither of these approaches is able to mitigate all of the negative impacts of
+Neither of these approaches---new fuels and new engine technologies---is able
+to mitigate all of the negative impacts of
 combustion by itself. By switching to biofuels but retaining the same engines,
 the efficiency and emissions targets may not be met; by only developing new
 engines, our sources of fuel will continue to cause economic distress, turmoil,
@@ -82,6 +85,17 @@ technologies and fuels before they undergo expensive real-world testing. The
 key to this process is the development of accurate and predictive combustion
 models.
 
+One important aspect of LTC engines is their control scheme. In traditional
+compression-ignition (CI) and spark-ignition (SI) engines, the phasing of
+the combustion is controlled by an external process---fuel injection and spark
+timing respectively. These control schemes are dictated by the fuel used in
+each engine and its state of mixture with the oxidizer upon entry into the
+cylinder. By contrast, LTC engines have no external process to control the
+combustion phasing, and because they use premixed fuel/air charges, the
+combustion phasing is controlled almost entirely by the chemical kinetics
+of the fuel and the oxidizer. This makes the use of predictive chemical
+models particularly important when designing LTC engines.
+
 Substantial work has been put forth recently to develop and validate predictive
 combustion models for several alternative fuels. These studies include
 calculation and measurement of reaction rate coefficients, measurement of
@@ -89,15 +103,6 @@ global and local combustion properties, and development of model construction
 methodologies. Nevertheless, much of the work is still ongoing, and there is
 substantial room for extending the state-of-the-art knowledge, especially at
 high-pressure conditions relevant to combustion in engines.
-
-A combustion model for the combustion of a given fuel in a given device
-must necessarily accurately model the complete interaction of the operating
-elements of the device. This includes sub-models for the chemical reactions that the
-fuel and oxidizer undergo as well as the interaction of the fuel/oxidizer
-mixture with the operation of the device. The first of these is known as
-a chemical kinetic model or reaction mechanism; the second typically includes
-such effects as turbulence interaction, heat transfer, liquid spray
-dynamics, fluid mechanics, etc., each of which are typically modeled independently.
 
 Chemical kinetic models for the combustion of large molecules are typically
 built in a hierarchical fashion, as described by \textcite{Westbrook1984}. That
@@ -114,9 +119,9 @@ mechanisms (most recently, version 3.0 \cite{Smith}), USC-Mech v2
 
 Validation of kinetic models for the combustion of larger fuels
 has proceeded in parallel with the small molecule chemistry. Given their projected
-importance to combustion, one focus of the larger molecule work has naturally
-been on biofuels. These biofuels typically include chemical species such as
-alcohols and esters – neat alcohols can be used as fuels, while esters are
+importance to combustion, one focus of the larger molecule work is naturally
+on biofuels. These biofuels typically include chemical species such as
+alcohols and esters---neat alcohols can be used as fuels, while esters are
 typically found as components of biodiesel fuels. A review by \textcite{Kohse-Hoinghaus2010}
 covers much of the experimental data available until 2010. Since then an
 enormous amount of data has been produced for both alcohols and esters.
@@ -133,7 +138,7 @@ computer hardware. Therefore, a more useful approach to building models for
 these fuels is to define a surrogate fuel. Surrogate fuels are made of a
 limited number of chemical components to ensure that model building and use
 are tractable, but the components are chosen so that the surrogate fuel
-faithfully reproduces the physical and chemical properties of the real fuel.
+faithfully reproduces the physical and/or chemical properties of the real fuel.
 
 Much progress has been made recently to construct surrogates for typical
 transportation fuels. For instance, work on diesel surrogate formulation has
@@ -145,7 +150,9 @@ alkyl-cycloalkane (collectively known as naphthenes), due to this class' presenc
 in nearly all transportation fuels \cite{Pitz2007, Briker2001, Farrell2007,
 Edwards2007}. One particular cycloalkane, methylcyclohexane (MCH),
 has been suggested in several surrogate formulations, including those by
-\textcite{Bieleveld2009,Naik2005}. Recent work on MCH combustion will also
+\textcite{Bieleveld2009,Naik2005}. Moreover, MCH and other naphthenes make
+up a significant fraction of the hydrocarbon content in alternative ``traditional''
+fuels, such as fuels derived from shale oil. Recent work on MCH combustion will also
 be highlighted in the following sections.
 
 \section{Recent Work on the Combustion of Alcohols}
@@ -183,7 +190,7 @@ the isomers of butanol has exploded, so exemplary references are
 provided here except for the articles of particular interest to this work.
 In addition to applied engine research \cite{Dernotte2009, Szwaja2010, Kim2011},
 fundamental combustion measurements have been made using many different
-systems. These include laminar flame speeds \cite{Veloo2011a}, jet-stirred reactor
+systems. These include laminar flame speeds \cite{Veloo2011a}, jet-stirred reactor(JSR)
 chemistry \cite{Dagaut2009}, low-pressure flame structure \cite{Hansen2011a,Hansen2013},
 atmospheric pressure flame structure \cite{Grana2010}, pyrolysis \cite{VanGeem2010, Cai2012, Cai2013},
 flow reactors \cite{Lefkowitz2012,Heyne2013}, and ignition delays, which will be discussed
@@ -193,7 +200,7 @@ Pang2012, Pang2012a, Seal2013, Pang2012b, El-Nahas2012, Zhou2011, Moc2010, Vasu2
 \cite{Zhou2012, Alecu2012, Black2010a}, and CH$_3$ \cite{Katsikadakos2013, Katsikadakos2012}.
 
 Several studies of ignition delay of the butanol isomers have been conducted
-in both STs (STs) and Rapid Compression Machines (RCMs), including work in STs by \textcite{Moss2008,
+in both shock tubes (STs) and rapid compression machines (RCMs), including work in STs by \textcite{Moss2008,
 Black2010, Noorani2010, Zhang2012, Stranic2012, Yasunaga2012, Heufer2011,
 Vranckx2011, Zhu2014} and work in RCMs by \textcite{Weber2011,
 Weber2013, Weber2013a, Karwat2011a}. These studies have covered a wide range of
@@ -326,11 +333,11 @@ a wide range of conditions and for a wide range of validation targets.
 
 In comparison to the butanol isomers, \iPeOH{} has received significantly
 less focus in the literature. Studies of the combustion of \iPeOH{}
-have been conducted in jet stirred reactors (JSRs) \cite{Dayma2011,Togbe2011,Sarathy2013}, low-pressure flow
+have been conducted in JSRs \cite{Dayma2011,Togbe2011,Sarathy2013}, low-pressure flow
 reactors \cite{Welz2012}, counterflow flame experiments \cite{Sarathy2013},
 STs \cite{Sarathy2013, Tsujimura2012, Tang2013}, and RCMs
 \cite{Sarathy2013, Tsujimura2012}. Other studies have investigated
-the efficacy of using \iPeOH{} in a homogeneous charge compression iginition (HCCI) engine \cite{Tsujimura2011,
+the efficacy of using \iPeOH{} in an HCCI engine \cite{Tsujimura2011,
 Yacoub1998, Yang2010}. Finally, studies described in this work have
 been conducted to determine the ignition properties of \iPeOH{} (see \cref{chap:peoh}).
 Both the works by \textcite{Tsujimura2012, Sarathy2013} developed
@@ -479,9 +486,9 @@ concentration of intermediate species during the ignition of \textit{n}-butane,
 \textit{o}-xylene, \textit{o}-ethyltoluene, \textit{n}-butylbenzene,
 1-hexene, \textit{n}-propylcyclohexane, toluene, cyclohexane, cyclohexene,
 and cyclohexa-1,3-diene. The sampling system used in these studies
-is similar to that developed by \textcite{Roblee1961} in that it uses an
+was similar to that developed by \textcite{Roblee1961} in that it used an
 expansion chamber separated from the reaction chamber by a diaphragm
-that is punctured by a knife at the appointed time.
+that was punctured by a knife at the appointed time.
 
 Using a gas chromatograph coupled to a mass spectrometer to analyze their
 samples, \textcite{Minetti1994} were able to identify approximately 25
@@ -510,7 +517,7 @@ in the low-temperature chain branching pathways.
 \textit{n}-pentane and 1-pentene by analyzing the intermediate species
 formed during the induction period. They further emphasized the importance
 of cyclic ether and ketone formation in the low-temperature ignition process.
-\textcite{Ribaucour1998, Minetti1999} also note that the presence of the
+\textcite{Ribaucour1998, Minetti1999} also noted that the presence of the
 double bond in 1-pentene causes marked differences in the selectivity of
 the intermediate species compared to \textit{n}-pentane, although the
 overall oxidation scheme of the fuels can be described by similar reaction types.
@@ -520,8 +527,8 @@ aromatics including \textit{n}-butylbenzene, \textit{o}-xylene, and
 \textit{o}-ethyltoluene. The authors found that a detailed oxidation
 mechanism was able to well reproduce the ignition delays and intermediate
 species profiles of those fuels. Moreover, similar intermediate products
-as for alkane speces were noted for the aromatic species with ortho-alkyl
-groups. These species are able to undergo the critical hydrogen-transfer
+were noted for the aromatic species with ortho-alkyl groups as compared to alkane species.
+These aromatics with alkyl groups in the ortho positions are able to undergo the critical hydrogen-transfer
 reactions in the low-temperature chain branching pathways due to the position
 of the alkyl group. Other aromatic species such as toluene, \textit{m}-xylene,
 and \textit{p}-xylene react through different low-temperature chain branching
@@ -546,8 +553,8 @@ and the species concentrations.
 \textcite{Ribaucour2002} studied the autoignition of cyclohexene and
 constructed a detailed model for its oxidation. They found two primary
 reaction pathways, one involving the double bond and the other involving
-peroxy radicals, during the ignition period and also noted that effects
-from the ring structure and the double bond combined to produced the
+peroxy radicals, during the induction period and also noted that effects
+from the ring structure and the double bond combined to produce the
 observed chemistry.
 
 \textcite{Vanhove2006a, Vanhove2006} studied binary blends of 1-hexene
@@ -564,7 +571,7 @@ react by adding radicals to the double bond.
 \textcite{Crochet2010} investigated autoignition of \textit{n}-propylcyclohexane.
 They found that the fuel forms several bicyclic ethers and conjugated
 alkenes during the induction period. These species are formed through low
-temperature chaing branching pathways by reaction with both the alkyl
+temperature chain branching pathways by reactions with both the alkyl
 chain and the cyclohexyl ring in \textit{n}-propylcyclohexane.
 
 \textcite{Mittal2006a} at Case Western Reserve University also developed
@@ -572,7 +579,7 @@ a sampling system for their RCM. The design was similar to the design of
 \textcite{Roblee1961}. \textcite{Mittal2007} demonstrated the
 feasibility of their sampling apparatus by measuring the major species
 during the induction period of methane ignition. To date, no further
-results have been presented from this sampling apparatus.
+results have been published from this sampling apparatus.
 
 Finally, \textcite{He2005a} developed a unique sampling apparatus for the
 Rapid Compression Facility (RCF) at the University of Michigan. This
@@ -593,7 +600,7 @@ causing significant dilution of the test sample. By capturing only a
 small sample from the center of the reaction chamber, the boundary layer
 and attendant dilution can be avoided. In addition, the local sampling
 technique does not substantially disturb the ongoing reactions,
-meaning that the ignition process is allowed to proceed unhindered.
+meaning that the ignition process is allowed to proceed nearly unhindered.
 
 Nonetheless, the local sampling technique has some disadvantages.
 Notably, the presence of dead volume in the sampling system can impact
@@ -645,7 +652,7 @@ Nonetheless, gaps in the state of the art knowledge have been revealed
 through several experimental studies, gaps that prevent the development
 of truly predictive kinetic models---for example, the inability of
 models to predict the oxygen concentration dependence of ignition delays
-is still unexplained.
+of alcohols is still unexplained.
 
 Thus, the major objectives of this work can be stated succinctly as
 follows:
@@ -671,13 +678,11 @@ reaction pathways in high-pressure alternative fuel ignition
 \section{Organization of this Work}
 
 The bulk of what follows has been published in the archival literature,
-and the preceding introduction has primarily been taken from those
-papers (and includes a summary of some results from the following
-chapters). In addition, much of \cref{chap:facilities} has been
-taken from the published work. \cref{chap:facilities} presents an
+and includes a summary of some results from the following
+chapters. \Cref{chap:facilities} presents an
 introduction to the RCM and other facilities used in the experiments
 described in subsequent chapters, including the rapid sampling apparatus
-that was newly upgraded for this work. Detailed uncertainty analyses
+that is newly upgraded for this work. Detailed uncertainty analyses
 are also considered for the appropriate apparatuses.
 
 The subsequent chapters are organized by the fuel studied:
@@ -710,7 +715,7 @@ Stanford University, and Rensselaer Polytechnic Institute. By involving
 the diverse group of researchers, a comprehensive comparison of experimental
 facilities is conducted for identical conditions. The experimental results
 presented in \cref{app:propene} are included in the last article noted
-below, submitted to Combustion and Flame.
+below, submitted to \textit{Combustion and Flame}.
 
 The works published in or submitted to the archival literature during the
 course of this program are as follows:
