@@ -331,7 +331,7 @@ $P_C=\SIlist{15;30}{\bar}$ respectively. In these figures, the equivalence
 ratio is varied by holding the initial fuel mole fraction constant and
 varying the oxygen and nitrogen mole fractions. The ignition delay
 of \iBuOH{} depends strongly on the initial oxygen mole fraction, similar
-to the trend shown for \nBuOH{} \cite{Weber2011}.
+to the trend shown for \nBuOH{} \cite{Weber2011,Zhu2014}.
 
 \begin{figure}
     \begin{floatrow}
@@ -367,11 +367,7 @@ included the data from the study of \textcite{Stranic2012} up to \SI{48}{atm}, o
 previous study on \nBuOH{} \cite{Weber2011}, and the data being
 published in this study at \SI{15}{\bar}. Importantly, the mechanism of
 \textcite{Sarathy2012} was validated only for the \SI{15}{\bar} RCM data for all four
-isomers, but not the \SI{30}{\bar} data also being published here. The MIT mechanism
-\cite{Hansen2013,Merchant2013} was validated for \iBuOH{}
-experiments, including pyrolysis and low pressure premixed flames; although the
-model includes all four isomers of butanol as reactants, it has not been
-optimized for any of the isomers except \iBuOH{}.
+isomers, but not the \SI{30}{\bar} data also being published here.
 
 \Cref{fig:buoh-15sim,fig:buoh-30sim} show comparison of the
 VPRO simulations with the experimental data using the mechanism of
@@ -492,7 +488,7 @@ ignition delay.
 \includegraphics[width=11cm]{03-Butanol/buoh-mit}
 \caption{Comparison of VPRO simulations using the kinetic mechanism of
 \textcite{Sarathy2012} (gray) and the MIT mechanism
-\cite{Hansen2013,Merchant2013} (red) with the experimental
+\cite{Weber2013a} (red) with the experimental
 ignition delay results (blue) for stoichiometric mixtures of
 \iBuOH{} in air at $P_C=\SI{15}{\bar}$ (squares) and $P_C=\SI{30}{\bar}$
 (circles).}
@@ -519,13 +515,13 @@ discussed in \cref{sec:ibuoh-discussion}.
         {\includegraphics[width=7.9cm]{03-Butanol/ibuoh-15o2sim}}
         {\caption{Comparison of the experimentally measured ignition
         delays of \iBuOH{} at three equivalence ratios and $P_C=\SI{15}{\bar}$
-        with VPRO simulations using the MIT mechanism.}
+        with VPRO simulations using the MIT mechanism \cite{Weber2013a}.}
         \label{fig:ibuoh-15o2sim}}
     \ffigbox
         {\includegraphics[width=7.9cm]{03-Butanol/ibuoh-30o2sim}}
         {\caption{Comparison of the experimentally measured ignition
         delays of \iBuOH{} at three equivalence ratios and $P_C=\SI{30}{\bar}$
-        with VPRO simulations using the MIT mechanism.}
+        with VPRO simulations using the MIT mechanism \cite{Weber2013a}.}
         \label{fig:ibuoh-30o2sim}}
     \end{floatrow}
 \end{figure}
@@ -610,7 +606,7 @@ forming a hydroxybutylperoxy (RO$_2$) species. That this pathway is dominant is
 due to the fact that \tBuOH{} has no $\alpha$-hydroxybutyl radical.
 For the other three butanol isomers that do have an $\alpha$-hydroxybutyl
 radical, the second level of reactions primarily produces an aldehyde + HO$_2$
-by direct reaction–--no hydroxybutylperoxy adduct is formed in this reaction,
+by direct reaction---no hydroxybutylperoxy adduct is formed in this reaction,
 and there is no possibility for typical hydrocarbon low-temperature chain
 branching. Therefore, it is hypothesized that the pre-ignition heat release
 seen in \tBuOH{} is caused by the oxygen addition to the fuel radical
@@ -619,7 +615,9 @@ to form $\beta$-hydroxybutylperoxy, which is an exothermic reaction.
 \Cref{fig:buoh-heat} shows the total cumulative heat release of each isomer
 and the cumulative heat release of an important reaction for each of the
 isomers (inset), from a CONV simulation with initial conditions of \SI{750}{\kelvin} and
-\SI{30}{\bar}; analysis of \SI{15}{\bar} results is substantially similar. The cumulative heat
+\SI{30}{\bar}; analysis of \SI{15}{\bar} results is substantially similar. The
+reactions called out in the inset of \cref{fig:buoh-heat} are depicted with
+ball-and-stick molecules in \cref{fig:buoh-reacs}. The cumulative heat
 release in the inset is found by integrating the heat release by each reaction
 with respect to time, while the reactions shown are the respective reactions
 that have released the most heat up to the \SI{20}{\percent} fuel consumption point for each
@@ -678,12 +676,12 @@ ignition, and appears to be driving the pre-ignition heat release.
     {\Large \textbf{+}}\enspace
     \raisebox{-0.5\height}{\includegraphics[height=1cm]{03-Butanol/buoh-reactions/hydroperoxy}}
     {\Large \textbf{$\leftrightarrow$}}\enspace
-    \raisebox{-0.5\height}{\includegraphics[height=0.5cm]{03-Butanol/buoh-reactions/oxygen}}
-    \enspace{\Large \textbf{+}}\enspace
     \raisebox{-0.5\height}{\includegraphics[height=1cm]{03-Butanol/buoh-reactions/hydrogen-peroxide}}
+    \enspace{\Large \textbf{+}}\enspace
+    \raisebox{-0.5\height}{\includegraphics[height=0.5cm]{03-Butanol/buoh-reactions/oxygen}}
 
     \caption{Reactions causing the most heat release in the ignition of the
-        butanol isomers. The reaction number refers to \cref{fig:buoh-heat}.}
+        butanol isomers. The reaction number refers to the inset of \cref{fig:buoh-heat}.}
     \label{fig:buoh-reacs}
 \end{figure}
 
@@ -903,16 +901,16 @@ Comparisons of the experimentally measured ignition delays with two kinetic
 mechanisms show good agreement for certain isomers, but relatively poorer
 agreement for others. The kinetic mechanism of \textcite{Sarathy2012} is used
 to further elucidate the chemical processes controlling the autoignition of
-these butanol isomers. Pathway analysis of the fuel decomposition shows that
+the butanol isomers. Pathway analysis of the fuel decomposition shows that
 \textit{n}-, \textit{s}-, and \iBuOH{} primarily form
 $\alpha$-hydroxybutyl radicals, because the proximity of the $\alpha$ carbon to
 the hydroxyl group reduces the C-H bond energy. The $\alpha$-hydroxybutyl radicals
 tend to form an aldehyde plus HO$_2$  directly, without forming a
 hydroxybutylperoxy complex. However, due to its unique structure,
 \tBuOH{} can only form $\beta$-radicals; these radicals do not have
-the tendency to react with oxygen to directly form HO$_2$  and an aldehyde.
+the tendency to react with oxygen to directly form HO$_2$ and an aldehyde.
 Rather, \tBuOH{} preferentially adds oxygen to the fuel radical site.
-It is hypothesized that this reaction, O$_2$  addition to form
+It is hypothesized that this reaction, O$_2$ addition to form
 hydroxybutylperoxy, causes the pre-ignition heat release in \tBuOH{}
 and leads to a chain propagation pathway through the Waddington mechanism. The
 fact that this oxygen-addition reaction is preferred is unique to
@@ -925,9 +923,10 @@ radical. It is also noted that \nBuOH{} autoignition was
 quite sensitive to peroxy chemistry in the study of \textcite{Vranckx2011}.
 
 All together, these analyses show the importance of the peroxy chemistry
-pathways in the autoignition of the butanols. Further experimental studies,
-such as species profiles from the low temperature ignition of the butanol
-isomers, could help reduce uncertainty in the pathways of fuel breakdown.
+pathways in the autoignition of the butanols. Further experimental studies
+such as speciation measurements could help determine the importance of
+the various intermediate species produced during the low-temperature ignition
+of the butanol isomers.
 Finally, further understanding of the rates of the peroxy pathways is
 important and therefore further theoretical and quantum chemical studies are
 warranted.
