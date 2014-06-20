@@ -94,10 +94,7 @@ reaction chamber is filled with the required initial pressure of test
 gas mixture from the mixing tank. Finally, compression is triggered by
 releasing the hydraulic pressure through an electrically-operated solenoid
 valve. The piston assembly is driven forward by the unbalanced force from
-the pressure in the driving tank on the pneumatic piston. The gases
-in the reaction chamber are brought to the compressed pressure ($P_C$) and
-compressed temperature ($T_C$) conditions in approximately
-\SIrange{30}{50}{\milli\second}.
+the pressure in the driving tank on the pneumatic piston.
 
 The required driving pressure for a given EOC pressure can be estimated
 from a force balance between the force on the pneumatic piston from the
@@ -115,14 +112,13 @@ as shown in \cref{eq:driving-pressure}.
 
 In \cref{eq:piston-force}, $P_{d,\text{min}}$ is the minimum
 driving pressure, $A_p$ is the cross-sectional area of the pneumatic piston,
-$P_{r,\text{EOC}}$ is the pressure in the reactor at the EOC (i.e.\ $P_C$),
+$P_{r,\text{EOC}}$ is the pressure in the reactor at the EOC,
 $A_r$ is the cross-sectional area of the reactor piston, $d_p$ is the diameter
 of the pneumatic piston, and $d_r$ is the diameter of the reactor piston.
 
 The minimum driving pressure is such that the piston does not rebound at
-the EOC due to pressure on the reactor piston. So that the driving
-pressure can be much lower than the EOC pressure, the diameter ratio of
-the reactor piston to the driver piston is 2:5, allowing the driving pressure
+the EOC due to pressure on the reactor piston. Because the diameter ratio of
+the reactor piston to the driver piston is 2:5, this allows the driving pressure
 to be lower than the EOC pressure by a factor of 6.25. The actual driving
 pressure should exceed the minimum by some safety margin so that the
 reactor remains at constant volume even if there is some pressure rise
@@ -143,10 +139,16 @@ impact the front of the hydraulic chamber at high velocity. This can damage
 the RCM and cause the piston to rebound elastically. It also generates
 substantial noise in the pressure trace and should be avoided.
 
+The gases in the reaction chamber are brought to the compressed pressure ($P_C$) and
+compressed temperature ($T_C$) conditions in approximately
+\SIrange{30}{50}{\milli\second}, with the final \SI{50}{\percent} of
+the pressure rise occurring in approximately the last \SI{5}{\milli\second}.
 Typical driving gas pressures are between \SI{50}{psi} for $P_C = \SI{15}{\bar}$ experiments
 to  \SI{125}{psi} for $P_C = \SI{50}{\bar}$ experiments. These driving pressures represent a
 good compromise between the minimum required for no rebound at EOC due
-to pressure and no rebound at EOC due to elastic reaction. Nonetheless,
+to pressure in the reactor and no rebound at EOC due to elastic reaction.
+
+Nonetheless,
 a small amount of piston rebound can be expected during/after the
 main ignition event. This small rebound may have an effect on the computation of
 ignition delay if it reduces the pressure rise rate during the ignition;
@@ -208,13 +210,13 @@ both the work by \textcite{Kumar2009} on \textit{n}-decane and the study of
 \textcite{Weber2011} on \textit{n}-butanol confirmed that there was no fuel
 decomposition over the course of a typical set of experiments. Furthermore,
 each new mixture preparation is checked against previously tested
-conditions to ensure reproducibility.
+conditions to ensure repeatability.
 
 \subsection{Definition of Ignition Delay}
 \label{sec:ign-delay-def}
 
 The pressure in the reaction chamber during an experiment is monitored by a
-Kistler 6125B piezoelectric dynamic pressure transducer. The charge signal from the
+Kistler 6125B piezoelectric dynamic pressure transducer, which is resistant to thermal shock. The charge signal from the
 transducer is amplified and converted to a voltage by a Kistler 5010B charge amplifier.
 The voltage is sent to a National Instruments cDAQ equipped with the NI-9215 module.
 The signal is recorded by a LabView VirtualInstrument at \SI{50}{\kilo\hertz}.
@@ -233,6 +235,12 @@ the overall ignition occurs. The first stage ignition delay is the time
 from the end of compression until the first peak in the time derivative
 of the pressure. The overall ignition delay is the time from the end of
 compression until the largest peak in the time derivative of the pressure.
+
+It can be seen from \cref{fig:ig-delay-def} that the last half of
+the pressure rise due to compression occurs in approximately \SI{5}{\milli\second}.
+As mentioned earlier in \cref{sec:rcm-procedure}, keeping the compression time short while minimizing
+the possibility for elastic rebound of the piston is important to
+ensure well-defined conditions in the reactor at the EOC.
 
 \begin{figure}
     \includegraphics[width=12cm]{02-Experimental-Facilities/ign-delay-def}
@@ -311,11 +319,15 @@ reactor whose temperature remained spatially homogeneous.
 In general, it is rather difficult to directly measure the temperature
 of the gases in the reaction chamber during and after compression.
 Intrusive methods such as thermocouples may introduce inhomogeneities into
-the reaction chamber and non-intrusive optical techniques are difficult to set up
+the reaction chamber and may have time constants that are not well matched
+to the rate of change of temperature during compression .In addition,
+non-intrusive optical techniques are difficult to set up
 and require extensive calibration at the pressures of interest in RCM
 studies. Thus, the temperature is determined indirectly by applying an
 assumption called the ``adiabatic core hypothesis'' to the reaction chamber
-\cite{Mittal2007, Lee1998}.
+\cite{Mittal2007, Lee1998}. This approach has been previously validated by
+computational \cite{Mittal2008b} and experimental \cite{Das2012a,Uddi2012}
+approaches.
 
 If all of the gases in the reaction chamber were compressed isentropically,
 the temperature at the end of compression could be found by the
@@ -400,14 +412,14 @@ is applied during and after the compression stroke to calculate
 the volume trace. Since the non-reactive experiment requires slightly
 different initial pressure (typically on the order of \SI{5}{\torr}) to reach the same
 compressed pressure as the reactive experiment---due to the slightly
-different specific heat ratio in the non-reactive experiment compared
+different specific heat ratio between O$_2$ and N$_2$ in the non-reactive experiment compared
 to the reactive experiment---the reactive pressure trace is used to
 compute the volume trace until EOC; after EOC, the corresponding
 non-reactive pressure trace is used. In \cref{eq:volume-trace} it is assumed that
 changes in composition of the reactants are negligible during the
 compression stroke, which is confirmed by comparing simulations with and
 without reaction steps in the chemical kinetic model. The EOC conditions
-are the same in both cases. The initial volume is arbitrarily taken
+are the same in both simulated cases. The initial volume is arbitrarily taken
 to be equal to \num{1.0}.
 
 For use in \cref{eq:volume-trace}, the temperature-dependent specific
@@ -452,7 +464,7 @@ confounding experimental effects.
 As mentioned previously, VPRO simulations are used to calculate the
 temperature at the end of compression, $T_C$. This temperature is used
 as the reference temperature for reporting the ignition delay.
-Simulations to determine TC are conducted with and without detailed
+Simulations to determine $T_C$ are conducted with and without detailed
 reaction steps to determine if there is significant reactivity in the
 compression stroke. If there is no significant reactivity
 (and hence heat release), the pressure and temperature at EOC are the
@@ -490,8 +502,8 @@ In \cref{eq:tc}, the total specific heat ratio for the mixture
 should be used; thus, the simplification as shown in \cref{eq:simplify-gamma}
 requires that the specific heat $\hat{C}_p$ also be the total specific
 heat. In the following, we assume that there is negligible
-change of the total specific heat due to changes in reactant
-mole fractions, as for \cref{eq:volume-trace,eq:isen-temp}.
+change of the reactant mole fractions and thus the specific heat ratio
+is a function of temperature only, as for \cref{eq:volume-trace,eq:isen-temp}.
 The total specific heat is simply the sum of the product of
 the species mole fractions and their specific heats:
 %
@@ -627,7 +639,7 @@ to this uncertainty.
 The precision uncertainty is due to the limit of precision of
 the display on the Omega Engineering CNi3254 process meter used
 to control the process temperature. This is $\pm\SI{0.05}{\kelvin}$.
-The total uncertainty of the initial temperature is:
+The largest expected total uncertainty of the initial temperature is:
 %
 \begin{align}
 U_{T_0} = \sqrt{\left(B_{T_0}\right)^2 + \left(R_{T_0}\right)^2} = \sqrt{\left(\SI{3}{K}\right)^2 + \left(\SI{0.05}{K}\right)^2} = \SI{3}{\kelvin}
@@ -712,7 +724,7 @@ $\hat{C}_p$ fits causes approximately \SI{1}{\kelvin} changes in $T_C$.
 The uncertainty of the mole fraction of the species is estimated differently
 depending on how the species was introduced to the mixing tank. For liquid fuel
 species, experiments with GC/MS have shown that there is approximately \SI{5}{\percent}
-variation in mole fraction from the expected value \cite{Weber2011}; this value is adopted for
+difference in mole fraction from the nominal value \cite{Weber2011}; this value is adopted for
 the total uncertainty of all liquid fuels. The mole fraction of the gaseous species
 is determined by their partial pressures when filling; the mole fraction is
 related to the pressure by Dalton's Law of Partial Pressure
@@ -865,7 +877,7 @@ the puncture rod forward into the diaphragm.
 
 \begin{figure}
 \includegraphics[width=0.9\textwidth]{02-Experimental-Facilities/sampling-tank}
-\caption{Schematic of the modified RSA used in this study}
+\caption{Schematic of the modified rapid sampling apparatus used in this study}
 \label{fig:sampling-tank}
 \end{figure}
 
@@ -892,8 +904,7 @@ within the experimental uncertainty for this case.
 \begin{figure}
 \includegraphics[width=11cm]{02-Experimental-Facilities/rsa-pressure}
 \caption{Pressure traces of representative experiments utilizing the
-rapid sampling apparatus. Blue: rupture due to ignition. Red and Black:
-rupture due to puncture rod.}
+rapid sampling apparatus.}
 \label{fig:rsa-pressure}
 \end{figure}
 
@@ -912,7 +923,7 @@ approximate volume of the sampling tank plus the reaction chamber is
 isentropic and the ratio of specific heats is fixed at $\gamma=1.5$,
 the temperature ratio is approximately \num{1.0850E-1}, leading to
 temperatures after expansion on the order of $T\approx\SI{100}{\kelvin}$,
-depending on $T_C$. After expansion, the gases are allowed to warm to room
+depending on the local temperature just prior to puncture. After expansion, the gases are allowed to warm to room
 temperature. All the sampling experiments conducted in this work use an
 initial temperature of \SI{295}{\kelvin}; at this temperature, the saturated
 vapor pressure of the fuel is a factor of $\approx\num{50}$ above the
@@ -942,9 +953,9 @@ to be pressurized for injection into the gas chromatograph.
 
 Three samples are withdrawn and analyzed for each sampling time
 investigated here. The agreement of the peak areas between the three runs
-for a given sampling time is excellent, indicating the reproducibility
+for a given sampling time is generally excellent, indicating the repeatability
 of this method. Moreover, \textcite{He2007} used a similar procedure in their sampling experiments
-of isooctane, and compared results using a heated syringe and an
+of \textit{i}-octane, and compared results using a heated syringe and an
 unheated syringe. They found that excellent agreement between results
 with the heated and unheated syringes; since a similar procedure is used
 in these experiments, an unheated syringe is used here.
@@ -958,7 +969,7 @@ of the calibration coefficients used to calculate the mole fraction from
 the peak area. The dead volume consists of any spaces where the reactants do not
 experience the same conditions as the adiabatic core and includes the
 crevice volume of the piston---see \cref{sec:rcm-homogeneity}---and the
-boundary layer along the reactor walls. When the diaphragm is ruptured,
+boundary layer on the reactor end wall. When the diaphragm is ruptured,
 the unreacted gases effectively dilute the sample. The amount of
 dilution depends on the EOC volume of the reaction chamber, the volume of
 the crevice, and the boundary layer thickness.
@@ -988,10 +999,16 @@ GC/MS measurements could lead to insights in how to reduce this uncertainty;
 nonetheless, the value is comparable to the work by \textcite{Walton2011,
 Karwat2012, Karwat2013, Karwat2011a}.
 
-The uncertainty of the sampling time is related to how quickly the pressure
+The uncertainty of the puncture time is related to how quickly the pressure
 drops when the diaphragm is punctured as well as the uncertainty associated
 with measuring the pressure as a function of time. In this work, the
-uncertainty in the sampling time is estimated as $\pm\SI{1}{\milli\second}$.
+uncertainty in the puncture time is estimated as $\pm\SI{1}{\milli\second}$.
+In addition, the uncertainty in the sampling time relative to the ignition
+delays (first-stage and overall) is dependent on the actual uncertainty
+in the ignition delays. This is less than \SI{10}{\percent} of the ignition
+delay, so an additional uncertainty of $\pm\SI{2}{\milli\second}$ must be
+added to the uncertainty in the puncture time. This gives a conservative
+estimate of the sampling time as $\pm\SI{3}{\milli\second}$.
 
 \section{Gas Chromatograph/Mass Spectrometer}
 \label{sec:gcms}
@@ -1170,7 +1187,7 @@ chromatogram for a specific $m/z$ as a function of time.
             \label{fig:gcms-mass-spec}}
         \ffigbox[\FBwidth]
             {\includegraphics[height=5.2cm]{02-Experimental-Facilities/gcms-tic}}
-            {\caption{Example TIC for a GC/MS analysis of Jet Fuel}
+            {\caption{Example TIC for a GC/MS analysis of jet fuel}
             \label{fig:gcms-tic}}
     \end{floatrow}
 \end{figure}
@@ -1273,7 +1290,8 @@ initial mole fraction of the MCH sampling experiments.
 \SI{5}{\milli\liter} of the sample is withdrawn into the same gas-tight
 syringe as used in \cref{sec:rsa-procedure} and injected into the GC/MS.
 
-After the completion of the GC/MS method, the TIC is analyzed by the
+After the completion of the GC/MS method for both the calibration experiments
+and the sampling experiments, the TIC is analyzed by the
 Shimadzu GCMS Post-run Analysis software. Each peak is automatically
 integrated by the software according to the parameters in
 \cref{tab:gcms-integrate} and the area of each peak is found. The peak
