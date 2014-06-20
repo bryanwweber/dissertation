@@ -36,7 +36,7 @@ represents an excellent target to use as the base for models of larger
 branched cycloalkanes. MCH has the elemental composition C$_7$H$_{14}$, and
 its skeletal structure is shown in \cref{fig:mch-skeletal}.
 
-\section{Procedures}
+\section{Experimental Procedure}
 \label{sec:mch}
 
 The liquid fuel (methylcyclohexane, \SI{99.0}{\percent} purity) is massed to a precision
@@ -87,7 +87,7 @@ from 2007 by \textcite{Pitz2007} is substantial.
     \item Products of MCH breakdown with unsaturated rings such as
         methylcyclohexene were previously lumped into one species for
         simplicity. In the new model, they have been unlumped and
-        provide improved fidelity in modeling these species. \cite{Pitz2013}.
+        provide improved fidelity in modeling these species \cite{Pitz2013}.
     \item The reaction rates of some low-temperature specific reactions were
         updated using new quantum chemical calculations to compute the rate.
         Other reaction rates were updated from similar calculations performed
@@ -163,7 +163,7 @@ first-stage ignition---including the time prior to EOC---is normalized
 by the first-stage ignition delay. The time after the first-stage ignition
 is normalized by the second-stage ignition delay, which is defined as
 the difference between the overall and the first-stage ignition delays,
-$\tau_2 = \tau_{\text{overall}} - \tau_1$. Case 5 has ignition delays of
+$\tau_2 = \tau_{\text{overall}} - \tau_1$. As an example, Case 5 has ignition delays of
 $\tau_1=\SI{10.96}{\milli\second}$, $\tau_{\text{overall}}=\SI{25.50}{\milli\second}$,
 and $\tau_2=\SI{14.54}{\milli\second}$.
 
@@ -174,14 +174,15 @@ rapid sampling apparatus.}
 \label{fig:mch-sample}
 \end{figure}
 
-Cases 1 and 2 were normalized by the first-stage ignition delay of Case
-5, $\tau_{1,5}=\SI{10.96}{\milli\second}$. Case 3 was punctured just at
-the first-stage ignition delay and was therefore normalized by its
+Cases 1 and 2 are normalized by the first-stage ignition delay of Case
+5, $\tau_{1,5}=\SI{10.96}{\milli\second}$ because the ignition is interrupted by the puncture prior
+to their first-stage ignition. Case 3 is punctured just at
+the first-stage ignition delay and is therefore normalized by its
 first-stage ignition delay, $\tau_{1,3}=\SI{11.05}{\milli\second}$. Case
-4 was normalized by its first-stage ignition delay
+4 is normalized by its first-stage ignition delay
 $\tau_{1,4}=\SI{9.09}{\milli\second}$ until the first-stage ignition;
-after first-stage ignition, Case 4 was normalized by
-$\tau_{2,4}=\tau_{\text{overall},5}-\tau_{1,4}=\SI{16.41}{\milli\second}$.
+because the ignition is interrupted prior to the overall ignition, Case 4 is normalized by
+$\tau_{2,4}=\tau_{\text{overall},5}-\tau_{1,4}=\SI{16.41}{\milli\second}$ after the first-stage ignition.
 The absolute and normalized sampling times are shown in \cref{tab:mch-sample}.
 
 \begin{table}
@@ -473,18 +474,20 @@ with the simulated pressure trace.}
 \end{figure}
 
 In the following comparisons, the time of the simulation has been
-normalized by the first-stage and overall ignition delays of the simulation
-presented previously. In addition, calibration curves for the methylcyclohexene
-isomers were unavailable. Thus, the calibration curve for MCH was applied
-to the peak areas for the methylcyclohexenes.
+normalized by the first-stage and overall ignition delays of the simulation,
+whereas the experimental times are normalized by the experimental ignition
+delays, as discussed in \cref{sec:mch-sampling}.
+In addition, calibration curves for the methylcyclohexene isomers were
+unavailable. Thus, the calibration curve for MCH was applied to the peak
+areas for the methylcyclohexenes.
 
 \Cref{fig:mch-mole-fracs,fig:mchene-mole-fracs} show the mole fractions
 of MCH and the unsaturated methylcyclohexene species compared to model
 predictions. In \cref{fig:mch-mole-fracs}, the mole fraction from each
 GC/MS run is shown; in \cref{fig:mchene-mole-fracs} the average mole
-fraction of each species is shown for simplicity. The error bars are shown
-as discussed in \cref{sec:rsa-uncertainty}---mole fraction uncertainties of
-$\pm\SI{20}{\percent}$ and normalized time uncertainties of $\pm\num{0.1}$.
+fraction of each species is shown for simplicity. The error bars shown
+follow the conservative estimates discussed in \cref{sec:rsa-uncertainty}---mole fraction uncertainties of
+$\pm\SI{20}{\percent}$ and normalized time uncertainties of $\approx\pm\num{0.15}$.
 In these experiments, the initial fuel mole fraction is \num{0.0105}.
 
 \begin{figure}
@@ -513,7 +516,7 @@ time near to and after the first-stage ignition.
 In \cref{fig:mchene-mole-fracs}, the mole fractions of the methylcyclohexene
 isomers are well predicted prior to the first-stage ignition. However,
 after the first-stage ignition, the experimental mole fractions are
-over predicted by approximatlye a factor of 3. In addition, the relative
+over predicted by approximately a factor of 3. In addition, the relative
 amounts of the 1-methylcyclohexene (with the double bond closest to the
 methyl group) and methylenecyclohexane are switched by the model.
 
@@ -720,7 +723,7 @@ the sensitivity of the overall ignition delay is in red and the sensitivity of
 the first stage ignition delay is in blue; at \SI{800}{\kelvin}, the sensitivity of the
 overall ignition delay is in grey and the sensitivity of the first stage
 ignition delay is in green. The most sensitive reaction affecting the first
-stage ignition delay at \SI{800}{\kelvin} is found to be MCH+OH=mchr3+H2O, although it is
+stage ignition delay at \SI{800}{\kelvin} is found to be mch+oh=mchr3+h2o, although it is
 not listed in \cref{fig:mch-sens}. At \SI{900}{\kelvin}, there is no first stage
 ignition, and thus no sensitivity of the first stage ignition delay.
 
@@ -749,7 +752,7 @@ two-stage ignition. Concerning the reactions of the fuel with OH in the left
 column of \cref{tab:mch-sens}, increasing these rates increases the
 formation of fuel radicals that are less reactive at low temperature than the
 cychexch2 and mchr2 radicals. For example, the mchr2 radical adds to O$_2$ and
-forms a peroxy radical (mch2oo) that has a fast RO2 isomerization path to QOOH
+forms a peroxy radical (mch2oo) that has a fast ROO isomerization path to QOOH
 involving the abstraction of an H atom from the methyl group. This ROO
 isomerization is the path calculated and discussed in Section 4.1 of the work by
 \textcite{Weber2014}. QOOH subsequently adds to O$_2$ and leads to chain branching.
@@ -870,7 +873,7 @@ of inverse overall ignition delay, is $\phi=\num{0.5}>\phi=\num{1.0}>\phi=\num{1
 A new sampling system is applied to measure the mole fractions of important
 intermediate species during the ignition of MCH. By rapidly evacuating
 the reaction chamber to quench ongoing reactions, the mole fractions of
-MCH and the methylcyclohexane isomers are quantified. Furthermore, several
+MCH and the methylcyclohexene isomers are quantified. Furthermore, several
 species indicative of low-temperature chain branching chemistry are identified
 from the GC/MS analysis, although the amount of these species could not
 be quantified.
@@ -882,10 +885,15 @@ measured in this study, as well as the overall ignition delays measured
 in the studies of \textcite{Mittal2009,Vasu2009,Vanderover2009}. However,
 the first stage ignition delays are uniformly under-predicted and in
 several cases, first stage ignition is predicted by the model where
-experimental ignition response shows no two-stage character. To help
+experimental ignition response shows no two-stage character. In addition,
+the speciation measurements are compared to model predictions. The model
+is able to accurately capture the relative amounts of 3-methylcyclohexene
+and 4-methylcyclohexene, but reverses the relative amounts of 1-methylcyclohexene
+and methylenecyclohexane, indicating that some reaction pathways may need to be revised.
+
+To help
 understand the fuel decomposition pathways and the reactions controlling
 the ignition, further analysis of the present mechanism is conducted.
-
 First, reaction path analysis is conducted for low-, intermediate-, and
 high-temperature ignition considered in this study. The results show that
 MCH primarily decomposes by H-abstraction reactions involving OH and HO$_2$
@@ -895,7 +903,7 @@ second oxygen addition, leading to the low-temperature chain branching
 characteristic of two-stage ignition. At intermediate temperatures, the
 elimination of methylcyclohexene and HO$_2$ becomes competitive with the
 isomerization reaction, leading to the NTC region of the overall ignition
-delay. Finally, at high temperatures, MCH+HO$_2$ reactions form H$_2$O$_2$ and end
+delay. Finally, at high temperatures, MCH+HO$_2$ reactions dominate and form H$_2$O$_2$ to end
 the NTC region.
 
 Second, a brute force sensitivity analysis is conducted to identify the
@@ -908,6 +916,8 @@ now the ignition process is controlled by H-abstraction by hydroperoxyl
 instead of hydroxyl. Combined, these analyses suggest that further
 investigation of several of the low-temperature fuel decomposition
 pathways is required and more accurate rate constants for fuel+HO$_2$
-reactions are needed.
+reactions are needed. Moreover, the sampling results indicate that the
+reaction pathways forming the unsaturated ring species from methylcyclohexane
+merit further investigation.
 
 \end{document}
