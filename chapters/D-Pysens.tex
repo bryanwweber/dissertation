@@ -4,7 +4,7 @@
 \DefineShortVerb[commandchars=\\\{\}]{\`}
 {\large \textbf{Usage:}}
 
-Download the repository by using git
+Download the repository by using Git: 
 
 `git clone git://github.com/bryanwweber/pysens.git`
 
@@ -42,16 +42,11 @@ reactions - The set of reactions to be analyzed. Can be one of:
 
 all - use all of the reactions in the mechanism
 comma-separated list (e.g. 1,2,3) - use the specified reactions
-colon-separated values - specify a range of reactions
-                         with either start:stop or
-                         start:interval:stop syntax.
-                         If stop is not given, it
-                         defaults to the number of
-                         reactions in the mechanism.
-                         Thus, all and 1: are
-                         equivalent. end is a
-                         synonym for the number
-                         of reactions. E.g. 1:10 or
+colon-separated values - specify a range of reactions with either start:stop or
+                         start:interval:stop syntax. If stop is not given, it
+                         defaults to the number of reactions in the mechanism.
+                         Thus, all and 1: are equivalent. end is a
+                         synonym for the number of reactions. E.g. 1:10 or
                          1:2:10 or 1:2: or 1:2:end
 
 mech input file - The mechanism to be analyzed.
