@@ -13,7 +13,7 @@
             \label{tab:mch-props}}
             {\begin{tabular}{*{6}{S}}
             \toprule
-            {Mix \#} & {$\phi$} & {MCH} & {O$_2$} & {N$_2$} & {Ar} \\
+            {Mix \#} & {$\phi$} & {MCH} & {\ce{O2}} & {\ce{N2}} & {Ar} \\
             \midrule
             1 & 1.0 & 1 & 10.5 & 12.25 & 71.75 \\
             2 & 0.5 & 1 & 21.0 &  0.00 & 73.50 \\
@@ -31,9 +31,9 @@
 \section{Structure of Methylcyclohexane}
 \label{sec:mch-structure}
 
-Methylcyclohexane (MCH) is the simplest branched cycloalkane, and as such,
+Methylcyclohexane (MCH) is one of the simplest branched cycloalkanes, and as such,
 represents an excellent target to use as the base for models of larger
-branched cycloalkanes. MCH has the elemental composition C$_7$H$_{14}$, and
+branched cycloalkanes. MCH has the elemental composition \ce{C7H14}, and
 its skeletal structure is shown in \cref{fig:mch-skeletal}.
 
 \section{Experimental Procedure}
@@ -46,18 +46,18 @@ purity), and argon (\SI{99.9999}{\percent} purity) are determined by specifying 
 composition, the equivalence ratio, and the total mass of fuel. The gases are
 added to the mixing tank manometrically at room temperature.
 
-Three different mixtures of MCH/O$_2$/N$_2$/Ar are prepared in this study, as
+Three different mixtures of MCH/\ce{O2}/\ce{N2}/Ar are prepared in this study, as
 outlined in \cref{tab:mch-props}. These mixtures (denoted as Mix \#1--3) match the mixtures
 prepared in our previous work with MCH in the RCM \cite{Mittal2009}. The equivalence ratios
 corresponding to Mix \#1--3 are $\phi=\numlist{1.0;0.5;1.5}$, respectively.
 As in the previous RCM experiments, the mole fraction of MCH is held constant
-and the mole fraction of O$_2$ is varied to adjust the equivalence ratio. This
+and the mole fraction of \ce{O2} is varied to adjust the equivalence ratio. This
 experimental design allows these data to be used to validate chemical kinetic
-models for changes in O$_2$ concentration, which is an important variable in
+models for changes in \ce{O2} concentration, which is an important variable in
 internal combustion engines where exhaust gas recirculation is used to reduce
 the oxygen concentrations to avoid NOx formation. Few validation data for
 ignition are available for changing oxygen concentrations. In addition, the
-relative proportions of O$_2$, N$_2$, and Ar are adjusted so that the same specific
+relative proportions of \ce{O2}, \ce{N2}, and Ar are adjusted so that the same specific
 heat ratio is maintained in the three mixtures. As discussed in \cref{sec:reac-temp},
 $P_C$ and $T_C$ are assumed to only depend on the temperature-dependent
 specific heat ratio of the reactants, the compression ratio, and the
@@ -75,7 +75,7 @@ for more detail \cite{Weber2014}. It should be noted that the improvement relati
 from 2007 by \textcite{Pitz2007} is substantial.
 
 \begin{enumerate}
-    \item The base C$_1$--C$_4$ chemistry has been updated with the AramcoMech
+    \item The base \ce{C1}--\ce{C4} chemistry has been updated with the AramcoMech
         version 1.3 \cite{Metcalfe2013}.
     \item The aromatics base chemistry was updated with the latest LLNL-NUIG
         model \cite{Nakamura2014}.
@@ -279,14 +279,14 @@ the compression stroke and the experimental pressure at EOC for the reactive
 case matched that of the non-reactive counterpart.
 
 \begin{figure}
-    \floatsetup[subfigure]{captionskip=6pt}
+    \floatsetup[subfigure]{captionskip=5pt}
     \ffigbox{%
         \begin{subfloatrow}
             \ffigbox
-                {\includegraphics[width=7cm]{05-MCH/mch-model-1-first}}
+                {\includegraphics[width=6.9cm]{05-MCH/mch-model-1-first}}
                 {\caption{First stage ignition delays}\label{fig:mch-model-1-first}}
             \ffigbox
-                {\includegraphics[width=7cm]{05-MCH/mch-model-1-over}}
+                {\includegraphics[width=6.9cm]{05-MCH/mch-model-1-over}}
                 {\caption{Overall ignition delays}\label{fig:mch-model-1-over}}
         \end{subfloatrow}
     }%
@@ -301,10 +301,10 @@ case matched that of the non-reactive counterpart.
     \ffigbox{%
         \begin{subfloatrow}
             \ffigbox
-                {\includegraphics[width=7cm]{05-MCH/mch-model-2-first}}
+                {\includegraphics[width=6.9cm]{05-MCH/mch-model-2-first}}
                 {\caption{First stage ignition delay}\label{fig:mch-model-2-first}}
             \ffigbox
-                {\includegraphics[width=7cm]{05-MCH/mch-model-2-over}}
+                {\includegraphics[width=6.9cm]{05-MCH/mch-model-2-over}}
                 {\caption{Overall ignition delay}\label{fig:mch-model-2-over}}
         \end{subfloatrow}
     }%
@@ -319,10 +319,10 @@ case matched that of the non-reactive counterpart.
     \ffigbox{%
         \begin{subfloatrow}
             \ffigbox
-                {\includegraphics[width=7cm]{05-MCH/mch-model-3-first}}
+                {\includegraphics[width=6.9cm]{05-MCH/mch-model-3-first}}
                 {\caption{First stage ignition delay}\label{fig:mch-model-3-first}}
             \ffigbox
-                {\includegraphics[width=7cm]{05-MCH/mch-model-3-over}}
+                {\includegraphics[width=6.9cm]{05-MCH/mch-model-3-over}}
                 {\caption{Overall ignition delay}\label{fig:mch-model-3-over}}
         \end{subfloatrow}
     }%
@@ -408,7 +408,7 @@ ignition, although two-stage ignition is not observed experimentally.
 
 The current mechanism is also compared to shock tube ignition delays from the
 studies of \textcite{Vasu2009} and \textcite{Vanderover2009}. Those studies
-considered the autoignition of stoichiometric mixtures of MCH with O$_2$/N$_2$
+considered the autoignition of stoichiometric mixtures of MCH with \ce{O2}/\ce{N2}
 air. The comparison is shown in \cref{fig:mch-shocks} for the near \SI{50}{atm}
 data from those studies. Note that the experimental data shown are the raw
 data and are not scaled to a constant pressure, whereas the simulated
@@ -444,7 +444,7 @@ ignition delays demonstrating the effect of this update is shown in
             {\includegraphics[width=7.9cm]{05-MCH/mch-shocks}}
             {\caption{Comparison of the present model with the experiments from
                 \textcite{Vasu2009} and \textcite{Vanderover2009} near \SI{50}{atm}
-                and for stoichiometric mixtures in O$_2$/N$_2$ air.}
+                and for stoichiometric mixtures in \ce{O2}/\ce{N2} air.}
             \label{fig:mch-shocks}}
         \ffigbox
             {\includegraphics[width=7.9cm]{05-MCH/mch-energy}}
@@ -592,7 +592,7 @@ the absolute change is small and the consumption of these radicals still occurs
 mostly by oxygen addition. The mchr1, mchr3, and mchr4 radicals undergo
 scission of the cyclohexyl ring, whereas mchr2 primarily undergoes scission at the
 methyl-cyclohexyl bond. This beta scission of mchr2 competes significantly with
-its consumption by O$_2$ at \SI{900}{\kelvin}. Furthermore, the increasing importance of the
+its consumption by \ce{O2} at \SI{900}{\kelvin}. Furthermore, the increasing importance of the
 ring opening reactions from \SI{800}{\kelvin} to \SI{900}{\kelvin} means that chain propagation pathways
 (instead of effective chain termination pathways forming methylcyclohexene and
 hydroperoxyl) are available, increasing the reactivity. Finally, even at the
@@ -625,18 +625,18 @@ ROO) has not been well studied at combustion relevant temperatures
 given its importance in the model for MCH combustion.
 
 As the temperature increases, the formation of ROOH becomes substantially less
-important while the direct HO$_2$ elimination reaction becomes more important.
+important while the direct \ce{HO2} elimination reaction becomes more important.
 The increase in production of methylcyclohexene and hydroperoxyl plays a role
 in the NTC region of ignition delay because this is effectively a chain
 terminating channel until the temperature increases enough that the sequence
-MCH+HO$_2$=R+H$_2$O$_2$; H$_2$O$_2$(+M)=2OH(+M) becomes important and drives
+MCH+\ce{HO2}=R+\ce{H2O2}; \ce{H2O2}(+M)=2OH(+M) becomes important and drives
 the overall ignition.
 
 Interestingly, for most of the ROO radicals, the change in the fraction of ROO
 consumed to form QOOH is non-monotonic as temperature increases. That is, for
 mch1oo, mch3oo, and mch4oo the production of QOOH increases in going from \SI{700}{\kelvin}
 to \SI{800}{\kelvin}, then decreases going from \SI{800}{\kelvin} to \SI{900}{\kelvin} due to the increasing
-importance of the HO$_2$ elimination channel (due to nuances in the various
+importance of the \ce{HO2} elimination channel (due to nuances in the various
 reaction paths, mch2oo and chxch2oo do not follow this trend). Furthermore,
 the branching ratios in the decomposition of the QOOH species change as the
 temperature is increased (not shown in \cref{fig:mch-path}). At the lowest
@@ -654,9 +654,9 @@ Our second type of analysis is a brute force, one-at-a-time sensitivity
 analysis. In this work, the sensitivity of the ignition delay to the reaction
 rates is considered. Due to the size of the mechanism, only the reactions of
 the fuel and the fuel radicals up to the OOQOOH species are considered. This
-approach is justified because many of the reactions of the C$_0$--C$_4$ base
+approach is justified because many of the reactions of the \ce{C0}--\ce{C4} base
 mechanism are important to the ignition process (e.g.,
-H$_2$O$_2$(+M)=2OH(+M)), but we are more interested in the effect of updates to
+\ce{H2O2}(+M)=2OH(+M)), but we are more interested in the effect of updates to
 the fuel specific sub-mechanism. The sensitivity index is defined in
 \cref{eq:mch-sens},
 %
@@ -743,7 +743,7 @@ the unidirectional sensitivity index is shown in \cref{fig:mch-sens}, where $\ta
 in \cref{eq:mch-sens} is found by division of the rate for $i=R1$ and by
 multiplication of the rate for $i=R2$.
 
-The role of the ROO=methylcyclohexene+HO$_2$ reactions in the left column of
+The role of the ROO=methylcyclohexene+\ce{HO2} reactions in the left column of
 \cref{tab:mch-sens} in eliminating the first stage of ignition is clear---%
 this set of reactions diverts ROO radicals from entering the low-temperature
 chain branching pathway via QOOH that leads to the two-stage ignition.
@@ -752,11 +752,11 @@ with QOOH to form OOQOOH reduces the rate of chain branching that leads to
 two-stage ignition. Concerning the reactions of the fuel with OH in the left
 column of \cref{tab:mch-sens}, increasing these rates increases the
 formation of fuel radicals that are less reactive at low temperature than the
-cychexch2 and mchr2 radicals. For example, the mchr2 radical adds to O$_2$ and
+cychexch2 and mchr2 radicals. For example, the mchr2 radical adds to \ce{O2} and
 forms a peroxy radical (mch2oo) that has a fast ROO isomerization path to QOOH
 involving the abstraction of an H atom from the methyl group. This ROO
 isomerization is the path calculated and discussed in Section 4.1 of the work by
-\textcite{Weber2014}. QOOH subsequently adds to O$_2$ and leads to chain branching.
+\textcite{Weber2014}. QOOH subsequently adds to \ce{O2} and leads to chain branching.
 The high reactivity of cychexch2 and mchr2 at low temperature is reflected by
 the high percentages at \SI{800}{\kelvin} (>\SI{70}{\percent}) leading to QOOH from cychexch2oo and
 mch2oo in \cref{fig:mch-path}.
@@ -827,11 +827,11 @@ Interestingly, the formation and destruction reactions of ROOH species
 do not appear in \cref{fig:mch-sens}, despite their importance in
 the destruction of ROO radicals, particularly at \SI{700}{\kelvin}
 (see \cref{fig:mch-path}). This may be due to the fact that
-formation of ROOH by reaction with HO$_2$ followed by consumption of ROOH
-is a chain propagation path through the reactions ROO+HO$_2$=ROOH+O$_2$;
+formation of ROOH by reaction with \ce{HO2} followed by consumption of ROOH
+is a chain propagation path through the reactions ROO+\ce{HO2}=ROOH+\ce{O2};
 ROOH=RO+OH. In this sequence two radicals are formed (RO, OH) and two
-radicals are consumed (ROO, HO$_2$). Thus, the formation of ROOH by
-reaction with HO$_2$ and its subsequent destruction has a somewhat
+radicals are consumed (ROO, \ce{HO2}). Thus, the formation of ROOH by
+reaction with \ce{HO2} and its subsequent destruction has a somewhat
 neutral effect on the radical pool.
 
 At \SI{900}{\kelvin}, the overall ignition delay is particularly sensitive
@@ -846,21 +846,21 @@ sensitivity will improve the comparison). In addition, many of the
 reactions that are important at \SI{900}{\kelvin} are not important at
 \SIlist{700;800}{\kelvin}, implying that changes made to the rates to
 improve the high-temperature agreement will not significantly change the
-agreement at lower temperature. In particular, the MCH+HO$_2$ rate constants
+agreement at lower temperature. In particular, the MCH+\ce{HO2} rate constants
 have not been measured or calculated to our knowledge and are based
 on acyclic alkane rate constants \cite{Aguilera-Iparraguirre2008}. They have uncertainties of at
 least a factor of 2 and as much as a factor of 10 based on the work
 of \textcite{Aguilera-Iparraguirre2008}. Increasing these rate constants
 would improve the agreement with the experimental ignition data at
 \SI{900}{\kelvin} in the RCM and shock tube. Experimental measurements
-and theoretical calculations are needed for the fuel+HO$_2$ reaction class to
+and theoretical calculations are needed for the fuel+\ce{HO2} reaction class to
 reduce this uncertainty in the rate constants.
 
 \section{Conclusions}
 
 In this study, new experimental data are collected for methylcyclohexane
 autoignition in a heated RCM. Following the work
-of \textcite{Mittal2009}, three mixtures of MCH/O$_2$/ N$_2$/Ar at equivalence
+of \textcite{Mittal2009}, three mixtures of MCH/\ce{O2}/\ce{N2}/Ar at equivalence
 ratios of $\phi=\numlist{0.5;1.0;1.5}$ are used and the ignition delays
 are measured at compressed pressure of \SI{50}{\bar}, for compressed
 temperatures in the range of \SIrange{690}{900}{\kelvin}. Two-stage
@@ -897,14 +897,14 @@ understand the fuel decomposition pathways and the reactions controlling
 the ignition, further analysis of the present mechanism is conducted.
 First, reaction path analysis is conducted for low-, intermediate-, and
 high-temperature ignition considered in this study. The results show that
-MCH primarily decomposes by H-abstraction reactions involving OH and HO$_2$
+MCH primarily decomposes by H-abstraction reactions involving OH and \ce{HO2}
 radicals, followed by oxygen addition reactions. At low temperatures,
 the oxygen addition is followed by isomerization to QOOH species and
 second oxygen addition, leading to the low-temperature chain branching
 characteristic of two-stage ignition. At intermediate temperatures, the
-elimination of methylcyclohexene and HO$_2$ becomes competitive with the
+elimination of methylcyclohexene and \ce{HO2} becomes competitive with the
 isomerization reaction, leading to the NTC region of the overall ignition
-delay. Finally, at high temperatures, MCH+HO$_2$ reactions dominate and form H$_2$O$_2$ to end
+delay. Finally, at high temperatures, MCH+\ce{HO2} reactions dominate and form \ce{H2O2} to end
 the NTC region.
 
 Second, a brute force sensitivity analysis is conducted to identify the
@@ -916,7 +916,7 @@ controlling reactions are still the fuel radical formation reactions, but
 now the ignition process is controlled by H-abstraction by hydroperoxyl
 instead of hydroxyl. Combined, these analyses suggest that further
 investigation of several of the low-temperature fuel decomposition
-pathways is required and more accurate rate constants for fuel+HO$_2$
+pathways is required and more accurate rate constants for fuel+\ce{HO2}
 reactions are needed. Moreover, the sampling results indicate that the
 reaction pathways forming the unsaturated ring species from methylcyclohexane
 merit further investigation.

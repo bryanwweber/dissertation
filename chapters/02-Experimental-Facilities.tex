@@ -9,7 +9,7 @@
 \label{sec:rcm}
 \subsection{Experimental Procedure}
 \label{sec:rcm-procedure}
-The studies in this dissertation were conducted using the Rapid
+The studies in this dissertation are conducted using the Rapid
 Compression Machine (RCM) constructed by Mittal around 2005 and described in the
 work of \textcite{Mittal2007,Mittal2006a}. This RCM has been used to
 study the autoignition behavior of a number of fuels, including
@@ -20,7 +20,7 @@ Das2012, Mittal2008a, Kumar2011a, Mittal2007a, Mittal2008, Kumar2010,
 Dooley2010, Dooley2012, Hui2012a, Keromnes2013, Kukkadapu2013, Kukkadapu2012a},
 in addition to the studies presented in this work.
 
-A modern RCM operates by rapidly compressing (hence the name) a test gas
+A modern RCM operates by rapidly compressing---hence the name---a test gas
 mixture to targeted pressure and temperature conditions. The compression
 is effected by either a single piston or dual, opposed pistons. Upon
 reaching the targeted state, the piston (or pistons) is stopped and
@@ -40,7 +40,7 @@ apparatus described in \cref{sec:rsa} is shown in
 shown in \cref{fig:rcm-schematic}. The RCM consists of four chambers and
 three pistons that are used to control the machine. The chambers are
 called the reaction chamber, the hydraulic chamber, the pneumatic
-chamber, and the driving tank; similarly, the pistons are called
+cylinder, and the driving tank; similarly, the pistons are called
 the reactor, hydraulic, and pneumatic pistons and each is installed
 in the chamber of the same name. The rear of the reaction chamber
 is bolted to the front of the hydraulic chamber; seals in the face
@@ -166,7 +166,7 @@ increased by adding spacers onto the rear of the hydraulic chamber or
 increasing the stroke, and can be reduced by adding split shims onto
 the rear of the reaction chamber or increasing the EOC clearance length.
 Adjustment of the specific heat ratio of the gas can be accomplished
-by substituting components (e.g.\ substituting Ar for N$_2$ results in
+by substituting components (e.g.\ substituting Ar for \ce{N2} results in
 higher $P_C$ and $T_C$ if all other conditions are fixed). The initial
 temperature is controlled by heaters, as described in the following
 section.
@@ -193,7 +193,7 @@ below, was used for all of the butanol isomers, \textit{iso}-pentanol, and
 methylcyclohexane; specific procedures are given in the chapter relevant to
 each fuel. First, the mixing tanks are vacuumed to an ultimate pressure
 less than \SI{5}{\torr}. The liquid fuel is massed in a syringe to a precision of
-\SI{0.01}{\gram} prior to injection through a septum. Proportions of O$_2$, N$_2$, and
+\SI{0.01}{\gram} prior to injection through a septum. Proportions of \ce{O2}, \ce{N2}, and
 Ar are added manometrically at room temperature. The preheat temperature of
 the RCM is set above the saturation point for each fuel to ensure complete
 vaporization. The vapor pressure as a function of temperature is calculated
@@ -269,7 +269,7 @@ is measured that corresponds to each unique $P_C$ and $T_C$ condition
 studied to quantify the effect of the heat loss on the ignition process
 and to verify that no heat release has occurred during the compression
 stroke. The non-reactive pressure trace is acquired by replacing the
-O$_2$ in the oxidizer with N$_2$, so that the specific heat ratio
+\ce{O2} in the oxidizer with \ce{N2}, so that the specific heat ratio
 of the initial mixture is maintained, but the heat release due to
 exothermic oxidation reactions is eliminated. Maintaining a similar
 specific heat ratio ensures that the non-reactive experiment faithfully
@@ -291,6 +291,12 @@ This cold vortex mixes with the hotter gases near the center of
 the reaction chamber and causes large spatial inhomogeneities of
 temperature and species.
 
+\begin{figure}
+    \includegraphics[width=12cm]{02-Experimental-Facilities/rcm-piston}
+    \caption{Creviced piston installed in the present RCM.}
+    \label{fig:rcm-piston}
+\end{figure}
+
 To facilitate spatially homogeneous conditions in the reactor
 and reduce the effect of the roll-up vortex, it is necessary to trap
 the boundary layer. This is accomplished in the present RCM by a
@@ -307,12 +313,6 @@ measurements of acetone-seeded mixtures, \textcite{Mittal2006b}
 showed that there was a core region of gases near the center of the
 reactor whose temperature remained spatially homogeneous.
 
-\begin{figure}[!ht]
-    \includegraphics[width=12cm]{02-Experimental-Facilities/rcm-piston}
-    \caption{Creviced piston installed in the present RCM.}
-    \label{fig:rcm-piston}
-\end{figure}
-
 \subsection{Determination of Reactant Temperature}
 \label{sec:reac-temp}
 
@@ -320,7 +320,7 @@ In general, it is rather difficult to directly measure the temperature
 of the gases in the reaction chamber during and after compression.
 Intrusive methods such as thermocouples may introduce inhomogeneities into
 the reaction chamber and may have time constants that are not well matched
-to the rate of change of temperature during compression .In addition,
+to the rate of change of temperature during compression. In addition,
 non-intrusive optical techniques are difficult to set up
 and require extensive calibration at the pressures of interest in RCM
 studies. Thus, the temperature is determined indirectly by applying an
@@ -412,7 +412,7 @@ is applied during and after the compression stroke to calculate
 the volume trace. Since the non-reactive experiment requires slightly
 different initial pressure (typically on the order of \SI{5}{\torr}) to reach the same
 compressed pressure as the reactive experiment---due to the slightly
-different specific heat ratio between O$_2$ and N$_2$ in the non-reactive experiment compared
+different specific heat ratio between \ce{O2} and \ce{N2} in the non-reactive experiment compared
 to the reactive experiment---the reactive pressure trace is used to
 compute the volume trace until EOC; after EOC, the corresponding
 non-reactive pressure trace is used. In \cref{eq:volume-trace} it is assumed that
@@ -469,6 +469,11 @@ reaction steps to determine if there is significant reactivity in the
 compression stroke. If there is no significant reactivity
 (and hence heat release), the pressure and temperature at EOC are the
 same whether or not reactions are included in the simulation.
+
+The initial conditions and volume traces used for all the simulations
+in this work are available on the website of the Combustion Diagnostics
+Laboratory at \\
+\href{http://combdiaglab.engr.uconn.edu/database/rcm-database}{http://combdiaglab.engr.uconn.edu/database/rcm-database}.
 
 \subsection{Uncertainty of Compressed Temperature}
 \label{sec:uncertainty}
@@ -527,8 +532,8 @@ fourth-order polynomial fit:
 %
 In general, this means that the specific heat can be non-linear. However,
 since the mixtures prepared in this study are composed primarily of
-O$_2$, N$_2$ and Ar (i.e.\ no more than \SI{7}{\percent} of any mixture is the
-fuel), and since the specific heats of O$_2$, N$_2$ and Ar are only weakly
+\ce{O2}, \ce{N2} and Ar (i.e.\ no more than \SI{7}{\percent} of any mixture is the
+fuel), and since the specific heats of \ce{O2}, \ce{N2} and Ar are only weakly
 temperature dependent over the range of temperatures experienced during
 compression, for the purposes of this uncertainty analysis, we will
 approximate the total specific heat as a linear function of temperature:
@@ -800,8 +805,8 @@ are calculated as described earlier.
 \label{sec:unc-alcohol}
 
 The following analysis is conducted for a mixture of
-\SI{3.38}{\mole\percent} \tBuOH{}, \SI{20.30}{\mole\percent} O$_2$, and
-\SI{76.32}{\mole\percent} N$_2$, i.e.\ a $\phi=1.0$ mixture of \tBuOH{}
+\SI{3.38}{\mole\percent} \tBuOH{}, \SI{20.30}{\mole\percent} \ce{O2}, and
+\SI{76.32}{\mole\percent} \ce{N2}, i.e.\ a $\phi=1.0$ mixture of \tBuOH{}
 and air. Similar results are obtained for experiments with the other butanol
 isomers and \iPeOH{} and experiments at different fuel concentrations,
 because the fuel specific heats are similar and each experiment uses
@@ -809,7 +814,7 @@ similar diluent concentrations.
 
 A typical total pressure after filling is approximately
 \SI{1520}{\torr} (\SI{202650}{\pascal}), with approximately
-\SI{42000}{\pascal} of O$_2$ and \SI{160650}{\pascal} of N$_2$. The partial
+\SI{42000}{\pascal} of \ce{O2} and \SI{160650}{\pascal} of \ce{N2}. The partial
 pressure of the liquid fuel is assumed to contribute a negligible amount
 to the total pressure during the filling of the gases for the purposes of
 this uncertainty analysis. The results shown below use the
@@ -825,14 +830,14 @@ compressed temperature $T_C$.
 \label{sec:unc-mch}
 
 The following analysis is conducted for a mixture of
-\SI{1.05}{\mole\percent} MCH, \SI{10.99}{\mole\percent} O$_2$,
-\SI{12.83}{\mole\percent} N$_2$, and \SI{75.13}{\mole\percent} Ar, i.e.
+\SI{1.05}{\mole\percent} MCH, \SI{10.99}{\mole\percent} \ce{O2},
+\SI{12.83}{\mole\percent} \ce{N2}, and \SI{75.13}{\mole\percent} Ar, i.e.
 the stoichiometric mixture (\#1) from \cref{tab:mch-props}. Similar
 results are obtained for the other mixtures.
 
 A typical total pressure after filling is approximately
 \SI{3390}{\torr} (\SI{452000}{\pascal}), with approximately
-\SI{33500}{\pascal} of O$_2$, \SI{78200}{\pascal} of N$_2$, and
+\SI{33500}{\pascal} of \ce{O2}, \SI{78200}{\pascal} of \ce{N2}, and
 \SI{340300}{\pascal} of Ar. The partial pressure of the liquid fuel is
 again assumed to contribute a negligible amount to the total pressure
 during the filling of the gases for the purposes of this uncertainty
@@ -1147,7 +1152,7 @@ means of a time-varying electric field. Conceptually, the quadrupole
 can be imagined as four round rods, arranged in a cross pattern, with
 their long axes aligned parallel to the ion beam (i.e.\ the $z$ axis).
 The ions are admitted to the rods at one end (e.g.\ at the origin in
-\cref{fig:gcms-quad}) and the detector is placed parallel to the $x-y$ plane
+\cref{fig:gcms-quad}) and the detector is placed parallel to the $x\text{--}y$ plane
 in \cref{fig:gcms-quad} at the other end of the rods (not shown in
 \cref{fig:gcms-quad}). A positive DC voltage is applied
 to one pair of the rods, while a negative DC voltage is applied to the other

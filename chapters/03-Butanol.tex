@@ -86,8 +86,8 @@ each is massed in a syringe to within \SI{0.01}{g} of the specified
 value. \textit{t}-Butanol is solid at room temperature (melting point: \SI{25}{\celsius}),
 and is melted before being handled in the same procedure as the other fuels.
 The \SI{17}{\liter} mixing tank is vacuumed to an ultimate pressure less than \SI{5}{Torr} prior
-to the injection of the liquid fuel through a septum. Proportions of O$_2$ and
-N$_2$ are added manometrically at room temperature. The preheat temperature of
+to the injection of the liquid fuel through a septum. Proportions of \ce{O2} and
+\ce{N2} are added manometrically at room temperature. The preheat temperature of
 the RCM is set above the saturation point for each fuel to ensure complete
 vaporization. A magnetic stirrer mixes the reactants. The temperature inside
 the mixing tank is allowed to equilibrate for approximately \SI{1.5}{\hour}.
@@ -120,7 +120,7 @@ in any other study, to our knowledge.
     \toprule
     \multicolumn{5}{c}{Reactant (Purity)} & \multirow{3}[0]{*}{\linebreakcell{Equivalence \\ Ratio \\ $\phi$}} & \multirow{3}[0]{*}{\linebreakcell{Compressed \\ Pressure \\ $P_C$ (bar)}} \\
     \cmidrule{1-5}
-    \linebreakcell{\sBuOH{} \\ (\SI{99.99}{\percent})} & \linebreakcell{\iBuOH{} \\ (\SI{99.99}{\percent})} & \linebreakcell{\tBuOH{} \\ (\SI{99.99}{\percent})} & \linebreakcell{O$_2$ \\ (\SI{99.999}{\percent})} & \linebreakcell{N$_2$ \\ (\SI{99.995}{\percent})} & & \\
+    \linebreakcell{\sBuOH{} \\ (\SI{99.99}{\percent})} & \linebreakcell{\iBuOH{} \\ (\SI{99.99}{\percent})} & \linebreakcell{\tBuOH{} \\ (\SI{99.99}{\percent})} & \linebreakcell{\ce{O2} \\ (\SI{99.999}{\percent})} & \linebreakcell{\ce{N2} \\ (\SI{99.995}{\percent})} & & \\
     \cmidrule{1-5}
     \multicolumn{5}{c}{Mole Percentage}   & & \\
     \midrule
@@ -430,15 +430,15 @@ behavior may not be of critical importance, depending on the application.
     \ffigbox{%
     \begin{subfloatrow}[3]
         \ffigbox[\FBwidth]
-            {\includegraphics[width=5.2cm]{03-Butanol/tbuoh-05press}}
+            {\includegraphics[width=5.1cm]{03-Butanol/tbuoh-05press}}
             {\caption{$\phi=\num{0.5}$ in air.}
             \label{fig:tbuoh-05press}}
         \ffigbox[\FBwidth]
-            {\includegraphics[width=5.2cm]{03-Butanol/tbuoh-10press}}
+            {\includegraphics[width=5.1cm]{03-Butanol/tbuoh-10press}}
             {\caption{$\phi=\num{1.0}$ in air.}
             \label{fig:tbuoh-10press}}
         \ffigbox[\FBwidth]
-            {\includegraphics[width=5.2cm]{03-Butanol/tbuoh-20press}}
+            {\includegraphics[width=5.1cm]{03-Butanol/tbuoh-20press}}
             {\caption{$\phi=\num{2.0}$ in air.}
             \label{fig:tbuoh-20press}}
     \end{subfloatrow}
@@ -602,10 +602,10 @@ is much higher than $\beta$ C-H bond energies.
 The unique structure of \tBuOH{} continues to affect the second level
 of reactions. In the temperature and pressure regime investigated,
 \tBuOH{} tends to add to molecular oxygen at the carbon radical site,
-forming a hydroxybutylperoxy (RO$_2$) species. That this pathway is dominant is
+forming a hydroxybutylperoxy (ROO) species. That this pathway is dominant is
 due to the fact that \tBuOH{} has no $\alpha$-hydroxybutyl radical.
 For the other three butanol isomers that do have an $\alpha$-hydroxybutyl
-radical, the second level of reactions primarily produces an aldehyde + HO$_2$
+radical, the second level of reactions primarily produces an aldehyde + \ce{HO2}
 by direct reaction---no hydroxybutylperoxy adduct is formed in this reaction,
 and there is no possibility for typical hydrocarbon low-temperature chain
 branching. Therefore, it is hypothesized that the pre-ignition heat release
@@ -750,7 +750,7 @@ italics are from a simulation with the Sarathy et al.\ mechanism
 
 \begin{figure}
     \includegraphics[width=12cm]{03-Butanol/ibuoh-mitpath}
-    \caption{Path flux diagram for \iBuOH{}/O$_2$/N$_2$, $\phi=1.0$,
+    \caption{Path flux diagram for \iBuOH{}/\ce{O2}/\ce{N2}, $\phi=1.0$,
     \SI{810}{\kelvin}, \SI{30}{\bar}. Plain text indicates the MIT
     mechanism \cite{Weber2013a}; italic text indicates the Sarathy et al.\ mechanism
     \cite{Sarathy2012}.}
@@ -784,7 +784,7 @@ mechanism, nearly all of the $\alpha$-hydroxybutylperoxy goes to form
 isobutyraldehyde, which is itself the primary product of reactions of
 $\alpha$-hydroxybutyl. This means that over \SI{99}{\percent} of the
 $\alpha$-hydroxybutyl radical is directed into the formation of
-isobutyraldehyde and hydroperoxyl (HO$_2$) in the MIT mechanism.
+isobutyraldehyde and hydroperoxyl (\ce{HO2}) in the MIT mechanism.
 However, in the Sarathy et al.\ mechanism, only about a quarter of the
 $\alpha$-hydroxybutylperoxy goes to form isobutyraldehyde, and the rest
 is directed into traditional hydrocarbon low-temperature chain branching
@@ -800,7 +800,7 @@ the reactivity is controlled by the hydroperoxyl radical.
 In their work, \textcite{Sarathy2012} used the reaction rates computed by
 \textcite{DaSilva2009} for the hydroxyethyl system (i.e.\ ethanol as the parent
 fuel) to determine the rate of direct reaction of $\alpha$-hydroxybutyl and
-oxygen to form aldehyde and HO$_2$, and then set the rate of oxygen addition to
+oxygen to form aldehyde and \ce{HO2}, and then set the rate of oxygen addition to
 the $\alpha$-hydroxybutyl radical (to form $\alpha$-hydroxybutylperoxy) so that
 the total rate was less than the collisional limit. The rates of oxygen
 addition for the other radicals were prescribed depending on the type of carbon
@@ -873,7 +873,7 @@ is apparent that the addition of oxygen to $\alpha$-hydroxybutyl is one
 of the controlling reactions for the high-pressure, low-temperature
 ignition of \iBuOH{} using the mechanism of \textcite{Sarathy2012}. It
 is therefore concluded that a detailed examination of the rates of
-direct formation of aldehyde+HO$_2$ and oxygen addition to the
+direct formation of aldehyde+\ce{HO2} and oxygen addition to the
 $\alpha$-hydroxybutyl radical are required to better predict the
 low-temperature ignition behavior of \iBuOH{}. Furthermore, based on the
 other results of this study, a detailed analysis of the oxygen addition
@@ -905,12 +905,12 @@ the butanol isomers. Pathway analysis of the fuel decomposition shows that
 \textit{n}-, \textit{s}-, and \iBuOH{} primarily form
 $\alpha$-hydroxybutyl radicals, because the proximity of the $\alpha$ carbon to
 the hydroxyl group reduces the C-H bond energy. The $\alpha$-hydroxybutyl radicals
-tend to form an aldehyde plus HO$_2$  directly, without forming a
+tend to form an aldehyde plus \ce{HO2} directly, without forming a
 hydroxybutylperoxy complex. However, due to its unique structure,
 \tBuOH{} can only form $\beta$-radicals; these radicals do not have
-the tendency to react with oxygen to directly form HO$_2$ and an aldehyde.
+the tendency to react with oxygen to directly form \ce{HO2} and an aldehyde.
 Rather, \tBuOH{} preferentially adds oxygen to the fuel radical site.
-It is hypothesized that this reaction, O$_2$ addition to form
+It is hypothesized that this reaction, \ce{O2} addition to form
 hydroxybutylperoxy, causes the pre-ignition heat release in \tBuOH{}
 and leads to a chain propagation pathway through the Waddington mechanism. The
 fact that this oxygen-addition reaction is preferred is unique to

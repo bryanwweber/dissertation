@@ -59,7 +59,7 @@ of the mixture.
     \toprule
     \multicolumn{3}{c}{Reactant (Purity)} & \multirow{3}[0]{*}{\linebreakcell{Equivalence \\ Ratio \\ $\phi$}} & \multirow{3}[0]{*}{\linebreakcell{Compressed \\ Pressure \\ $P_C$ (bar)}} \\
     \cmidrule{1-3}
-    \linebreakcell{\iPeOH{} \\ (\SI{99.6}{\percent})} & \linebreakcell{O$_2$ \\ (\SI{99.994}{\percent})} & \linebreakcell{N$_2$ \\ (\SI{99.999}{\percent})} & & \\
+    \linebreakcell{\iPeOH{} \\ (\SI{99.6}{\percent})} & \linebreakcell{\ce{O2} \\ (\SI{99.994}{\percent})} & \linebreakcell{\ce{N2} \\ (\SI{99.999}{\percent})} & & \\
     \cmidrule{1-3}
     \multicolumn{3}{c}{Mole Percentage}   & & \\
     \midrule
@@ -75,7 +75,7 @@ Prior to mixture preparation, the mixing tank is vacuumed to less than
 purity) is injected by a syringe through a septum. The syringe is massed
 before and after the injection, with the difference being the amount of
 fuel in the mixing tank. Based on this mass, required proportions of
-the gaseous oxidizer (O$_2$, \SI{99.994}{\percent} purity, N$_2$, \SI{99.999}{\percent} purity) are
+the gaseous oxidizer (\ce{O2}, \SI{99.994}{\percent} purity, \ce{N2}, \SI{99.999}{\percent} purity) are
 calculated. The gases are added to the mixing tank sequentially at
 room temperature and the total pressure is monitored to ensure that the
 proper mixture concentrations are attained. Finally, the heaters and
@@ -90,7 +90,7 @@ improvements are highlighted below; see the article for more detail
 \cite{Sarathy2013}.
 
 \begin{enumerate}
-\item The model was restructured based on work with C$_4$ and C$_5$
+\item The model was restructured based on work with \ce{C4} and \ce{C5}
       alcohols \cite{Sarathy2012, Heufer2012a}
 \item The most stable conformers of \iPeOH{} were calculated using
       quantum chemistry software
@@ -205,9 +205,9 @@ and volume history simulations at the \SI{40}{\atmosphere} RCM
 conditions (\cref{fig:ipeoh-40bar}) indicate the model can well predict
 ignition delay times at stoichiometric conditions, but cannot well predict
 RCM ignition delay data at lean and rich conditions. The difference
-(i.e., spread) in ignition delay times across various equivalence ratios
+(i.e.\ spread) in ignition delay times across various equivalence ratios
 is similar to that observed for other alcohols in the same facilities
-(e.g., \nBuOH{} at \SI{15}{\bar} \cite{Weber2011} and \tBuOH{} at
+(e.g.\ \nBuOH{} at \SI{15}{\bar} \cite{Weber2011} and \tBuOH{} at
 \SI{30}{\bar} \cite{Weber2013}). The primary issue with the model is
 its equivalence ratio sensitivity; predicted ignition delay times need
 to be increased at lean conditions yet decreased at rich conditions,
@@ -289,7 +289,7 @@ It is seen from \cref{fig:ipeoh-20sens} that the most sensitive reaction
 under these conditions is H-abstraction by OH to form the $\alpha$-hydroxypentyl
 radical (ic5h10oh-1). Increasing the rate of abstraction by OH from the
 $\alpha$ site increases the ignition delay because subsequent reaction
-of the fuel radical with O$_2$ leads to the formation of HO$_2$ and
+of the fuel radical with \ce{O2} leads to the formation of \ce{HO2} and
 \textit{i}-pentanal, which is an OH terminating pathway. The next most
 sensitive reaction is H-abstraction by OH to form the $\gamma$-hydroxypentyl
 radical (ic5h10oh-3). The ignition delay is also sensitive to the rates of
@@ -299,7 +299,7 @@ other hydroxypentyl radicals undergo typical low-temperature chain branching
 reactions. This observation is further corroborated by a reaction path
 analysis, discussed below. Furthermore, \cref{fig:ipeoh-20sens} shows that
 the ignition delay is also sensitive to some low temperature chain
-terminating pathways, such as formation of an enol + HO$_2$ from ROO
+terminating pathways, such as formation of an enol + \ce{HO2} from ROO
 or QOOH radicals.
 
 A sensitivity analysis of the ignition delay to changes in the
@@ -361,11 +361,11 @@ is the contribution of that path to destroying the reactant, integrated
 up to \SI{20}{\percent} fuel consumption. The fuel is mainly consumed by
 the H atom abstraction at the $\alpha$ site because \iPeOH{} has a weak
 C-H bond at the $\alpha$ site. As discussed previously, subsequent
-reactions of $\alpha$-hydroxypentyl with O$_2$ generate \textit{i}-pentanal
-+ HO$_2$, an OH terminating pathway. The other hydroxypentyl radicals tend
+reactions of $\alpha$-hydroxypentyl with \ce{O2} generate \textit{i}-pentanal
++ \ce{HO2}, an OH terminating pathway. The other hydroxypentyl radicals tend
 to add to molecular oxygen and form hydroxyalkylperoxy (ROO) radicals.
 These radicals are mainly isomerized to hydroxyalkylhydroperoxide (QOOH)
-or decomposed to enol species by the concerted elimination of HO$_2$. Approximately
+or decomposed to enol species by the concerted elimination of \ce{HO2}. Approximately
 \SI{18}{\percent} of $\beta$-hydroxyalkylperoxy radicals are decomposed to produce
 \textit{i}-butanal (2-methylpropanal), formaldehyde, and OH radical via ROO
 isomerization and $\beta$-scission reactions by the Waddington mechanism
@@ -391,18 +391,18 @@ An existing model \cite{Tsujimura2012} for \iPeOH{} combustion has been updated 
 calculated reaction rate coefficients and newly discovered reaction
 pathways. The updated model was able to predict the ignition
 delays measured in the RCM and STs fairly well, although
-it was unable to reproduce the equivalence ratio sensitivity of
-the low-temperature RCM ignition delay measurements. The model was
-also able to qualitatively capture the slow initial pressure rise
-measured during the RCM experiments, although the model was unable
+it was unable to reproduce the change in reactivity when changing the
+equivalence ratio for the low-temperature RCM ignition delay measurements.
+The model was also able to qualitatively capture the slow initial pressure
+rise measured during the RCM experiments, although the model was unable
 to reproduce the quantitative timing of the pressure rise.
 
 Pathway and sensitivity analyses were conducted to understand
 the important reactions in the decomposition of \iPeOH{}.
 The most important path for consumption of fuel radicals at low
 and intermediate temperatures was the reaction of the
-$\alpha$-hydroxypentyl radical with O$_2$ to form
-\textit{i}-pentanal and HO$_2$ , a path that does not contribute to the
+$\alpha$-hydroxypentyl radical with \ce{O2} to form
+\textit{i}-pentanal and \ce{HO2} , a path that does not contribute to the
 low temperature branching. However, sufficient low temperature chain
 branching involving the $\gamma$ and $\delta$ fuel radicals occurred
 in the model that it was able to reasonably reproduce low-temperature
