@@ -10,7 +10,6 @@
 \input{/home/bryan/dissertation/verbatim_preamble}
 \input{/home/bryan/dissertation/preamble}
 
-\newcommand*{\hl}[1]{#1}%
 %Begin the document
 \begin{document}
 \pagestyle{abstract}
@@ -99,43 +98,67 @@ University of Connecticut \\
 \phantomsection
 \addcontentsline{toc}{chapter}{Acknowledgements}
 \chapter*{Acknowledgements}
-``So long, and thanks for all the fish'' - Douglas Adams
 
 The list of people who have contributed to this work in ways large and small
 is uncountable. The list that follows is by definition incomplete
 and so let me say at the top, thank you!
 
-The first thanks must go to my advisor Professor Chih-Jen Sung. It has now been seven years since I started working in
-the Combustion Diagnostics Laboratory and it remains unclear to me what you saw in the 20 year old me.
-I will be eternally grateful for your faith to take a chance on me as a research student.
-The last seven years have been by turns painful, exciting, and triumphant,
-and your consistent and constant guidance has been more than any student could hope to
-have. There are no words to express my gratitude, so a simple ``thank you''
-will have to do.
+The first thanks must go to my advisor, Professor Chih-Jen Sung. It has
+now been seven years since I started working in the Combustion Diagnostics
+Laboratory and I will be eternally grateful for his faith to take a
+chance on me as a research student. His consistent and constant guidance
+has been more than any student could hope to have. There are no words to
+express my gratitude, so a simple ``thank you'' will have to do.
 
 My committee members Professors Baki Cetegen, Michael Renfro, Tianfeng
 Lu, and Kamal Kumar deserve many thanks, first for reading this beast of
 a dissertation, but primarily for providing guidance and the opportunity
 to learn from them.
 
-A graduate student would be sunk without the support of the staff who
-\textit{actually} run the department, so to Kelly, Laurie, Jackie, Tina,
-and Emily, a million thank yous! Peter Glaude and Jim Olney in the machine
-shop have helped immensely with the design and fabrication of the experiments
-conducted here, often on a very tight schedule.
-
-I need to give hearty thanks to my colleagues in the Combustion Diagnostics
-Laboratory, Optical Diagnostics Laboratory, and Combustion and Gas
-Dynamics Laboratory, including Dr. Kyle Niemeyer, Kyle Brady, Nick Curtis, Xiao Ren, Justin
-Bunnell, Pradeep Singh, Goutham Kukkadapu, Kathryn Gosselin, George Lapaan,
-Jason Wagner, Bikram Roy Chowdhury, Martin Hawron, Marc Schneider, Dr. Xin Hui,
-Dr. Apurba Das, Prof. Gaurav Mittal and Dr. Matthew Deans, for advice,
+I need to give hearty thanks to my friends and colleagues,
+including Dr. Kyle Niemeyer, Kyle Brady, Dr. Xin Hui,
+Dr. Apurba Das, Goutham Kukkadapu, Nick Curtis, Xiao Ren, Justin
+Bunnell, Pradeep Singh, Kathryn Gosselin, George Lapaan,
+Jason Wagner, Bikram Roy Chowdhury, Martin Hawron, Marc Schneider,
+Prof. Gaurav Mittal and Dr. Matthew Deans, for advice,
 help, and just generally being awesome people.
 
 My parents and family have provided all of the support I have needed in
-the many years this process has taken.
+the many years this process has taken. Their love, generosity, and the
+occasional hot meal have encouraged me when I needed it and always comforted.
+I am also blessed that my mother is an editor and that she was willing to read this
+dissertation.
+
+A graduate student would be sunk without the support of the staff who
+\textit{actually} run the department, so to Kelly, Laurie, Jackie, Tina,
+and Emily, a million thank yous! Peter Glaude and Jim Olney in the machine
+shop have helped immensely with the design and fabrication of several of
+the experiments conducted here, often on a very tight schedule.
+
+Of course, the work has to be funded somehow---this work was supported as
+part of the Combustion Energy Frontier Research Center, an Energy Frontier
+Research Center funded by the U.S. Department of Energy, Office of Science,
+Office of Basic Energy Sciences under Award Number DE-SC0001198.
+
+And leaving the best to the end, my wonderful fiancée Ali. You have helped
+and inspired me through every step of this process, from the stress of
+qualifiers, during the doldrums in the mid-Ph.D. stage, and finally through
+the last push to finish everything. You have an amazing reservoir of patience
+that never seems to be exhausted. You are the best thing that has ever
+happened to me and you amaze me every day. I love you.
+
+\noindent Thank you everyone.\\
+BWW\\
+June 23, 2014
 
 \cleardoublepage
+\topskip0pt
+\vspace*{\fill}
+{\large\hfill\textit{To Ali}}
+\vspace*{\fill}
+\cleardoublepage
+
+\begin{singlespace}
 \phantomsection
 \tableofcontents
 
@@ -146,6 +169,7 @@ the many years this process has taken.
 \cleardoublepage
 \phantomsection
 \listoftables
+\end{singlespace}
 
 \cleardoublepage
 \setcounter{page}{1}
@@ -194,8 +218,8 @@ the many years this process has taken.
 \makeatletter
 \addappheadtotoc
 \addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
-\titleformat{\chapter}[display]{\normalfont\Huge\bfseries}{Appendix \thechapter}{0.7em}{}
-\titlecontents{section}[1em]{}{Appendix \thecontentslabel\quad}{}{\titlerule*[0.5pc]{.}\contentspage}
+% \titleformat{\chapter}[display]{\normalfont\Huge\bfseries}{Appendix \thechapter}{0.7em}{}
+% \titlecontents{section}[1em]{}{Appendix \thecontentslabel\quad}{}{\titlerule*[0.5pc]{.}\contentspage}
 \xpatchcmd{\Hy@org@chapter}{{toc}{chapter}}{{toc}{section}}{}{}%
 \makeatother
 \crefalias{chapter}{appchap}
@@ -232,7 +256,7 @@ This appendix contains the code for `pysens`. `pysens` is a Python wrapper
 for sensitivity analysis in CHEMKIN-Pro. This program runs a brute
 force, one-at-a-time sensitivity analysis of the ignition delay for a
 given mechanism. It was used to conduct the sensitivity analyses in
-\cref{chap:peoh,chap:mch}
+\cref{chap:peoh,chap:mch}.
 
 \blankline
 
