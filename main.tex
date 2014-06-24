@@ -2,7 +2,7 @@
 % arara: biber
 % arara: lualatex: { synctex: on, shell: off }
 % arara: sumatrapdf
-\documentclass[12pt,letterpaper,oneside,final]{book}
+\documentclass[12pt,letterpaper,oneside,final,openany]{book}
 
 % \usepackage{luacode}
 % \edef \user{\directlua{tex.sprint(os.getenv('USERNAME'))}}
@@ -171,7 +171,7 @@ June 23, 2014
 \listoftables
 \end{singlespace}
 
-\cleardoublepage
+% \cleardoublepage
 \setcounter{page}{1}
 \pagenumbering{arabic}
 

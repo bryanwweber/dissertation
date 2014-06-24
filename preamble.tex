@@ -4,9 +4,28 @@
 %Load graphicx here to specify options
 \usepackage[final]{graphicx}
 
+%Various math improvements.
+%Must be loaded before hyperref
+\usepackage{mathtools}
+
 %Set the document font
-\usepackage[no-math]{fontspec}
-\setmainfont[Ligatures=TeX]{Times New Roman}
+%Set the math font. Has to come after mathtools because
+%some font stuff gets overwritten.
+\usepackage{unicode-math}
+\unimathsetup{math-style=TeX}
+% \setmathfont[range=\mathup/{num}]{Times New Roman}
+% \setmathfont[range=\mathit/{greek,Greek,latin,Latin}]{Cambria Math}
+% \setmathfont[range=\mathup/{greek,Greek,latin,Latin}]{Cambria Math}
+% \setmathfont[range={"2212,"002B,"003D,"0028,"0029,"005B,"005D,"221A,
+% "2211,"2248,"222B,"007C,"2026,"2202,"00D7,"0302,"2261,"0025,"22C5,
+% "00B1,"2194,"21D4,"2260}]
+% {Cambria Math}
+\setmainfont{TeX Gyre Termes}
+\setmathfont{TeX Gyre Termes Math}
+% \setmonofont{TeX Gyre Cursor}
+
+% \usepackage[no-math]{fontspec}
+% \setmainfont[Ligatures=TeX]{Times New Roman}
 \setmonofont{Inconsolata}
 
 %Set the text to double spacing
@@ -156,22 +175,6 @@
 %Use the subfigure package
 \usepackage{subfig}
 
-%Various math improvements.
-%Must be loaded before hyperref
-\usepackage{mathtools}
-
-%Set the math font. Has to come after mathtools because
-%some font stuff gets overwritten.
-\usepackage{unicode-math}
-\unimathsetup{math-style=TeX}
-\setmathfont[range=\mathup/{num}]{Times New Roman}
-\setmathfont[range=\mathit/{greek,Greek,latin,Latin}]{Cambria Math}
-\setmathfont[range=\mathup/{greek,Greek,latin,Latin}]{Cambria Math}
-\setmathfont[range={"2212,"002B,"003D,"0028,"0029,"005B,"005D,"221A,
-"2211,"2248,"222B,"007C,"2026,"2202,"00D7,"0302,"2261,"0025,"22C5,
-"00B1,"2194,"21D4,"2260}]
-{Cambria Math}
-
 %Better looking fonts
 \usepackage[final]{microtype}
 
@@ -180,7 +183,7 @@
 
 %Allow landscape rotated figures and captions.
 \usepackage{afterpage}
-% \usepackage{rotating}
+\usepackage{rotating}
 \usepackage{pdflscape}
 
 %Set the root path where figures are stored.
