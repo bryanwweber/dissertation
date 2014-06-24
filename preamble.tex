@@ -132,7 +132,7 @@
 \usepackage{booktabs}
 
 %Set up todo notes in the PDF file
-\usepackage{todonotes}
+% \usepackage{todonotes}
 
 %Use and set up the caption package for nicer captions.
 \usepackage{caption}
@@ -153,8 +153,6 @@
 \newlength{\mylen} % a "scratch" length
 \settowidth{\mylen}{\bfseries\cftchappresnum\cftchapaftersnum} % extra space
 \addtolength{\cftchapnumwidth}{\mylen} % add the extra space
-
-\usepackage[version=3]{mhchem}
 
 % \usepackage{titlesec}
 % \usepackage{titletoc}
@@ -194,6 +192,7 @@
     \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}
 }
 
+%Add a dummy command for previously highlighted text
 \newcommand*{\hl}[1]{#1}%
 
 %Use and set up the siunitx package for nice units printing.
@@ -209,6 +208,9 @@
 \DeclareSIUnit\atmosphere{atm}
 \DeclareSIUnit\torr{Torr}
 \DeclareSIUnit\inch{in}
+
+%Add the \ce command to easily specify chemicals
+\usepackage[version=3]{mhchem}
 
 %Declare convenience macros for printing the
 %names of the alcohols.
