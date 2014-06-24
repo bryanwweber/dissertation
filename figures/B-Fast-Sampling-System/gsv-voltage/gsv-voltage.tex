@@ -25,6 +25,7 @@
     xlabel={Time, \si{\milli\second}},
     ylabel={Voltage, \si{\volt}},
     cycle list name=voltage,
+    /tikz/line join=bevel,
 ]
 \addplot+[restrict x to domain=0:10.30] table[y=Sample] {run-1.txt};
 \addplot+[restrict x to domain=0:10.30] table[y=Sample] {run-2.txt};

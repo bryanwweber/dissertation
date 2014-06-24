@@ -7,10 +7,10 @@
 \begin{document}
 \begin{tikzpicture}
 \begin{axis}[
-    ylabel={Intensity, A.U.},
+    ylabel={Intensity, A.U. $\times 10^{-4}$},
     xlabel={Time, \si{\minute}},
     table/x index={0},
-    table/y index={1},
+    table/y expr=\thisrowno{1}*1E-4,
     every axis plot/.append style={
         no markers,
     },
@@ -24,10 +24,10 @@
     xmin=8, xmax=40,
     minor x tick num=4,
     minor y tick num=4,
-    ymin=-2E3, ymax=5E4,
+    ymin=-0.2, ymax=5,
     every axis legend/.append style={
         % font = \scriptsize,
-        at = {(axis cs:12,4.9E4)},
+        at = {(axis cs:12,4.9)},
         anchor = north west,
     },
     cycle list name=tic,

@@ -29,7 +29,15 @@
 \addplot table[x index={8} , y index={9} ] {pressure-traces.csv};
 \addplot table[x index={10}, y index={11}] {pressure-traces.csv};
 \legend{{Case 1}, {Case 2}, {Case 3}, {Case 4}, {Case 5}, {Non-reactive}}
-\node[anchor=north west,align=left] at (axis cs:-18,17) {$P_0=\SI{0.7079}{\bar}$\\$T_0=\SI{295}{\kelvin}$\\$P_C=\SI{12}{\bar}$\\$T_C=\SI{755}{\kelvin}$};
+\node[anchor=north west] at (axis cs:-18,19) {
+\begin{minipage}{2cm}
+\begin{align*}
+P_0&=\SI{0.7079}{\bar}\\
+T_0&=\SI{295}{\kelvin}\\
+P_C&=\SI{12}{\bar}\\
+T_C&=\SI{755}{\kelvin}\\
+\end{align*}
+\end{minipage}};
 \end{axis}
 \end{tikzpicture}
 \end{document}
