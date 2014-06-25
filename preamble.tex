@@ -11,8 +11,11 @@
 %Set the document font
 %Set the math font. Has to come after mathtools because
 %some font stuff gets overwritten.
-\usepackage{unicode-math}
-\unimathsetup{math-style=TeX}
+
+% Uncomment the following lines to use Times New Roman for text and numbers
+% and Cambria Math for math fonts
+% \usepackage{unicode-math}
+% \unimathsetup{math-style=TeX}
 % \setmathfont[range=\mathup/{num}]{Times New Roman}
 % \setmathfont[range=\mathit/{greek,Greek,latin,Latin}]{Cambria Math}
 % \setmathfont[range=\mathup/{greek,Greek,latin,Latin}]{Cambria Math}
@@ -20,12 +23,18 @@
 % "2211,"2248,"222B,"007C,"2026,"2202,"00D7,"0302,"2261,"0025,"22C5,
 % "00B1,"2194,"21D4,"2260}]
 % {Cambria Math}
-\setmainfont{TeX Gyre Termes}
-\setmathfont{TeX Gyre Termes Math}
-% \setmonofont{TeX Gyre Cursor}
-
-% \usepackage[no-math]{fontspec}
 % \setmainfont[Ligatures=TeX]{Times New Roman}
+
+% Uncomment the following lines to use TeX Gyre Termes for text and math
+% fonts. This is very similar to Times and was used for the "official"
+% versions of the thesis.
+% \usepackage{unicode-math}
+% \unimathsetup{math-style=TeX}
+% \setmainfont{TeX Gyre Termes}
+% \setmathfont{TeX Gyre Termes Math}
+
+
+% Always use Inconsolata for the monospaced font.
 \setmonofont{Inconsolata}
 
 %Better looking fonts
