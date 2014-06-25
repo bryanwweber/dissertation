@@ -47,11 +47,25 @@
 % \usepackage[no-math]{fontspec}
 % \setmainfont{Linux Libertine O}
 
+% Uncomment the following lines to use Charis SIL for the text and math
+% fonts.
+% \usepackage[charter]{mathdesign}  % sets the math font
+% \usepackage[no-math]{fontspec}
+% \setmainfont[
+    % Extension = .ttf,
+    % BoldFont = CharisSIL-B,
+    % BoldItalicFont = CharisSIL-BI,
+    % ItalicFont = CharisSIL-I,
+% ]{CharisSIL-R}          % sets the document font
+
 % Always use Inconsolata for the monospaced font.
 \setmonofont{Inconsolata}
 
 %Better looking fonts
 \usepackage[final]{microtype}
+
+% Load the CharisSIL options for microtype.
+% \LoadMicrotypeFile{CharisSIL}
 
 %Set the text to double spacing
 %According to hyperref README,
