@@ -1295,6 +1295,21 @@ initial mole fraction of the MCH sampling experiments.
 \SI{5}{\milli\liter} of the sample is withdrawn into the same gas-tight
 syringe as used in \cref{sec:rsa-procedure} and injected into the GC/MS.
 
+\begin{table}
+\caption{Parameters used by the automatic integrator in Shimadzu GCMS Post-Run Analysis}
+\label{tab:gcms-integrate}
+\begin{tabular}{lr}
+\toprule
+Name & Value\\
+\midrule
+Peak Slope Threshold & Automatically Determined\\
+Minimum Peak Width & \SI{3}{\second}\\
+Smoothing Method & Savitzky-Golay\\
+Smoothing Width & 11 points\\
+\bottomrule
+\end{tabular}
+\end{table}
+
 After the completion of the GC/MS method for both the calibration experiments
 and the sampling experiments, the TIC is analyzed by the
 Shimadzu GCMS Post-run Analysis software. Each peak is automatically
@@ -1312,20 +1327,5 @@ factor may be used for several species to reduce the number of calibration
 curves that are required. In this study, the structures of MCH and the
 methylcyclohexene isomers are expected to have similar response factors,
 so the same calibration curve is used to quantify those species.
-
-\begin{table}
-\caption{Parameters used by the automatic integrator in Shimadzu GCMS Post-Run Analysis}
-\label{tab:gcms-integrate}
-\begin{tabular}{lr}
-\toprule
-Name & Value\\
-\midrule
-Peak Slope Threshold & Automatically Determined\\
-Minimum Peak Width & \SI{3}{\second}\\
-Smoothing Method & Savitzky-Golay\\
-Smoothing Width & 11 points\\
-\bottomrule
-\end{tabular}
-\end{table}
 
 \end{document}
