@@ -36,10 +36,10 @@
 % Uncomment the following lines to use TeX Gyre Pagella for text and math
 % fonts. This is the font that was used for printing my personal bound
 % copies of the thesis.
-\usepackage{unicode-math}
-\unimathsetup{math-style=TeX}
-\setmainfont{TeX Gyre Pagella}
-\setmathfont{TeX Gyre Pagella Math}
+% \usepackage{unicode-math}
+% \unimathsetup{math-style=TeX}
+% \setmainfont{TeX Gyre Pagella}
+% \setmathfont{TeX Gyre Pagella Math}
 
 % Uncomment the following lines to use Linux Libertine for text and math
 % fonts.
@@ -58,6 +58,16 @@
     % ItalicFont = CharisSIL-I,
 % ]{CharisSIL-R}          % sets the document font
 
+% Uncomment the following for Iwona sans-serif fonts
+% \usepackage[math]{iwona}
+% \usepackage[no-math]{fontspec}
+% \setmainfont{Iwona}
+
+\usepackage[sfmath]{kpfonts}
+\renewcommand*\familydefault{\sfdefault}
+\usepackage[T1]{fontenc}
+
+\usepackage[no-math]{fontspec}
 % Always use Inconsolata for the monospaced font.
 \setmonofont{Inconsolata}
 

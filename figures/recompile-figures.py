@@ -32,18 +32,18 @@ class cd:
         # for a in d:
             # out.write(os.path.join(dir,a)+'\n')
 
-# with open('figures-to-redo.txt','r') as inputfile:
-    # lines = inputfile.readlines()
+with open('figures-to-redo.txt','r') as inputfile:
+    lines = inputfile.readlines()
 
-# lines = [line.strip() for line in lines]
+lines = [line.strip() for line in lines]
 # print(lines)
-# for line in lines:
+for line in lines:
 # line = lines[0]
-    # l = line.split('/')[1]
-    # with cd(line):
-        # print(line,os.path.isfile(l+'.tex'))
-        # call(['lualatex', l])
-        # shutil.copyfile(l+'.pdf','../'+l+'.pdf')
+    l = line.split('/')[1]
+    with cd(line):
+        print(line,os.path.isfile(l+'.tex'))
+        call(['lualatex', l])
+        shutil.copyfile(l+'.pdf','../'+l+'.pdf')
 # for dir in dirs:
     # with cd(dir):
 dirs = [
@@ -54,27 +54,27 @@ dirs = [
     '05-MCH/mch-model-3',
     '05-MCH/mch-pressure',
 ]
-# with cd(dirs[0]):
-    # call(['lualatex','nbuoh-skeletal'])
-    # call(['lualatex','nbuoh-skeletal'])
-    # shutil.copyfile('nbuoh-skeletal.pdf','../nbuoh-skeletal.pdf')
+with cd(dirs[0]):
+    call(['lualatex','nbuoh-skeletal'])
+    call(['lualatex','nbuoh-skeletal'])
+    shutil.copyfile('nbuoh-skeletal.pdf','../nbuoh-skeletal.pdf')
     
-    # call(['lualatex','sbuoh-skeletal'])
-    # call(['lualatex','sbuoh-skeletal'])
-    # shutil.copyfile('sbuoh-skeletal.pdf','../sbuoh-skeletal.pdf')
+    call(['lualatex','sbuoh-skeletal'])
+    call(['lualatex','sbuoh-skeletal'])
+    shutil.copyfile('sbuoh-skeletal.pdf','../sbuoh-skeletal.pdf')
     
-    # call(['lualatex','tbuoh-skeletal'])
-    # call(['lualatex','tbuoh-skeletal'])
-    # shutil.copyfile('tbuoh-skeletal.pdf','../tbuoh-skeletal.pdf')
+    call(['lualatex','tbuoh-skeletal'])
+    call(['lualatex','tbuoh-skeletal'])
+    shutil.copyfile('tbuoh-skeletal.pdf','../tbuoh-skeletal.pdf')
     
-    # call(['lualatex','ibuoh-skeletal'])
-    # call(['lualatex','ibuoh-skeletal'])
-    # shutil.copyfile('ibuoh-skeletal.pdf','../ibuoh-skeletal.pdf')
+    call(['lualatex','ibuoh-skeletal'])
+    call(['lualatex','ibuoh-skeletal'])
+    shutil.copyfile('ibuoh-skeletal.pdf','../ibuoh-skeletal.pdf')
 
-# with cd(dirs[1]):
-    # call(['lualatex','ipeoh-skeletal'])
-    # call(['lualatex','ipeoh-skeletal'])
-    # shutil.copyfile('ipeoh-skeletal.pdf','../ipeoh-skeletal.pdf')
+with cd(dirs[1]):
+    call(['lualatex','ipeoh-skeletal'])
+    call(['lualatex','ipeoh-skeletal'])
+    shutil.copyfile('ipeoh-skeletal.pdf','../ipeoh-skeletal.pdf')
 
 for dir in dirs[2:4]:
     l = dir.split('/')[1]
