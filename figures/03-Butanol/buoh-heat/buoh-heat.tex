@@ -33,7 +33,7 @@
     ytick={0,5,10,15},
     minor y tick num=4,
     every axis legend/.append style={
-        at={(axis cs:70,3.5)},
+        at={(axis cs:68,3.5)},
         anchor=north west,
     },
 ]
@@ -57,7 +57,7 @@
     ylabel={Cumulative Heat Release, \si{\joule\per\centi\meter\cubed}},
     xlabel={Fuel Conversion, \si{\percent}},
     /tikz/every node/.append style={
-        font=\footnotesize,
+        font=\scriptsize,
     },
 ]
 \addplot table[x index={0}, y index={1}] {buoh-heat-inset.txt};

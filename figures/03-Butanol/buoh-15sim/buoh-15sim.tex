@@ -36,7 +36,7 @@
     minor x tick num=4,
     minor y tick num=8,
     legend style={
-        at={(axis cs:1.28,125)},
+        at={(axis cs:1.26,125)},
         anchor=north west,
     },
     axis x line*=bottom,
@@ -57,7 +57,7 @@
 \addplot table[y=Vpro] {sbuoh.txt};
 \addplot table[y=Vpro] {nbuoh.txt};
 \legend{{[red]\textit{t}-butanol},{[blue]\textit{i}-butanol},{[darkgreen]\textit{s}-butanol},{[violet]\textit{n}-butanol}}
-\node[anchor=south west,text width=3.6cm] at (axis cs:1.28,125) {Symbols: Experiments Solid Lines: Simulations};
+\node[anchor=south west,text width=3.8cm] at (axis cs:1.26,125) {Symbols: Experiments Solid Lines: Simulations};
 \end{semilogyaxis}
 \deflisttick{700,750,...,900}{10}
 \edef\temp{%
