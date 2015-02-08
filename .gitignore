@@ -9,3 +9,6 @@
 *.blg
 *.lot
 *.lof
+*.fdb_latexmk
+*.fls
+*.pdf
