@@ -1,15 +1,17 @@
-% arara: lualatex
 \documentclass{standalone}
-\usepackage{mathtools}
-\usepackage{unicode-math}
-\unimathsetup{math-style=TeX}
-\setmainfont{TeX Gyre Pagella}
-\setmathfont{TeX Gyre Pagella Math}
+
+\input{../../font-choice}
+
 \usepackage[version=3]{mhchem}
 \usepackage{chemfig}
 \setatomsep{2.25em}
 \usetikzlibrary{positioning, calc, arrows.meta}
-\tikzset{flux/.style={right, align=left}}
+\tikzset{
+    flux/.style={
+        right,
+        align=left,
+    },
+}
 \usepackage{siunitx}
 \sisetup{detect-all=true}
 \newcommand*{\flux}[3]{\SI{#1}{\percent}\\\textbf{\SI{#2}{\percent}}\\\textit{\SI{#3}{\percent}}}

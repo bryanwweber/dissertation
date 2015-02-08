@@ -1,10 +1,7 @@
-% arara: lualatex
 \documentclass{standalone}
-\usepackage{mathtools}
-\usepackage{unicode-math}
-\unimathsetup{math-style=TeX}
-\setmainfont{TeX Gyre Pagella}
-\setmathfont{TeX Gyre Pagella Math}
+
+\input{../../font-choice}
+
 \usepackage[version=3]{mhchem}
 \usepackage{chemfig}
 \setatomsep{2.25em}
@@ -31,9 +28,9 @@
 \sisetup{detect-all=true}
 
 \begin{document}
-    \begin{tikzpicture}[x=1cm, y=1cm]
+    \begin{tikzpicture}[x=1cm, y=1cm, remember picture]
         \begin{scope}[every node/.style={node distance=0.25}]
-            \node (sbuoh) {\chemfig{-[:30](-[2]OH)-[:330]-[:30]}};
+            \node (sbuoh) {\chemfig{-[:30]@{center carbon}(-[2]OH)-[:330]-[:30]}};
             \node[below right=0 and 0 of sbuoh] (asbuoh) {\chemfig{-[:30]\lewis{0.,C}(-[2]OH)-[:330]-[:30]}};
             \node[below=of asbuoh] (b1sbuoh) {\chemfig{-[:30](-[2]OH)-[:330]\lewis{0.,CH}-[:30]}};
             \node[below=of b1sbuoh] (gsbuoh) {\chemfig{-[:30](-[2]OH)-[:330]-[:30]\lewis{0.,CH}}};
@@ -44,14 +41,14 @@
         \end{scope}
 
         \begin{scope}[every path/.style={draw, ultra thick, >={Stealth}}]
-            \path[->] let \p1 = (sbuoh.south), \p2 = (osbuoh.south) in (\x1,\y1) -- (\x1,\y2) coordinate (lineend);
-            \path[->, shorten >=-15] ($(sbuoh.south)!(asbuoh.170)!(lineend)$) -- (asbuoh.170) [flux={fluxabove=52.1, fluxbelow=51.8}];
-            \path[->, shorten >=-15] ($(sbuoh.south)!(b1sbuoh.170)!(lineend)$) -- (b1sbuoh.170) [flux={fluxabove=14.8, fluxbelow=14.8}];
-            \path[->, shorten >=-15] ($(sbuoh.south)!(gsbuoh.170)!(lineend)$) -- (gsbuoh.170) [flux={fluxabove=13.6, fluxbelow=13.7}];
-            \path[->, shorten >=-15] ($(sbuoh.south)!(b2sbuoh.170)!(lineend)$) -- (b2sbuoh.170) [flux={fluxabove=14.2, fluxbelow=14.2}];
-            \path[->, shorten >=-15] ($(sbuoh.south)!(osbuoh.170)!(lineend)$) -- (osbuoh.170) [flux={fluxabove=5.3, fluxbelow=5.5}];
+            \path[->] let \p1 = (center carbon |- sbuoh.south), \p2 = (osbuoh.south) in (\x1,\y1) coordinate (linestart) -- (\x1,\y2) coordinate (lineend);
+            \path[->, shorten >=-15] ($(linestart)!(asbuoh.170)!(lineend)$) -- (asbuoh.170) [flux={fluxabove=52.1, fluxbelow=51.8}];
+            \path[->, shorten >=-15] ($(linestart)!(b1sbuoh.170)!(lineend)$) -- (b1sbuoh.170) [flux={fluxabove=14.8, fluxbelow=14.8}];
+            \path[->, shorten >=-15] ($(linestart)!(gsbuoh.170)!(lineend)$) -- (gsbuoh.170) [flux={fluxabove=13.6, fluxbelow=13.7}];
+            \path[->, shorten >=-15] ($(linestart)!(b2sbuoh.170)!(lineend)$) -- (b2sbuoh.170) [flux={fluxabove=14.2, fluxbelow=14.2}];
+            \path[->, shorten >=-15] ($(linestart)!(osbuoh.170)!(lineend)$) -- (osbuoh.170) [flux={fluxabove=5.3, fluxbelow=5.5}];
             \coordinate (midline) at ($(asbuoh.east)!0.4!(sbuohalde.west)$);
-            \path[->] let \p1 = (sbuoh.south), \p2 = (midline), \p3 = (gsbuoh.south) in (\x2,\y1) -- (\x2,\y3) coordinate (midlineend);
+            \path[->] let \p1 = (linestart), \p2 = (midline), \p3 = (gsbuoh.south) in (\x2,\y1) -- (\x2,\y3) coordinate (midlineend);
             \path[->] ($(midline)!(sbuohalde.west)!(midlineend)$) -- (sbuohalde.west) [flux={fluxabove=99.5, fluxbelow=99.4, position=0.4}];
             \path[->] ($(midline)!(asbuohoo.west)!(midlineend)$) -- (asbuohoo.west) [flux={fluxabove=0.4, fluxbelow=0.5, position=0.4}];
             \path[->] ($(asbuoh.10)-(0.5,0)$) -- ($(midline)!(asbuoh.10)!(midlineend)$) node[above, pos=0.4] {$+$\ce{O2}};
