@@ -36,10 +36,10 @@
 % Uncomment the following lines to use TeX Gyre Pagella for text and math
 % fonts. This is the font that was used for printing my personal bound
 % copies of the thesis.
-% \usepackage{unicode-math}
-% \unimathsetup{math-style=TeX}
-% \setmainfont{TeX Gyre Pagella}
-% \setmathfont{TeX Gyre Pagella Math}
+\usepackage{unicode-math}
+\unimathsetup{math-style=TeX}
+\setmainfont[Numbers={Lining,Proportional}]{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
 
 % Uncomment the following lines to use Linux Libertine for text and math
 % fonts.
@@ -63,11 +63,11 @@
 % \usepackage[no-math]{fontspec}
 % \setmainfont{Iwona}
 
-\usepackage[sfmath]{kpfonts}
-\renewcommand*\familydefault{\sfdefault}
-\usepackage[T1]{fontenc}
+% \usepackage[sfmath]{kpfonts}
+% \renewcommand*\familydefault{\sfdefault}
+% \usepackage[T1]{fontenc}
 
-\usepackage[no-math]{fontspec}
+% \usepackage[no-math]{fontspec}
 % Always use Inconsolata for the monospaced font.
 \setmonofont{Inconsolata}
 
@@ -231,7 +231,7 @@
 \usepackage{pdflscape}
 
 %Set the root path where figures are stored.
-\graphicspath{ {/home/bryan/dissertation/figures/} }
+\graphicspath{ {figures/} }
 
 %Set a convenience command for table cells that allow line breaks.
 \newcommand{\linebreakcell}[2][c]{%
@@ -245,32 +245,37 @@
 \usepackage{siunitx}
 \sisetup{%
     group-separator = {,},
-    range-phrase = {\text{ to }},
-    list-separator = {\text{, }},
-    list-final-separator = {\text{, and }},
-    list-pair-separator = {\text{ and }},
+    list-separator = {{, }},
+    list-final-separator = {{, and }},
+    list-pair-separator = {{ and }},
+    forbid-literal-units=true,
 }%
-\DeclareSIUnit\calorie{cal}
-\DeclareSIUnit\atmosphere{atm}
-\DeclareSIUnit\torr{Torr}
-\DeclareSIUnit\inch{in}
+% \DeclareSIUnit\calorie{cal}
+% \DeclareSIUnit\atmosphere{atm}
+% \DeclareSIUnit\torr{Torr}
+% \DeclareSIUnit\inch{in}
 
 %Add the \ce command to easily specify chemicals
 \usepackage[version=3]{mhchem}
 
+\usepackage{hyphenat}
+\hyphenation{hyd-roxy-butyl-per-oxy}
+
 %Declare convenience macros for printing the
 %names of the alcohols.
-\newcommand{\iPeOH}{\textit{i}-pentanol}
-\newcommand{\nBuOH}{\textit{n}-butanol}
-\newcommand{\sBuOH}{\textit{s}-butanol}
-\newcommand{\tBuOH}{\textit{t}-butanol}
-\newcommand{\iBuOH}{\textit{i}-butanol}
+\newcommand{\iPeOH}{\textit{i}\hyp{}pentanol}
+\newcommand{\nBuOH}{\textit{n}\hyp{}butanol}
+\newcommand{\sBuOH}{\textit{s}\hyp{}butanol}
+\newcommand{\tBuOH}{\textit{t}\hyp{}butanol}
+\newcommand{\iBuOH}{\textit{i}\hyp{}butanol}
+
 
 %The floatrow package allows multiple floats in a row
 %and is set so that table captions are on top of the
 %table.
 \usepackage{floatrow}
 \floatsetup[table]{style=plaintop}
+\DeclareFloatSeparators{littlesep}{\hskip 2\columnsep}
 
 %Use the titling package to allow easy access to custom title pages
 \usepackage{titling}
@@ -298,8 +303,9 @@
         Author={Bryan W. Weber},
     },
     colorlinks=true,
-    citecolor=blue,
+    citecolor=black,
     linkcolor=black,
+    urlcolor=black,
     plainpages=false,
     final,
 }
@@ -348,8 +354,8 @@
 %According to http://tex.stackexchange.com/a/26592/32374
 %this should go after hyperref
 \usepackage[
-    margin=1in, 
-    letterpaper, 
+    margin=1in,
+    letterpaper,
     head=15pt,
     % showframe,
 ]{geometry}

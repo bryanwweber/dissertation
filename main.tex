@@ -1,14 +1,14 @@
 % arara: lualatex: { synctex: on, shell: off }
 % arara: biber
 % arara: lualatex: { synctex: on, shell: off }
-% arara: sumatrapdf
+%! arara: sumatrapdf
 \documentclass[12pt,letterpaper,oneside,final,openany]{book}
 
 % \usepackage{luacode}
 % \edef \user{\directlua{tex.sprint(os.getenv('USERNAME'))}}
 
-\input{/home/bryan/dissertation/verbatim_preamble}
-\input{/home/bryan/dissertation/preamble}
+\input{verbatim_preamble}
+\input{preamble}
 
 %Begin the document
 \begin{document}
@@ -254,7 +254,7 @@ The documentation included below is also available on the Web at
 %Pysens code
 \chapter{pysens}
 \label{app:pysens}
-This appendix contains the code for `pysens`. `pysens` is a Python wrapper
+This appendix contains the code for \verb|pysens|. \verb|pysens| is a Python wrapper
 for sensitivity analysis in CHEMKIN-Pro. This program runs a brute
 force, one-at-a-time sensitivity analysis of the ignition delay for a
 given mechanism. It was used to conduct the sensitivity analyses in
