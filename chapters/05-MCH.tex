@@ -49,7 +49,7 @@ added to the mixing tank manometrically at room temperature.
 Three different mixtures of MCH/\ce{O2}/\ce{N2}/Ar are prepared in this study, as
 outlined in \cref{tab:mch-props}. These mixtures (denoted as Mix \#1--3) match the mixtures
 prepared in our previous work with MCH in the RCM \cite{Mittal2009}. The equivalence ratios
-corresponding to Mix \#1--3 are $\phi=\numlist{1.0;0.5;1.5}$, respectively.
+corresponding to Mix \#1--3 are $\phi=$ \numlist{1.0;0.5;1.5}, respectively.
 As in the previous RCM experiments, the mole fraction of MCH is held constant
 and the mole fraction of \ce{O2} is varied to adjust the equivalence ratio. This
 experimental design allows these data to be used to validate chemical kinetic
@@ -126,9 +126,9 @@ The negative temperature coefficient (NTC) region is an important feature of
 low temperature ignition where the ignition delay time increases with
 increasing temperature. The NTC region of the overall ignition delay is
 evident in \cref{fig:mch-expts} for the $\phi=\num{1.5}$ case (Mix \#3) and
-approximately includes the temperature range of $T_C=\SIrange{775}{840}{\kelvin}$. For
+approximately includes the temperature range of $T_C=$ \SIrange{775}{840}{\kelvin}. For
 $\phi=\num{1.5}$, first stage ignition is evident for conditions in the range of
-$T_C=\SIrange{740}{800}{\kelvin}$.
+$T_C=$ \SIrange{740}{800}{\kelvin}.
 
 For $\phi=\num{1.0}$ (Mix \#1), the NTC region of the overall ignition delay could
 not be completely resolved. Only three conditions in the low temperature region
@@ -157,8 +157,8 @@ mole fraction constant increases the reactivity.
 
 The pressure profiles for six experiments with Mix \#2 ($\phi=0.5$) are shown
 in \cref{fig:mch-sample}---the orange trace is the representative non-reactive
-experiment. The abscissa is normalized time, where 1 is the
-first stage ignition and 2 is the overall ignition. The time until the
+experiment. The abscissa is normalized time, where \num{1} is the
+first stage ignition and \num{2} is the overall ignition. The time until the
 first-stage ignition---including the time prior to EOC---is normalized
 by the first-stage ignition delay. The time after the first-stage ignition
 is normalized by the second-stage ignition delay, which is defined as
@@ -187,7 +187,7 @@ The absolute and normalized sampling times are shown in \cref{tab:mch-sample}.
 
 \begin{table}
 \caption{Absolute and normalized sampling times for the MCH experiments.
-Normalized times of 1 and 2 represent the first-stage and overall ignition
+Normalized times of \num{1} and \num{2} represent the first-stage and overall ignition
 delays respectively.}
 \label{tab:mch-sample}
 \begin{tabular}{lSS}
@@ -269,7 +269,7 @@ addition, a comparison of the experimentally measured overall ignition delays
 (lines) is shown in \cref{fig:mch-model-1-over,fig:mch-model-2-over,,%Comma necessary to avoid compression
 fig:mch-model-3-over}. The experiments include the new work being
 presented here at $P_C=\SI{50}{\bar}$ in addition to the previous RCM experiments at
-$P_C=\SIlist{15.1;25.5}{\bar}$ \cite{Mittal2009}. The simulations are of
+$P_C=$ \SIlist{15.1;25.5}{\bar} \cite{Mittal2009}. The simulations are of
 the VPRO type. For some computational cases, substantial heat release during
 the compression stroke caused the computed pressure to depart from the
 non-reactive profile prior to EOC. Therefore, these cases are not shown in
@@ -386,14 +386,14 @@ ignition, although two-stage ignition is not observed experimentally.
     \floatsetup[subfigure]{floatrowsep=none}
     \ffigbox{%
         \begin{subfloatrow}[3]
-            \ffigbox
-                {\includegraphics[height=5.35cm]{05-MCH/mch-pressure-1}}
+            \ffigbox[\FBwidth]
+                {\includegraphics[height=5.335cm]{05-MCH/mch-pressure-1}}
                 {\caption{Mix \#1}\label{fig:mch-pressure-1}}
-            \ffigbox
-                {\includegraphics[height=5.35cm]{05-MCH/mch-pressure-2}}
+            \ffigbox[\FBwidth]
+                {\includegraphics[height=5.335cm]{05-MCH/mch-pressure-2}}
                 {\caption{Mix \#2}\label{fig:mch-pressure-2}}
-            \ffigbox
-                {\includegraphics[height=5.35cm]{05-MCH/mch-pressure-3}}
+            \ffigbox[\FBwidth]
+                {\includegraphics[height=5.335cm]{05-MCH/mch-pressure-3}}
                 {\caption{Mix \#3}\label{fig:mch-pressure-3}}
         \end{subfloatrow}
     }
@@ -409,13 +409,13 @@ ignition, although two-stage ignition is not observed experimentally.
 The current mechanism is also compared to shock tube ignition delays from the
 studies of \textcite{Vasu2009} and \textcite{Vanderover2009}. Those studies
 considered the autoignition of stoichiometric mixtures of MCH with \ce{O2}/\ce{N2}
-air. The comparison is shown in \cref{fig:mch-shocks} for the near \SI{50}{atm}
+air. The comparison is shown in \cref{fig:mch-shocks} for the near \SI{50}{\atmosphere}
 data from those studies. Note that the experimental data shown are the raw
 data and are not scaled to a constant pressure, whereas the simulated
-ignition delays are at a constant initial pressure of \SI{50}{atm}. It can be seen
+ignition delays are at a constant initial pressure of \SI{50}{\atmosphere}. It can be seen
 that the ignition delays are over-predicted over nearly the entire temperature
 range of \SIrange{795}{1160}{\kelvin} studied. Nevertheless, the predicted ignition delays are
-within approximately a factor of 1.5 of the experiments, indicating good
+within approximately a factor of \num{1.5} of the experiments, indicating good
 agreement overall and a substantial improvement from the previous version of
 the model. Furthermore, the simulations shown here are of the CONV type and
 do not account for any facility dependent effects present in the experiments.
@@ -443,7 +443,7 @@ ignition delays demonstrating the effect of this update is shown in
         \ffigbox
             {\includegraphics[width=7.9cm]{05-MCH/mch-shocks}}
             {\caption{Comparison of the present model with the experiments from
-                \textcite{Vasu2009} and \textcite{Vanderover2009} near \SI{50}{atm}
+                \textcite{Vasu2009} and \textcite{Vanderover2009} near \SI{50}{\atmosphere}
                 and for stoichiometric mixtures in \ce{O2}/\ce{N2} air.}
             \label{fig:mch-shocks}}
         \ffigbox
@@ -562,7 +562,11 @@ of each species.
 
 \begin{figure}
     \includegraphics[width=\textwidth]{05-MCH/mch-path}
-    \caption{Path analysis of MCH combustion. Initial conditions are 25.5 bar
+    \caption[Path analysis of MCH combustion. Initial conditions are \SI{25.5}{\bar}
+    and Mix \#1 ($\phi=\num{1.0}$) and \SI{700}{\kelvin} (plain text),
+    \SI{800}{\kelvin} (bold text), \SI{900}{\kelvin} (italic text).
+    Note that not all possible reaction pathways are shown for
+    each\newline species.]{Path analysis of MCH combustion. Initial conditions are \SI{25.5}{\bar}
     and Mix \#1 ($\phi=\num{1.0}$) and \SI{700}{\kelvin} (plain text),
     \SI{800}{\kelvin} (bold text), \SI{900}{\kelvin} (italic text).
     Note that not all possible reaction pathways are shown for
@@ -578,7 +582,7 @@ equivalent to sites 6 and 5, respectively, so mchr2 and mchr3 have close to
 double the production rate compared to the other radicals. It is interesting to
 note that the production of mchr2, mchr3, and mchr4 increase as the initial
 temperature increases and the production of mchr1 and cychexch2 decrease to
-compensate. However, the change is small, no more than 2 percentage points for
+compensate. However, the change is small, no more than \num{2} percentage points for
 each radical.
 
 The most important second step is oxygen addition (i.e.\ formation of ROO) at
@@ -849,7 +853,7 @@ improve the high-temperature agreement will not significantly change the
 agreement at lower temperature. In particular, the MCH+\ce{HO2} rate constants
 have not been measured or calculated to our knowledge and are based
 on acyclic alkane rate constants \cite{Aguilera-Iparraguirre2008}. They have uncertainties of at
-least a factor of 2 and as much as a factor of 10 based on the work
+least a factor of \num{2} and as much as a factor of \num{10} based on the work
 of \textcite{Aguilera-Iparraguirre2008}. Increasing these rate constants
 would improve the agreement with the experimental ignition data at
 \SI{900}{\kelvin} in the RCM and shock tube. Experimental measurements
@@ -860,8 +864,8 @@ reduce this uncertainty in the rate constants.
 
 In this study, new experimental data are collected for methylcyclohexane
 autoignition in a heated RCM. Following the work
-of \textcite{Mittal2009}, three mixtures of MCH/\ce{O2}/\ce{N2}/Ar at equivalence
-ratios of $\phi=\numlist{0.5;1.0;1.5}$ are used and the ignition delays
+of \textcite{Mittal2009}, three mixtures of MCH/\ce{O2}/\ce{N2}/\allowbreak Ar at equivalence
+ratios of $\phi=$ \numlist{0.5;1.0;1.5} are used and the ignition delays
 are measured at compressed pressure of \SI{50}{\bar}, for compressed
 temperatures in the range of \SIrange{690}{900}{\kelvin}. Two-stage
 ignition phenomena are reported for the stoichiometric and rich

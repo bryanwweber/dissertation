@@ -84,7 +84,7 @@ The pressure on the front of the pneumatic piston pulls the
 piston assembly rearward and seats the rear of the
 hydraulic piston onto an O-ring in the rear of the
 hydraulic chamber. The hydraulic chamber is filled with oil to
-a pressure of approximately \SI{800}{psi}, providing a rearward force on the
+a pressure of approximately \SI{800}{\psi}, providing a rearward force on the
 front face of the hydraulic piston. The air pressure is released from
 the front of the pneumatic chamber and the driving tank is filled to
 the desired driving pressure. The
@@ -118,8 +118,8 @@ of the pneumatic piston, and $d_r$ is the diameter of the reactor piston.
 
 The minimum driving pressure is such that the piston does not rebound at
 the EOC due to pressure on the reactor piston. Because the diameter ratio of
-the reactor piston to the driver piston is 2:5, this allows the driving pressure
-to be lower than the EOC pressure by a factor of 6.25. The actual driving
+the reactor piston to the driver piston is $2:5$, this allows the driving pressure
+to be lower than the EOC pressure by a factor of \num{6.25}. The actual driving
 pressure should exceed the minimum by some safety margin so that the
 reactor remains at constant volume even if there is some pressure rise
 due to heat release in the reaction chamber prior to the main ignition.
@@ -143,8 +143,8 @@ The gases in the reaction chamber are brought to the compressed pressure ($P_C$)
 compressed temperature ($T_C$) conditions in approximately
 \SIrange{30}{50}{\milli\second}, with the final \SI{50}{\percent} of
 the pressure rise occurring in approximately the last \SI{5}{\milli\second}.
-Typical driving gas pressures are between \SI{50}{psi} for $P_C = \SI{15}{\bar}$ experiments
-to  \SI{125}{psi} for $P_C = \SI{50}{\bar}$ experiments. These driving pressures represent a
+Typical driving gas pressures are between \SI{50}{\psi} for $P_C = \SI{15}{\bar}$ experiments
+to  \SI{125}{\psi} for $P_C = \SI{50}{\bar}$ experiments. These driving pressures represent a
 good compromise between the minimum required for no rebound at EOC due
 to pressure in the reactor and no rebound at EOC due to elastic reaction.
 
@@ -250,7 +250,7 @@ ensure well-defined conditions in the reactor at the EOC.
     \label{fig:ig-delay-def}
 \end{figure}
 
-Each unique $P_C$ and $T_C$ condition is repeated at least 5 times to
+Each unique $P_C$ and $T_C$ condition is repeated at least \num{5} times to
 ensure repeatability of the experiments. The experiment closest to the
 mean of the runs at a particular condition is chosen for analysis and
 presentation. The standard deviation of all of the runs at a particular
@@ -647,7 +647,7 @@ to control the process temperature. This is $\pm\SI{0.05}{\kelvin}$.
 The largest expected total uncertainty of the initial temperature is:
 %
 \begin{align}
-U_{T_0} = \sqrt{\left(B_{T_0}\right)^2 + \left(R_{T_0}\right)^2} = \sqrt{\left(\SI{3}{K}\right)^2 + \left(\SI{0.05}{K}\right)^2} = \SI{3}{\kelvin}
+U_{T_0} = \sqrt{\left(B_{T_0}\right)^2 + \left(R_{T_0}\right)^2} = \sqrt{\left(\SI{3}{\kelvin}\right)^2 + \left(\SI{0.05}{\kelvin}\right)^2} = \SI{3}{\kelvin}
 \end{align}
 
 \subsubsection{Uncertainty in Initial Pressure}
@@ -657,8 +657,8 @@ The bias uncertainty in the initial pressure is due to the
 standard error in the pressure transducer used to measure
 the initial pressure. Two different pressure transducers have
 been used in this study; the first, an Omega Engineering PX-303
-(range: \SIrange{0}{50}{psia}), has a full scale uncertainty of \SI{1.25}{\percent}, or
-$\pm \SI{0.625}{psi} \ (\SI{4309.2}{\pascal})$. The second transducer is an
+(range: \SIrange{0}{50}{\psia}), has a full scale uncertainty of \SI{1.25}{\percent}, or
+$\pm \SI{0.625}{\psi} \ (\SI{4309.2}{\pascal})$. The second transducer is an
 Omega Engineering MMA100V10T2D0T4A6 type (range: \SIrange{0}{5200}{\torr}) and was
 purchased because preliminary results of this uncertainty analysis
 indicated that the largest contributor to the uncertainty of $T_C$ was
@@ -673,7 +673,7 @@ is negligible compared to the standard error in the pressure transducers.
 
 The precision uncertainty is due to the limit of precision of the display
 on the Omega Engineering DP41-B process meter used to monitor the initial
-pressure. This is $\pm\SI{0.005}{\torr} \ (\SI{0.666}{\pascal})$. The total
+pressure. This is $\pm\SI{0.005}{\torr}$ $(\SI{0.666}{\pascal})$. The total
 uncertainty of the initial pressure is:
 %
 \begin{subequations}
@@ -821,8 +821,8 @@ this uncertainty analysis. The results shown below use the
 uncertainty associated with the PX-303-type pressure transducer because
 this transducer was used for all of the experiments with alcohol fuels.
 
-Applying \cref{eq:tc-unc} to typical conditions of $P_0 = \SIrange{500}{760}{\torr}$,
-$T_0=\SIrange{300}{400}{\kelvin}$, and $P_C=\SIrange{15}{30}{\bar}$ yields
+Applying \cref{eq:tc-unc} to typical conditions of $P_0 =$ \SIrange{500}{760}{\torr},
+$T_0=$ \SIrange{300}{400}{\kelvin}, and $P_C=$ \SIrange{15}{30}{\bar} yields
 a maximum uncertainty of approximately \SIrange{2}{3}{\percent} of the
 compressed temperature $T_C$.
 
@@ -845,8 +845,8 @@ analysis. The results shown below use the uncertainty associated with
 the MMA-type pressure transducer because this transducer was used for
 all of the experiments with MCH.
 
-Applying \cref{eq:tc-unc} to typical conditions of $P_0 = \SIrange{500}{1520}{\torr}$,
-$T_0=\SIrange{300}{400}{\kelvin}$, and $P_C=\SIrange{15.1}{50}{\bar}$ yields
+Applying \cref{eq:tc-unc} to typical conditions of $P_0 =$ \SIrange{500}{1520}{\torr},
+$T_0=$ \SIrange{300}{400}{\kelvin}, and $P_C=$ \SIrange{15.1}{50}{\bar} yields
 a maximum uncertainty of approximately \SI{1}{\percent} of the
 compressed temperature $T_C$.
 
@@ -863,7 +863,7 @@ chamber quenches the reactions, and the products can be removed to an
 analysis system.
 
 The design of Mittal \cite{Mittal2007, Mittal2006a} used an electromagnet
-to hold the puncture rod in the retracted position agains the force of a
+to hold the puncture rod in the retracted position against the force of a
 spring in compression. At the designated sampling time, the
 power to the electromagnet was switched off and the spring force thrust
 the puncture rod forward through the diaphragm. This system was prone to
@@ -915,7 +915,7 @@ rapid sampling apparatus.}
 
 The EOC pressure is limited by the pressure that the diaphragm can withstand
 before rupture. For the polyester-film diaphragm (thickness: \SI{0.003}{\inch})
-used in this work, the maximum EOC pressure is approximately 15 bar; to allow
+used in this work, the maximum EOC pressure is approximately \SI{15}{\bar}; to allow
 for cases with pressure rise prior to the main ignition event, an EOC pressure
 near \SI{12}{\bar} is chosen for the studies in this work. A higher EOC pressure
 is possible with stronger diaphragms; however, the stronger diaphragms are more
@@ -1237,7 +1237,7 @@ Head Pressure & \SI{182.5}{\kilo\pascal}\\
 Column Flow Rate & \SI{1.00}{\milli\liter\per\minute}\\
 Purge Flow Rate & \SI{3.0}{\milli\liter\per\minute}\\
 Linear Velocity & \SI{19.9}{\centi\meter\per\second}\\
-Split Ratio & 100 : 1\\
+Split Ratio & $100 : 1$\\
 \midrule
 Column Temperature & \SI{50}{\degreeCelsius} for \SI{40}{\minute}\\
 Injector Temperature & \SI{200}{\degreeCelsius}\\
@@ -1249,7 +1249,7 @@ Data Acquisition Start Time & \SI{8}{\minute}\\
 Ionization Voltage & \linebreakcell{\SI{0.73}{\kilo\volt} for \SI{8.9}{\minute};\\\SI{0.83}{\kilo\volt} for \SI{31.1}{\minute}}\\
 Scan Interval & \SI{0.11}{\second}\\
 Scan Range & \SIrange{10}{150}{\dalton}\\
-MS Intensity Threshold & 100 \\
+MS Intensity Threshold & \num{100} \\
 \bottomrule
 \end{tabular}
 \end{table}

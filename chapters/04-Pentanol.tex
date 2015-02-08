@@ -15,11 +15,11 @@
             \toprule
             Compound & Ethanol \cite{Afeefy2014} & \textit{i}-Pentanol \cite{Afeefy2014} & Gasoline \cite{Davis2013} \\
             \midrule
-            HHV [\si[per-mode=symbol]{\mega\joule\per\kilo\gram}] & 29.67 & 37.73 & 48.46 \\
+            HHV [\si[per-mode=symbol]{\mega\joule\per\kilo\gram}] & $29.67$ & $37.73$ & $48.46$ \\
             \bottomrule
         \end{tabular}}
         \ffigbox[\FBwidth]
-            {\includegraphics[width=5cm]{04-Pentanol/ipeoh-skeletal}}
+            {\includegraphics[width=4cm]{04-Pentanol/ipeoh-skeletal}}
             {\caption{Skeletal structure of \iPeOH{}}
             \label{fig:ipeoh-skeletal}}
     \end{floatrow}
@@ -55,11 +55,11 @@ of the mixture.
 \begin{table}
     \caption{\iPeOH{} Experimental Conditions}
     \label{tab:ipeoh-expts}
-    \begin{tabular}{*{5}{c}}
+    \begin{tabular}{*{5}{S}}
     \toprule
     \multicolumn{3}{c}{Reactant (Purity)} & \multirow{3}[0]{*}{\linebreakcell{Equivalence \\ Ratio \\ $\phi$}} & \multirow{3}[0]{*}{\linebreakcell{Compressed \\ Pressure \\ $P_C$ (bar)}} \\
     \cmidrule{1-3}
-    \linebreakcell{\iPeOH{} \\ (\SI{99.6}{\percent})} & \linebreakcell{\ce{O2} \\ (\SI{99.994}{\percent})} & \linebreakcell{\ce{N2} \\ (\SI{99.999}{\percent})} & & \\
+    {\linebreakcell{\iPeOH{} \\ (\SI{99.6}{\percent})}} & {\linebreakcell{\ce{O2} \\ (\SI{99.994}{\percent})}} & {\linebreakcell{\ce{N2} \\ (\SI{99.999}{\percent})}} & & \\
     \cmidrule{1-3}
     \multicolumn{3}{c}{Mole Percentage}   & & \\
     \midrule
@@ -97,7 +97,7 @@ improvements are highlighted below; see the article for more detail
 \item The bond dissociation energies (BDEs) of the of the C-C, C-H, C-O, and O-H bonds were calculated
       using quantum chemistry software
 \item The model includes the Waddington pathway shown to be important in
-      low-temperature decomposition of \iPeOH{} by \textcite{Welz2012}
+      low\hyp{}temperature decomposition of \iPeOH{} by \textcite{Welz2012}
 \item New reaction pathways were added based on the work of \textcite{Welz2012,
       Welz2013}, including the unconventional water-elimination pathway discussed
       in \textcite{Welz2013}
@@ -180,9 +180,9 @@ lines represent volume-profile simulations.
 \end{figure}
 
 At \SI{7}{\atmosphere} (\cref{fig:ipeoh-7bar}), the high-temperature ignition delays
-measured in the ST are generally predicted to within a factor of 1.5. The RCM experiments
-are also well predicted at low temperature---within a factor of 2---but
-the disagreement grows to approximately a factor of 4 in the
+measured in the ST are generally predicted to within a factor of \num{1.5}. The RCM experiments
+are also well predicted at low temperature---within a factor of \num{2}---but
+the disagreement grows to approximately a factor of \num{4} in the
 intermediate temperature regime. At \SI{20}{\atmosphere} (\cref{fig:ipeoh-20bar}), the
 high-temperature ignition delays are well predicted, including
 capturing the equivalence ratio sensitivity of the ignition delays.
@@ -250,7 +250,7 @@ conditions they are too slow.
 The sensitivity of the ignition delay to changes in the reaction rate
 coefficients is shown in \cref{fig:ipeoh-20sens} for a constant volume,
 adiabatic simulation at \SI{20}{\atmosphere}, \SI{800}{\kelvin}, and for
-equivalence ratios varying from $\phi=\numrange{0.5}{2.0}$. The percent
+equivalence ratios varying from $\phi=$ \numrange{0.5}{2.0}. The percent
 sensitivity is computed by the formula:
 %
 \begin{align}
@@ -342,7 +342,7 @@ conditions, which warrants further investigation.
 \clearpage
 \begin{landscape}
 \begin{figure}
-    \includegraphics[width=0.89\textwidth]{04-Pentanol/ipeoh-20path}
+    \includegraphics[width=0.89\textwidth]{04-Pentanol/ipeoh-20path-tex}
     \caption{Reaction path analysis for \iPeOH{} at \SI{800}{\kelvin},
     \SI{20}{\atmosphere}, and three equivalence ratios, based on
     constant-volume adiabatic simulations. Plain text: $\phi=0.5$.
@@ -379,7 +379,7 @@ of \textcite{Welz2012}.
 \label{sec:ipeoh-conclusions}
 
 New experimental ignition delay data have been collected in an RCM at
-conditions of \SI{40}{\atmosphere}, $\phi=\numrange{0.5}{2.0}$, and
+conditions of \SI{40}{\atmosphere}, $\phi=$ \numrange{0.5}{2.0}, and
 temperatures below \SI{800}{\kelvin}. The measured pressure histories
 showed interesting behavior of slow initial pressure rise prior to a
 sharp pressure rise indicating overall ignition. This pressure rise

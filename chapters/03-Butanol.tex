@@ -13,24 +13,28 @@
         \toprule
         Compound & Ethanol \cite{Afeefy2014} & Butanol Isomers \cite{Afeefy2014} & Gasoline \cite{Davis2013} \\
         \midrule
-        HHV [\si[per-mode = symbol]{\mega\joule\per\kilo\gram}] & 29.67 & $\approx 36$ & 48.46 \\
+        HHV [\si[per-mode = symbol]{\mega\joule\per\kilo\gram}] & $29.67$ & $\approx 36$ & $48.46$ \\
         \bottomrule
     \end{tabular}
 \end{table}
 
+\thisfloatsetup{subfloatrowsep=littlesep}
 \begin{figure}[!ht]
     \ffigbox{%
         \begin{subfloatrow}[4]
-            \ffigbox
+            \ffigbox[\FBwidth]
                 {\includegraphics[width=3cm]{03-Butanol/nbuoh-skeletal}}%
                 {\caption{\nBuOH{}}\label{fig:nbuoh-skeletal}}%
-            \ffigbox
+            \subfloatrowsep
+            \ffigbox[\FBwidth]
                 {\includegraphics[width=3cm]{03-Butanol/sbuoh-skeletal}}%
                 {\caption{\sBuOH{}}\label{fig:sbuoh-skeletal}}%
-            \ffigbox
-                {\includegraphics[height=2.5cm]{03-Butanol/tbuoh-skeletal}}%
+            \subfloatrowsep
+            \ffigbox[\FBwidth]
+                {\includegraphics[height=2.6cm]{03-Butanol/tbuoh-skeletal}}%
                 {\caption{\tBuOH{}}\label{fig:tbuoh-skeletal}}%
-            \ffigbox
+            \subfloatrowsep
+            \ffigbox[\FBwidth]
                 {\includegraphics[width=3cm]{03-Butanol/ibuoh-skeletal}}%
                 {\caption{\iBuOH{}}\label{fig:ibuoh-skeletal}}%
         \end{subfloatrow}
@@ -82,10 +86,10 @@ reactant in the mixture, the absolute mass of fuel, the equivalence ratio
 ($\phi$), and the oxidizer ratio ($X_{O_2}:X_{\mathrm{inert}}$, where $X$
 indicates mole fraction) are specified. \textit{s}- and \textit{i}-Butanol are
 liquid at room temperature and have relatively low vapor pressure; therefore,
-each is massed in a syringe to within \SI{0.01}{g} of the specified
-value. \textit{t}-Butanol is solid at room temperature (melting point: \SI{25}{\celsius}),
+each is massed in a syringe to within \SI{0.01}{\gram} of the specified
+value. \textit{t}-Butanol is solid at room temperature (melting point: \SI{25}{\degreeCelsius}),
 and is melted before being handled in the same procedure as the other fuels.
-The \SI{17}{\liter} mixing tank is vacuumed to an ultimate pressure less than \SI{5}{Torr} prior
+The \SI{17}{\liter} mixing tank is vacuumed to an ultimate pressure less than \SI{5}{\torr} prior
 to the injection of the liquid fuel through a septum. Proportions of \ce{O2} and
 \ce{N2} are added manometrically at room temperature. The preheat temperature of
 the RCM is set above the saturation point for each fuel to ensure complete
@@ -110,17 +114,18 @@ regions not covered extensively in previous work. In addition, the fuel loading
 conditions have been chosen to complement previous work; the studies by
 \textcite{Stranic2012} and \textcite{Moss2008} used relatively dilute mixtures,
 so we have included higher fuel loading conditions. Furthermore, the compressed
-temperature conditions we have studied ($T_C=\SIrange{715}{910}{\kelvin}$) have not been examined
+temperature conditions we have studied ($T_C=$ \SIrange{715}{910}{\kelvin}) have not been examined
 in any other study, to our knowledge.
 
 \begin{table}
+    \setlength{\tabcolsep}{4.5pt}
     \caption{Experimental Conditions and Reactant Purities}
     \label{tab:buoh-expts}
-    \begin{tabular}{*{7}{c}}
+    \begin{tabular}{*{7}{S}}
     \toprule
     \multicolumn{5}{c}{Reactant (Purity)} & \multirow{3}[0]{*}{\linebreakcell{Equivalence \\ Ratio \\ $\phi$}} & \multirow{3}[0]{*}{\linebreakcell{Compressed \\ Pressure \\ $P_C$ (bar)}} \\
     \cmidrule{1-5}
-    \linebreakcell{\sBuOH{} \\ (\SI{99.99}{\percent})} & \linebreakcell{\iBuOH{} \\ (\SI{99.99}{\percent})} & \linebreakcell{\tBuOH{} \\ (\SI{99.99}{\percent})} & \linebreakcell{\ce{O2} \\ (\SI{99.999}{\percent})} & \linebreakcell{\ce{N2} \\ (\SI{99.995}{\percent})} & & \\
+    {\linebreakcell{\sBuOH{} \\ (\SI{99.99}{\percent})}} & {\linebreakcell{\iBuOH{} \\ (\SI{99.99}{\percent})}} & {\linebreakcell{\tBuOH{} \\ (\SI{99.99}{\percent})}} & {\linebreakcell{\ce{O2} \\ (\SI{99.999}{\percent})}} & {\linebreakcell{\ce{N2} \\ (\SI{99.995}{\percent})}} & & \\
     \cmidrule{1-5}
     \multicolumn{5}{c}{Mole Percentage}   & & \\
     \midrule
@@ -164,8 +169,8 @@ this temperature and pressure range. \textit{t}-Butanol is the least reactive.
 
 The order of reactivity found in the RCM at \SI{15}{\bar} agrees with the ST
 study at higher temperatures (approximately \SIrange{1275}{1667}{\kelvin}) and lower pressure
-(\SI{1.5}{atm}) by \textcite{Stranic2012} but differs slightly from the studies of
-\textcite{Moss2008} who measured ignition delays in a ST near \SI{1.5}{atm}
+(\SI{1.5}{\atmosphere}) by \textcite{Stranic2012} but differs slightly from the studies of
+\textcite{Moss2008} who measured ignition delays in a ST near \SI{1.5}{\atmosphere}
 and between \SIrange{1275}{1400}{\kelvin}, and \textcite{Veloo2011a} who measured
 atmospheric-pressure laminar flame speeds. In particular, \textcite{Moss2008}
 and \textcite{Veloo2011a} found distinct differences in reactivity between
@@ -188,7 +193,7 @@ and \nBuOH{} to be the most reactive. Interestingly, the results of
 the ST study by \textcite{Stranic2012} differ from those in the current
 study at higher pressure, despite the agreement at lower pressure. In their
 study, \textcite{Stranic2012} found \textit{i}- and \nBuOH{} to have
-similar reactivity near \SI{43}{atm} in the temperature range of \SIrange{1020}{1280}{\kelvin},
+similar reactivity near \SI{43}{\atmosphere} in the temperature range of \SIrange{1020}{1280}{\kelvin},
 whereas in the present study we find \iBuOH{} to be the least
 reactive of all four isomers at a pressure of \SI{30}{\bar} and over the temperature
 range (\SIrange{715}{910}{\kelvin}) investigated.
@@ -253,7 +258,7 @@ response for any \tBuOH{} experiments. Therefore, we adopt the phrase
 
 In an effort to understand the reactions causing the pre-ignition heat release,
 further experiments are conducted for \tBuOH{} at $P_C=\SI{30}{\bar}$, for
-equivalence ratios of 0.5 and 2.0 in air. \Cref{fig:tbuoh-delays} shows
+equivalence ratios of \numlist{0.5;2.0} in air. \Cref{fig:tbuoh-delays} shows
 Arrhenius plots of the ignition delays for the three equivalence ratios. As
 with the previous \nBuOH{} experiments at \SI{15}{\bar} \cite{Weber2011}
 $\phi=\num{0.5}$ is the least reactive and $\phi=\num{2.0}$ is the most reactive. The
@@ -298,13 +303,13 @@ fraction, where higher fuel loading promotes pre-ignition heat release.
 \label{sec:ibuoh-ignition}
 
 The experimental ignition delays of \iBuOH{} measured at
-$P_C=\SIlist{15;30}{\bar}$ and $\phi=0.5$ in oxygen/nitrogen air are shown in
+$P_C=$ \SIlist{15;30}{\bar} and $\phi=0.5$ in oxygen/nitrogen air are shown in
 \cref{fig:ibuoh-expts}. The error bars are equal to twice the standard
 deviation of all the runs at that condition. The lines are curve fits to
 the data. The circles represent the \SI{15}{\bar} data, while the
 squares represent the \SI{30}{\bar} data. Also shown in
 \cref{fig:ibuoh-expts} are the experimental ignition delays presented in
-\cref{sec:buoh-expts} at $\phi=1.0$ and $P_C=\SIlist{15;30}{\bar}$. The
+\cref{sec:buoh-expts} at $\phi=1.0$ and $P_C=$ \SIlist{15;30}{\bar}. The
 $\phi=0.5$ cases are shown in blue and the $\phi=1.0$ cases are shown in
 red.
 
@@ -326,8 +331,8 @@ measured for two other isomers of butanol, \nBuOH{} \cite{Weber2011} and
 \end{figure}
 
 \Cref{fig:ibuoh-15o2expt,fig:ibuoh-30o2expt} show the ignition delays of
-\iBuOH{} at three equivalence ratios $\phi=\numlist{0.5;1.0;2.0}$ and
-$P_C=\SIlist{15;30}{\bar}$ respectively. In these figures, the equivalence
+\iBuOH{} at three equivalence ratios $\phi=$ \numlist{0.5;1.0;2.0} and
+$P_C=$ \SIlist{15;30}{\bar} respectively. In these figures, the equivalence
 ratio is varied by holding the initial fuel mole fraction constant and
 varying the oxygen and nitrogen mole fractions. The ignition delay
 of \iBuOH{} depends strongly on the initial oxygen mole fraction, similar
@@ -363,7 +368,7 @@ Other recent mechanisms, such as the mechanism from
 therefore unable to reproduce the low-temperature ignition delays measured in
 this study. The study by \textcite{Sarathy2012} validated their model for a
 wide set of the existing experimental data. In terms of ignition delays, this
-included the data from the study of \textcite{Stranic2012} up to \SI{48}{atm}, our
+included the data from the study of \textcite{Stranic2012} up to \SI{48}{\atmosphere}, our
 previous study on \nBuOH{} \cite{Weber2011}, and the data being
 published in this study at \SI{15}{\bar}. Importantly, the mechanism of
 \textcite{Sarathy2012} was validated only for the \SI{15}{\bar} RCM data for all four
@@ -380,7 +385,7 @@ the \sBuOH{} results are under-predicted at high temperature and
 over-predicted at low temperature. While the model of \textcite{Sarathy2012} is
 able to well capture the overall activation energy of \iBuOH{}, it
 under-predicts the experimental data by about a factor of \numrange{2}{3}. The
-\nBuOH{} data are over-predicted by a factor of about 1.5.
+\nBuOH{} data are over-predicted by a factor of about \num{1.5}.
 Nevertheless, this agreement is quite good, especially considering that the
 model is not validated for these conditions.
 
@@ -554,14 +559,14 @@ are the \SI{15}{\bar} case and the bold numbers underneath are for the \SI{30}{\
 \begin{figure}
     \begin{floatrow}
     \ffigbox
-        {\includegraphics[width=7.9cm]{03-Butanol/buoh-npath}}
+        {\includegraphics[width=7.9cm]{03-Butanol/buoh-npath-tex}}
         {\caption{Pathway analysis for simulations of \nBuOH{} at
             temperature of \SI{750}{\kelvin}, in stoichiometric air, using the mechanism of
             \textcite{Sarathy2012}. Percentages in normal text represent an
             initial condition of \SI{15}{\bar}; bold text is for \SI{30}{\bar}.}
         \label{fig:buoh-npath}}
     \ffigbox
-        {\includegraphics[width=7.9cm]{03-Butanol/buoh-spath}}
+        {\includegraphics[width=7.9cm]{03-Butanol/buoh-spath-tex}}
         {\caption{Pathway analysis for simulations of \sBuOH{} at
             temperature of \SI{750}{\kelvin}, in stoichiometric air, using the mechanism of
             \textcite{Sarathy2012}. Percentages in normal text represent an
@@ -571,14 +576,14 @@ are the \SI{15}{\bar} case and the bold numbers underneath are for the \SI{30}{\
     \par
     \begin{floatrow}
     \ffigbox
-        {\includegraphics[width=7.9cm]{03-Butanol/buoh-tpath}}
+        {\includegraphics[width=7.9cm]{03-Butanol/buoh-tpath-tex}}
         {\caption{Pathway analysis for simulations of \tBuOH{} at
             temperature of \SI{750}{\kelvin}, in stoichiometric air, using the mechanism of
             \textcite{Sarathy2012}. Percentages in normal text represent an
             initial condition of \SI{15}{\bar}; bold text is for \SI{30}{\bar}.}
         \label{fig:buoh-tpath}}
     \ffigbox
-        {\includegraphics[width=7.9cm]{03-Butanol/buoh-ipath}}
+        {\includegraphics[width=7.9cm]{03-Butanol/buoh-ipath-tex}}
         {\caption{Pathway analysis for simulations of \iBuOH{} at
             temperature of \SI{750}{\kelvin}, in stoichiometric air, using the mechanism of
             \textcite{Sarathy2012}. Percentages in normal text represent an
@@ -689,7 +694,7 @@ Other researchers have also undertaken studies of the low to intermediate
 temperature combustion of \tBuOH{}. \textcite{Lefkowitz2012}
 performed a study in the Variable Pressure Flow Reactor (VPFR) at Princeton
 University on the oxidation of \tBuOH{} over the temperature range
-from \SIrange{680}{950}{\kelvin}, at \SI{12.5}{atm} and stoichiometric mixture conditions. It is
+from \SIrange{680}{950}{\kelvin}, at \SI{12.5}{\atmosphere} and stoichiometric mixture conditions. It is
 interesting to note that they found no evidence of traditional hydrocarbon
 low temperature chemistry. They did, however, find significant quantities of
 acetone, peaking at approximately \SI{800}{\kelvin}. \textcite{Lefkowitz2012} concluded
@@ -749,7 +754,7 @@ italics are from a simulation with the Sarathy et al.\ mechanism
 \cite{Sarathy2012}.
 
 \begin{figure}
-    \includegraphics[width=12cm]{03-Butanol/ibuoh-mitpath}
+    \includegraphics[width=12cm]{03-Butanol/ibuoh-mitpath-tex}
     \caption{Path flux diagram for \iBuOH{}/\ce{O2}/\ce{N2}, $\phi=1.0$,
     \SI{810}{\kelvin}, \SI{30}{\bar}. Plain text indicates the MIT
     mechanism \cite{Weber2013a}; italic text indicates the Sarathy et al.\ mechanism
@@ -771,7 +776,7 @@ mechanism than in the MIT mechanism.
 
 However, larger differences between the models are evident in the third level
 of reactcions. In the pathway of the $\beta$-hydroxybutyl radical, the breakdown
-of the $\beta$-hydroxybutylperoxy radical occurs partially via the Waddington
+of the $\beta$\hyp{}hydroxybutylperoxy radical occurs partially via the Waddington
 mechanism to form acetone, formaldehyde and hydroxyl radical (OH) in the
 Sarathy et al.\ mechanism, whereas this pathway is not active in the
 MIT mechanism. This pathway is included in the MIT model but is not
@@ -894,7 +899,7 @@ for \tBuOH{}. To help understand the nature of the pre-ignition heat
 release of \tBuOH{}, studies at off-stoichiometric conditions,
 $\phi=\num{0.5}$ and $\phi=\num{2.0}$ in air, are also conducted. Finally,
 ignition delays are collected for a $\phi=\num{0.5}$ mixture of \iBuOH{}
-in air as well as $\phi=\numlist{0.5;1.0;2.0}$ mixtures where the initial
+in air as well as $\phi=$ \numlist{0.5;1.0;2.0} mixtures where the initial
 fuel mole fraction is held constant.
 
 Comparisons of the experimentally measured ignition delays with two kinetic
