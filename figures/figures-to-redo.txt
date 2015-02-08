@@ -10,6 +10,7 @@
 04-Pentanol/ipeoh-20sens
 04-Pentanol/ipeoh-20bar
 04-Pentanol/ipeoh-phi05
+04-Pentanol/ipeoh-20path
 05-MCH/mch-shocks
 05-MCH/mch-expts
 05-MCH/mch-sample
@@ -19,6 +20,7 @@
 05-MCH/mch-tic
 05-MCH/mch-energy
 05-MCH/mch-mole-fracs
+05-MCH/mch-path
 B-Fast-Sampling-System/gsv-voltage
 B-Fast-Sampling-System/gsv-pressure
 03-Butanol/ibuoh-30air
@@ -45,3 +47,8 @@ B-Fast-Sampling-System/gsv-pressure
 03-Butanol/buoh-heat
 03-Butanol/tbuoh-delays
 03-Butanol/buoh-30sim
+03-Butanol/buoh-ipath
+03-Butanol/buoh-npath
+03-Butanol/buoh-spath
+03-Butanol/buoh-tpath
+03-Butanol/ibuoh-mitpath

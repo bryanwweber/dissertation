@@ -240,53 +240,17 @@
 \def\pgfplots@drawtickgridlines@INSTALLCLIP@onorientedsurf#1{}
 \makeatother
 
-% Copy of relevant parts from the main preamble.
-\usepackage{mathtools}
-
-% Uncomment the following to use Times New Roman and Cambria Math
-% \usepackage{unicode-math}
-% \unimathsetup{math-style=TeX}
-% \setmathfont[range=\mathup/{num}]{Times New Roman}
-% \setmathfont[range=\mathit/{greek,Greek,latin,Latin}]{Cambria Math}
-% \setmathfont[range=\mathup/{greek,Greek,latin,Latin}]{Cambria Math}
-% \setmathfont[range={"2212,"002B,"003D,"0028,"0029,"005B,"005D,"221A,
-% "2211,"2248,"222B,"007C,"2026,"2202,"00D7,"0302,"2261,"0025,"22C5,
-% "00B1,"2194,"21D4,"2032}]
-% {Cambria Math}
-% \setmainfont[Ligatures=TeX]{Times New Roman}
-
-% Uncomment the following to use Linux Libertine
-% \usepackage[libertine]{newtxmath}
-% \usepackage[no-math]{fontspec}
-% \setmainfont{Linux Libertine O}
-
-% Uncomment the following to use TeX Gyre Termes
-% \usepackage{unicode-math}
-% \unimathsetup{math-style=TeX}
-% \setmainfont{TeX Gyre Termes}
-% \setmathfont{TeX Gyre Termes Math}
-
-% Uncomment the following to use TeX Gyre Pagella
-\usepackage{unicode-math}
-\unimathsetup{math-style=TeX}
-\setmainfont{TeX Gyre Pagella}
-\setmathfont{TeX Gyre Pagella Math}
-
-% \usepackage[sfmath]{kpfonts}
-% \renewcommand*\familydefault{\sfdefault}
-% \usepackage[T1]{fontenc}
-
-% \usepackage[no-math]{fontspec}
-% Always use Inconsolata
-\setmonofont{Inconsolata}
-
 \usepackage{siunitx}
 \sisetup{%
     group-separator = {,},
+    list-separator = {{, }},
+    list-final-separator = {{, and }},
+    list-pair-separator = {{ and }},
+    forbid-literal-units=true,
 }%
-\DeclareSIUnit\calorie{cal}
-\DeclareSIUnit\atmosphere{atm}
-\DeclareSIUnit\torr{Torr}
-\DeclareSIUnit\inch{in}
+% \DeclareSIUnit\calorie{cal}
+% \DeclareSIUnit\atmosphere{atm}
+% \DeclareSIUnit\torr{Torr}
+% \DeclareSIUnit\inch{in}
 
-\usepackage{microtype}
+\input{font-choice.tex}
