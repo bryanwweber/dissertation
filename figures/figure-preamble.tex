@@ -1,5 +1,4 @@
-\documentclass[tikz]{standalone}
-\usepackage{pgfplots}
+\documentclass{standalone}
 \usepackage{pgfplotstable}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % The following really long macro should enable nan data in linear regressions
@@ -184,7 +183,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usetikzlibrary{arrows.meta}
 \pgfplotsset{%
-    compat=1.10,
+    compat=1.12,
     width=9cm,
     height=7cm,
     every axis/.append style={
@@ -210,7 +209,7 @@
 \colorlet{darkgreen}{green!60!black}
 
 % Loop to set upper axis to have temperature on Arrhenius plots. Takes
-% two arguments, the first is the list of temperatures at which major 
+% two arguments, the first is the list of temperatures at which major
 % ticks should be plotted, the second is the spacing of the four minor
 % ticks.
 \newcommand{\deflisttick}[2]{
@@ -268,26 +267,22 @@
 % \setmathfont{TeX Gyre Termes Math}
 
 % Uncomment the following to use TeX Gyre Pagella
-% \usepackage{unicode-math}
-% \unimathsetup{math-style=TeX}
-% \setmainfont{TeX Gyre Pagella}
-% \setmathfont{TeX Gyre Pagella Math}
+\usepackage{unicode-math}
+\unimathsetup{math-style=TeX}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
 
-\usepackage[sfmath]{kpfonts}
-\renewcommand*\familydefault{\sfdefault}
-\usepackage[T1]{fontenc}
+% \usepackage[sfmath]{kpfonts}
+% \renewcommand*\familydefault{\sfdefault}
+% \usepackage[T1]{fontenc}
 
-\usepackage[no-math]{fontspec}
+% \usepackage[no-math]{fontspec}
 % Always use Inconsolata
 \setmonofont{Inconsolata}
 
 \usepackage{siunitx}
 \sisetup{%
     group-separator = {,},
-    range-phrase = {\text{ to }},
-    list-separator = {\text{, }},
-    list-final-separator = {\text{, and }},
-    list-pair-separator = {\text{ and }},
 }%
 \DeclareSIUnit\calorie{cal}
 \DeclareSIUnit\atmosphere{atm}

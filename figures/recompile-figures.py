@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 import os
 from subprocess import call
 import shutil
@@ -89,5 +90,5 @@ with cd(dirs[5]):
     call(['lualatex', 'mch-pressure-2'])
     call(['lualatex', 'mch-pressure-3'])
     shutil.copyfile('mch-pressure-1.pdf','../mch-pressure-1.pdf')
-    shutil.copyfile('mch-pressure-1.pdf','../mch-pressure-2.pdf')
-    shutil.copyfile('mch-pressure-1.pdf','../mch-pressure-3.pdf')
+    shutil.copyfile('mch-pressure-2.pdf','../mch-pressure-2.pdf')
+    shutil.copyfile('mch-pressure-3.pdf','../mch-pressure-3.pdf')
