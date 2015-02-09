@@ -1,10 +1,6 @@
 % arara: lualatex
-\input{../../figure-preamble.tex}
+\input{../../figure-preamble}
 \pgfplotscreateplotcyclelist{moles}{
-    % only marks,mark=o,blue\\%
-    % only marks,mark=square,red\\%
-    % only marks,mark=diamond,darkgreen\\%
-    % only marks,mark=triangle,violet\\%
     no markers,blue\\%
     no markers,red\\%
     no markers,darkgreen\\%
@@ -15,16 +11,17 @@
 \begin{axis}[
     table/col sep=comma,
     xmin=-1,xmax=2.5,
-    ylabel={Mole Fraction, \si{ppm}},
+    ylabel={Mole Fraction, \si[per-mode=symbol]{\micro\mole\per\mole}},
     xlabel={Normalized Time},
     cycle list name=moles,
     every mark/.append style={
         mark size=1pt,
     },
     every axis legend/.append style={
-        at={(axis cs:-0.85,500)},
+        at={(axis cs:-0.9,500)},
         anchor=north west,
         font=\footnotesize,
+        name=legend,
     },
     minor y tick num=3,
     minor x tick num=4,
@@ -38,12 +35,14 @@
 \addplot[only marks,mark=square,red,forget plot,error bars/.cd, y fixed relative=0.2,y dir=both,x fixed=0.15,x dir=both,] table[x={Norm. Time}, y={MCH-2}] {norm-expt.csv};
 \addplot[only marks,mark=diamond,darkgreen,forget plot,error bars/.cd, y fixed relative=0.2,y dir=both,x fixed=0.15,x dir=both,] table[x={Norm. Time}, y={MCH-3}] {norm-expt.csv};
 \addplot[only marks,mark=triangle,violet,forget plot,error bars/.cd, y fixed relative=0.2,y dir=both,x fixed=0.15,x dir=both,] table[x={Norm. Time}, y={CYCHEXCH2}] {norm-expt.csv};
-    
+
 \addplot+[restrict x to domain=-1:2.5] table[x={Norm. Time}, y expr={1E6*\thisrow{MCH-1}}] {norm-sim.csv};
 \addplot+[restrict x to domain=-1:2.5] table[x={Norm. Time}, y expr={1E6*\thisrow{MCH-2}}] {norm-sim.csv};
 \addplot+[restrict x to domain=-1:2.5] table[x={Norm. Time}, y expr={1E6*\thisrow{MCH-3}}] {norm-sim.csv};
 \addplot+[restrict x to domain=-1:2.5] table[x={Norm. Time}, y expr={1E6*\thisrow{CYCHEXCH2}}] {norm-sim.csv};
-\node[anchor=south west,align=left,font=\footnotesize] at (axis cs:-0.85,500) {Symbols: Experiments\\Lines: Model};
 \end{axis}
+
+\node[above=0 of legend.north west, anchor=south west, align=left, font=\footnotesize] {Symbols: Experiments\\Lines: Model};
+
 \end{tikzpicture}
 \end{document}
