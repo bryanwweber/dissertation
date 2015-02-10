@@ -69,7 +69,7 @@ with cd(dirs[1]):
     call(tex_command)
     shutil.copyfile('ipeoh-skeletal.pdf','../ipeoh-skeletal.pdf')
 
-for dir in dirs[2:4]:
+for dir in dirs[2:5]:
     l = dir.split('/')[1]
     with cd(dir):
         tex_command[-1:] = [l + '-first']
