@@ -25,6 +25,7 @@
 05-MCH/mch-energy
 05-MCH/mch-mole-fracs
 05-MCH/mch-path
+05-MCH/mch-skeletal
 B-Fast-Sampling-System/gsv-voltage
 B-Fast-Sampling-System/gsv-pressure
 03-Butanol/ibuoh-30air
