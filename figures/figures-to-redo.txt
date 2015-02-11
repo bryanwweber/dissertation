@@ -5,6 +5,7 @@
 02-Experimental-Facilities/gcms-valve-inject
 02-Experimental-Facilities/gcms-valve-load
 02-Experimental-Facilities/gcms-quad
+02-Experimental-Facilities/rcm-photo
 04-Pentanol/ipeoh-7bar
 04-Pentanol/ipeoh-phi10
 04-Pentanol/ipeoh-40bar

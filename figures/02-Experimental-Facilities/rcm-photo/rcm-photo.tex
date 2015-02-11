@@ -1,0 +1,15 @@
+\documentclass[tikz]{standalone}
+
+\input{../../font-choice}
+
+\begin{document}
+\begin{tikzpicture}
+    \node[anchor=south west, inner sep=0] at (0,0) (image) {\includegraphics{rcm-photo.jpg}};
+    \begin{scope}[x={(image.south east)}, y={(image.north west)}, every node/.append style={fill=white, anchor=south west, font=\fontsize{36}{44}\selectfont, align=left, inner sep=2ex}]
+        \node at (0.05,0.89) {Reaction Chamber};
+        \node at (0.305,0.73) {Hydraulic\\Chamber};
+        \node at (0.66,0.645) {Pneumatic\\Chamber};
+        \node at (0.845,0.55) {Driving\\Air\\Tank};
+    \end{scope}
+\end{tikzpicture}
+\end{document}
