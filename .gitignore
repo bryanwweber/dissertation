@@ -13,3 +13,5 @@
 *.fls
 *.pdf
 *.latexmkrc
+*.eps
+
