@@ -8,9 +8,10 @@
     bar width=0.4,
     xmin=-60, xmax=80,
     enlarge y limits=0.1,
-    table/header=false,
+    table/header=true,
     table/y expr=\coordindex,
-    table/meta index={0},
+    table/meta={Reaction},
+    point meta=explicit symbolic,
     ytick=\empty,
     axis y line*=middle,
     title={\textit{i}-Butanol/O$_2$/N$_2$, \SI{30}{\bar}, $\phi=1.0$},
@@ -26,8 +27,8 @@
     },
     area legend,
 ]
-\addplot[blue,fill,draw=none] table[x index={1}] {buoh-sens.txt};
-\addplot[violet,fill,draw=none] table[x index={2}] {buoh-sens.txt};
+\addplot[blue,fill,draw=none] table[x={750-K}] {buoh-sens.txt};
+\addplot[violet,fill,draw=none] table[x={1200-K}] {buoh-sens.txt};
 \legend{{\SI{750}{\kelvin}},{\SI{1200}{\kelvin}}};
 
 \draw[gray,dashed]  (axis cs:-60,0.5) -- (axis cs:80,0.5)
