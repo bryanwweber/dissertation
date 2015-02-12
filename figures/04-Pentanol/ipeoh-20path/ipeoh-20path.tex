@@ -64,7 +64,7 @@
             \node[left=0 of gROO] {$\gamma$ \textbf{\ce{ROO}:}};
             \node[right=2 of gROO] (gaQOOHname) {$\gamma\text{-}\alpha$ \textbf{\ce{QOOH}:}};
             \node[right=0 of gaQOOHname] (gaQOOH) {\chemfig{-[:30]([6,0.75]-O-[:330,0.75]OH)([2]-)-[:330]-[:30]\lewis{0.,CH}-[:330]OH}};
-            \node[below=of gaQOOH] (gascission) {\chemfig[baseline=(d)]{-[:30]@{d}([2]=O)-[:330]} $+$ \chemfig[baseline=(e)]{\lewis{0.,H_2C}-[:30]@{e}=[2]O} $+$ \textbf{\ce{H2O}}};
+            \node[below=2.5 of gaQOOH] (gascission) {\chemfig[baseline=(d)]{-[:30]@{d}([2]=O)-[:330]} $+$ \chemfig[baseline=(e)]{\lewis{0.,H_2C}-[:30]@{e}=[2]O} $+$ \textbf{\ce{H2O}}};
             \node[left=of gascission] (galde) {\chemfig{-[:30]([6,0.75]-O-[:330,0.75]OH)([2]-)-[:330]-[:30]=[:330]O} $+$ \textbf{\ce{HO2}}};
             \node[right=of gascission] (gaqoohoo) {\chemfig{-[:330]([:240,0.75]-O-[4,0.75]OH)([:60]-)-[:330]-[:30](-[2]O-[:30]\lewis{0.,O})-[:330]OH}};
             \node[right=of gaqoohoo, align=center] (gaether) {\chemfig{-[:30](-[2])(-[:30]O?)-[:330]-[:30]?-[:330]OH}\\[\baselineskip]$+$ \textbf{\ce{OH}}};
@@ -87,7 +87,7 @@
             \path[->] let \p1 = (aipeohoo), \p2 = (line2end) in (aipeoh.south) ++(0,-0.75) -| (\x1,\y2);
             \path[->] (oipeoh.south) -- (line2end) coordinate[midway] (flux2);
 
-            \coordinate (line3split) at ($(gQOOH.north)+(0,2)$);
+            \coordinate (line3split) at ($(gQOOH.north)+(0,1.75)$);
             \path[<->] let \p1 = (gQOOH.north), \p2 = (line3split), \p3 = (gscission.north) in (\x1,\y1) -- (\x1,\y2) coordinate[midway] (flux3) -- (\x3,\y2) coordinate[midway] (gipeohoosplit) -- (\x3,\y3);
             \path (gipeohoo.south) -- (gipeohoosplit);
             \path[->] let \p1 = (gROOH.north), \p2 = (line3split) in (\x1,\y2) -- (\x1,\y1);
