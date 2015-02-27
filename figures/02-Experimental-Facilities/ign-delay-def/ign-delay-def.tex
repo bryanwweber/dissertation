@@ -13,8 +13,8 @@
     minor y tick num = 3,
     no markers,
     every axis legend/.append style ={
-        at={(axis cs:-18,50)},
-        anchor = south west,
+        at={(axis cs:-18,75)},
+        anchor = north west,
     },
     table/col sep=comma,
     table/ignore chars={?},
@@ -26,7 +26,15 @@
 \addplot[gray]         table[y index={2}] {definition-of-ign-delay.csv};
 \addplot[red, dashed]  table[y index={3}] {definition-of-ign-delay.csv};
 \legend{{$P(t)$, \si{\bar}},{[gray]$P'(t)$, \si{\bar\per\milli\second}},{[red]$P(t)$ Non-Reactive, \si{\bar}}};
-\node[align=left,anchor=north west] at (axis cs:-18,50) {$T_0=\SI{308}{\kelvin}$\\$P_0=\SI{3.2250}{\bar}$\\$T_C=\SI{761}{\kelvin}$};
+\addlegendimage{empty legend}
+\addlegendentry{}
+\addlegendimage{empty legend}
+\addlegendentry{$T_0 = \SI{308}{\kelvin}$}
+\addlegendimage{empty legend}
+\addlegendentry{$P_0=\SI{3.2250}{\bar}$}
+\addlegendimage{empty legend}
+\addlegendentry{$T_C=\SI{761}{\kelvin}$}
+% \node[align=left,anchor=north west] at (axis cs:-18,50) {$T_0=\SI{308}{\kelvin}$\\$P_0=\SI{3.2250}{\bar}$\\$T_C=\SI{761}{\kelvin}$};
 \draw[semithick,stealth-stealth] (axis cs:0,5) -- (axis cs:4.4,5) node[midway, above] {$\tau_{1}$};
 \draw[semithick,stealth-stealth] (axis cs:0,17) -- (axis cs:5.35,17) node[midway, above] {$\tau$};
 \draw[semithick] (axis cs:0,-5) -- (axis cs:0,20) node[above] {EOC} (axis cs:4.4,-5) -- (axis cs:4.4,7) (axis cs:5.35,-5) -- (axis cs:5.35,20);
