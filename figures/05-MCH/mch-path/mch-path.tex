@@ -8,9 +8,16 @@
 \setatomsep{2.25em}
 \usetikzlibrary{positioning, calc, arrows.meta}
 \tikzset{
-    flux/.style={
+    fluxr/.style={
     right,
     align=left,
+    },
+    fluxl/.style={
+    left,
+    align=right,
+    },
+    fluxc/.style={
+    align=center,
     },
 }
 \newcommand*{\flux}[3]{\SI{#1}{\percent}\\\textbf{\SI{#2}{\percent}}\\\textit{\SI{#3}{\percent}}}
@@ -18,23 +25,65 @@
 \sisetup{detect-all=true}
 
 \begin{document}
-    \begin{tikzpicture}[x=1cm, y=1cm]
+    \begin{tikzpicture}[x=1cm, y=1cm, remember picture]
         \node (mch) {\chemfig{CH_3-[6]*6(------)}};
         \node[below right=0 and 0 of mch] (cychexch2) {\chemfig{{C}|\lewis{0.,H_2}-[6,,1]*6(------)}};
-        \node[below left=-1 and 0 of cychexch2] (cychexch2oo) {\chemfig{\lewis{0.,O}-[6]O-[7]-[6]*6(------)}};
-        \node[below right=0 and 3 of mch] (mchr3) {\chemfig{CH_3-[6]*6(--\lewis{0.,CH}----)}};
-        \node[below right=0 and 0 of mchr3] (mchr3oo) {\chemfig{CH_3-[6]*6(----(-O-[1]\lewis{0.,O})--)}};
-        \node[right=of mchr3] (mchr3s) {\chemfig{H_2C=^-[:60]-(-[:60]CH_3)-[:300]-[:240]\lewis{0.,CH_2}}};
-        \node[below left=0 and 3 of mch] (mchr2) {\chemfig{CH_3-[6]*6(-----\lewis{0.,CH}-)}};
+        \node[below left=-0.5 and 0 of cychexch2] (cychexch2oo) {\chemfig{\lewis{0.,O}-[6]O-[:330]-[6]*6((-[6,,,,draw=none]@{cychexch2oocen})------)}};
+        \node[below right=0.3 and 4 of mch] (mchr3) {\chemfig{CH_3-[6]*6(--\lewis{0.,CH}----)}};
+        \node[below right=0 and 0 of mchr3] (mchr3oo) {\chemfig{CH_3-[6]*6((-[6,,,,draw=none]@{mchr3oocen})----(-O-[1]\lewis{0.,O})--)}};
+        \node[above right=-0.75 and 0.5 of mchr3] (mchr3s) {\chemfig{H_2C=^-[:60]-(-[:60]CH_3)-[:300]-[:240]\lewis{0.,CH_2}}};
+        \node[below left=0.3 and 4 of mch] (mchr2) {\chemfig{CH_3-[6]*6((-[6,,,,draw=none]@{mchr2cen})-----\lewis{0.,CH}-)}};
         \node[above left=-1 and 1 of mchr2, align=center] (cychexene) {\chemfig{\lewis{0.,CH_3}}\\[0.5\baselineskip]$+$\\[0.5\baselineskip]\chemfig{*6(---=--)}};
-        \node[below left=of mchr2] (mchr2oo) {\chemfig{CH_3-[6]*6(-----(-O-[7]\lewis{0.,O})-)}};
-        \node[right=of mchr2] (mchr2s) {\chemfig{H_2C=-[:300](-CH_3)-[:240]-[4]-[:240]\lewis{0.,CH_2}}};
-        \node[above left=0 and 3 of mch] (mchr1) {\chemfig{CH_3-[6]\lewis{0.,C}*6(------)}};
-        \node[left=of mchr1] (mchr1s) {\chemfig{[:15]H_3C-[::300](=[::60]CH_2)-[::-60]-[::60]-[::60]-[::-60]\lewis{0.,CH_2}}};
-        \node[above left=of mchr1] (mchr1oo) {\chemfig{*6(----(-[:120]H_3C)(-[:60]O-[0]\lewis{0.,O})--)}};
+        \node[below left=1 and 0 of mchr2] (mchr2oo) {\chemfig{CH_3-[6]*6((-[6,,,,draw=none]@{mchr2oocen})-----(-O-[7]\lewis{0.,O})-)}};
+        \node[below right=-1 and 0 of mchr2] (mchr2s) {\chemfig{[:330]H_2C=_-[::300](-CH_3)-[::300]-[::300]-[::60]\lewis{0.,H_2C}}};
+        \node[above left=0.3 and 2 of mch] (mchr1) {\chemfig{CH_3-[6]\lewis{0.,C}*6((-[6,,,,draw=none]@{mchr1cen})------)}};
+        \node[below left=-1.25 and 1.5 of mchr1] (mchr1s) {\chemfig{[:15]H_3C-[::300](=[::60]CH_2)-[::-60]-[::60]-[::60]-[::-60]\lewis{0.,CH_2}}};
+        \node[above left=0 and 0.75 of mchr1] (mchr1oo) {\chemfig{*6(----(-[:120]H_3C)(-[:60]O-[0]\lewis{0.,O})(-[6,,,,draw=none]@{mchr1oocen})--)}};
         \node[above=2 of mch] (mchnumbers) {\chemfig[][scale=1.3]{CH_3-[6](-[6,0.3,,,draw=none]\color{red}1)*6(-(!\nobond \color{red}6)-(!\nobond \color{red}5)-(!\nobond \color{red}4)-(!\nobond \color{red}3)-(!\nobond \color{red}2)-)}};
-        \node[above right=0 and 3 of mch] (mchr4) {\chemfig{CH_3-[6]*6(---\lewis{0.,CH}---)}};
-        \node[right=of mchr4] (mchr4s) {\chemfig{[:-15]\lewis{0.,H_2C}-(-[::-60]CH_3)-[::60]-[::60]-[::60]=[::-60]H_2C}};
-        \node[above right=of mchr4] (mchr4oo) {\chemfig{CH_3-[6]*6(---(-O-[:330]\lewis{0.,O})---)}};
+        \node[above right=0.3 and 2 of mch] (mchr4) {\chemfig{CH_3-[6]*6((-[6,,,,draw=none]@{mchr4cen})---\lewis{0.,CH}---)}};
+        \node[below right=-1.5 and 2 of mchr4] (mchr4s) {\chemfig{[:-15]\lewis{0.,H_2C}-(-[::-60]CH_3)-[::60]-[::60]-[::60]=[::-60]H_2C}};
+        \node[above right=-0.5 and 1 of mchr4] (mchr4oo) {\chemfig{CH_3-[6]*6((-[6,,,,draw=none]@{mchr4oocen})---(-O-[:330]\lewis{0.,O})---)}};
+
+        \begin{scope}[every path/.style={draw, ultra thick, >={Stealth}}]
+            \draw[->] (mch.west) -| (mchr2.north);
+            \draw[->] (mch.west -| mchr1.south) -- (mchr1.south);
+            \draw[->] (mch.east) -| (mchr3.north);
+            \draw[->] (mch.east -| mchr4.south) -- (mchr4.south);
+            \draw[->] (mch.280) -- ($(cychexch2.center)!0.2!(mch.280)$) node[fluxl, anchor=north east, midway] {\flux{14.2}{13.7}{12.2}};
+            \draw[->] (cychexch2.250) -- ($(cychexch2oo.south)!0.5!(cychexch2.250)$) node[fluxr, outer sep=3pt, midway] {\flux{99.8}{99.7}{99.3}};
+            \draw[->] (cychexch2oocen -| cychexch2oo.east) -- ++(1.5,0) node[anchor=west] {ROOH} node[below, midway, fluxc] {\flux{8.6}{1.6}{0.4}};
+            \draw[->] (cychexch2oo.290) -- ++(290:2) node[anchor=north, align=left] {MCH-ene\\+\ce{HO2}} node[fluxl, outer sep=4pt, midway] {\flux{10.8}{22.5}{36.3}};
+            \draw[->] (cychexch2oo.260) -- ++(260:2) node[anchor=north] {QOOH} node[fluxl, outer sep=3pt, midway] {\flux{79.0}{75.8}{63.2}};
+            \draw[->] (mchr3.290) -- ($(mchr3oo.south)!0.6!(mchr3.290)$) node[fluxl, outer sep=6pt, midway] {\flux{99.8}{99.2}{88.2}};
+            \draw[->] (mchr3oocen -| mchr3oo.west) -- ++(-1.5,0) node[anchor=east] {ROOH} node[fluxr, pos=0.4, anchor=north] {\flux{17.7}{2.4}{0.4}};
+            \draw[->] (mchr3oocen) ++(250:1) -- ++(250:2.5) node[anchor=north] {QOOH} node[fluxr, outer sep=3pt, midway] {\flux{46.8}{48.6}{40.9}};
+            \draw[->] (mchr3oocen) ++(290:1) -- ++(290:2.5) node[anchor=north, align=left] {MCH-ene\\+\ce{HO2}} node[fluxr, outer sep=4pt, midway] {\flux{28.2}{48.9}{58.7}};
+            \draw[->] (mchr3.east) -- ($(mchr3s.260)+(0,0.5)$) node[anchor=north, align=left, pos=0.6, outer sep=6pt] {\flux{0.0}{0.4}{11.5}};
+            \draw[->] (mchr2.250) -- ($(mchr2oo.center)!0.35!(mchr2.260)$) node[fluxl, anchor=south east, pos=0.6] {\flux{99.5}{92.2}{52.2}};
+            \draw[->] (mchr2.300) -- ($(mchr2s.center)-(0.5,0)$) node[fluxr, anchor=south, midway] {\flux{0.0}{0.3}{2.9}};
+            \draw[->] ($(mchr2oocen -| mchr2oo.east)-(1,0)$) -- ++(0:2.5)  node[anchor=west] {ROOH} node[fluxr, pos=0.7, anchor=south] {\flux{12.3}{2.0}{0.3}};
+            \draw[->] (mchr2oocen |- mchr2oo.south) -- ++(270:1.5) node[anchor=north, align=left] {MCH-ene\\+\ce{HO2}} node[fluxl, midway] {\flux{10.7}{22.0}{23.4}};
+            \draw[->] (mchr2oocen) ++(315:1) -- ++(315:2) node[anchor=north] {QOOH} node[fluxr, pos=0.6, anchor=south west] {\flux{72.2}{75.9}{76.3}};
+            \draw[->] (mchr2cen) ++(135:1) -- ($(cychexene.south east)+(-0.25,0.25)$) node[fluxr, midway, anchor=south west] {\flux{0.3}{7.2}{44.4}};
+            \draw[->] (mchr1cen -| mchr1.west) -- ($(mchr1s.center)+(1,0)$) node[fluxc, midway, anchor=north west] {\flux{0.0}{0.2}{6.8}};
+            \draw[->] ($(mchr1)-(1,0)$) -- (mchr1oo.290) node[fluxl, pos=0.8, anchor=north east] {\flux{99.7}{99.2}{91.5}};
+            \draw[->] ($(mchr1oocen -| mchr1oo.east)-(0.4,0)$) -- ++(0:2.0) node[anchor=west] {ROOH} node[fluxr, pos=0.6, anchor=south] {\flux{25.4}{3.2}{0.6}};
+            \draw[->] (mchr1oocen |- mchr1oo.north) -- ++(90:2.0) node[anchor=south] {MCH-ene\\+\ce{HO2}} node[fluxl, midway] {\flux{36.5}{50.9}{54.6}};
+            \draw[->] (mchr1oocen -| mchr1oo.west) -- ++(180:2.0) node[anchor=east] {QOOH} node[fluxr, midway, anchor=south] {\flux{33.3}{45.8}{44.8}};
+            \draw[->] (mchr4cen -| mchr4.east) -- ($(mchr4s.center)-(1,0)$) node[fluxc, midway, anchor=north east] {\flux{0.0}{0.3}{9.1}};
+            \draw[->] ($(mchr4)+(1,0)$) -- ($(mchr4oo.250)+(0,1.25)$) node[fluxr, pos=0.5, anchor=north west] {\flux{99.7}{99.3}{90.6}};
+            \draw[->] (mchr4oocen -| mchr4oo.west) -- ++(180:2.0) node[anchor=east] {ROOH} node[fluxr, midway, anchor=south] {\flux{21.2}{2.6}{0.4}};
+            \draw[->] (mchr4oocen |- mchr4oo.north) -- ++(90:1.75) node[anchor=south] {MCH-ene\\+\ce{HO2}} node[fluxl, midway] {\flux{33.8}{54.1}{61.1}};
+            \draw[->] (mchr4oocen -| mchr4oo.east) -- ++(0:2.0) node[anchor=west] {QOOH} node[fluxr, midway, anchor=south] {\flux{40.9}{43.2}{38.5}};
+        \end{scope}
+        \node[fluxr] at ($(mch.west -| mchr2.north)!0.45!(mchr2.north)$) {\flux{30.2}{31.0}{31.8}};
+        \node[fluxl] at ($(mch.east -| mchr3.north)!0.45!(mchr3.north)$) {\flux{30.2}{31.0}{31.8}};
+        \node[fluxr] at ($(mch.west -| mchr1.south)!0.45!(mchr1.south)$) {\flux{10.2}{8.8}{8.3}};
+        \node[fluxl] at ($(mch.east -| mchr4.south)!0.45!(mchr4.south)$) {\flux{15.1}{15.5}{15.9}};
+        \node[right=of mchr1cen, red] {mchr1};
+        \node[above right=-1 and -0.45 of mchr2, red] {mchr2};
+        \node[left=0 of mchr3, red] {mchr3};
+        \node[left=of mchr4cen, red] {mchr4};
+        \node[above right=-1 and -0.5 of cychexch2, red] {cychexch2};
     \end{tikzpicture}
 \end{document}
