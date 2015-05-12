@@ -1,0 +1,20 @@
+\documentclass{standalone}
+
+\input{../../font-choice}
+
+\usepackage[version=3]{mhchem}
+\usepackage{chemfig}
+\definesubmol\nobond{-[,0.2,,,draw=none]}
+\setatomsep{2.25em}
+\usetikzlibrary{positioning}
+\tikzset{line join=bevel}
+
+\begin{document}
+    \begin{tikzpicture}[node distance=0.25cm]
+        \node (mch2ene) {\chemname{\chemfig{CH_3-[6]*6(----=-)}}{mch2ene}};
+        \node[below=of mch2ene] (mch2oo) {\chemname{\chemfig{CH_3-[6]*6(-----(-\lewis{0.,OO})-)}}{mch2oo}};
+        \node[below=of mch2oo] (mch2qx) {\chemname{\chemfig{\lewis{0.,H_2C}-[6]*6(-----(-OOH)-)}}{mch2qx}};
+        \node[below=of mch2qx] (mch2qxqj) {\chemname{\chemfig{\lewis{0.,OO}-[4]-[6]*6(-----(-OOH)-)}}{mch2qxqj}};
+        \node[below=of mch2qxqj] (mch3oo) {\chemname{\chemfig{CH_3-[6]*6(----(-\lewis{0.,OO})--)}}{mch3oo}};
+    \end{tikzpicture}
+\end{document}
