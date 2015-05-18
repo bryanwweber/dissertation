@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage[letterpaper, hmargin=1in, vmargin=0.875in, showframe]{geometry}
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+\input{../../font-choice}
+
+\usepackage[version=3]{mhchem}
+\usepackage{chemfig}
+\definesubmol\nobond{-[,0.2,,,draw=none]}
+\setatomsep{2.25em}
+\usetikzlibrary{matrix}
+\tikzset{line join=bevel}
+
+\begin{document}
+\begin{center}%
+    \begin{tikzpicture}%
+        \matrix[%
+            matrix of nodes,%
+            column sep=-\pgflinewidth, row sep=-\pgflinewidth,%
+            nodes={rectangle, draw, minimum width=2.1in, anchor=north},%
+            row 1/.append style={nodes={minimum height=1.75in}},%
+            row 2/.append style={nodes={minimum height=1.75in}},%
+            row 3/.append style={nodes={minimum height=2in}},%
+            row 4/.append style={nodes={minimum height=2in}},%
+            row 5/.append style={nodes={minimum height=2in}},%
+            row 6/.append style={nodes={minimum height=2in}},%
+            row 7/.append style={nodes={minimum height=2in}},%
+            nodes in empty cells,
+            anchor=north,
+        ] (chems) %
+        {%
+        \chemname{\chemfig{CH_3-[6]*6(------)}}{mch} &%
+        \chemname{\chemfig{CH_3-[6]\lewis{0.,C}*6(------)}}{mchr1} &%
+        \chemname{\chemfig{CH_3-[6]*6(-----\lewis{0.,CH}-)}}{mchr2} \\%
+        \chemname{\chemfig{CH_3-[6]*6(----\lewis{0.,CH}--)}}{mchr3} &%
+        \chemname{\chemfig{CH_3-[6]*6(---\lewis{0.,CH}---)}}{mchr4} &%
+        \chemname{\chemfig{{C}|\lewis{0.,H_2}-[6,,1]*6(------)}}{cychexch2} \\%
+        & & \\
+        };%
+        \draw (chems-2-1.base west) -- (chems-2-3.base east);
+    \end{tikzpicture}%
+\end{center}%
+\end{document}
