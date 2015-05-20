@@ -9,8 +9,68 @@
 \usepackage{chemfig}
 \definesubmol\nobond{-[,0.2,,,draw=none]}
 \setatomsep{2.25em}
+\setnodestyle{rectangle}
 \usetikzlibrary{matrix}
-\tikzset{line join=bevel}
+\enablebondjoin
+
+\makeatletter
+\pgfdeclareshape{top rectangle}{
+    \inheritsavedanchors[from=rectangle]
+    \inheritanchorborder[from=rectangle]
+    \inheritanchor[from=rectangle]{center}
+    \inheritanchor[from=rectangle]{north}
+    \inheritanchor[from=rectangle]{north east}
+    \inheritanchor[from=rectangle]{north west}
+    \inheritanchor[from=rectangle]{south}
+    \inheritanchor[from=rectangle]{south east}
+    \inheritanchor[from=rectangle]{south west}
+    \inheritanchor[from=rectangle]{west}
+    \inheritanchor[from=rectangle]{east}
+    \inheritanchor[from=rectangle]{base}
+    \inheritanchor[from=rectangle]{base east}
+    \inheritanchor[from=rectangle]{base west}
+    \inheritanchor[from=rectangle]{mid}
+    \inheritanchor[from=rectangle]{mid east}
+    \inheritanchor[from=rectangle]{mid west}
+    \inheritanchor[from=rectangle]{text}
+    \backgroundpath{
+        \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+        \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+        \pgfpathmoveto{\pgfpoint{\pgf@xa}{\pgf@ya}}
+        \pgfpathlineto{\pgfpoint{\pgf@xa}{\pgf@yb}}
+        \pgfpathlineto{\pgfpoint{\pgf@xb}{\pgf@yb}}
+        \pgfpathlineto{\pgfpoint{\pgf@xb}{\pgf@ya}}
+    }
+}
+\pgfdeclareshape{bottom rectangle}{
+    \inheritsavedanchors[from=rectangle]
+    \inheritanchorborder[from=rectangle]
+    \inheritanchor[from=rectangle]{center}
+    \inheritanchor[from=rectangle]{north}
+    \inheritanchor[from=rectangle]{north east}
+    \inheritanchor[from=rectangle]{north west}
+    \inheritanchor[from=rectangle]{south}
+    \inheritanchor[from=rectangle]{south east}
+    \inheritanchor[from=rectangle]{south west}
+    \inheritanchor[from=rectangle]{west}
+    \inheritanchor[from=rectangle]{east}
+    \inheritanchor[from=rectangle]{base}
+    \inheritanchor[from=rectangle]{base east}
+    \inheritanchor[from=rectangle]{base west}
+    \inheritanchor[from=rectangle]{mid}
+    \inheritanchor[from=rectangle]{mid east}
+    \inheritanchor[from=rectangle]{mid west}
+    \inheritanchor[from=rectangle]{text}
+    \backgroundpath{
+        \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+        \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+        \pgfpathmoveto{\pgfpoint{\pgf@xa}{\pgf@yb}}
+        \pgfpathlineto{\pgfpoint{\pgf@xa}{\pgf@ya}}
+        \pgfpathlineto{\pgfpoint{\pgf@xb}{\pgf@ya}}
+        \pgfpathlineto{\pgfpoint{\pgf@xb}{\pgf@yb}}
+    }
+}
+\makeatother
 
 \begin{document}
 \begin{center}%
@@ -18,14 +78,9 @@
         \matrix[%
             matrix of nodes,%
             column sep=-\pgflinewidth, row sep=-\pgflinewidth,%
-            nodes={rectangle, draw, minimum width=2.1in, anchor=north},%
-            row 1/.append style={nodes={minimum height=1.75in}},%
-            row 2/.append style={nodes={minimum height=1.75in}},%
-            row 3/.append style={nodes={minimum height=2in}},%
-            row 4/.append style={nodes={minimum height=2in}},%
-            row 5/.append style={nodes={minimum height=2in}},%
-            row 6/.append style={nodes={minimum height=2in}},%
-            row 7/.append style={nodes={minimum height=2in}},%
+            nodes={minimum width=2.1in, anchor=north, draw},%
+            every even row/.append style={nodes={bottom rectangle, minimum height=4ex, font=\ttfamily}},
+            every odd row/.append style={nodes={top rectangle, inner sep=0pt, minimum height=0.9in}},
             nodes in empty cells,
             anchor=north,
         ] (chems) %
