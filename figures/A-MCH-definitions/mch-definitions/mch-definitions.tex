@@ -13,6 +13,8 @@
 \usetikzlibrary{matrix}
 \enablebondjoin
 
+\usepackage{xstring}
+
 \makeatletter
 \pgfdeclareshape{top rectangle}{
     \inheritsavedanchors[from=rectangle]
@@ -70,6 +72,45 @@
         \pgfpathlineto{\pgfpoint{\pgf@xb}{\pgf@yb}}
     }
 }
+
+\def\CF@set@bondangle#1#2{% le code de la direction est contenu dans #1, en sortie, #2 contient l'angle
+    \ifx\@empty#1\@empty%
+        \let#2\CF@default@angle
+    \else
+        \if:\expandafter\noexpand\@car#1\@nil
+            \if:\expandafter\expandafter\expandafter\noexpand\expandafter\@car\@gobble#1\@nil
+                \pgfmathparse{\CF@previous@angle+\expandafter\@gobble\@gobble#1}%
+                \let#2\pgfmathresult
+            \else
+                \expandafter\def\expandafter#2\expandafter{\@gobble#1}%
+            \fi% puis normalise l'angle entre 0 et 360
+            \ifdim\ifdim#2pt<\z@-\fi#2pt>360pt % si |#2|>360
+                \pgfmathparse{#2-360*floor(#2/360)}%
+                \ifdim\pgfmathresult pt<\z@\pgfmathparse{\pgfmathresult+360}\fi
+                \let#2\pgfmathresult
+            \else
+                \ifdim#2pt<\z@
+                    \pgfmathparse{#2+360}%
+                    \let#2\pgfmathresult
+                \fi
+            \fi
+        \else
+            \IfInteger{#1}{%
+                \ifnum#1>7
+                    \pgfmathparse{#1-floor(#1/8)*8}%
+                    \ifdim\pgfmathresult pt<\z@\pgfmathparse{\pgfmathresult+8}\fi
+                    \edef#2{\ifcase\expandafter\CF@int@part\pgfmathresult\@nil0\or45\or90\or135\or180\or225\or270\or315\else-1\fi}% angle =-1 --> erreur
+                \else
+                    \edef#2{\ifcase#1 0\or45\or90\or135\or180\or225\or270\or315\else-1\fi}%
+                \fi
+            }%
+            {%
+                \edef#2{\ifcase\numexpr`#1 - `a\relax 0\or30\or60\or90\or120\or150\or180\or210\or240\or270\or300\or330\else-1\fi}%
+            }%
+        \fi
+    \fi
+}
+
 \makeatother
 
 \tikzset{
