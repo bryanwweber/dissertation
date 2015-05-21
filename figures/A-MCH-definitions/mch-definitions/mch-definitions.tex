@@ -192,5 +192,26 @@
             mch2n4j & mch2n5j & mch2n6j \\
         };
     \end{tikzpicture}
+    \newpage
+    \begin{tikzpicture}
+        \matrix[
+            every odd row/.append style={nodes={top rectangle, inner sep=0pt, minimum height=1.25in}},
+        ]
+        {
+            \chemfig{\lewis{0.,CH_2}-[6]*6(-=----)} &
+            \chemfig{CH_3-[6]\lewis{0.,C}*6(--=---)} &
+            \chemfig{CH_3-[6]*6(-\lewis{0.,CH}-=---)} \\
+            mch2nch2j & mch3n1j & mch3n2j \\
+            \chemfig{CH_3-[6]*6(--=-\lewis{0.,CH}--)} &
+            \chemfig{CH_3-[6]*6(--=--\lewis{0.,CH}-)} &
+            \chemfig{\lewis{0.,CH_2}-[6]*6(--=---)} \\
+            mch3n5j & mch3n6j & mch3nch2j \\
+            \chemfig{CH_3=[6]*6(-\lewis{0.,CH_2}-----)} &
+            \chemfig{CH_3=[6]*6(--\lewis{0.,CH_2}----)} &
+            \chemfig{CH_3=[6]*6(---\lewis{0.,CH_2}---)} \\
+            chxdch22j & chxdch23j & chxdch24j \\
+            \chemfig{-[b]-[l]} & & \\
+        };
+    \end{tikzpicture}
 \end{center}
 \end{document}
