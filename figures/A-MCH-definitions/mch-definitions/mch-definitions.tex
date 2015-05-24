@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage[letterpaper, hmargin=1in, vmargin=0.875in, showframe]{geometry}
+\usepackage[letterpaper, hmargin=1in, vmargin=0.875in]{geometry}
 \setlength{\parindent}{0pt}
 \pagestyle{empty}
 
@@ -10,7 +10,14 @@
 \definesubmol\nobond{-[,0.2,,,draw=none]}
 \setatomsep{2.25em}
 \setnodestyle{rectangle}
-\usetikzlibrary{matrix}
+\usetikzlibrary{matrix, external}
+\tikzset{
+    external/system call={
+        lualatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"
+    },
+    % external/force remake,
+}
+\tikzexternalize
 \enablebondjoin
 
 \input{patch}
