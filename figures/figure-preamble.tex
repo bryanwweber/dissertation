@@ -1,3 +1,5 @@
+% Fix for TeXLive 2016 where there is a bug in standalone
+\RequirePackage{luatex85}
 \documentclass{standalone}
 
 \input{../../font-choice}
@@ -187,7 +189,7 @@
 \usetikzlibrary{arrows.meta, positioning}
 
 \pgfplotsset{%
-    compat=1.12,
+    compat=1.14,
     width=9cm,
     height=7cm,
     every axis/.append style={
